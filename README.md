@@ -191,13 +191,172 @@ keywords={hebrew}   % For Hebrew references
 \mixedcell{רגרסיה ליניארית\\Linear Regression}
 ```
 
+## 📚 Adding References - Complete Guide
+
+### **Step 1: Create Your Bibliography File**
+
+Create a `.bib` file (e.g., `references.bib`) with your references. **CRITICAL**: Each reference MUST include `keywords={english}` or `keywords={hebrew}` for proper categorization.
+
+```bibtex
+% English Reference Example
+@article{mikolov2013,
+  title={Efficient estimation of word representations in vector space},
+  author={Mikolov, Tomas and Chen, Kai and Corrado, Greg and Dean, Jeffrey},
+  journal={arXiv preprint arXiv:1301.3781},
+  year={2013},
+  keywords={english}  % REQUIRED: Mark as English
+}
+
+% Hebrew Reference Example  
+@article{hebrew_nlp_2023,
+  title={עיבוד שפה טבעית בעברית: אתגרים ופתרונות},
+  author={כהן, דוד and לוי, רחל and שמעון, יוסף},  % Use 'and' to separate authors
+  journal={כתב העת הישראלי למדעי המחשב},
+  volume={15},
+  number={3},
+  pages={45--67},
+  year={2023},
+  publisher={האוניברסיטה העברית},
+  keywords={hebrew}  % REQUIRED: Mark as Hebrew
+}
+
+% Book Example
+@book{ai_book_2024,
+  title={Artificial Intelligence: A Modern Approach},
+  author={Russell, Stuart and Norvig, Peter},
+  edition={4},
+  publisher={Pearson},
+  year={2024},
+  keywords={english}
+}
+
+% Conference Paper Example
+@inproceedings{conference_paper_2023,
+  title={Deep Learning for Natural Language Processing},
+  author={Smith, John and Johnson, Mary},
+  booktitle={Proceedings of the International Conference on AI},
+  pages={123--135},
+  year={2023},
+  organization={ACM},
+  keywords={english}
+}
+
+% Website/Online Source Example
+@misc{website_2024,
+  title={Introduction to Machine Learning},
+  author={OpenAI},
+  year={2024},
+  url={https://openai.com/research/machine-learning},
+  urldate={2024-12-01},
+  keywords={english}
+}
+```
+
+### **Step 2: Reference Types and Required Fields**
+
+| Type | Description | Required Fields | Optional Fields |
+|------|-------------|----------------|----------------|
+| `@article` | Journal articles | title, author, journal, year | volume, number, pages, doi |
+| `@book` | Books | title, author, publisher, year | edition, isbn, address |
+| `@inproceedings` | Conference papers | title, author, booktitle, year | pages, organization, address |
+| `@phdthesis` | PhD dissertations | title, author, school, year | address, month |
+| `@mastersthesis` | Master's theses | title, author, school, year | address, month |
+| `@techreport` | Technical reports | title, author, institution, year | number, address |
+| `@misc` | Websites, misc. | title, year | author, url, urldate, note |
+
+### **Step 3: Critical Bibliography Rules**
+
+#### ✅ **MUST DO:**
+1. **Add keywords**: Every reference MUST have `keywords={english}` or `keywords={hebrew}`
+2. **Use 'and' for authors**: `author={Smith, John and Johnson, Mary}` ✅
+3. **Use double dashes for page ranges**: `pages={45--67}` ✅
+4. **Include urldate for websites**: `urldate={2024-12-01}` ✅
+
+#### ❌ **DON'T DO:**
+1. **Missing keywords**: References without keywords won't appear ❌
+2. **Comma-separated authors**: `author={Smith, John, Johnson, Mary}` ❌
+3. **Single dash for pages**: `pages={45-67}` ❌
+4. **Missing urldate for URLs**: Online sources need access dates ❌
+
+### **Step 4: Using Citations in Your Document**
+
+#### **Basic Citations:**
+```latex
+% Single citation
+This is supported by research \cite{mikolov2013}.
+
+% Multiple citations  
+Several studies \cite{mikolov2013,ai_book_2024,hebrew_nlp_2023} confirm this.
+
+% Citation with page number
+As noted by Smith \cite[p. 45]{ai_book_2024}.
+```
+
+#### **Citations in Hebrew Text:**
+```latex
+\hebrewsection{מחקר בבינה מלאכותית: \entoc{AI Research}}
+
+המחקר מראה \cite{mikolov2013} כי שיטות \en{Deep Learning} יעילות במיוחד.
+מחקרים נוספים \cite{hebrew_nlp_2023,ai_book_2024} תומכים בממצאים אלה.
+```
+
+### **Step 5: Bibliography Display**
+
+The template automatically separates Hebrew and English references:
+
+```latex
+% At the end of your document
+\newpage
+\printhebrewbibliography  % Shows only Hebrew references (keywords={hebrew})
+\printenglishbibliography % Shows only English references (keywords={english})
+```
+
+### **Step 6: Complete Working Example**
+
+**main.tex:**
+```latex
+\documentclass{hebrew-academic-template}
+\addbibresource{references.bib}  % Your bibliography file
+
+\hebrewtitle{מחקר בבינה מלאכותית}
+\englishtitle{Research in Artificial Intelligence}
+\hebrewauthor{ד"ר סגל יורם}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\hebrewsection{מבוא: \entoc{Introduction}}
+
+המחקר בתחום הבינה המלאכותית מתפתח במהירות רבה. שיטות \en{Deep Learning} 
+מציגות תוצאות מרשימות \cite{mikolov2013}. מחקרים בעברית \cite{hebrew_nlp_2023} 
+מראים התקדמות משמעותית.
+
+בשנת \hebyear{2024} פורסמו \num{1500} מאמרים בתחום \cite{ai_book_2024}.
+
+\englishsection{Results and Discussion}
+
+The results show significant improvement over baseline methods \cite{ai_book_2024}.
+The accuracy increased from \num{85}\% to \num{94}\%.
+
+\newpage
+\printhebrewbibliography
+\printenglishbibliography
+
+\end{document}
+```
+
 ## 📚 Examples
 
 ### **Simple Example**
-See `simple_example.tex` for a minimal working document.
+See `simple_example.tex` for a minimal working document with basic citations.
 
 ### **Comprehensive Example**
-See `comprehensive_example.tex` for extensive examples of all features.
+See `comprehensive_example.tex` for extensive examples of all features including:
+- Mixed Hebrew/English citations
+- Multiple reference types
+- Proper bibliography categorization
 
 ### **Sample Output**
 Both examples compile to professional academic documents with:
@@ -205,7 +364,7 @@ Both examples compile to professional academic documents with:
 - LTR numbering throughout (pages, sections, citations)
 - Professional code blocks with gray background
 - Mixed-language tables and figures
-- IEEE-style bibliography
+- IEEE-style bibliography with automatic Hebrew/English separation
 
 ## 🔧 Requirements
 

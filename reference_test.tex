@@ -1,0 +1,140 @@
+\documentclass{hebrew-academic-template}
+
+% Add bibliography file - using the comprehensive references
+\addbibresource{comprehensive_references.bib}
+
+% Title page information
+\hebrewtitle{בדיקת מערכת הציטוטים}
+\englishtitle{Citation System Test}
+\hebrewauthor{ד"ר סגל יורם}
+\date{\textenglish{September 2025}}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+% ==================== INTRODUCTION ====================
+
+\hebrewsection{מבוא: \entoc{Introduction}}
+
+מסמך זה בודק את מערכת הציטוטים של התבנית האקדמית העברית. אנו נבדוק ציטוטים בעברית ובאנגלית, כולל ציטוטים בודדים ומרובים.
+
+\hebrewsubsection{בדיקת ציטוטים בעברית: \entoc{Hebrew Citations Test}}
+
+המחקר בתחום הבינה המלאכותית מתפתח במהירות רבה \cite{devlin2018bert}. שיטות \en{Deep Learning} מציגות תוצאות מרשימות, כפי שמוכח במחקרים רבים \cite{vaswani2017attention,hebrew_nlp_2023}.
+
+מחקרים בעברית \cite{hebrew_nlp_2023,hebrew_linguistics_2022} מראים התקדמות משמעותית בעיבוד שפה טבעית עברית. בשנת \hebyear{2023} פורסמו \num{150} מאמרים בתחום.
+
+\hebrewsubsection{בדיקת מספרים וציטוטים: \entoc{Numbers and Citations Test}}
+
+הנתונים מראים שיפור של \num{25}\% ביעילות \cite{devlin2018bert}. במחקר נוסף \cite{vaswani2017attention} נמצא שיפור של \num{40}\% בדיוק.
+
+רשימת הביצועים:
+\begin{enumerate}
+    \item דיוק של \num{94.5}\% במודל \en{BERT} \cite{devlin2018bert}
+    \item זמן עיבוד של \num{2.3} שניות למשפט
+    \item שיפור של \num{15}\% לעומת שיטות קודמות \cite{hebrew_nlp_2023}
+\end{enumerate}
+
+% ==================== ENGLISH SECTION ====================
+
+\englishsection{English Section with Citations}
+
+This section tests English citations and mixed content. The \en{Transformer} architecture \cite{vaswani2017attention} revolutionized natural language processing. Recent developments in \en{BERT} \cite{devlin2018bert} show significant improvements.
+
+Multiple studies \cite{vaswani2017attention,devlin2018bert,hebrew_nlp_2023} demonstrate the effectiveness of attention mechanisms. The accuracy improved from \num{85}\% to \num{94}\%.
+
+\hebrewsubsection{טבלה עם ציטוטים: \entoc{Table with Citations}}
+
+\begin{hebrewtable}[h]
+    \caption{השוואת מודלים: \en{Model Comparison}}
+    \begin{rtltabular}{|c|c|c|c|}
+        \hline
+        \textbf{מודל / \en{Model}} & \textbf{דיוק / \en{Accuracy}} & \textbf{שנה / \en{Year}} & \textbf{מקור / \en{Source}} \\
+        \hline
+        \en{BERT} & \num{94.5}\% & \hebyear{2018} & \cite{devlin2018bert} \\
+        \hline
+        \en{Transformer} & \num{92.1}\% & \hebyear{2017} & \cite{vaswani2017attention} \\
+        \hline
+        עיבוד עברית / \en{Hebrew NLP} & \num{89.3}\% & \hebyear{2023} & \cite{hebrew_nlp_2023} \\
+        \hline
+    \end{rtltabular}
+\end{hebrewtable}
+
+% ==================== ADVANCED TESTING ====================
+
+\hebrewsection{בדיקות מתקדמות: \entoc{Advanced Testing}}
+
+\hebrewsubsection{ציטוטים עם עמודים: \entoc{Citations with Pages}}
+
+כפי שמתואר במחקר \cite[עמ' 45]{hebrew_nlp_2023}, השיטה החדשה מציגה שיפור משמעותי. במחקר אחר \cite[p. 123]{vaswani2017attention} מוצגות תוצאות דומות.
+
+\hebrewsubsection{ציטוטים במשפטים מורכבים: \entoc{Citations in Complex Sentences}}
+
+המחקר מראה \cite{devlin2018bert} כי שיטות \en{Deep Learning} יעילות במיוחד, אך מחקרים נוספים \cite{hebrew_nlp_2023,hebrew_linguistics_2022} מצביעים על אתגרים בעיבוד עברית. התוצאות \cite{vaswani2017attention} תומכות בממצאים אלה.
+
+\hebrewsubsection{נוסחאות מתמטיות עם ציטוטים: \entoc{Mathematical Formulas with Citations}}
+
+הנוסחה הבסיסית של מנגנון הקשב \cite{vaswani2017attention} היא:
+
+$$\text{Attention}(Q,K,V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+
+כאשר $Q$, $K$, ו-$V$ הם מטריצות השאילתה, המפתח והערך בהתאמה.
+
+מודל \en{BERT} \cite{devlin2018bert} משתמש בארכיטקטורה דו-כיוונית:
+
+$$\mathcal{L} = \mathcal{L}_{\text{MLM}} + \mathcal{L}_{\text{NSP}}$$
+
+% ==================== CODE WITH CITATIONS ====================
+
+\hebrewsection{קוד עם ציטוטים: \entoc{Code with Citations}}
+
+הקוד הבא מממש את אלגוריתם הקשב מ-\cite{vaswani2017attention}:
+
+\begin{pythonbox}[Attention Mechanism Implementation]
+import torch
+import torch.nn.functional as F
+
+def attention(Q, K, V, mask=None):
+    """
+    Implementation of scaled dot-product attention
+    Based on Vaswani et al. (2017)
+    """
+    d_k = Q.size(-1)
+    scores = torch.matmul(Q, K.transpose(-2, -1)) / torch.sqrt(d_k)
+    
+    if mask is not None:
+        scores = scores.masked_fill(mask == 0, -1e9)
+    
+    attention_weights = F.softmax(scores, dim=-1)
+    return torch.matmul(attention_weights, V)
+\end{pythonbox}
+
+הקוד מבוסס על המחקר של \cite{vaswani2017attention} ומיושם גם במודל \en{BERT} \cite{devlin2018bert}.
+
+% ==================== CONCLUSIONS ====================
+
+\hebrewsection{מסקנות: \entoc{Conclusions}}
+
+בדיקת מערכת הציטוטים הראתה שהתבנית פועלת כראוי:
+
+\begin{itemize}
+    \item ציטוטים מוצגים במספרים \en{LTR}: [1], [2], [3]
+    \item ציטוטים בעברית ובאנגלית פועלים כראוי
+    \item ציטוטים מרובים מוצגים נכון
+    \item ציטוטים עם עמודים פועלים
+    \item ציטוטים בטבלאות ובקוד פועלים
+\end{itemize}
+
+כל הציטוטים \cite{devlin2018bert,vaswani2017attention,hebrew_nlp_2023,hebrew_linguistics_2022} מוצגים בפורמט \en{IEEE} עם מספרים ב-\en{LTR}.
+
+% ==================== BIBLIOGRAPHY ====================
+
+\newpage
+\printhebrewbibliography
+\printenglishbibliography
+
+\end{document}
