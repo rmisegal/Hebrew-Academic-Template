@@ -1,0 +1,40 @@
+# LaTeX compilation output files
+*.aux
+*.log
+*.toc
+*.out
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.listing
+
+# Temporary files
+*~
+*.tmp
+*.bak
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Build directories
+build/
+output/
+
+# Keep PDF examples but ignore others
+*.pdf
+!example_output.pdf
