@@ -323,7 +323,7 @@
   \DeclareCiteCommand{\cite}
     {\usebibmacro{prenote}}
     {\usebibmacro{citeindex}%
-     \printfield{labelnumber}}
+     \ltrnumber{[\printfield{labelnumber}]}}
     {\multicitedelim}
     {\usebibmacro{postnote}}%
 }
