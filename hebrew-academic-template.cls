@@ -216,7 +216,13 @@
 %% ==================== CONVENIENT COMMANDS ====================
 
 % Short commands for language switching
-\newcommand{\en}[1]{\textenglish{#1}}
+\newcommand{\en}[1]{%
+  \begingroup%
+  \selectlanguage{english}%
+  \textdir TLT\pardir TLT%
+  \textenglish{#1}%
+  \endgroup%
+}
 \newcommand{\heb}[1]{\texthebrew{#1}}
 \newcommand{\ilm}[1]{\en{#1}}  % For inline math/English terms
 
