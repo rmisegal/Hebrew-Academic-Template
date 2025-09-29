@@ -80,13 +80,13 @@ Multiple studies \cite{vaswani2017attention,devlin2018bert,hebrew_nlp_2023} demo
 
 הנוסחה הבסיסית של מנגנון הקשב \cite{vaswani2017attention} היא:
 
-$$\text{Attention}(Q,K,V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+$$\text{Attention}(Q,K,V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V \quad (4.1)$$
 
 כאשר $Q$, $K$, ו-$V$ הם מטריצות השאילתה, המפתח והערך בהתאמה.
 
 מודל \en{BERT} \cite{devlin2018bert} משתמש בארכיטקטורה דו-כיוונית:
 
-$$\mathcal{L} = \mathcal{L}_{\text{MLM}} + \mathcal{L}_{\text{NSP}}$$
+$$\mathcal{L} = \mathcal{L}_{\text{MLM}} + \mathcal{L}_{\text{NSP}} \quad (4.2)$$
 
 % ==================== CODE WITH CITATIONS ====================
 
@@ -114,6 +114,26 @@ def attention(Q, K, V, mask=None):
 \end{pythonbox}
 
 הקוד מבוסס על המחקר של \cite{vaswani2017attention} ומיושם גם במודל \en{BERT} \cite{devlin2018bert}.
+
+% ==================== FIGURE EXAMPLE ====================
+
+\hebrewsection{דוגמת תמונה: \entoc{Figure Example}}
+
+\begin{hebrewfigure}[h]
+    \centering
+    \fbox{\parbox{8cm}{
+        \centering
+        \vspace{1cm}
+        {\Large \en{AI Model}}\\[0.5cm]
+        מודל בינה מלאכותית\\[0.5cm]
+        קלט $\rightarrow$ עיבוד $\rightarrow$ פלט\\
+        \vspace{1cm}
+    }}
+    \caption{ארכיטקטורת מודל: \en{Model Architecture} - דיאגרמה של מודל \en{AI} בסיסי}
+    \label{fig:model_architecture}
+\end{hebrewfigure}
+
+התמונה \ref{fig:model_architecture} מציגה את המבנה הבסיסי של מודל בינה מלאכותית. הדיאגרמה מדגימה את זרימת הנתונים מהקלט לפלט דרך המודל.
 
 % ==================== CONCLUSIONS ====================
 

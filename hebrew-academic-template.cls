@@ -35,6 +35,8 @@
 \RequirePackage{caption}
 \RequirePackage{enumerate}
 \RequirePackage{titlesec}
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
 
 % Bibliography support
 \RequirePackage[backend=biber, style=ieee]{biblatex}
@@ -122,6 +124,12 @@
 % Table and figure numbering - always LTR
 \renewcommand{\thetable}{\textenglish{\arabic{table}}}
 \renewcommand{\thefigure}{\textenglish{\arabic{figure}}}
+
+% List numbering - always LTR
+\renewcommand{\theenumi}{\textenglish{\arabic{enumi}}}
+\renewcommand{\theenumii}{\textenglish{\arabic{enumii}}}
+\renewcommand{\theenumiii}{\textenglish{\arabic{enumiii}}}
+\renewcommand{\theenumiv}{\textenglish{\arabic{enumiv}}}
 
 %% ==================== FONT CONFIGURATION ====================
 
