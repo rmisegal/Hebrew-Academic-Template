@@ -141,6 +141,48 @@ Copy-Item build\document.pdf .
 \hebrewsection{מבוא: Introduction}                % ❌ Wrong - English RTL in TOC
 ```
 
+### **🔥 CRITICAL: English Sections (LTR, Left-Aligned)**
+
+For **pure English sections** that must be **LTR and left-aligned**:
+
+```latex
+% Method 1: Complete English section with automatic direction control
+\englishsection{English Section Title}
+\startenglish
+
+This is pure English content that flows left-to-right (LTR) 
+and is aligned to the left. All text, lists, and formulas 
+in this section will be properly left-aligned.
+
+Key features:
+\begin{enumerate}
+\item Left-to-right text flow
+\item Left alignment (not right)
+\item Standard English typography
+\item Proper equation numbering
+\end{enumerate}
+
+Mathematical formulas are centered with LTR numbering:
+$$E = mc^2 \quad (1.1)$$
+
+\stopenglish
+% Returns to Hebrew RTL mode
+
+% Method 2: Mixed Hebrew section with English terms
+\hebrewsection{מסקנות: \entoc{Conclusions}}
+זהו טקסט עברי (RTL, right-aligned) עם מונחים באנגלית כמו \en{Machine Learning}
+```
+
+### **📋 Text Direction Patterns**
+
+| Content Type | Command | Direction | Alignment | Usage |
+|--------------|---------|-----------|-----------|-------|
+| **Main Hebrew text** | Default | RTL | Right | Main document content |
+| **English terms in Hebrew** | `\en{term}` | LTR | Within RTL | `\en{Machine Learning}` |
+| **Pure English section** | `\englishsection{}` + `\startenglish` | LTR | Left | Complete English sections |
+| **Numbers/Years** | `\num{}`, `\hebyear{}` | LTR | Within flow | `\num{100}`, `\hebyear{2023}` |
+| **Percentages** | `\percent{}` | LTR | Within flow | `\percent{95.5}` → 95.5% |
+
 ### **Tables**
 ```latex
 \begin{hebrewtable}[h]
