@@ -265,12 +265,26 @@
 
 \newcommand{\englishsection}[1]{%
   \stepcounter{hebrewsection}%
-  \begin{english}%
   \selectlanguage{english}%
   \textdir TLT\pardir TLT%
   \section*{\raggedright\textenglish{\thehebrewsection\quad #1}}%
   \addcontentsline{toc}{section}{\en{\thehebrewsection\quad #1}}%
-  \end{english}%
+}
+
+% Command to start English content (maintains LTR direction and LEFT alignment)
+\newcommand{\startenglish}{%
+  \selectlanguage{english}%
+  \textdir TLT\pardir TLT%
+  \raggedright%
+  \leftskip=0pt%
+  \rightskip=0pt%
+}
+
+% Command to end English content (return to Hebrew RTL and RIGHT alignment)
+\newcommand{\stopenglish}{%
+  \selectlanguage{hebrew}%
+  \textdir TRT\pardir TRT%
+  \raggedleft%
 }
 
 % Custom subsection command
