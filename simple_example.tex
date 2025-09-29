@@ -1,6 +1,6 @@
 % Copyright (c) \hebyear{2025} Dr. Segal Yoram. All rights reserved.
 % Simple Example Document for Hebrew Academic Template
-% This is a minimal working example
+% This is a minimal working example demonstrating ALL text direction requirements
 
 \documentclass{hebrew-academic-template}
 
@@ -11,6 +11,7 @@
 \hebrewtitle{דוגמה פשוטה לשימוש בתבנית}
 \englishtitle{Simple Example Using the Template}
 \hebrewauthor{ד"ר יורם סגל}
+\date{\textenglish{December 2025}} % FIXED: Date wrapped in \textenglish{}
 
 \begin{document}
 
@@ -21,13 +22,13 @@
 
 % ==================== INTRODUCTION ====================
 
-\hebrewsection{מבוא: Introduction}
+\hebrewsection{מבוא: \en{Introduction}}
 
 זוהי דוגמה פשוטה לשימוש בתבנית האקדמית העברית. התבנית תומכת בטקסט עברי עם מונחים באנגלית כמו \en{Machine Learning} ו-\en{Deep Learning}.
 
 ניתן לכלול מספרים כמו \num{100} ושנים כמו \hebyear{2023} בתוך הטקסט העברי, וגם ביטויים מתמטיים כמו $E = mc^2$.
 
-\hebrewsubsection{מתודולוגיה: Methodology}
+\hebrewsubsection{מתודולוגיה: \en{Methodology}}
 
 המחקר מבוסס על \num{1000} דגימות שנאספו בשנת \hebyear{2023}. השיטה כוללת שימוש באלגוריתמי \en{Machine Learning} מתקדמים \cite{mikolov2013}.
 
@@ -38,36 +39,36 @@ y = \beta_0 + \beta_1 x + \varepsilon
 
 % ==================== RESULTS ====================
 
-\hebrewsection{תוצאות: Results}
+\hebrewsection{תוצאות: \en{Results}}
 
-\hebrewsubsection{ניתוח נתונים: Data Analysis}
+\hebrewsubsection{ניתוח נתונים: \en{Data Analysis}}
 
 התוצאות מוצגות בטבלה הבאה:
 
 \begin{hebrewtable}[h]
-\caption{תוצאות הניסוי: Experimental Results}
+\caption{תוצאות הניסוי: \en{Experimental Results}}
 \begin{rtltabular}{|c|c|c|}
 \hline
-\textbf{מדד} & \textbf{Metric} & \textbf{ערך} \\
+\textbf{מדד / \en{Metric}} & \textbf{ערך / \en{Value}} & \textbf{יחידה / \en{Unit}} \\
 \hline
-דיוק & Accuracy & \num{95.2}\% \\
+דיוק / \en{Accuracy} & \num{95.2}\% & אחוזים / \en{Percent} \\
 \hline
-זמן ריצה & Runtime & \num{2.5} שניות \\
+זמן ריצה / \en{Runtime} & \num{2.5} & שניות / \en{Seconds} \\
 \hline
-זיכרון & Memory & \num{512} MB \\
+זיכרון / \en{Memory} & \num{512} & \en{MB} \\
 \hline
 \end{rtltabular}
 \end{hebrewtable}
 
-\hebrewsubsection{קוד לדוגמה: Example Code}
+\hebrewsubsection{קוד לדוגמה: \en{Example Code}}
 
 הקוד הבא מדגים את השימוש באלגוריתם:
 
-\begin{pythonbox}[דוגמה לקוד Python]
+\begin{pythonbox}[דוגמה לקוד: \en{Python Code Example}]
 import numpy as np
 from sklearn.linear_model import LinearRegression
 
-# Create sample data
+# Create sample data (NO Hebrew comments allowed)
 X = np.random.randn(100, 1)
 y = 2 * X.flatten() + 1 + np.random.randn(100) * 0.1
 
@@ -78,48 +79,84 @@ model.fit(X, y)
 # Print results
 print(f"Coefficient: {model.coef_[0]:.2f}")
 print(f"Intercept: {model.intercept_:.2f}")
+print(f"R-squared: {model.score(X, y):.3f}")
 \end{pythonbox}
 
 % ==================== FIGURE EXAMPLE ====================
 
-\hebrewsubsection{איור לדוגמה: Example Figure}
+\hebrewsubsection{איור לדוגמה: \en{Example Figure}}
 
 האיור הבא מציג את התוצאות:
 
-\hebrewfigure[h]{
-    \includegraphics[width=0.7\textwidth]{example_plot.png}
-}{
-    איור \num{1}: גרף הדגמה - Example Plot showing trigonometric functions
-}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{example_plot.png}
+\caption{גרף הדגמה בשנת \hebyear{2023}: \en{Example Plot from 2023 showing trigonometric functions}}
+\label{fig:example}
+\end{figure}
+
+כפי שניתן לראות באיור \ref{fig:example}, הפונקציות מציגות התנהגות מעניינת.
 
 % ==================== LISTS EXAMPLE ====================
 
-\hebrewsubsection{רשימות: Lists}
+\hebrewsubsection{רשימות: \en{Lists}}
 
 רשימת האלגוריתמים שנבדקו:
 
 \begin{itemize}
-\item רגרסיה ליניארית: \en{Linear Regression}
-\item עץ החלטה: \en{Decision Tree}
-\item יער אקראי: \en{Random Forest}
+\item רגרסיה ליניארית: \en{Linear Regression} - דיוק \num{85.2}\%
+\item עץ החלטה: \en{Decision Tree} - דיוק \num{78.9}\%
+\item יער אקראי: \en{Random Forest} - דיוק \num{92.1}\%
+\item רשת נוירונים: \en{Neural Network} - דיוק \num{94.5}\%
 \end{itemize}
 
-שלבי העבודה:
+שלבי העבודה שבוצעו בשנת \hebyear{2023}:
 
 \begin{enumerate}
-\item איסוף נתונים: \en{Data Collection}
-\item ניתוח ראשוני: \en{Exploratory Analysis}
-\item בניית מודל: \en{Model Building}
-\item הערכת תוצאות: \en{Results Evaluation}
+\item איסוף \num{1000} דגימות: \en{Data Collection}
+\item ניתוח ראשוני של \num{15} משתנים: \en{Exploratory Analysis}
+\item בניית \num{5} מודלים: \en{Model Building}
+\item הערכת תוצאות על \num{200} מקרי בדיקה: \en{Results Evaluation}
 \end{enumerate}
+
+% ==================== ADVANCED EXAMPLES ====================
+
+\hebrewsection{דוגמאות מתקדמות: \en{Advanced Examples}}
+
+\hebrewsubsection{טבלה מורכבת: \en{Complex Table}}
+
+\begin{hebrewtable}[h]
+\caption{השוואת מודלי \en{AI} בשנים \hebyear{2020}-\hebyear{2023}: \en{AI Model Comparison 2020-2023}}
+\begin{rtltabular}{|c|c|c|c|}
+\hline
+\textbf{מודל / \en{Model}} & 
+\textbf{שנה / \en{Year}} & 
+\textbf{פרמטרים / \en{Parameters}} & 
+\textbf{דיוק / \en{Accuracy}} \\
+\hline
+\en{GPT-2} / ג'יפיטי-\num{2} & \hebyear{2019} & \num{1.5}\en{B} & \num{88.5}\% \\
+\hline
+\en{GPT-3} / ג'יפיטי-\num{3} & \hebyear{2020} & \num{175}\en{B} & \num{93.2}\% \\
+\hline
+\en{GPT-4} / ג'יפיטי-\num{4} & \hebyear{2023} & \num{1.7}\en{T} & \num{96.8}\% \\
+\hline
+\end{rtltabular}
+\end{hebrewtable}
+
+\hebrewsubsection{ציטוטים: \en{Citations}}
+
+המחקר של \en{Mikolov et al.} \cite{mikolov2013} הציג את מודל \en{Word2Vec} בשנת \hebyear{2013}. 
+מחקרים נוספים \cite{devlin2018,brown2020} הרחיבו את הגישה בשנים \hebyear{2018} ו-\hebyear{2020}.
+
+הביצועים השתפרו מ-\num{65.2}\% בשנת \hebyear{2013} ל-\num{96.8}\% בשנת \hebyear{2023}.
 
 % ==================== CONCLUSIONS ====================
 
-\hebrewsection{מסקנות: Conclusions}
+\hebrewsection{מסקנות: \en{Conclusions}}
 
-המחקר הראה שהשיטה המוצעת יעילה ומדויקת. התוצאות מצביעות על שיפור של \num{15}\% בביצועים בהשוואה לשיטות קיימות.
+המחקר הראה שהשיטה המוצעת יעילה ומדויקת. התוצאות מצביעות על שיפור של \num{15}\% בביצועים בהשוואה לשיטות קיימות מהשנים \hebyear{2020}-\hebyear{2022}.
 
-מחקרים עתידיים יכולים להרחיב את הגישה לתחומים נוספים ולשפר את הדיוק עוד יותר.
+מחקרים עתידיים יכולים להרחיב את הגישה לתחומים נוספים ולשפר את הדיוק עוד יותר, במטרה להגיע ל-\num{98}\% דיוק עד שנת \hebyear{2025}.
 
 % ==================== BIBLIOGRAPHY ====================
 
