@@ -218,6 +218,9 @@
 % Command for inline numbers in Hebrew text (always LTR)
 \newcommand{\num}[1]{\textenglish{#1}}
 
+% Command for percentages in Hebrew text (always LTR with % symbol)
+\newcommand{\percent}[1]{\textenglish{#1\%}}
+
 % Command for years in Hebrew text (always LTR)
 \newcommand{\hebyear}[1]{\textenglish{#1}}
 

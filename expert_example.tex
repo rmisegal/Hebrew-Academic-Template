@@ -1,7 +1,7 @@
 \documentclass{hebrew-academic-template}
 
 % Add bibliography file - using the comprehensive references
-\addbibresource{comprehensive_references.bib}
+\addbibresource{advanced_references.bib}
 
 % Title page information
 \hebrewtitle{בדיקת מערכת הציטוטים}
@@ -30,13 +30,13 @@
 
 \hebrewsubsection{בדיקת מספרים וציטוטים: \entoc{Numbers and Citations Test}}
 
-הנתונים מראים שיפור של \num{25}\% ביעילות \cite{devlin2018bert}. במחקר נוסף \cite{vaswani2017attention} נמצא שיפור של \num{40}\% בדיוק.
+הנתונים מראים שיפור של \percent{25} ביעילות \cite{devlin2018bert}. במחקר נוסף \cite{vaswani2017attention} נמצא שיפור של \percent{40} בדיוק.
 
 רשימת הביצועים:
 \begin{enumerate}
-    \item דיוק של \num{94.5}\% במודל \en{BERT} \cite{devlin2018bert}
+    \item דיוק של \percent{94.5} במודל \en{BERT} \cite{devlin2018bert}
     \item זמן עיבוד של \num{2.3} שניות למשפט
-    \item שיפור של \num{15}\% לעומת שיטות קודמות \cite{hebrew_nlp_2023}
+    \item שיפור של \percent{15} לעומת שיטות קודמות \cite{hebrew_nlp_2023}
 \end{enumerate}
 
 % ==================== ENGLISH SECTION ====================
@@ -53,13 +53,13 @@ Multiple studies \cite{vaswani2017attention,devlin2018bert,hebrew_nlp_2023} demo
     \caption{השוואת מודלים: \en{Model Comparison}}
     \begin{rtltabular}{|c|c|c|c|}
         \hline
-        \textbf{מודל / \en{Model}} & \textbf{דיוק / \en{Accuracy}} & \textbf{שנה / \en{Year}} & \textbf{מקור / \en{Source}} \\
+        \mixedcell{\textbf{מודל / \en{Model}}} & \mixedcell{\textbf{דיוק / \en{Accuracy}}} & \mixedcell{\textbf{שנה / \en{Year}}} & \mixedcell{\textbf{מקור / \en{Source}}} \\
         \hline
-        \en{BERT} & \num{94.5}\% & \hebyear{2018} & \cite{devlin2018bert} \\
+        \en{BERT} & \percent{94.5} & \hebyear{2018} & \cite{devlin2018bert} \\
         \hline
-        \en{Transformer} & \num{92.1}\% & \hebyear{2017} & \cite{vaswani2017attention} \\
+        \en{Transformer} & \percent{92.1} & \hebyear{2017} & \cite{vaswani2017attention} \\
         \hline
-        עיבוד עברית / \en{Hebrew NLP} & \num{89.3}\% & \hebyear{2023} & \cite{hebrew_nlp_2023} \\
+        \mixedcell{עיבוד עברית / \en{Hebrew NLP}} & \percent{89.3} & \hebyear{2023} & \cite{hebrew_nlp_2023} \\
         \hline
     \end{rtltabular}
 \end{hebrewtable}

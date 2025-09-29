@@ -349,23 +349,23 @@ The accuracy increased from \num{85}\% to \num{94}\%.
 
 ## 📚 Examples
 
-### **Simple Example**
-See `simple_example.tex` for a minimal working document with basic citations.
+### **Beginner Example**
+See `beginner_example.tex` for a minimal working document with basic citations.
 
-### **Comprehensive Example**
-See `comprehensive_example.tex` for extensive examples of all features including:
+### **Advanced Example**
+See `advanced_example.tex` for extensive examples of all features including:
 - Mixed Hebrew/English citations
 - Multiple reference types
 - Proper bibliography categorization
 
-### **Sample File Rankings**
+### **Learning Level Examples**
 
-| File | Status | Completeness | Recommended Use |
-|------|--------|--------------|-----------------|
-| **`reference_test.tex`** | ✅ **LATEST & BEST** | 100% Complete | **Use this as your main reference** |
-| `comprehensive_example.tex` | ✅ **FULLY WORKING** | 95% Complete | **Excellent for learning all features** |
-| `simple_example_fixed.tex` | ✅ **FULLY WORKING** | 85% Complete | **Perfect for beginners** |
-| `simple_example.tex` | ✅ **BASIC WORKING** | 60% Complete | Basic usage, good starting point |
+| File | Learning Level | Status | Completeness | Recommended Use |
+|------|----------------|--------|--------------|-----------------|
+| **`expert_example.tex`** | **Expert** | ✅ **LATEST & BEST** | 100% Complete | **Complete feature testing & reference** |
+| `advanced_example.tex` | **Advanced** | ✅ **FULLY WORKING** | 95% Complete | **Complex features & professional use** |
+| `intermediate_example.tex` | **Intermediate** | ✅ **FULLY WORKING** | 85% Complete | **Extended features & real projects** |
+| `beginner_example.tex` | **Beginner** | ✅ **BASIC WORKING** | 60% Complete | **Getting started & basic usage** |
 
 ### **Sample Output**
 All examples now compile to professional academic documents with:
@@ -375,6 +375,46 @@ All examples now compile to professional academic documents with:
 - Professional code blocks with gray background
 - Mixed-language tables and figures
 - IEEE-style bibliography with automatic Hebrew/English separation
+
+## 🔧 **Important Fixes & New Commands**
+
+### **Percentage Handling - FIXED!**
+```latex
+% OLD (WRONG - % symbol in wrong position):
+\num{95.5}\%
+
+% NEW (CORRECT - % symbol in proper LTR position):
+\percent{95.5}
+```
+
+### **Table Cell Content - FIXED!**
+```latex
+% For mixed Hebrew/English content in table cells:
+\mixedcell{Hebrew text / \en{English text}}
+
+% For Hebrew-only content in cells:
+\hebcell{Hebrew text only}
+
+% Example table with proper formatting:
+\begin{rtltabular}{|c|c|c|}
+    \hline
+    \mixedcell{\textbf{מודל / \en{Model}}} & \mixedcell{\textbf{דיוק / \en{Accuracy}}} \\
+    \hline
+    \en{BERT} & \percent{94.5} \\
+    \hline
+    \mixedcell{עיבוד עברית / \en{Hebrew NLP}} & \percent{89.3} \\
+    \hline
+\end{rtltabular}
+```
+
+### **English Section Alignment - FIXED!**
+```latex
+% English sections are now automatically left-aligned:
+\englishsection{English Section Title}  % Automatically LTR, left-aligned
+
+% Hebrew sections remain RTL:
+\hebrewsection{Hebrew Title: \entoc{English Part}}
+```
 
 ## 🔧 Requirements
 

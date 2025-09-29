@@ -49,13 +49,13 @@ y = \beta_0 + \beta_1 x + \varepsilon
 \caption{תוצאות הניסוי: \en{Experimental Results}}
 \begin{rtltabular}{|c|c|c|}
 \hline
-\textbf{מדד / \en{Metric}} & \textbf{ערך / \en{Value}} & \textbf{יחידה / \en{Unit}} \\
+\mixedcell{\textbf{מדד / \en{Metric}}} & \mixedcell{\textbf{ערך / \en{Value}}} & \mixedcell{\textbf{יחידה / \en{Unit}}} \\
 \hline
-דיוק / \en{Accuracy} & \num{95.2}\% & אחוזים / \en{Percent} \\
+\mixedcell{דיוק / \en{Accuracy}} & \percent{95.2} & \mixedcell{אחוזים / \en{Percent}} \\
 \hline
-זמן ריצה / \en{Runtime} & \num{2.5} & שניות / \en{Seconds} \\
+\mixedcell{זמן ריצה / \en{Runtime}} & \num{2.5} & \mixedcell{שניות / \en{Seconds}} \\
 \hline
-זיכרון / \en{Memory} & \num{512} & \en{MB} \\
+\mixedcell{זיכרון / \en{Memory}} & \num{512} & \en{MB} \\
 \hline
 \end{rtltabular}
 \end{hebrewtable}
@@ -104,10 +104,10 @@ print(f"R-squared: {model.score(X, y):.3f}")
 רשימת האלגוריתמים שנבדקו:
 
 \begin{itemize}
-\item רגרסיה ליניארית: \en{Linear Regression} - דיוק \num{85.2}\%
-\item עץ החלטה: \en{Decision Tree} - דיוק \num{78.9}\%
-\item יער אקראי: \en{Random Forest} - דיוק \num{92.1}\%
-\item רשת נוירונים: \en{Neural Network} - דיוק \num{94.5}\%
+\item רגרסיה ליניארית: \en{Linear Regression} - דיוק \percent{85.2}
+\item עץ החלטה: \en{Decision Tree} - דיוק \percent{78.9}
+\item יער אקראי: \en{Random Forest} - דיוק \percent{92.1}
+\item רשת נוירונים: \en{Neural Network} - דיוק \percent{94.5}
 \end{itemize}
 
 שלבי העבודה שבוצעו בשנת \hebyear{2023}:
