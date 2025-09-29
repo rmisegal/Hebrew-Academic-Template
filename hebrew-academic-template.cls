@@ -35,8 +35,6 @@
 \RequirePackage{caption}
 \RequirePackage{enumerate}
 \RequirePackage{titlesec}
-\RequirePackage{tikz}
-\RequirePackage{xcolor}
 
 % Bibliography support
 \RequirePackage[backend=biber, style=ieee]{biblatex}
@@ -71,14 +69,12 @@
 
 % Advanced title function for mixed Hebrew/English content
 % Usage: \HebrewTitle{number}{mixed Hebrew/English title}
-% IMPORTANT: The title content (#2) should already have proper \en{} wrapping for English terms
 \newcommand{\HebrewTitle}[2]{%
   \textenglish{#1}\quad#2%
 }
 
 % Subtitle function for subsections
 % Usage: \HebrewSubtitle{number}{mixed Hebrew/English subtitle}
-% IMPORTANT: The subtitle content (#2) should already have proper \en{} wrapping for English terms
 \newcommand{\HebrewSubtitle}[2]{%
   \textenglish{#1}\quad#2%
 }
@@ -125,12 +121,6 @@
 \renewcommand{\thetable}{\textenglish{\arabic{table}}}
 \renewcommand{\thefigure}{\textenglish{\arabic{figure}}}
 
-% List numbering - always LTR
-\renewcommand{\theenumi}{\textenglish{\arabic{enumi}}}
-\renewcommand{\theenumii}{\textenglish{\arabic{enumii}}}
-\renewcommand{\theenumiii}{\textenglish{\arabic{enumiii}}}
-\renewcommand{\theenumiv}{\textenglish{\arabic{enumiv}}}
-
 %% ==================== FONT CONFIGURATION ====================
 
 % Smart font fallback mechanism - works on both Windows/MiKTeX and Linux/TeX Live
@@ -145,7 +135,6 @@
     \newfontfamily\englishfont{Times New Roman}[
         Renderer=Harfbuzz,
         Script=Latin,
-        Language=English,
         Ligatures=TeX
     ]
 }{
@@ -156,7 +145,6 @@
     \newfontfamily\englishfont{Latin Modern Roman}[
         Renderer=Harfbuzz,
         Script=Latin,
-        Language=English,
         Ligatures=TeX
     ]
 }
@@ -166,7 +154,6 @@
     \newfontfamily\hebrewfont{David CLM}[
         Renderer=Harfbuzz,
         Script=Hebrew,
-        Language=Hebrew,
         Ligatures=TeX,
         Scale=MatchLowercase
     ]
@@ -175,7 +162,6 @@
         \newfontfamily\hebrewfont{DejaVu Sans}[
             Renderer=Harfbuzz,
             Script=Hebrew,
-            Language=Hebrew,
             Ligatures=TeX,
             Scale=MatchLowercase
         ]
@@ -184,7 +170,6 @@
         \newfontfamily\hebrewfont{Latin Modern Roman}[
             Renderer=Harfbuzz,
             Script=Hebrew,
-            Language=Hebrew,
             Ligatures=TeX,
             Scale=MatchLowercase
         ]
@@ -216,33 +201,42 @@
 %% ==================== CONVENIENT COMMANDS ====================
 
 % Short commands for language switching
-\newcommand{\en}[1]{%
-  \begingroup%
-  \selectlanguage{english}%
-  \textdir TLT\pardir TLT%
-  \textenglish{#1}%
-  \endgroup%
-}
+\newcommand{\en}[1]{\textenglish{#1}}
 \newcommand{\heb}[1]{\texthebrew{#1}}
-\newcommand{\ilm}[1]{\en{#1}}  % For inline math/English terms
-
-% Command for English part of titles in ToC
-\newcommand{\entoc}[1]{\en{#1}}
+\newcommand{\ilm}[1]{\textenglish{#1}}  % For inline math/English terms
 
 % Command for inline numbers in Hebrew text (always LTR)
 \newcommand{\num}[1]{\textenglish{#1}}
 
+% Command for years in Hebrew text (always LTR)
+\newcommand{\hebyear}[1]{\textenglish{#1}}
+
 % Command for percentages in Hebrew text (always LTR with % symbol)
 \newcommand{\percent}[1]{\textenglish{#1\%}}
 
-% Command for years in Hebrew text (always LTR)
-\newcommand{\hebyear}[1]{\textenglish{#1}}
+% Command for English sections that maintain LTR left-alignment and then return to Hebrew RTL
+\newcommand{\startenglish}{%
+  \selectlanguage{english}%
+  \textdir TLT\pardir TLT%
+  \raggedright%
+}
+
+% Command to return to Hebrew RTL alignment after English sections
+\newcommand{\stophebrew}{%
+  \selectlanguage{hebrew}%
+  \textdir TRT\pardir TRT%
+  \raggedleft%
+}
+
+% Command to end English sections and return to Hebrew RTL alignment
+\newcommand{\stopenglish}{%
+  \selectlanguage{hebrew}%
+  \textdir TRT\pardir TRT%
+}
 
 % Text direction commands (only define if not already defined)
 \providecommand{\LTR}[1]{\textenglish{#1}}
 \providecommand{\RTL}[1]{\texthebrew{#1}}
-
-
 
 %% ==================== BULLET POINTS FIX ====================
 
@@ -265,27 +259,14 @@
 
 \newcommand{\englishsection}[1]{%
   \stepcounter{hebrewsection}%
+  \begin{english}%
   \selectlanguage{english}%
   \textdir TLT\pardir TLT%
   \section*{\raggedright\textenglish{\thehebrewsection\quad #1}}%
   \addcontentsline{toc}{section}{\en{\thehebrewsection\quad #1}}%
+  \end{english}%
 }
 
-% Command to start English content (maintains LTR direction and LEFT alignment)
-\newcommand{\startenglish}{%
-  \selectlanguage{english}%
-  \textdir TLT\pardir TLT%
-  \raggedright%
-  \leftskip=0pt%
-  \rightskip=0pt%
-}
-
-% Command to end English content (return to Hebrew RTL and RIGHT alignment)
-\newcommand{\stopenglish}{%
-  \selectlanguage{hebrew}%
-  \textdir TRT\pardir TRT%
-  \raggedleft%
-}
 
 % Custom subsection command
 \newcounter{hebrewsubsection}[hebrewsection]
@@ -354,9 +335,11 @@
   \DeclareCiteCommand{\cite}
     {\usebibmacro{prenote}}
     {\usebibmacro{citeindex}%
-     \ltrnumber{[\printfield{labelnumber}]}}
+     \printtext[bibhyperref]{\ltrnumber{[\usebibmacro{cite}]}}}
     {\multicitedelim}
     {\usebibmacro{postnote}}%
+  % Override the default bracket formatting to use LTR
+  \DeclareFieldFormat{bibhyperref}{\ltrnumber{#1}}%
 }
 
 % Hebrew bibliography command - shows title in Hebrew RTL, aligned right
@@ -384,10 +367,11 @@
 \pagestyle{fancy}
 \fancyhf{} % Clear all header/footer fields
 
-% Footer setup with proper layout: copyright left, Hebrew right, page numbers center
-\fancyfoot[C]{\textenglish{\thepage}} % Page number in center
-\fancyfoot[L]{\textenglish{©} \textenglish{Dr. Segal Yoram}} % Copyright on left
-\fancyfoot[R]{\texthebrew{כל הזכויות שמורות}} % Hebrew rights on right
+% Footer setup with rights and page numbers
+\fancyfoot[LE]{\textenglish{\thepage}} % Page number on left for even pages
+\fancyfoot[RO]{\textenglish{\thepage}} % Page number on right for odd pages
+\fancyfoot[RE]{\textenglish{©} \textenglish{Dr. Segal Yoram} - \texthebrew{כל הזכויות שמורות}} % Rights on right for even pages
+\fancyfoot[LO]{\textenglish{©} \textenglish{Dr. Segal Yoram} - \texthebrew{כל הזכויות שמורות}} % Rights on left for odd pages
 
 % Remove header rule
 \renewcommand{\headrulewidth}{0pt}
@@ -431,7 +415,7 @@
         {\large \@author \par}%
       \fi%
       \vskip 2em%
-      {\large \textenglish{\@date} \par}% Force date to be LTR
+      {\large \@date \par}%
     \end{center}%
     \vfil\null%
   \end{titlepage}%
@@ -497,6 +481,8 @@
   bottom=8pt,
   fonttitle=\bfseries,
   title=#1,
+  before={\begin{python}\begingroup\selectlanguage{english}\textdir TLT\pardir TLT},
+  after={\endgroup\end{python}},
   listing options={
     basicstyle=\pythonverbatimformat,
     tabsize=4,
