@@ -135,10 +135,14 @@ Copy-Item build\document.pdf .
 \HebrewTitle{1}{כותרת מעורבת}   % Mixed title
 
 % CRITICAL: Mixed Hebrew/English section titles
-% MUST wrap English terms with \entoc{} for proper TOC direction
-\hebrewsection{מבוא: \entoc{Introduction}}           % ✅ Correct
-\hebrewsubsection{ניתוח: \entoc{Data Analysis}}      % ✅ Correct
-\hebrewsection{מבוא: Introduction}                % ❌ Wrong - English RTL in TOC
+% For proper Hebrew RTL alignment, ALWAYS use \hebrewsection{} for Hebrew titles
+% Use \en{} to wrap English terms within Hebrew titles
+\hebrewsection{מבוא: \en{Introduction}}           % ✅ Correct - proper RTL alignment
+\hebrewsubsection{ניתוח: \en{Data Analysis}}      % ✅ Correct - proper RTL alignment
+\hebrewsection{מסקנות: \en{Conclusions}}          % ✅ Correct - proper RTL alignment
+
+% IMPORTANT: \hebrewsection{} ensures proper Hebrew RTL right-alignment
+% This is the ONLY way to create properly aligned Hebrew section titles
 ```
 
 ### **🔥 CRITICAL: English Sections (LTR, Left-Aligned)**
