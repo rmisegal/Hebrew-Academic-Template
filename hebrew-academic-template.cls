@@ -323,11 +323,9 @@
   \DeclareCiteCommand{\cite}
     {\usebibmacro{prenote}}
     {\usebibmacro{citeindex}%
-     \printtext[bibhyperref]{\ltrnumber{[\printfield{labelnumber}]}}}
+     \printfield{labelnumber}}
     {\multicitedelim}
     {\usebibmacro{postnote}}%
-  % Override the default bracket formatting to use LTR
-  \DeclareFieldFormat{bibhyperref}{\ltrnumber{#1}}%
 }
 
 % Hebrew bibliography command - shows title in Hebrew RTL, aligned right
