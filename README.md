@@ -120,6 +120,12 @@ Copy-Item build\document.pdf .
 \englishsection{Section Name}   % English section
 \hebrewsubsection{כותרת משנה}   % Hebrew subsection
 \HebrewTitle{1}{כותרת מעורבת}   % Mixed title
+
+% CRITICAL: Mixed Hebrew/English section titles
+% MUST wrap English terms with \en{} for proper TOC direction
+\hebrewsection{מבוא: \en{Introduction}}           % ✅ Correct
+\hebrewsubsection{ניתוח: \en{Data Analysis}}      % ✅ Correct
+\hebrewsection{מבוא: Introduction}                % ❌ Wrong - English RTL in TOC
 ```
 
 ### **Tables**

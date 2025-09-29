@@ -69,12 +69,14 @@
 
 % Advanced title function for mixed Hebrew/English content
 % Usage: \HebrewTitle{number}{mixed Hebrew/English title}
+% IMPORTANT: The title content (#2) should already have proper \en{} wrapping for English terms
 \newcommand{\HebrewTitle}[2]{%
   \textenglish{#1}\quad#2%
 }
 
 % Subtitle function for subsections
 % Usage: \HebrewSubtitle{number}{mixed Hebrew/English subtitle}
+% IMPORTANT: The subtitle content (#2) should already have proper \en{} wrapping for English terms
 \newcommand{\HebrewSubtitle}[2]{%
   \textenglish{#1}\quad#2%
 }
@@ -135,6 +137,7 @@
     \newfontfamily\englishfont{Times New Roman}[
         Renderer=Harfbuzz,
         Script=Latin,
+        Language=English,
         Ligatures=TeX
     ]
 }{
@@ -145,6 +148,7 @@
     \newfontfamily\englishfont{Latin Modern Roman}[
         Renderer=Harfbuzz,
         Script=Latin,
+        Language=English,
         Ligatures=TeX
     ]
 }
@@ -154,6 +158,7 @@
     \newfontfamily\hebrewfont{David CLM}[
         Renderer=Harfbuzz,
         Script=Hebrew,
+        Language=Hebrew,
         Ligatures=TeX,
         Scale=MatchLowercase
     ]
@@ -162,6 +167,7 @@
         \newfontfamily\hebrewfont{DejaVu Sans}[
             Renderer=Harfbuzz,
             Script=Hebrew,
+            Language=Hebrew,
             Ligatures=TeX,
             Scale=MatchLowercase
         ]
@@ -170,6 +176,7 @@
         \newfontfamily\hebrewfont{Latin Modern Roman}[
             Renderer=Harfbuzz,
             Script=Hebrew,
+            Language=Hebrew,
             Ligatures=TeX,
             Scale=MatchLowercase
         ]
@@ -203,7 +210,7 @@
 % Short commands for language switching
 \newcommand{\en}[1]{\textenglish{#1}}
 \newcommand{\heb}[1]{\texthebrew{#1}}
-\newcommand{\ilm}[1]{\textenglish{#1}}  % For inline math/English terms
+\newcommand{\ilm}[1]{\en{#1}}  % For inline math/English terms
 
 % Command for inline numbers in Hebrew text (always LTR)
 \newcommand{\num}[1]{\textenglish{#1}}
@@ -214,6 +221,8 @@
 % Text direction commands (only define if not already defined)
 \providecommand{\LTR}[1]{\textenglish{#1}}
 \providecommand{\RTL}[1]{\texthebrew{#1}}
+
+
 
 %% ==================== BULLET POINTS FIX ====================
 
