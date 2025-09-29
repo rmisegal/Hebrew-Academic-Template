@@ -212,6 +212,9 @@
 \newcommand{\heb}[1]{\texthebrew{#1}}
 \newcommand{\ilm}[1]{\en{#1}}  % For inline math/English terms
 
+% Command for English part of titles in ToC
+\newcommand{\entoc}[1]{\en{#1}}
+
 % Command for inline numbers in Hebrew text (always LTR)
 \newcommand{\num}[1]{\textenglish{#1}}
 
@@ -320,7 +323,7 @@
   \DeclareCiteCommand{\cite}
     {\usebibmacro{prenote}}
     {\usebibmacro{citeindex}%
-     \printtext[bibhyperref]{\ltrnumber{[\usebibmacro{cite}]}}}
+     \printtext[bibhyperref]{\ltrnumber{[\printfield{labelnumber}]}}}
     {\multicitedelim}
     {\usebibmacro{postnote}}%
   % Override the default bracket formatting to use LTR
@@ -465,8 +468,6 @@
   bottom=8pt,
   fonttitle=\bfseries,
   title=#1,
-  before={\begin{python}\begingroup\selectlanguage{english}\textdir TLT\pardir TLT},
-  after={\endgroup\end{python}},
   listing options={
     basicstyle=\pythonverbatimformat,
     tabsize=4,

@@ -36,13 +36,13 @@ A comprehensive LaTeX template for Hebrew academic documents with seamless Engli
 ```
 hebrew_academic_template/
 ├── hebrew-academic-template.cls    # Main template class file
-├── template_explanation.tex        # Comprehensive usage guide
 ├── simple_example.tex             # Simple working example
-├── example_references.bib         # Sample bibliography file
+├── comprehensive_example.tex      # Comprehensive test file
+├── example_references.bib         # Sample bibliography file for simple_example.tex
+├── comprehensive_references.bib   # Sample bibliography file for comprehensive_example.tex
 ├── example_plot.png              # Sample image for figures
 ├── README.md                      # This documentation
-├── USAGE_GUIDE.md                # Detailed usage instructions
-└── examples/                     # Additional examples
+└── USAGE_GUIDE.md                # Detailed usage instructions
 ```
 
 ## 🚀 Quick Start
@@ -112,6 +112,7 @@ Copy-Item build\document.pdf .
 \hebyear{2025}                 % Years in LTR
 \LTR{Left-to-Right text}       % Force LTR
 \RTL{טקסט מימין לשמאל}         % Force RTL
+\entoc{English in ToC}         % English part of titles in Table of Contents
 ```
 
 ### **Sections & Titles**
@@ -122,9 +123,9 @@ Copy-Item build\document.pdf .
 \HebrewTitle{1}{כותרת מעורבת}   % Mixed title
 
 % CRITICAL: Mixed Hebrew/English section titles
-% MUST wrap English terms with \en{} for proper TOC direction
-\hebrewsection{מבוא: \en{Introduction}}           % ✅ Correct
-\hebrewsubsection{ניתוח: \en{Data Analysis}}      % ✅ Correct
+% MUST wrap English terms with \entoc{} for proper TOC direction
+\hebrewsection{מבוא: \entoc{Introduction}}           % ✅ Correct
+\hebrewsubsection{ניתוח: \entoc{Data Analysis}}      % ✅ Correct
 \hebrewsection{מבוא: Introduction}                % ❌ Wrong - English RTL in TOC
 ```
 
@@ -158,6 +159,7 @@ import numpy as np
 
 % Bibliography file (.bib) entries must include:
 keywords={english}  % For English references
+keywords={hebrew}   % For Hebrew references
 ```
 
 ## 🎯 Text Direction Rules
@@ -183,7 +185,7 @@ keywords={english}  % For English references
 בשנת \hebyear{2023} פותח מודל \en{GPT-4} עם \num{175} מיליארד פרמטרים.
 
 % Section with LTR number + Hebrew title + English subtitle
-\hebrewsection{אלגוריתמי למידה: Machine Learning Algorithms}
+\hebrewsection{אלגוריתמי למידה: \entoc{Machine Learning Algorithms}}
 
 % Table with mixed content
 \mixedcell{רגרסיה ליניארית\\Linear Regression}
@@ -194,8 +196,8 @@ keywords={english}  % For English references
 ### **Simple Example**
 See `simple_example.tex` for a minimal working document.
 
-### **Comprehensive Guide**
-See `template_explanation.tex` for extensive examples of all features.
+### **Comprehensive Example**
+See `comprehensive_example.tex` for extensive examples of all features.
 
 ### **Sample Output**
 Both examples compile to professional academic documents with:
@@ -234,11 +236,11 @@ All packages are included in modern LaTeX distributions:
    - ✅ **Linux**: Use TeX Live full installation
 
 2. **Wrong text direction**
-   - ✅ **Solution**: Use `\en{}` for English, `\num{}` for numbers
+   - ✅ **Solution**: Use `\en{}` for English, `\num{}` for numbers, and `\entoc{}` for English in titles.
    - ✅ **Check**: All numbers wrapped with `\num{}`
 
 3. **Bibliography not showing**
-   - ✅ **Solution**: Add `keywords={english}` to all `.bib` entries
+   - ✅ **Solution**: Add `keywords={english}` or `keywords={hebrew}` to all `.bib` entries
    - ✅ **Check**: Run `biber` after first `lualatex` compilation
 
 4. **Code blocks not working**
@@ -262,8 +264,9 @@ This template is provided for academic and educational use. All rights are reser
 
 ## 🤝 Support
 
-For questions, issues, or contributions, please refer to the comprehensive documentation in `template_explanation.tex` or examine the working examples provided.
+For questions, issues, or contributions, please refer to the comprehensive documentation in `comprehensive_example.tex` or examine the working examples provided.
 
 ---
 
 **Happy Academic Writing! 📝✨**
+

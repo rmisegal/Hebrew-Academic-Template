@@ -72,12 +72,13 @@ lualatex simple_example.tex
 \newpage
 
 % Content sections
-\hebrewsection{מבוא: Introduction}
+\hebrewsection{מבוא: \entoc{Introduction}}
 % Your content here
 
 % Bibliography
 \newpage
 \printenglishbibliography
+\printhebrewbibliography
 
 \end{document}
 ```
@@ -85,7 +86,7 @@ lualatex simple_example.tex
 ### Required Files
 
 1. **Main .tex file**: Your document content
-2. **references.bib**: Bibliography entries with `keywords={english}`
+2. **references.bib**: Bibliography entries with `keywords={english}` or `keywords={hebrew}`
 3. **hebrew-academic-template.cls**: Template class file
 4. **Images**: Any PNG/JPG files referenced in the document
 
@@ -146,8 +147,9 @@ lualatex simple_example.tex
    % ✅ Citation numbers always LTR: [1], [2]
    המחקר של \en{Smith} \cite{smith2023}
    
-   % ✅ Bibliography left-aligned, English only
+   % ✅ Bibliography left-aligned for English, right-aligned for Hebrew
    \printenglishbibliography
+   \printhebrewbibliography
    ```
 
 #### ✅ **Hebrew RTL Content:**
@@ -159,14 +161,17 @@ lualatex simple_example.tex
 
 2. **Hebrew parts of mixed titles**
    ```latex
-   \hebrewsection{אלגוריתמי למידה: Machine Learning}
+   \hebrewsection{אלגוריתמי למידה: \entoc{Machine Learning}}
    % Results in: "1 אלגוריתמי למידה: Machine Learning"
    ```
 
 3. **Table content (Hebrew cells)**
    ```latex
-   \hebcell{תוכן עברי}
-   \mixedcell{עברית\\English}
+   \begin{rtltabular}{|c|c|}
+     \hline
+     \textbf{עברית} & \textbf{English} \\
+     \hline
+   \end{rtltabular}
    ```
 
 ### Mixed Content Examples
@@ -180,14 +185,14 @@ lualatex simple_example.tex
 #### Mixed Table
 ```latex
 \begin{hebrewtable}[h]
-\caption{השוואת מודלים: Model Comparison}
+\caption{השוואת מודלים: \en{Model Comparison}}
 \begin{rtltabular}{|c|c|c|}
 \hline
 \textbf{מודל} & \textbf{Model} & \textbf{דיוק} \\
 \hline
 רגרסיה ליניארית & Linear Regression & \num{85.2}\% \\
 \hline
-\mixedcell{רשת נוירונים\\Neural Network} & \en{MLP} & \num{92.1}\% \\
+רשת נוירונים & Neural Network & \num{92.1}\% \\
 \hline
 \end{rtltabular}
 \end{hebrewtable}
@@ -205,6 +210,7 @@ lualatex simple_example.tex
 | `\hebyear{2025}` | Years in LTR | `\hebyear{2023} בשנת` |
 | `\LTR{text}` | Force LTR direction | `\LTR{Left-to-Right}` |
 | `\RTL{text}` | Force RTL direction | `\RTL{מימין לשמאל}` |
+| `\entoc{text}`| English in Table of Contents | `\hebrewsection{מבוא: \entoc{Intro}}`|
 
 ### Section Commands
 
@@ -213,7 +219,6 @@ lualatex simple_example.tex
 | `\hebrewsection{title}` | Hebrew section | `\hebrewsection{מבוא}` |
 | `\englishsection{title}` | English section | `\englishsection{Introduction}` |
 | `\hebrewsubsection{title}` | Hebrew subsection | `\hebrewsubsection{שיטות}` |
-| `\HebrewTitle{num}{title}` | Manual mixed title | `\HebrewTitle{1}{כותרת}` |
 
 ### Table Commands
 
@@ -221,17 +226,13 @@ lualatex simple_example.tex
 |---------|---------|---------|
 | `\begin{hebrewtable}` | Hebrew table environment | See table examples |
 | `\begin{rtltabular}` | RTL tabular | `\begin{rtltabular}{|c|c|}` |
-| `\hebcell{text}` | Hebrew table cell | `\hebcell{תוכן עברי}` |
-| `\mixedcell{text}` | Mixed content cell | `\mixedcell{עברית\\English}` |
 
 ### Code & Figures
 
 | Command | Purpose | Example |
 |---------|---------|---------|
 | `\begin{pythonbox}[title]` | Code block with gray background | See code examples |
-| `\hebrewfigure[pos]{content}{caption}` | Figure with mixed caption | See figure examples |
-| `\code{text}` | Inline code | `\code{variable_name}` |
-| `\englishterm{text}` | English term in Hebrew | `\englishterm{Machine Learning}` |
+| `\includegraphics` | Include figure | `\includegraphics[width=0.8\textwidth]{plot.png}` |
 
 ### Bibliography Commands
 
@@ -239,7 +240,7 @@ lualatex simple_example.tex
 |---------|---------|---------|
 | `\cite{key}` | Citation | `\cite{smith2023}` |
 | `\printenglishbibliography` | English references | End of document |
-| `\printhebrewbibliography` | Hebrew references | If needed |
+| `\printhebrewbibliography` | Hebrew references | End of document |
 
 ## 🔧 Advanced Features
 
@@ -268,7 +269,7 @@ import pandas as pd
 import numpy as np
 
 # Load data
-df = pd.read_csv('data.csv')
+df = pd.read_csv(\'data.csv\')
 print(f"Dataset shape: {df.shape}")
 
 # Statistical analysis
@@ -280,7 +281,7 @@ print(correlation)
 #### Advanced Tables
 ```latex
 \begin{hebrewtable}[h]
-\caption{תוצאות מפורטות: Detailed Results}
+\caption{תוצאות מפורטות: \en{Detailed Results}}
 \begin{rtltabular}{|c|c|c|c|c|}
 \hline
 \textbf{ניסוי} & \textbf{Experiment} & \textbf{דגימות} & \textbf{דיוק} & \textbf{זמן} \\
@@ -310,11 +311,19 @@ print(correlation)
   publisher={AI Press},
   keywords={english}  % ← REQUIRED for English references
 }
+
+@book{hebrew_book,
+  author    = {משה בר-אשר and חיים רבין},
+  title     = {מחקרים בלשון העברית},
+  publisher = {מוסד ביאליק},
+  year      = {2009},
+  keywords  = {hebrew} % ← REQUIRED for Hebrew references
+}
 ```
 
 #### Multiple Citations
 ```latex
-מחקרים רבים \cite{smith2023,jones2022,brown2021} הראו שיפור משמעותי.
+מחקרים רבים \cite{smith2023,jones2022,hebrew_book} הראו שיפור משמעותי.
 ```
 
 ## 💡 Best Practices
@@ -332,6 +341,9 @@ print(correlation)
 ```latex
 % ✅ Good mixed content
 האלגוריתם \en{Random Forest} השיג דיוק של \num{92.1}\% על מאגר הנתונים.
+
+% ✅ For titles in the Table of Contents
+\hebrewsection{ניתוח נתונים: \entoc{Data Analysis}}
 ```
 
 ### 3. **Code Block Guidelines**
@@ -351,15 +363,14 @@ print(f"Accuracy: {accuracy:.3f}")
 ```
 
 ### 4. **Table Best Practices**
-- Use `\mixedcell{}` for cells with both Hebrew and English
-- Use `\hebcell{}` for Hebrew-only cells
-- Always use `\num{}` for numbers in tables
-- Keep table structure simple and readable
+- Use `\en{}` for English content within tables.
+- Always use `\num{}` for numbers in tables.
+- Keep table structure simple and readable.
 
 ### 5. **Citation Guidelines**
-- Always add `keywords={english}` to .bib entries
-- Use author names in English within `\en{}`
-- Cite immediately after mentioning the work
+- Always add `keywords={english}` or `keywords={hebrew}` to .bib entries.
+- Use author names in English within `\en{}`.
+- Cite immediately after mentioning the work.
 
 ## 🐛 Troubleshooting
 
@@ -369,34 +380,34 @@ print(f"Accuracy: {accuracy:.3f}")
 ```
 Error: Font not found
 ```
-**Solution:** Template includes automatic fallback. Ensure you're using LuaLaTeX.
+**Solution:** Template includes automatic fallback. Ensure you\'re using LuaLaTeX.
 
 #### 2. **Bibliography Not Showing**
 ```
 Empty bibliography
 ```
 **Solutions:**
-- Add `keywords={english}` to all .bib entries
-- Run compilation sequence: `lualatex → biber → lualatex`
-- Check .bib file syntax
+- Add `keywords={english}` or `keywords={hebrew}` to all .bib entries.
+- Run compilation sequence: `lualatex → biber → lualatex`.
+- Check .bib file syntax for errors (e.g., use `and` to separate authors).
 
 #### 3. **Wrong Text Direction**
 ```
 Numbers/text appearing in wrong direction
 ```
 **Solutions:**
-- Use `\num{}` for all numbers in Hebrew text
-- Use `\en{}` for English terms
-- Use `\hebyear{}` for years
+- Use `\num{}` for all numbers in Hebrew text.
+- Use `\en{}` for English terms.
+- Use `\entoc{}` for English in titles to fix Table of Contents.
 
 #### 4. **Code Block Issues**
 ```
 Code not displaying properly
 ```
 **Solutions:**
-- Use `pythonbox` environment
-- Ensure no Hebrew comments in code
-- Check for special characters
+- Use `pythonbox` environment.
+- Ensure no Hebrew comments in code.
+- Check for special characters in the title.
 
 ### Compilation Sequence
 
@@ -444,13 +455,14 @@ lualatex -interaction=nonstopmode -file-line-error document.tex
 
 ## 📞 Getting Help
 
-1. **Check Examples**: Review `simple_example.tex` and `template_explanation.tex`
-2. **Verify Setup**: Ensure LuaLaTeX and Biber are installed
-3. **Test Compilation**: Try compiling the provided examples first
-4. **Check Logs**: Review .log files for specific error messages
+1. **Check Examples**: Review `simple_example.tex` and `comprehensive_example.tex`.
+2. **Verify Setup**: Ensure LuaLaTeX and Biber are installed.
+3. **Test Compilation**: Try compiling the provided examples first.
+4. **Check Logs**: Review .log files for specific error messages.
 
 ---
 
 **Happy Academic Writing! 📝✨**
 
-*For more examples and detailed demonstrations, see `template_explanation.tex`*
+*For more examples and detailed demonstrations, see `comprehensive_example.tex`*
+
