@@ -24,18 +24,18 @@
 
 \hebrewsection{מבוא: \entoc{Introduction}}
 
-זהו טקסט עברי שזורם מימין לשמאל (RTL) ומיושר לימין. הטקסט כולל מונחים באנגלית כמו \en{Machine Learning} ו-\en{Deep Learning} שמוצגים בכיוון שמאל לימין (LTR) בתוך הטקסט העברי.
+המחקר בתחום הבינה המלאכותית מתפתח במהירות רבה. שיטות \en{Deep Learning} מציגות תוצאות מרשימות, כפי שמוכח במחקרים רבים \cite{mikolov2013}. התחום כולל אלגוריתמים מתקדמים לעיבוד שפה טבעית ולמידת מכונה.
 
-השיטות המודרניות של \en{Artificial Intelligence} מבוססות על אלגוריתמים מתקדמים. ניתן לכלול מספרים כמו \num{100} ושנים כמו \hebyear{2023} בתוך הטקסט העברי, וגם ביטויים מתמטיים כמו $E = mc^2$.
+הטכנולוגיות המודרניות מבוססות על רשתות נוירונים עמוקות. מודלים כמו \en{BERT} ו-\en{GPT} השיגו ביצועים יוצאי דופן במגוון משימות. השיפור בביצועים הגיע לרמה של \percent{95} דיוק במשימות רבות.
 
 \hebrewsubsection{מתודולוגיה: \entoc{Methodology}}
 
-המחקר מבוסס על \num{1000} דגימות שנאספו בשנת \hebyear{2023}. השיטה כוללת שימוש באלגוריתמי \en{Machine Learning} מתקדמים \cite{mikolov2013}.
+המחקר מבוסס על מאגר נתונים של \num{100000} דוגמאות שנאספו במהלך \hebyear{2023}. השיטה כוללת שימוש באלגוריתמי \en{Machine Learning} מתקדמים לניתוח הנתונים \cite{vaswani2017}.
 
-הנוסחה הבסיסית היא:
-\begin{equation}
-y = \beta_0 + \beta_1 x + \varepsilon
-\end{equation}
+הנוסחה הבסיסית למודל הרגרסיה היא:
+$$y = \beta_0 + \beta_1 x + \varepsilon \quad (1.1)$$
+
+כאשר $\beta_0$ הוא הקבוע, $\beta_1$ הוא המקדם, ו-$\varepsilon$ הוא שגיאת המדידה.
 
 % ==================== RESULTS ====================
 
@@ -149,6 +149,34 @@ print(f"R-squared: {model.score(X, y):.3f}")
 מחקרים נוספים \cite{devlin2018,brown2020} הרחיבו את הגישה בשנים \hebyear{2018} ו-\hebyear{2020}.
 
 הביצועים השתפרו מ-\percent{65.2} בשנת \hebyear{2013} ל-\percent{96.8} בשנת \hebyear{2023}.
+
+% ==================== ENGLISH SECTION ====================
+
+\englishsection{English Section: Advanced Machine Learning Analysis}
+\startenglish
+
+This section demonstrates pure English content that flows left-to-right (LTR) and is aligned to the left. All text in this section follows standard English typography conventions.
+
+The field of artificial intelligence has experienced unprecedented growth in recent years. Modern deep learning architectures have revolutionized natural language processing, computer vision, and many other domains.
+
+Key developments in transformer architectures include:
+
+\begin{enumerate}
+\item \textbf{Attention Mechanisms}: Introduced in 2017, enabling models to focus on relevant parts of input sequences
+\item \textbf{BERT Architecture}: Bidirectional encoder representations from transformers
+\item \textbf{GPT Models}: Generative pre-trained transformers with increasing parameter counts
+\item \textbf{Multimodal Systems}: Integration of text, image, and audio processing capabilities
+\end{enumerate}
+
+The mathematical foundation of attention mechanisms can be expressed as:
+
+$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V \quad (3.1)$$
+
+Research indicates that scaling model parameters leads to emergent capabilities. The relationship between model size and performance follows predictable scaling laws, enabling more accurate predictions of future model capabilities.
+
+Current state-of-the-art models achieve remarkable performance across diverse benchmarks, with accuracy rates exceeding 95\% on many standardized tasks. The rapid pace of development suggests continued improvements in the coming years.
+
+\stopenglish
 
 % ==================== CONCLUSIONS ====================
 
