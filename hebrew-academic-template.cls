@@ -343,11 +343,10 @@
 \pagestyle{fancy}
 \fancyhf{} % Clear all header/footer fields
 
-% Footer setup with rights and page numbers
-\fancyfoot[LE]{\textenglish{\thepage}} % Page number on left for even pages
-\fancyfoot[RO]{\textenglish{\thepage}} % Page number on right for odd pages
-\fancyfoot[RE]{\textenglish{©} \textenglish{Dr. Segal Yoram} - \texthebrew{כל הזכויות שמורות}} % Rights on right for even pages
-\fancyfoot[LO]{\textenglish{©} \textenglish{Dr. Segal Yoram} - \texthebrew{כל הזכויות שמורות}} % Rights on left for odd pages
+% Footer setup with proper layout: copyright left, Hebrew right, page numbers center
+\fancyfoot[C]{\textenglish{\thepage}} % Page number in center
+\fancyfoot[L]{\textenglish{©} \textenglish{Dr. Segal Yoram}} % Copyright on left
+\fancyfoot[R]{\texthebrew{כל הזכויות שמורות}} % Hebrew rights on right
 
 % Remove header rule
 \renewcommand{\headrulewidth}{0pt}
@@ -391,7 +390,7 @@
         {\large \@author \par}%
       \fi%
       \vskip 2em%
-      {\large \@date \par}%
+      {\large \textenglish{\@date} \par}% Force date to be LTR
     \end{center}%
     \vfil\null%
   \end{titlepage}%
