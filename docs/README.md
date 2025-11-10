@@ -19,7 +19,9 @@ A comprehensive LaTeX template for Hebrew academic documents with seamless Engli
 
 **The template is now production-ready for academic use!** 🚀
 
-### **🆕 NEW IN v5.1 (2025-11-10):**
+### **🆕 NEW IN v5.3 (2025-11-10):**
+- **Reorganized agent structure** - Separated agents into `book-creator-agents/` and `qa-agents/` folders for better organization
+- **Enhanced QA capabilities** - Added specialized QA agents for comprehensive testing
 - **Fixed critical RTL/LTR bug** in `\entoc{}` command - English text in titles no longer appears reversed
 - **Added RTL/LTR QA Agent** - Automated detection of bidirectional text problems in PDFs
 - **All 7 examples verified** - Pass comprehensive quality assurance inspection
@@ -55,14 +57,26 @@ A comprehensive LaTeX template for Hebrew academic documents with seamless Engli
 
 ```
 hebrew_academic_template/
-├── hebrew-academic-template.cls    # Main template class file
-├── simple_example.tex             # Simple working example
-├── comprehensive_example.tex      # Comprehensive test file
-├── example_references.bib         # Sample bibliography file for simple_example.tex
-├── comprehensive_references.bib   # Sample bibliography file for comprehensive_example.tex
-├── example_plot.png              # Sample image for figures
-├── README.md                      # This documentation
-└── USAGE_GUIDE.md                # Detailed usage instructions
+├── hebrew-academic-template.cls    # Main template class file (v5.3)
+├── docs/                          # Complete documentation
+│   ├── README.md                  # Main documentation (this file)
+│   ├── USAGE_GUIDE.md            # Detailed command reference
+│   ├── FEATURES.md               # Feature comparison matrix
+│   ├── CHANGELOG.md              # Version history
+│   └── MIGRATION_GUIDE.md        # Upgrade instructions
+├── examples/                      # Working examples at all levels
+│   ├── beginner_example.tex      # Basic usage
+│   ├── intermediate_example.tex  # Extended features
+│   ├── advanced_example.tex      # Complex features
+│   ├── expert_example.tex        # Complete feature showcase
+│   ├── bibliography_example.tex  # Citation examples
+│   ├── footnote_example.tex      # Footnote handling
+│   ├── image_example.tex         # Figure integration
+│   └── *.pdf                     # Compiled examples
+├── agents/                        # AI agent skill definitions
+│   ├── book-creator-agents/      # Content creation agents
+│   └── qa-agents/                # Quality assurance agents
+└── comprehensive_references.bib   # Sample bibliography file
 ```
 
 ## 🚀 Quick Start

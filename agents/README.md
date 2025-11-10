@@ -1,15 +1,39 @@
 # Agent Skills for Hebrew Academic Template
 
-This directory contains specialized agent skill definitions used in the development and maintenance of the Hebrew Academic Template CLS v5.0.
+This directory contains specialized agent skill definitions used in the development and maintenance of the Hebrew Academic Template CLS v5.3.
 
 ## Overview
 
 These agent skills are designed to assist with various aspects of academic document creation, from content drafting to technical implementation. Each skill provides specialized capabilities tailored to the unique requirements of bilingual (Hebrew-English) academic writing.
 
-## Available Agent Skills
+## Directory Structure
+
+```
+agents/
+├── book-creator-agents/    # Agents for academic book/document creation
+│   ├── academic-source-citation-agent-skill.md
+│   ├── chief-architect-reviewer-skill.md
+│   ├── code-implementation-agent-skill.md
+│   ├── content-drafting-agent-skill.md
+│   ├── hebrew-language-editor-skill.md
+│   ├── lead-technologist-math-reviewer-skill.md
+│   └── source-research-agent-skill.md
+├── qa-agents/              # Quality Assurance agents for testing and validation
+│   ├── claude-cli-structure-agent-skill.md
+│   ├── code-block-qa-agent-skill.md
+│   ├── drawing-agent-skill.md
+│   ├── qa-infrastructure-agent.md
+│   ├── rtl-ltr-qa-agent-skill.md
+│   └── table-layout-qa-agent-skill.md
+└── README.md               # This file
+```
+
+## Book Creator Agents
+
+Located in `book-creator-agents/`, these agents assist with academic content creation:
 
 ### 1. Academic Source Citation Agent
-**File:** `academic-source-citation-agent-skill.md`
+**File:** `book-creator-agents/academic-source-citation-agent-skill.md`
 
 Specializes in:
 - Proper citation formatting for Hebrew and English sources
@@ -18,7 +42,7 @@ Specializes in:
 - Bibliography organization
 
 ### 2. Chief Architect Reviewer
-**File:** `chief-architect-reviewer-skill.md`
+**File:** `book-creator-agents/chief-architect-reviewer-skill.md`
 
 Responsible for:
 - Overall document structure review
@@ -28,7 +52,7 @@ Responsible for:
 - Integration oversight
 
 ### 3. Code Implementation Agent
-**File:** `code-implementation-agent-skill.md`
+**File:** `book-creator-agents/code-implementation-agent-skill.md`
 
 Handles:
 - LaTeX code implementation
@@ -37,7 +61,7 @@ Handles:
 - Technical problem solving
 
 ### 4. Content Drafting Agent
-**File:** `content-drafting-agent-skill.md`
+**File:** `book-creator-agents/content-drafting-agent-skill.md`
 
 Assists with:
 - Academic content writing
@@ -46,17 +70,8 @@ Assists with:
 - Content flow optimization
 - Bilingual content coordination
 
-### 5. Drawing Agent
-**File:** `drawing-agent-skill.md`
-
-Manages:
-- TikZ diagrams and illustrations
-- Figure creation and formatting
-- Visual content integration
-- Graphic positioning in RTL/LTR contexts
-
-### 6. Hebrew Language Editor
-**File:** `hebrew-language-editor-skill.md`
+### 5. Hebrew Language Editor
+**File:** `book-creator-agents/hebrew-language-editor-skill.md`
 
 Provides:
 - Hebrew language editing and proofreading
@@ -64,8 +79,8 @@ Provides:
 - Hebrew typography standards
 - Language-specific formatting rules
 
-### 7. Lead Technologist Math Reviewer
-**File:** `lead-technologist-math-reviewer-skill.md`
+### 6. Lead Technologist Math Reviewer
+**File:** `book-creator-agents/lead-technologist-math-reviewer-skill.md`
 
 Ensures:
 - Mathematical notation accuracy
@@ -73,8 +88,8 @@ Ensures:
 - Technical correctness
 - Math typesetting best practices
 
-### 8. Source Research Agent
-**File:** `source-research-agent-skill.md`
+### 7. Source Research Agent
+**File:** `book-creator-agents/source-research-agent-skill.md`
 
 Supports:
 - Academic source identification
@@ -82,9 +97,67 @@ Supports:
 - Reference verification
 - Literature review assistance
 
-## Template v5.0 Capabilities
+## Quality Assurance Agents
 
-The Hebrew Academic Template CLS v5.0, developed with support from these agent skills, now includes:
+Located in `qa-agents/`, these agents ensure template quality and correctness:
+
+### 1. Claude CLI Structure Agent
+**File:** `qa-agents/claude-cli-structure-agent-skill.md`
+
+Manages:
+- Project structure organization
+- File naming conventions
+- Directory hierarchy
+- Build system integration
+
+### 2. Code Block QA Agent
+**File:** `qa-agents/code-block-qa-agent-skill.md`
+
+Validates:
+- Code listing syntax and formatting
+- Python/code block environments
+- Syntax highlighting correctness
+- Code presentation in RTL documents
+
+### 3. Drawing Agent
+**File:** `qa-agents/drawing-agent-skill.md`
+
+Handles:
+- TikZ diagrams and illustrations
+- Figure creation and formatting
+- Visual content integration
+- Graphic positioning in RTL/LTR contexts
+
+### 4. QA Infrastructure Agent
+**File:** `qa-agents/qa-infrastructure-agent.md`
+
+Provides:
+- Automated testing framework
+- Compilation verification
+- Error detection and reporting
+- Continuous quality monitoring
+
+### 5. RTL-LTR QA Agent
+**File:** `qa-agents/rtl-ltr-qa-agent-skill.md`
+
+Ensures:
+- Proper text direction in mixed content
+- RTL/LTR boundary detection
+- Bidirectional text validation
+- Direction-related bug detection
+
+### 6. Table Layout QA Agent
+**File:** `qa-agents/table-layout-qa-agent-skill.md`
+
+Verifies:
+- Table structure and formatting
+- Mixed Hebrew/English table content
+- Cell alignment in RTL context
+- Table caption directionality
+
+## Template v5.3 Capabilities
+
+The Hebrew Academic Template CLS v5.3, developed with support from these agent skills, now includes:
 
 ### Complete Feature Set
 - **78 commands** for comprehensive document control
@@ -175,11 +248,11 @@ These agent skills were developed to support the Hebrew Academic Template projec
 
 ## Version Information
 
-- **Template Version:** v5.0 (November 9, 2025)
+- **Template Version:** v5.3 (November 10, 2025)
 - **Commands Available:** 78
 - **Environments Available:** 8
 - **Packages Integrated:** 24+
-- **Versions Merged:** v1.0, v3.0 (Oct 26 & 28), v5.0
+- **Agent Organization:** 2 categories (Book Creator + QA Agents)
 
 ---
 
