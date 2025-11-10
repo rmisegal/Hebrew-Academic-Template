@@ -1,0 +1,13 @@
+.
+./agent_outputs
+./agent_outputs/agent_a
+./agent_outputs/agent_b
+./agent_outputs/agent_c
+./agent_outputs/agent_d
+./agent_outputs/agent_e
+./agent_outputs/agent_f
+./agent_outputs/agent_g
+./agent_outputs/agent_h
+./agents
+./docs
+./examples

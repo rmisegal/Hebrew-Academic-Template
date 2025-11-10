@@ -1,0 +1,207 @@
+% ================================================
+% FOOTNOTE EXAMPLE - Hebrew Academic Template v5.0
+% ================================================
+% This example focuses on footnotes in Hebrew RTL documents
+% Compiles to approximately 3-4 pages
+% Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
+
+\documentclass{hebrew-academic-template}
+
+% Add bibliography file
+\addbibresource{example_references.bib}
+
+% Title page information
+\hebrewtitle{דוגמת הערות שוליים - תבנית אקדמית עברית}
+\englishtitle{Footnote Example - Hebrew Academic Template v5.0}
+\hebrewauthor{ד"ר סגל יורם}
+\date{\textenglish{November 2025}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% ==================== INTRODUCTION ====================
+
+\hebrewsection{מבוא להערות שוליים: \entoc{Introduction to Footnotes}}
+
+מסמך זה מדגים שימוש מקיף בהערות שוליים בתבנית האקדמית העברית.
+הערות שוליים הן כלי חשוב במסמכים אקדמיים\footnote{הערות שוליים מאפשרות להוסיף מידע נוסף מבלי לשבור את זרימת הטקסט הראשי.} ומשמשות למגוון מטרות.
+
+% ==================== BASIC FOOTNOTES ====================
+
+\hebrewsection{הערות שוליים בסיסיות: \entoc{Basic Footnotes}}
+
+\hebrewsubsection{הערות פשוטות: \entoc{Simple Footnotes}}
+
+טקסט עברי רגיל עם הערת שוליים פשוטה\footnote{זוהי הערת שוליים פשוטה בעברית.}.
+ניתן להוסיף מספר הערות שוליים באותו משפט\footnote{הערה ראשונה.}\footnote{הערה שנייה.}.
+
+הערות שוליים יכולות להכיל מגוון רחב של תוכן\footnote{כולל טקסט ארוך יותר שמסביר נקודה מסוימת בפירוט רב יותר. הערות כאלה שימושיות במיוחד כאשר רוצים להרחיב על נושא מבלי להכביד על הטקסט הראשי.}.
+
+\hebrewsubsection{הערות עם תוכן מעורב: \entoc{Footnotes with Mixed Content}}
+
+הערות שוליים יכולות לכלול טקסט מעורב\footnote{הערה עם עברית ו-\en{English text} יחד, כולל מספרים כמו \num{42} ואחוזים כמו \percent{95.5}.}.
+
+ניתן גם לכלול נוסחאות מתמטיות בהערות\footnote{למשל, הנוסחה $E = mc^2$ או הביטוי $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$.}.
+
+קוד יכול להופיע בהערות שוליים\footnote{לדוגמה: \code{print("Hello World")} או \en{def function():}.}.
+
+% ==================== ADVANCED FOOTNOTES ====================
+
+\hebrewsection{הערות שוליים מתקדמות: \entoc{Advanced Footnotes}}
+
+\hebrewsubsection{הערות עם ציטוטים: \entoc{Footnotes with Citations}}
+
+לעתים נדרש לצטט מקורות בתוך הערות שוליים\footnote{כפי שמוצג במחקר של \cite{vaswani2017attention}, טכנולוגיית \en{Transformer} חוללה מהפכה בתחום.}.
+
+הערות יכולות להכיל ציטוטים מרובים\footnote{מחקרים רבים \cite{devlin2018bert,brown2020language} תומכים בגישה זו. ראה גם \cite[עמ' 42]{hebrew_nlp_2023} לדיון מפורט.}.
+
+\hebrewsubsection{הערות מקוננות ומורכבות: \entoc{Nested and Complex Footnotes}}
+
+הערות שוליים יכולות להכיל רשימות\footnote{%
+הנקודות החשובות הן:
+\begin{itemize}
+    \item נקודה ראשונה
+    \item נקודה שנייה עם \en{English}
+    \item נקודה שלישית עם מספר \num{100}
+\end{itemize}
+שימו לב שכל הנקודות חשובות באותה מידה.}.
+
+ניתן גם לכלול טבלאות קטנות בהערות\footnote{%
+\begin{tabular}{|c|c|}
+\hline
+ערך א & \num{10} \\
+\hline
+ערך ב & \num{20} \\
+\hline
+\end{tabular}
+- טבלה פשוטה להמחשה.}.
+
+% ==================== FOOTNOTE NUMBERING ====================
+
+\hebrewsection{מספור הערות שוליים: \entoc{Footnote Numbering}}
+
+\hebrewsubsection{מספור רציף: \entoc{Sequential Numbering}}
+
+הערות שוליים ממוספרות באופן רציף\footnote{זוהי ההערה מספר \thefootnote{} במסמך.}.
+המספור ממשיך לאורך כל המסמך\footnote{וזוהי ההערה מספר \thefootnote{}.}.
+
+ניתן להתייחס להערות קודמות\footnote{\label{fn:special}הערה מיוחדת שנרצה להפנות אליה.}.
+כפי שראינו בהערה \ref{fn:special}, ניתן ליצור הפניות צולבות.
+
+\hebrewsubsection{סוגי הערות שונים: \entoc{Different Types of Footnotes}}
+
+הערות הסבר\footnote{הערת הסבר: מונח זה מתייחס ל...}.
+הערות ביבליוגרפיות\footnote{למידע נוסף ראה: ספר א', פרק ב', עמוד ג'.}.
+הערות מתודולוגיות\footnote{השיטה שנבחרה מבוססת על...}.
+
+% ==================== ENGLISH SECTION WITH FOOTNOTES ====================
+
+\englishsection{English Section with Footnotes}
+
+\startenglish
+This section demonstrates footnotes in English text\footnote{This is an English footnote with proper LTR alignment.}.
+
+Footnotes can contain mixed content even in English sections\footnote{Including Hebrew text like \heb{טקסט עברי} and formulas like $x^2 + y^2 = r^2$.}.
+
+Multiple footnotes work correctly\footnote{First English footnote.}\footnote{Second English footnote with \heb{עברית}.}.
+\stopenglish
+
+% ==================== FOOTNOTES IN SPECIAL CONTEXTS ====================
+
+\hebrewsection{הערות בהקשרים מיוחדים: \entoc{Footnotes in Special Contexts}}
+
+\hebrewsubsection{הערות בטבלאות: \entoc{Footnotes in Tables}}
+
+\begin{hebrewtable}[h]
+\caption{טבלה עם הערות שוליים: \entoc{Table with Footnotes}}
+\begin{rtltabular}{|c|c|c|}
+\hline
+\mixedcell{\textbf{שם / \en{Name}}} & \mixedcell{\textbf{ערך / \en{Value}}} & \mixedcell{\textbf{הערה / \en{Note}}} \\
+\hline
+\mixedcell{פריט א\footnote{הערה לפריט א.}} & \num{100} & \mixedcell{רגיל} \\
+\hline
+\mixedcell{פריט ב} & \num{200}\footnote{ערך זה נמדד ב-\hebyear{2025}.} & \mixedcell{מיוחד} \\
+\hline
+\mixedcell{פריט ג} & \num{300} & \mixedcell{חשוב\footnote{ראה פירוט בנספח.}} \\
+\hline
+\end{rtltabular}
+\end{hebrewtable}
+
+\hebrewsubsection{הערות באיורים: \entoc{Footnotes in Figures}}
+
+\begin{figure}[h]
+\centering
+\fbox{\parbox{10cm}{
+    \centering
+    \vspace{2cm}
+    דיאגרמה עם הערה\footnote{הערת שוליים מתוך איור - מקרה מיוחד.}\\
+    \en{Diagram with footnote}\\
+    \vspace{2cm}
+}}
+\caption{איור עם הערת שוליים: \entoc{Figure with Footnote}}
+\end{figure}
+
+\hebrewsubsection{הערות בנוסחאות: \entoc{Footnotes in Equations}}
+
+נוסחה מתמטית עם הערה:
+\begin{equation}
+E = mc^2 \footnote{המשוואה המפורסמת של איינשטיין.}
+\end{equation}
+
+או בתוך טקסט מתמטי: $x_{\text{max}}$\footnote{הערך המקסימלי של $x$.} = \num{100}.
+
+% ==================== FOOTNOTE FORMATTING ====================
+
+\hebrewsection{עיצוב הערות שוליים: \entoc{Footnote Formatting}}
+
+\hebrewsubsection{הערות ארוכות: \entoc{Long Footnotes}}
+
+טקסט עם הערה ארוכה במיוחד\footnote{%
+זוהי הערת שוליים ארוכה במיוחד שמדגימה כיצד הערות ארוכות מתנהגות במסמך.
+הערה זו כוללת מספר משפטים ונועדה להראות שהערות יכולות להכיל תוכן מפורט.
+\par
+ניתן אפילו לכלול פסקה חדשה בתוך הערת השוליים.
+זה שימושי כאשר צריך להסביר נושא מורכב או להוסיף הקשר נרחב.
+\par
+הערות כאלה נפוצות במיוחד במסמכים אקדמיים מעמיקים, כאשר המחבר רוצה לספק מידע נוסף מבלי להפריע לזרימת הטקסט הראשי.
+שימוש נכון בהערות שוליים יכול להעשיר משמעותית את המסמך.}.
+
+\hebrewsubsection{סיכום השימוש בהערות: \entoc{Summary of Footnote Usage}}
+
+הערות השוליים במסמך זה הדגימו\footnote{סיכום הדגמה בהערת שוליים אחרונה.}:
+
+\begin{itemize}
+    \item הערות פשוטות בעברית
+    \item הערות עם תוכן מעורב עברית/אנגלית
+    \item הערות עם מספרים ונוסחאות
+    \item הערות עם ציטוטים ביבליוגרפיים
+    \item הערות בטבלאות ואיורים
+    \item הערות ארוכות ומורכבות
+    \item מספור והפניות צולבות
+\end{itemize}
+
+% ==================== CONCLUSIONS ====================
+
+\hebrewsection{סיכום: \entoc{Conclusions}}
+
+מסמך זה הציג שימוש מקיף בהערות שוליים בתבנית האקדמית העברית.
+הדגמנו מגוון רחב של שימושים והקשרים שונים להערות שוליים, והראינו שהתבנית תומכת בכל סוגי התוכן בהערות.
+
+השימוש הנכון בהערות שוליים מאפשר:
+\begin{enumerate}
+    \item הוספת מידע משלים מבלי לשבור את זרימת הטקסט
+    \item מתן הפניות והסברים נוספים
+    \item ציון מקורות משניים
+    \item הבהרות טכניות ומתודולוגיות
+\end{enumerate}
+
+% ==================== BIBLIOGRAPHY ====================
+
+\newpage
+\printhebrewbibliography
+\printenglishbibliography
+
+\end{document}

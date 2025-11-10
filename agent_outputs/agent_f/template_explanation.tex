@@ -1,0 +1,447 @@
+% ============================================================================
+% HEBREW ACADEMIC TEMPLATE v5.0 - COMPREHENSIVE EXAMPLE WITH INLINE COMMENTS
+% ============================================================================
+% Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
+%
+% This file demonstrates ALL features of hebrew-academic-template.cls v5.0
+% with extensive inline comments explaining best practices and common patterns.
+%
+% COMPILATION: lualatex → biber → lualatex → lualatex
+% ============================================================================
+
+\documentclass{hebrew-academic-template}  % Load the v5.0 template
+
+% ============================================================================
+% PREAMBLE - Document Setup
+% ============================================================================
+
+% BIBLIOGRAPHY: Must be loaded BEFORE \begin{document}
+% The .bib file should have entries with keywords={english} or keywords={hebrew}
+\addbibresource{example_references.bib}
+
+% TITLE PAGE INFORMATION: Define metadata for title page
+\hebrewtitle{מדריך מקיף לתבנית האקדמית העברית גרסה 5.0}
+\englishtitle{Comprehensive Guide to Hebrew Academic Template v5.0}
+\hebrewauthor{ד"ר יורם סגל}
+\hebrewversion{גרסה \textenglish{5.0}}  % Optional: document version
+\date{\textenglish{November 2025}}      % Always wrap dates in \textenglish{}
+
+% ============================================================================
+% DOCUMENT BODY
+% ============================================================================
+
+\begin{document}
+
+% FRONT MATTER: Title page and table of contents
+\maketitle         % Generates title page with all defined metadata
+\tableofcontents   % Auto-generated from section commands
+\newpage          % Start main content on new page
+
+% ============================================================================
+% SECTION 1: BASIC TEXT MIXING
+% ============================================================================
+
+% BEST PRACTICE: Always include English translation with \entoc{}
+\hebrewsection{יסודות השימוש בתבנית: \entoc{Basic Template Usage}}
+
+% MIXED PARAGRAPH: Demonstrates all text direction commands
+זהו מדריך מקיף לשימוש בתבנית האקדמית העברית
+\en{hebrew-academic-template.cls}  % English terms MUST use \en{}
+גרסה \clsversion.  % Returns "V05-2025-11-09"
+התבנית תומכת בכתיבה דו-לשונית עם עברית \en{RTL} ואנגלית \en{LTR},
+כולל מספרים כמו \num{123} ו-\num{456.789},  % Numbers MUST use \num{}
+אחוזים כמו \percent{95.5},  % Percentages with % symbol
+ושנים כמו \hebyear{2025}.  % Years in Hebrew text
+
+% INLINE MATH: Always LTR, no special handling needed
+ניתן לשלב נוסחאות מתמטיות כמו $E = mc^2$ או $f(x) = ax^2 + bx + c$
+ישירות בתוך הטקסט העברי.
+
+% SUBSECTION: Demonstrates subsection hierarchy
+\hebrewsubsection{תכונות עיקריות: \entoc{Key Features}}
+
+% BULLET LIST: Mixed Hebrew/English content
+התבנית כוללת את התכונות הבאות:
+\begin{itemize}
+\item תמיכה מלאה בכיוונים \en{RTL/LTR}  % Always wrap English
+\item \num{78} פקודות מיוחדות  % Number of commands
+\item \num{8} סביבות מותאמות  % Number of environments
+\item \num{24+} חבילות משולבות  % Number of packages
+\item תאימות של \percent{100} עם גרסאות קודמות  % Backward compatibility
+\item תמיכה בפרקים עם \code{\textbackslash hebrewchapter}  % Inline code
+\item טבלאות מתקדמות עם \en{mixed content}  % Technical term
+\item קוד \en{Python} עם \en{syntax highlighting}  % Multiple English terms
+\end{itemize}
+
+% ============================================================================
+% SECTION 2: ADVANCED LANGUAGE SWITCHING
+% ============================================================================
+
+\hebrewsection{מעבר מתקדם בין שפות: \entoc{Advanced Language Switching}}
+
+% DEMONSTRATING ALL TEXT DIRECTION COMMANDS
+\hebrewsubsection{פקודות כיוון טקסט: \entoc{Text Direction Commands}}
+
+% CODE BLOCK: Shows all available commands
+% IMPORTANT: Title can be bilingual, but code must be English-only!
+\begin{pythonbox}[פקודות בסיסיות: \en{Basic Commands}]
+# Text direction commands (all 15)
+\en{English text}           # English in Hebrew context
+\heb{Hebrew text}          # Hebrew in English context (rare)
+\ilm{inline math/terms}    # Legacy command, use \en{} instead
+\num{123.456}             # Numbers with decimal points
+\percent{95.5}            # Percentage with % symbol
+\hebyear{2025}            # Years in Hebrew text
+
+# Protection and forcing
+\ltr{(a+b)}               # Protect brackets from bidi
+\LTR{Force LTR}           # Force left-to-right
+\RTL{Force RTL}           # Force right-to-left
+
+# Section switching
+\startenglish             # Begin English section
+\stopenglish              # End English section
+\stophebrew               # Alternative ending
+\end{pythonbox}
+
+% COMPLEX MIXED EXAMPLE
+המחקר של \en{Vaswani et al.} מ-\hebyear{2017} על ארכיטקטורת
+\en{Transformer} חולל מהפכה בתחום ה-\en{NLP}. המודל השיג דיוק של
+\percent{98.2} במשימת תרגום, עם \num{65} מיליון פרמטרים
+ו-\num{8} ראשי \en{attention}.
+
+% ============================================================================
+% SECTION 3: TABLES WITH MIXED CONTENT
+% ============================================================================
+
+\hebrewsection{טבלאות עם תוכן מעורב: \entoc{Tables with Mixed Content}}
+
+\hebrewsubsection{טבלה בסיסית: \entoc{Basic Table}}
+
+% RTL TABLE: Columns appear right-to-left visually
+\begin{hebrewtable}[h]  % [h] = here, [t] = top, [b] = bottom
+\caption{השוואת אלגוריתמים: \en{Algorithm Comparison}}  % Bilingual caption
+\label{tab:algorithms}  % Label for cross-references
+\begin{rtltabular}{|m{3cm}|m{3cm}|m{2cm}|m{2cm}|}  % m{} for vertical centering
+\hline
+% Headers use \hebheader{} or \enheader{} for proper formatting
+\textbf{\hebheader{אלגוריתם}} &
+\textbf{\enheader{Algorithm}} &
+\textbf{\hebheader{דיוק}} &
+\textbf{\enheader{Time (sec)}} \\
+\hline
+% Data rows: use appropriate cell commands
+\hebcell{רגרסיה ליניארית} &  % Hebrew-dominant cell
+\encell{Linear Regression} &  % English-only cell
+\percent{85.2} &              % Percentage (no cell wrapper needed)
+\num{0.1} \\                  % Number (no cell wrapper needed)
+\hline
+\hebcell{יער אקראי עם \num{100} עצים} &  % Mixed Hebrew cell
+\encell{Random Forest (n=100)} &
+\percent{92.1} &
+\num{5.2} \\
+\hline
+\hebcell{רשת נוירונים עמוקה \en{DNN}} &  % Hebrew with English acronym
+\encell{Deep Neural Network} &
+\percent{94.5} &
+\num{45.8} \\
+\hline
+\end{rtltabular}
+\end{hebrewtable}
+
+% REFERENCE TO TABLE
+כפי שניתן לראות בטבלה \ref{tab:algorithms},
+הרשת העמוקה משיגה את הביצועים הטובים ביותר.
+
+% ============================================================================
+% SECTION 4: MATHEMATICAL EXPRESSIONS
+% ============================================================================
+
+\hebrewsection{ביטויים מתמטיים: \entoc{Mathematical Expressions}}
+
+\hebrewsubsection{משוואות עם טקסט עברי: \entoc{Equations with Hebrew Text}}
+
+% INLINE MATH: Simple formulas in text
+הנוסחה הבסיסית $y = mx + b$ מייצגת קו ישר, כאשר $m$ הוא השיפוע.
+
+% DISPLAY MATH: Centered equations
+פונקציית העלות למודל רגרסיה:
+\begin{equation}
+J(\theta) = \frac{1}{2m} \sum_{i=1}^{m}(h_\theta(x^{(i)}) - y^{(i)})^2
+\label{eq:cost}  % Label for references
+\end{equation}
+
+% HEBREW IN MATH: Using \hebmath{} command
+\begin{equation}
+\hebmath{מהירות} = \frac{\hebmath{מרחק}}{\hebmath{זמן}}
+\end{equation}
+
+% PIECEWISE FUNCTION with Hebrew conditions
+\begin{equation}
+f(x) = \begin{cases}
+  x^2 & \hebmath{אם} \; x > 0 \\
+  0 & \hebmath{אם} \; x = 0 \\
+  -x^2 & \hebmath{אחרת}
+\end{cases}
+\end{equation}
+
+% OPTIMIZATION with Hebrew subscripts
+\begin{equation}
+\theta^* = \argmin_{\theta} L(\theta), \quad
+V_{\hebsub{מקסימום}} = \num{100}
+\end{equation}
+
+% REFERENCE TO EQUATION
+משוואה \eqref{eq:cost} מגדירה את פונקציית העלות.
+
+% ============================================================================
+% SECTION 5: CODE BLOCKS
+% ============================================================================
+
+\hebrewsection{בלוקי קוד: \entoc{Code Blocks}}
+
+\hebrewsubsection{קוד צף: \entoc{Floating Code}}
+
+% FLOATING CODE: Can move for optimal page layout
+\begin{pythonbox}[יישום \en{K-Means}: \en{K-Means Implementation}]
+import numpy as np
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+# Generate sample data
+# NOTE: Comments MUST be in English only!
+np.random.seed(42)
+X = np.random.randn(300, 2)
+X[:100] += [2, 2]    # Cluster 1
+X[100:200] += [-2, -2]  # Cluster 2
+
+# Apply K-means clustering
+kmeans = KMeans(n_clusters=3, random_state=42)
+labels = kmeans.fit_predict(X)
+
+# Get cluster centers
+centers = kmeans.cluster_centers_
+print(f"Converged in {kmeans.n_iter_} iterations")
+print(f"Inertia: {kmeans.inertia_:.2f}")
+
+# Visualize results
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis', alpha=0.6)
+plt.scatter(centers[:, 0], centers[:, 1], c='red', marker='X', s=200)
+plt.title('K-Means Clustering Results')
+plt.show()
+\end{pythonbox}
+
+\hebrewsubsection{קוד ארוך לא צף: \entoc{Long Non-Floating Code}}
+
+% NON-FLOATING CODE: Stays in place, can break across pages
+% Use pythonbox* (with asterisk) for long code
+\begin{pythonbox*}[מודל רשת נוירונים: \en{Neural Network Model}]
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+
+# Define model architecture
+def create_model(input_shape, num_classes):
+    """
+    Create a deep neural network model.
+
+    Args:
+        input_shape: Shape of input data
+        num_classes: Number of output classes
+
+    Returns:
+        Compiled Keras model
+    """
+    model = keras.Sequential([
+        layers.Input(shape=input_shape),
+        layers.Dense(128, activation='relu'),
+        layers.Dropout(0.3),
+        layers.Dense(64, activation='relu'),
+        layers.Dropout(0.3),
+        layers.Dense(32, activation='relu'),
+        layers.Dense(num_classes, activation='softmax')
+    ])
+
+    model.compile(
+        optimizer='adam',
+        loss='sparse_categorical_crossentropy',
+        metrics=['accuracy']
+    )
+
+    return model
+
+# Usage example
+model = create_model(input_shape=(784,), num_classes=10)
+model.summary()
+\end{pythonbox*}
+
+% ============================================================================
+% SECTION 6: LISTS AND NUMBERING
+% ============================================================================
+
+\hebrewsection{רשימות ומספור: \entoc{Lists and Numbering}}
+
+\hebrewsubsection{רשימות מקוננות: \entoc{Nested Lists}}
+
+% NUMBERED LIST with mixed content
+שלבי פיתוח מודל למידת מכונה:
+\begin{enumerate}
+\item איסוף נתונים: \en{Data Collection}
+  \begin{itemize}
+  \item מקורות: \en{APIs, Web Scraping, Databases}
+  \item גודל: מינימום \num{10,000} דגימות
+  \item איכות: לפחות \percent{95} נתונים תקינים
+  \end{itemize}
+
+\item עיבוד מקדים: \en{Preprocessing}
+  \begin{enumerate}
+  \item ניקוי: הסרת \en{outliers}
+  \item נרמול: \en{StandardScaler} או \en{MinMaxScaler}
+  \item קידוד: \en{One-hot encoding} למשתנים קטגוריים
+  \end{enumerate}
+
+\item בחירת מודל: \en{Model Selection}
+  \begin{itemize}
+  \item פשוטים: \en{Linear/Logistic Regression}
+  \item מורכבים: \en{Random Forest, XGBoost}
+  \item עמוקים: \en{Neural Networks, Transformers}
+  \end{itemize}
+\end{enumerate}
+
+% ============================================================================
+% SECTION 7: FIGURES
+% ============================================================================
+
+\hebrewsection{איורים ותמונות: \entoc{Figures and Images}}
+
+% FIGURE ENVIRONMENT FORM (recommended for v5.0)
+\begin{hebrewfigure}[htbp]  % h=here, t=top, b=bottom, p=page
+  \centering
+  \includegraphics[width=0.7\textwidth]{example_plot.png}
+  \caption{תוצאות הניסוי בשנת \hebyear{2025}: \en{Experimental Results 2025}}
+  \label{fig:results}
+\end{hebrewfigure}
+
+% REFERENCE TO FIGURE
+איור \ref{fig:results} מציג את התוצאות המרכזיות.
+
+% ============================================================================
+% SECTION 8: CHAPTERS (FOR BOOKS)
+% ============================================================================
+
+% CHAPTER: Only for book-length documents
+\hebrewchapter{למידה עמוקה}  % No \entoc{} needed for chapters
+
+% Sections within chapters work normally
+\hebrewsection{רשתות נוירונים: \entoc{Neural Networks}}
+
+מבנה בסיסי של רשת:
+\begin{itemize}
+\Hitem{שכבת קלט: \en{Input Layer}}  % \Hitem for Hebrew items
+\Hitem{שכבות נסתרות: \en{Hidden Layers}}
+\Hitem{שכבת פלט: \en{Output Layer}}
+\end{itemize}
+
+% ============================================================================
+% SECTION 9: ENGLISH SECTIONS
+% ============================================================================
+
+\englishsection{Pure English Section}
+
+% ENGLISH CONTENT: Must be wrapped properly
+\startenglish  % Begin English LTR environment
+
+This entire section is in English with left-to-right alignment.
+All text here flows naturally in LTR direction.
+
+Key points:
+\begin{itemize}
+\item Everything is LTR aligned
+\item No Hebrew text should appear here
+\item Mathematical expressions work: $f(x) = x^2$
+\item Numbers don't need special handling: 123, 456
+\end{itemize}
+
+\stopenglish  % Return to Hebrew RTL
+
+% ============================================================================
+% SECTION 10: FOOTNOTES
+% ============================================================================
+
+\hebrewsection{הערות שוליים: \entoc{Footnotes}}
+
+% FOOTNOTE: No space before \footnote{}
+טקסט עם הערת שוליים\footnote{זוהי הערת שוליים עם מונח \en{English term}
+ומספר \num{42}.} ממשיך כאן.
+
+% MULTIPLE FOOTNOTES
+מונחים טכניים\footnote{%
+  \en{Machine Learning} - למידת מכונה, תחום המאפשר למחשבים ללמוד מנתונים.%
+} חשובים מאוד\footnote{%
+  ראו פרק \ref{fig:results} לפרטים נוספים.%
+} במחקר מודרני.
+
+% ============================================================================
+% SECTION 11: CITATIONS AND BIBLIOGRAPHY
+% ============================================================================
+
+\hebrewsection{ציטוטים ומקורות: \entoc{Citations and References}}
+
+% CITATIONS: Various styles
+מחקר בודד \cite{mikolov2013}.
+מחקרים מרובים \cite{kingma2013,goodfellow2014}.
+עם עמודים \cite[עמ' 45-47]{galton1886}.
+מחקר של \en{Smith et al.} \cite{mikolov2013} מ-\hebyear{2013}.
+
+% ============================================================================
+% SECTION 12: SPECIAL CHARACTERS AND SYMBOLS
+% ============================================================================
+
+\hebrewsection{תווים מיוחדים: \entoc{Special Characters}}
+
+% SPECIAL SYMBOLS (v5.0)
+\begin{itemize}
+\item סימן אזהרה: \warningsymbol{} (משולש שחור)
+\item סימן ביקורת: \checksymbol{} (וי)
+\item ריבוע R: \Rsquared{} או \Rtwo{}
+\item חץ בהקשר RTL: \rarrow{} (מצביע שמאלה)
+\end{itemize}
+
+% PATH WITH HYPHENS
+הקובץ נמצא ב: \enpath{/usr/local/bin/my-script.sh}
+
+% ============================================================================
+% BIBLIOGRAPHY
+% ============================================================================
+
+\newpage  % Always start bibliography on new page
+
+% SEPARATE BIBLIOGRAPHIES (optional)
+% \printhebrewbibliography   % Hebrew sources only
+\printenglishbibliography     % English sources only
+
+% OR SINGLE BIBLIOGRAPHY
+% \printbibliography          % All sources together
+
+\end{document}
+
+% ============================================================================
+% END OF TEMPLATE EXPLANATION
+% ============================================================================
+% This template demonstrates all 78 commands and 8 environments
+% available in hebrew-academic-template.cls v5.0
+%
+% Key takeaways:
+% 1. Always wrap English with \en{}
+% 2. Always wrap numbers with \num{}, \percent{}, or \hebyear{}
+% 3. Use bilingual section headings with \entoc{}
+% 4. Apply appropriate table cell commands
+% 5. Keep code blocks English-only
+% 6. Compile with: lualatex → biber → lualatex → lualatex
+%
+% For more information, see:
+% - README.md (overview)
+% - USAGE_GUIDE.md (complete command reference)
+% - MIXED_CONTENT_GUIDE.md (RTL/LTR rules)
+% - MIGRATION_GUIDE.md (upgrading from older versions)
+% ============================================================================

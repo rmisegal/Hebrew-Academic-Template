@@ -1,0 +1,94 @@
+Here is the structured set of instructions, updated with the new requirements, and presented in plain text with a professional and official tone.
+
+Task Objectives and Scope
+
+The primary objective is to create a complete, fully compilable Hebrew LaTeX book project using the specific custom class file, "hebrew-academic-template.cls". These tasks outline the process of analyzing the provided example files and class functions to ensure correct implementation of mixed Hebrew (RTL) and English/Formula (LTR) content, proper structure, and specific IEEE-formatted bibliography handling, with all verifications done at the final PDF level.
+
+Project Setup and Analysis Tasks
+
+1. Project Class File Acquisition
+Task 1.1: Locate and copy the required custom class file: "hebrew-academic-template.cls".
+Task 1.2: Place "hebrew-academic-template.cls" into the new LaTeX project directory.
+
+2. Example File Review and Learning
+Task 2.1: Identify all example LaTeX (".tex") files provided in the example folder.
+Task 2.2: Open and thoroughly read the instructional Markdown file(s) for the CLS usage.
+Task 2.3: Analyze each example ".tex" file to identify CLS function calls and their corresponding output structure.
+Task 2.4: Examine the example bibliography (".bib") file to understand its specific structure.
+
+3. Content and Font Preparation
+Task 3.1: Verify the CLS is configured to support existing Hebrew Windows 11 fonts.
+Task 3.2: Confirm that the CLS uses Unicode encoding for text.
+Task 3.3: Prepare to receive the final book content for conversion.
+
+4. CLS Functionality Mastery (Directionality and Mixing)
+Task 4.1: Study the example of mixing Hebrew (RTL) and English (LTR) text within a paragraph.
+Task 4.2: Learn how to embed formulas in LTR direction using the prescribed CLS function.
+Task 4.3: Study how to ensure Hebrew text used within a Formula mode remains RTL.
+Task 4.4: Learn how to ensure all code sentences and file structures are written only in English LTR.
+Task 4.5: Analyze the method for mixing Hebrew and English content within a single table cell using plain text or "\mixedcell{}".
+Task 4.6: Understand how to set titles and subtitle numbering in LTR using the CLS functions.
+Task 4.7: Study the examples for keeping the main part of the title in Hebrew (RTL), mixed with English and LTR formulas.
+
+5. Table and Image Mastering
+Task 5.1: Learn how to set table column order manually so that column 1 is the most right column.
+Task 5.2: Study the use of "\mixedcell{\textbf{Hebrew / \en{English}}}" for table headers to maintain RTL direction.
+Task 5.3: Learn how to format table titles to be centered, above the table, with Hebrew in RTL and English/numbers/formula variables in LTR.
+Task 5.4: Learn how to format image titles to be centered, under the image, with Hebrew in RTL and English/numbers/formula variables in LTR.
+
+6. Bibliography and Citation Mastery
+Task 6.1: Learn the exact CLS function used for the unique bibliography structure of this project.
+Task 6.2: Study the CLS function required to generate IEEE-format citations.
+Task 6.3: Analyze the process of inserting numbered citations in the body text.
+
+7. Initial Project Setup and Compilation Readiness
+Task 7.1: Create a minimal, working LaTeX root file (e.g., "main.tex") using the "hebrew-academic-template.cls".
+Task 7.2: Insert a placeholder section and entry for a Table of Contents.
+Task 7.3: Insert a placeholder title and a single paragraph of mixed Hebrew and English text using the learned CLS functions.
+Task 7.4: Insert a simple placeholder table using the column order, header, and title rules (Tasks 5.1, 5.2, 5.3).
+Task 7.5: Insert a single placeholder reference into a new ".bib" file following the unique project structure.
+Task 7.6: Insert a citation for the placeholder reference in the body text using the required CLS citation function.
+
+8. Final Action
+Task 8.1: Request the final content file or location from the user.
+
+Test List
+
+Note: All tests must be checked and verified at the PDF output level.
+
+Test ID: T1
+Tasks Checked: 1.1, 1.2, 7.1
+Description of Test: Verify the core document structure.
+Passing Criteria: The document compiles without errors using "\documentclass{hebrew-academic-template}" and generates a basic ".pdf" output.
+
+Test ID: T2
+Tasks Checked: 4.1, 4.2, 4.3, 4.4, 7.3
+Description of Test: Verify general directionality mixing and formula behavior.
+Passing Criteria: In the PDF, a test paragraph (Task 7.3) successfully renders with Hebrew text in RTL, embedded LTR English/Formulas, and any Hebrew text used inside a formula mode is rendered RTL. All code sentences and file structures are LTR.
+
+Test ID: T3
+Tasks Checked: 4.6, 4.7
+Description of Test: Verify title formatting.
+Passing Criteria: In the PDF, the main title is rendered in Hebrew (RTL), but the title/subtitle numbering is in LTR.
+
+Test ID: T4
+Tasks Checked: 6.1, 6.2, 6.3, 7.5, 7.6
+Description of Test: Verify bibliography compilation and output.
+Passing Criteria: The document is compiled with the correct sequence and the PDF contains a **Reference List (e)** and a **numbered citation** (Task 7.6) in the body text, both following IEEE format.
+
+Test ID: T5
+Tasks Checked: 5.1, 5.2, 5.3, 7.4
+Description of Test: Verify table structure, column order, and header/title formatting.
+Passing Criteria: In the PDF, the placeholder table (Task 7.4) displays column 1 as the rightmost column. The table header uses "\mixedcell" correctly to keep the RTL direction. The table title is centered, above the table, with Hebrew in RTL and English/variables in LTR.
+
+Test ID: T6
+Tasks Checked: 5.4
+Description of Test: Verify image title formatting.
+Passing Criteria: In the PDF, a test image title (if present) is centered, under the image, with Hebrew in RTL and English/variables in LTR.
+
+Test ID: T7
+Tasks Checked: 7.2
+Description of Test: Verify Table of Contents (TOC) existence.
+Passing Criteria: The PDF contains a generated Table of Contents (TOC) (d).
+
+Would you like me to give you the final content file or location so I can begin working on Task 7.1?

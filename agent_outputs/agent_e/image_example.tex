@@ -1,0 +1,353 @@
+% ================================================
+% IMAGE EXAMPLE - Hebrew Academic Template v5.0
+% ================================================
+% This example focuses on figures and images in Hebrew RTL documents
+% Compiles to approximately 4-5 pages
+% Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
+
+\documentclass{hebrew-academic-template}
+
+% Add bibliography file
+\addbibresource{example_references.bib}
+
+% Title page information
+\hebrewtitle{דוגמת איורים ותמונות - תבנית אקדמית עברית}
+\englishtitle{Image and Figure Example - Hebrew Academic Template v5.0}
+\hebrewauthor{ד"ר סגל יורם}
+\date{\textenglish{November 2025}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\listoffigures
+\newpage
+
+% ==================== INTRODUCTION ====================
+
+\hebrewsection{מבוא לאיורים: \entoc{Introduction to Figures}}
+
+מסמך זה מדגים שימוש מקיף באיורים ותמונות בתבנית האקדמית העברית.
+איורים הם אלמנט חיוני במסמכים אקדמיים ומשמשים להמחשה ויזואלית של רעיונות מורכבים.
+
+% ==================== BASIC FIGURES ====================
+
+\hebrewsection{איורים בסיסיים: \entoc{Basic Figures}}
+
+\hebrewsubsection{איור פשוט: \entoc{Simple Figure}}
+
+% Using standard figure environment
+\begin{figure}[h]
+\centering
+\fbox{\parbox{10cm}{
+    \centering
+    \vspace{3cm}
+    מקום לתמונה\\
+    \en{Image Placeholder}\\
+    \vspace{3cm}
+}}
+\caption{איור בסיסי: \entoc{Basic Figure} - דוגמה פשוטה}
+\label{fig:basic}
+\end{figure}
+
+כפי שניתן לראות באיור \ref{fig:basic}, זהו איור בסיסי עם כיתוב דו-לשוני.
+
+\hebrewsubsection{איור עם פקודת hebrewfigure: \entoc{Figure with hebrewfigure Command}}
+
+% Using \hebrewfigure command
+\hebrewfigure[h]{
+    \fbox{\parbox{8cm}{
+        \centering
+        \vspace{2cm}
+        איור עם \texttt{hebrewfigure}\\
+        \en{Using hebrewfigure command}\\
+        \vspace{2cm}
+    }}
+}{איור עם פקודה: \entoc{Command Figure} - שימוש בפקודת \texttt{hebrewfigure}}
+
+% ==================== POSITIONING OPTIONS ====================
+
+\hebrewsection{אפשרויות מיקום: \entoc{Positioning Options}}
+
+\hebrewsubsection{מיקום בראש העמוד: \entoc{Top Position}}
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{12cm}{
+    \centering
+    \vspace{2cm}
+    איור בראש העמוד\\
+    \en{Top-positioned figure}\\
+    מיקום: \texttt{[t]}\\
+    \vspace{2cm}
+}}
+\caption{איור עם מיקום עליון: \entoc{Top-Positioned Figure} - משתמש ב-\texttt{[t]}}
+\label{fig:top}
+\end{figure}
+
+איור \ref{fig:top} ממוקם בראש העמוד באמצעות האפשרות \texttt{[t]}.
+
+\hebrewsubsection{מיקום בתחתית העמוד: \entoc{Bottom Position}}
+
+\begin{figure}[b]
+\centering
+\fbox{\parbox{12cm}{
+    \centering
+    \vspace{2cm}
+    איור בתחתית העמוד\\
+    \en{Bottom-positioned figure}\\
+    מיקום: \texttt{[b]}\\
+    \vspace{2cm}
+}}
+\caption{איור עם מיקום תחתון: \entoc{Bottom-Positioned Figure} - משתמש ב-\texttt{[b]}}
+\label{fig:bottom}
+\end{figure}
+
+איור \ref{fig:bottom} ממוקם בתחתית העמוד באמצעות האפשרות \texttt{[b]}.
+
+\hebrewsubsection{מיקום בעמוד נפרד: \entoc{Page Position}}
+
+\begin{figure}[p]
+\centering
+\fbox{\parbox{14cm}{
+    \centering
+    \vspace{5cm}
+    איור גדול בעמוד נפרד\\
+    \en{Large figure on separate page}\\
+    מיקום: \texttt{[p]}\\
+    \vspace{5cm}
+}}
+\caption{איור בעמוד נפרד: \entoc{Page Figure} - משתמש ב-\texttt{[p]}}
+\label{fig:page}
+\end{figure}
+
+איור \ref{fig:page} ממוקם בעמוד נפרד באמצעות האפשרות \texttt{[p]}.
+
+% ==================== MULTIPLE FIGURES ====================
+
+\hebrewsection{איורים מרובים: \entoc{Multiple Figures}}
+
+\hebrewsubsection{איורים זה לצד זה: \entoc{Side-by-Side Figures}}
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{cc}
+\fbox{\parbox{6cm}{
+    \centering
+    \vspace{2cm}
+    איור ימני\\
+    \en{Right Figure}\\
+    \vspace{2cm}
+}} &
+\fbox{\parbox{6cm}{
+    \centering
+    \vspace{2cm}
+    איור שמאלי\\
+    \en{Left Figure}\\
+    \vspace{2cm}
+}}
+\end{tabular}
+\caption{איורים זה לצד זה: \entoc{Side-by-Side Figures}}
+\label{fig:sidebyside}
+\end{figure}
+
+איור \ref{fig:sidebyside} מדגים שני איורים זה לצד זה.
+
+\hebrewsubsection{רשת איורים: \entoc{Figure Grid}}
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{cc}
+\fbox{\parbox{5cm}{\centering\vspace{2cm}איור 1\\[2cm]}} &
+\fbox{\parbox{5cm}{\centering\vspace{2cm}איור 2\\[2cm]}} \\[0.5cm]
+\fbox{\parbox{5cm}{\centering\vspace{2cm}איור 3\\[2cm]}} &
+\fbox{\parbox{5cm}{\centering\vspace{2cm}איור 4\\[2cm]}}
+\end{tabular}
+\caption{רשת איורים 2×2: \entoc{2×2 Figure Grid}}
+\label{fig:grid}
+\end{figure}
+
+איור \ref{fig:grid} מציג רשת של ארבעה איורים.
+
+% ==================== COMPLEX FIGURES ====================
+
+\hebrewsection{איורים מורכבים: \entoc{Complex Figures}}
+
+\hebrewsubsection{דיאגרמה עם טקסט: \entoc{Diagram with Text}}
+
+\begin{figure}[h]
+\centering
+\fbox{\parbox{12cm}{
+    \centering
+    \vspace{1cm}
+    \textbf{ארכיטקטורת המערכת}\\[0.5cm]
+    \begin{tabular}{c}
+    \fbox{\parbox{8cm}{\centering שכבת קלט / \en{Input Layer}\\[0.3cm]}} \\[0.3cm]
+    $\downarrow$ \\[0.3cm]
+    \fbox{\parbox{8cm}{\centering שכבת עיבוד / \en{Processing Layer}\\[0.3cm]}} \\[0.3cm]
+    $\downarrow$ \\[0.3cm]
+    \fbox{\parbox{8cm}{\centering שכבת פלט / \en{Output Layer}\\[0.3cm]}}
+    \end{tabular}
+    \vspace{1cm}
+}}
+\caption{דיאגרמת ארכיטקטורה: \entoc{Architecture Diagram} - מבנה שלוש שכבות}
+\label{fig:architecture}
+\end{figure}
+
+איור \ref{fig:architecture} מציג ארכיטקטורת מערכת בת שלוש שכבות.
+
+\hebrewsubsection{גרפים ונתונים: \entoc{Graphs and Data}}
+
+\begin{figure}[h]
+\centering
+\fbox{\parbox{14cm}{
+    \centering
+    \vspace{1cm}
+    \textbf{תוצאות הניסוי}\\[0.5cm]
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    זמן & ערך א & ערך ב & ערך ג \\
+    \hline
+    \hebyear{2020} & \num{10} & \num{20} & \num{30} \\
+    \hebyear{2021} & \num{15} & \num{25} & \num{35} \\
+    \hebyear{2022} & \num{20} & \num{30} & \num{40} \\
+    \hebyear{2023} & \num{25} & \num{35} & \num{45} \\
+    \hebyear{2024} & \num{30} & \num{40} & \num{50} \\
+    \hebyear{2025} & \num{35} & \num{45} & \num{55} \\
+    \hline
+    \end{tabular}\\[0.5cm]
+    \small{הנתונים מראים עלייה קבועה לאורך השנים}\\
+    \vspace{0.5cm}
+}}
+\caption{נתוני ניסוי: \entoc{Experimental Data} - מגמות לאורך זמן}
+\label{fig:data}
+\end{figure}
+
+הנתונים באיור \ref{fig:data} מציגים מגמת עלייה עקבית.
+
+% ==================== CAPTIONS AND REFERENCES ====================
+
+\hebrewsection{כיתובים והפניות: \entoc{Captions and References}}
+
+\hebrewsubsection{כיתובים מפורטים: \entoc{Detailed Captions}}
+
+\begin{figure}[h]
+\centering
+\fbox{\parbox{10cm}{
+    \centering
+    \vspace{3cm}
+    איור עם כיתוב מפורט\\
+    \vspace{3cm}
+}}
+\caption[כיתוב קצר: \entoc{Short Caption}]{כיתוב ארוך ומפורט: \entoc{Long Detailed Caption} - איור זה מדגים שימוש בכיתוב ארוך המסביר בפירוט את תוכן האיור. ניתן לכלול הסברים נוספים, הפניות למחקרים \cite{vaswani2017attention}, ואפילו נוסחאות מתמטיות כמו $y = mx + b$. הכיתוב הקצר מופיע ברשימת האיורים.}
+\label{fig:detailed}
+\end{figure}
+
+\hebrewsubsection{הפניות מרובות: \entoc{Multiple References}}
+
+במסמך זה הצגנו מגוון איורים:
+\begin{itemize}
+    \item איור בסיסי (איור \ref{fig:basic})
+    \item איורים עם מיקומים שונים (איורים \ref{fig:top}, \ref{fig:bottom}, \ref{fig:page})
+    \item איורים מרובים (איורים \ref{fig:sidebyside}, \ref{fig:grid})
+    \item איורים מורכבים (איורים \ref{fig:architecture}, \ref{fig:data})
+    \item איור עם כיתוב מפורט (איור \ref{fig:detailed})
+\end{itemize}
+
+% ==================== SUBFIGURES ====================
+
+\hebrewsection{תת-איורים: \entoc{Subfigures}}
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{cc}
+(א) & (ב) \\
+\fbox{\parbox{5cm}{\centering\vspace{2cm}תת-איור א\\[2cm]}} &
+\fbox{\parbox{5cm}{\centering\vspace{2cm}תת-איור ב\\[2cm]}} \\[0.5cm]
+(ג) & (ד) \\
+\fbox{\parbox{5cm}{\centering\vspace{2cm}תת-איור ג\\[2cm]}} &
+\fbox{\parbox{5cm}{\centering\vspace{2cm}תת-איור ד\\[2cm]}}
+\end{tabular}
+\caption{איור עם תת-איורים: \entoc{Figure with Subfigures} - (א) חלק ראשון, (ב) חלק שני, (ג) חלק שלישי, (ד) חלק רביעי}
+\label{fig:subfigures}
+\end{figure}
+
+איור \ref{fig:subfigures} מכיל ארבעה תת-איורים המסומנים באותיות עבריות.
+
+% ==================== TIKZ FIGURES ====================
+
+\hebrewsection{איורי TikZ: \entoc{TikZ Figures}}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    % Nodes
+    \node[draw, circle] (A) at (0,0) {א};
+    \node[draw, circle] (B) at (3,0) {ב};
+    \node[draw, circle] (C) at (6,0) {ג};
+    \node[draw, circle] (D) at (1.5,-2) {ד};
+    \node[draw, circle] (E) at (4.5,-2) {ה};
+
+    % Edges
+    \draw[->] (A) -- (B);
+    \draw[->] (B) -- (C);
+    \draw[->] (A) -- (D);
+    \draw[->] (B) -- (D);
+    \draw[->] (B) -- (E);
+    \draw[->] (C) -- (E);
+    \draw[->] (D) -- (E);
+\end{tikzpicture}
+\caption{גרף מכוון: \entoc{Directed Graph} - דוגמה עם \en{TikZ}}
+\label{fig:tikz}
+\end{figure}
+
+איור \ref{fig:tikz} נוצר באמצעות חבילת \en{TikZ}.
+
+% ==================== BEST PRACTICES ====================
+
+\hebrewsection{עקרונות מומלצים: \entoc{Best Practices}}
+
+\hebrewsubsection{המלצות לשימוש באיורים: \entoc{Figure Usage Recommendations}}
+
+\begin{enumerate}
+    \item \textbf{גודל מתאים:} וודאו שהאיור קריא ולא גדול מדי
+    \item \textbf{כיתובים ברורים:} השתמשו בכיתובים דו-לשוניים עם \texttt{\textbackslash entoc\{\}}
+    \item \textbf{מיקום נכון:} בחרו במיקום המתאים - \texttt{[h]}, \texttt{[t]}, \texttt{[b]}, או \texttt{[p]}
+    \item \textbf{הפניות:} השתמשו תמיד ב-\texttt{\textbackslash label} ו-\texttt{\textbackslash ref}
+    \item \textbf{רזולוציה:} לתמונות אמיתיות, השתמשו ברזולוציה של לפחות 300 DPI
+\end{enumerate}
+
+\hebrewsubsection{פורמטים נתמכים: \entoc{Supported Formats}}
+
+התבנית תומכת במגוון פורמטים:
+\begin{itemize}
+    \item \textbf{PDF:} מומלץ לגרפיקה וקטורית
+    \item \textbf{PNG:} מומלץ לצילומי מסך ודיאגרמות
+    \item \textbf{JPG:} מומלץ לתמונות צילום
+    \item \textbf{TikZ:} ליצירת גרפיקה ישירות ב-\LaTeX
+\end{itemize}
+
+% ==================== SUMMARY ====================
+
+\hebrewsection{סיכום: \entoc{Summary}}
+
+מסמך זה הדגים:
+\begin{itemize}
+    \item שימוש בסביבת \texttt{figure} ובפקודת \texttt{\textbackslash hebrewfigure}
+    \item אפשרויות מיקום שונות (\texttt{[h]}, \texttt{[t]}, \texttt{[b]}, \texttt{[p]})
+    \item איורים מרובים וסידורים שונים
+    \item כיתובים דו-לשוניים עם \texttt{\textbackslash entoc\{\}}
+    \item הפניות צולבות לאיורים
+    \item שילוב עם \en{TikZ} ליצירת גרפיקה
+    \item עקרונות מומלצים לעבודה עם איורים
+\end{itemize}
+
+השימוש הנכון באיורים מעשיר את המסמך האקדמי ומקל על הבנת החומר.
+
+% ==================== BIBLIOGRAPHY ====================
+
+\newpage
+\printhebrewbibliography
+\printenglishbibliography
+
+\end{document}

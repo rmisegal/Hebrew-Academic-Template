@@ -1,0 +1,113 @@
+\documentclass{hebrew-academic-template}
+
+% Add bibliography file
+\addbibresource{comprehensive_references.bib}
+
+% Title information
+\hebrewtitle{דוגמה לתוכן מעורב עברית-אנגלית}
+\englishtitle{Mixed Hebrew-English Content Demonstration}
+\hebrewauthor{ד"ר סגל יורם}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+% ==================== HEBREW SECTION WITH ENGLISH TERMS ====================
+
+\hebrewsection{מבוא לבינה מלאכותית: \entoc{Introduction to AI}}
+
+זהו טקסט עברי שזורם מימין לשמאל (RTL) ומיושר לימין. הטקסט כולל מונחים באנגלית כמו \en{Machine Learning} ו-\en{Deep Learning} שמוצגים בכיוון שמאל לימין (LTR) בתוך הטקסט העברי.
+
+השיטות המודרניות של \en{Artificial Intelligence} מבוססות על אלגוריתמים מתקדמים. למשל, \en{Neural Networks} משתמשים בשכבות של \en{neurons} כדי לעבד מידע. הביצועים של מודלים אלה נמדדים באמצעות מדדים כמו \en{accuracy} של \percent{95.2} ו-\en{F1-score} של \percent{87.3}.
+
+רשימת השיטות העיקריות:
+\begin{enumerate}
+\item \textbf{למידה מפוקחת \en{(Supervised Learning)}:} שיטה שבה המודל לומד מדוגמאות מתויגות
+\item \textbf{למידה לא מפוקחת \en{(Unsupervised Learning)}:} גילוי דפוסים בנתונים ללא תוויות
+\item \textbf{למידה מחיזוקים \en{(Reinforcement Learning)}:} למידה באמצעות פרסים ועונשים
+\item \textbf{למידה עמוקה \en{(Deep Learning)}:} שימוש ברשתות נוירונים עמוקות
+\end{enumerate}
+
+הנוסחה הבסיסית של \en{Linear Regression} היא:
+$$y = \beta_0 + \beta_1 x + \varepsilon \quad (1.1)$$
+
+כאשר $\beta_0$ הוא ה-\en{intercept}, $\beta_1$ הוא ה-\en{slope}, ו-$\varepsilon$ הוא שגיאת המדידה.
+
+\hebrewsubsection{טבלה עם תוכן מעורב: \entoc{Mixed Content Table}}
+
+\begin{hebrewtable}[h]
+\caption{השוואת מודלים של \en{AI}: תוצאות ביצועים}
+\begin{rtltabular}{|c|c|c|c|}
+\hline
+\mixedcell{\textbf{מודל / Model}} & \mixedcell{\textbf{דיוק / Accuracy}} & \mixedcell{\textbf{זמן / Time}} & \mixedcell{\textbf{זיכרון / Memory}} \\
+\hline
+\mixedcell{\en{Random Forest} / יער אקראי} & \percent{92.1} & \num{2.5} שניות & \num{512} MB \\
+\hline
+\mixedcell{\en{SVM} / מכונת וקטור תומך} & \percent{89.7} & \num{1.8} שניות & \num{256} MB \\
+\hline
+\mixedcell{\en{Neural Network} / רשת נוירונים} & \percent{94.3} & \num{5.2} שניות & \num{1024} MB \\
+\hline
+\end{rtltabular}
+\end{hebrewtable}
+
+המחקר מראה \cite{vaswani2017attention} כי מודלי \en{Transformer} מציגים ביצועים מעולים בעיבוד שפה טבעית. התוצאות מצביעות על שיפור של \percent{15} לעומת שיטות קודמות \cite{devlin2018bert}.
+
+% ==================== PURE ENGLISH SECTION ====================
+
+\englishsection{English Section: Technical Analysis}
+
+This is a pure English section that flows left-to-right (LTR) and is aligned to the left. All text in this section should be in English and follow standard English typography conventions.
+
+The development of artificial intelligence has accelerated dramatically in recent years. Modern AI systems achieve remarkable performance across various domains, including natural language processing, computer vision, and robotics.
+
+Key technological breakthroughs include:
+\begin{enumerate}
+\item \textbf{Transformer Architecture:} Introduced attention mechanisms that revolutionized NLP
+\item \textbf{Large Language Models:} Models like GPT and BERT with billions of parameters
+\item \textbf{Generative AI:} Systems capable of creating new content from text prompts
+\item \textbf{Multimodal Models:} AI that can process text, images, and audio simultaneously
+\end{enumerate}
+
+The attention mechanism formula is fundamental to modern NLP:
+$$\text{Attention}(Q,K,V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V \quad (2.1)$$
+
+Where Q, K, and V represent the query, key, and value matrices respectively.
+
+\begin{hebrewtable}[h]
+\caption{Performance Comparison of Large Language Models}
+\begin{rtltabular}{|c|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Parameters} & \textbf{Accuracy} & \textbf{Year} \\
+\hline
+GPT-2 & 1.5B & 88.5\% & 2019 \\
+\hline
+GPT-3 & 175B & 93.2\% & 2020 \\
+\hline
+GPT-4 & 1.7T & 96.8\% & 2023 \\
+\hline
+\end{rtltabular}
+\end{hebrewtable}
+
+Research shows that scaling model size leads to emergent capabilities. The relationship between model parameters and performance follows a power law, suggesting continued improvements with larger models.
+
+% ==================== BACK TO HEBREW ====================
+
+\hebrewsection{מסקנות: \entoc{Conclusions}}
+
+חזרנו לטקסט עברי שזורם מימין לשמאל ומיושר לימין. המחקר הראה כי שילוב של שיטות \en{Machine Learning} מסורתיות עם גישות \en{Deep Learning} מודרניות מביא לתוצאות מעולות.
+
+הממצאים העיקריים:
+\begin{itemize}
+\item שיפור של \percent{25} בדיוק הניבוי
+\item הפחתה של \percent{40} בזמן העיבוד
+\item יעילות זיכרון משופרת ב-\percent{30}
+\end{itemize}
+
+עבודות עתידיות יתמקדו בפיתוח מודלים היברידיים שמשלבים \en{Symbolic AI} עם \en{Neural Networks} כדי להשיג הבנה עמוקה יותר של הבעיות המורכבות.
+
+\newpage
+\printhebrewbibliography
+\printenglishbibliography
+
+\end{document}

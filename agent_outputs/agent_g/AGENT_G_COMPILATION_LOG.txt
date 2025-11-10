@@ -1,0 +1,47 @@
+    print(f"F({i}) = {fibonacci(i)}")
+\end{pythonbox}
+
+\hebrewsubsection{קוד לא צף: \entoc{Non-Floating Code}}
+
+% Command: \begin{pythonbox*} (non-floating version)
+\begin{pythonbox*}[קוד ארוך לא צף: \en{Long Non-Floating Code}]
+# Non-floating code block for longer listings
+class DataProcessor:
+    def __init__(self, data):
+        self.data = data
+        self.processed = False
+--
+        return self
+
+# Example usage
+processor = DataProcessor([1, 2, None, 4, 5])
+processor.clean().normalize()
+\end{pythonbox*}
+
+% Commands: \pythonverbatimformat (internal), \listingfont, \courierfont (internal)
+הפקודות הפנימיות \texttt{pythonverbatimformat}, \texttt{listingfont}, ו-\texttt{courierfont} מטפלות בעיצוב.
+
+% Command: \enpath (for paths with hyphens)
+--
+
+    \item \textbf{פקודות טבלה (8):} \texttt{hebrewtable}, \texttt{rtltabular}, \texttt{\textbackslash hebcell}, \texttt{\textbackslash encell}, \texttt{\textbackslash mixedcell}, \texttt{\textbackslash hebheader}, \texttt{\textbackslash enheader}, \texttt{\textbackslash rtlrow}
+
+    \item \textbf{פקודות איור (2):} \texttt{\textbackslash hebrewfigure}, סביבת \texttt{figure}
+
+    \item \textbf{פקודות קוד (7):} \texttt{pythonbox}, \texttt{pythonbox*}, \texttt{\textbackslash pythonverbatimformat}, \texttt{\textbackslash listingfont}, \texttt{\textbackslash courierfont}, \texttt{\textbackslash enpath}, \texttt{\textbackslash code}, \texttt{\textbackslash englishterm}
+
+    \item \textbf{פקודות מתמטיקה (8):} \texttt{\textbackslash argmin}, \texttt{\textbackslash argmax}, \texttt{\textbackslash hebmath}, \texttt{\textbackslash hebsub}, \texttt{\textbackslash Rsquared}, \texttt{\textbackslash Rtwo}, \texttt{\textbackslash rarrow}
+
+    \item \textbf{פקודות כותרת (5):} \texttt{\textbackslash hebrewtitle}, \texttt{\textbackslash englishtitle}, \texttt{\textbackslash hebrewauthor}, \texttt{\textbackslash hebrewversion}, \texttt{\textbackslash maketitle}
+
+=== Compilation Summary ===
+
+advanced_example.tex: SUCCESS - PDF generated
+beginner_example.tex: SUCCESS - PDF generated
+bibliography_example.tex: SUCCESS - PDF generated
+expert_example.tex: FAILED - No PDF
+footnote_example.tex: SUCCESS - PDF generated
+image_example.tex: SUCCESS - PDF generated
+intermediate_example.tex: SUCCESS - PDF generated
+mixed_content_demo.tex: FAILED - No PDF
+template_explanation.tex: FAILED - No PDF

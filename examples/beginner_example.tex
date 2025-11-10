@@ -1,0 +1,235 @@
+% ================================================
+% BEGINNER EXAMPLE - Hebrew Academic Template v5.0
+% ================================================
+% This example demonstrates basic features for beginners
+% Compiles to approximately 5-7 pages
+% Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
+
+\documentclass{hebrew-academic-template}
+
+% Add bibliography file
+\addbibresource{example_references.bib}
+
+% Title page information
+\hebrewtitle{דוגמה למתחילים - תבנית אקדמית עברית}
+\englishtitle{Beginner Example - Hebrew Academic Template v5.0}
+\hebrewauthor{ד"ר סגל יורם}
+\hebrewversion{גרסה \textenglish{5.0}}
+\date{\textenglish{November 2025}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% ==================== INTRODUCTION ====================
+% Demonstrates: \hebrewsection with \entoc{}, basic Hebrew/English mixing
+
+\hebrewsection{מבוא: \entoc{Introduction}}
+
+זהו מסמך דוגמה למתחילים המדגים את היכולות הבסיסיות של התבנית האקדמית העברית גרסה 5.0.
+התבנית מאפשרת כתיבה בעברית עם שילוב טקסט באנגלית כמו \en{Machine Learning} ו-\en{Artificial Intelligence}.
+
+% Demonstrate basic text direction commands
+אנו יכולים להשתמש במספרים כמו \num{100}, \num{250.5}, ו-\num{1000000} בתוך הטקסט העברי.
+השנה הנוכחית היא \hebyear{2025} והאחוזים מוצגים כך: \percent{95.5}.
+
+% Basic inline math
+ביטויים מתמטיים פשוטים כמו $E = mc^2$ או $\alpha + \beta = \gamma$ משתלבים בטבעיות בטקסט העברי.
+מונחים טכניים באנגלית מוצגים באמצעות \ilm{inline math} או \en{English text}.
+
+% ==================== BASIC LISTS ====================
+% Demonstrates: itemize and enumerate environments
+
+\hebrewsection{רשימות בסיסיות: \entoc{Basic Lists}}
+
+\hebrewsubsection{רשימה עם תבליטים: \entoc{Bulleted List}}
+
+רשימה פשוטה עם תבליטים:
+
+\begin{itemize}
+    \item פריט ראשון בעברית
+    \item פריט שני עם מונח באנגלית: \en{Python}
+    \item פריט שלישי עם מספר: \num{42}
+    \item פריט רביעי עם אחוז: \percent{75}
+\end{itemize}
+
+\hebrewsubsection{רשימה ממוספרת: \entoc{Numbered List}}
+
+רשימה ממוספרת עם שלבים:
+
+\begin{enumerate}
+    \item שלב ראשון: הכנת הנתונים
+    \item שלב שני: עיבוד באמצעות \en{preprocessing}
+    \item שלב שלישי: הרצת האלגוריתם
+    \item שלב רביעי: ניתוח התוצאות
+\end{enumerate}
+
+% ==================== SIMPLE TABLE ====================
+% Demonstrates: Basic table with \mixedcell
+
+\hebrewsection{טבלה בסיסית: \entoc{Basic Table}}
+
+להלן טבלה פשוטה המדגימה שימוש בפקודת \texttt{mixedcell} לתאים עם תוכן מעורב:
+
+\begin{hebrewtable}[h]
+\caption{נתונים בסיסיים: \entoc{Basic Data}}
+\begin{rtltabular}{|c|c|c|}
+\hline
+\mixedcell{\textbf{יחידה / \en{Unit}}} & \mixedcell{\textbf{ערך / \en{Value}}} & \mixedcell{\textbf{שם / \en{Name}}} \\
+\hline
+\en{km/h} & \num{100} & \mixedcell{מהירות / \en{Speed}} \\
+\hline
+\en{°C} & \num{25.5} & \mixedcell{טמפרטורה / \en{Temperature}} \\
+\hline
+\mixedcell{אחוזים / \en{Percent}} & \percent{98.7} & \mixedcell{דיוק / \en{Accuracy}} \\
+\hline
+\mixedcell{שניות / \en{Seconds}} & \num{3.14} & \mixedcell{זמן / \en{Time}} \\
+\hline
+\end{rtltabular}
+\end{hebrewtable}
+
+כפי שניתן לראות בטבלה, הפקודה \texttt{mixedcell} מאפשרת שילוב נוח של עברית ואנגלית באותו תא.
+
+% ==================== SIMPLE CODE ====================
+% Demonstrates: Basic Python code box
+
+\hebrewsection{קוד בסיסי: \entoc{Basic Code}}
+
+להלן דוגמת קוד פשוטה ב-\en{Python}:
+
+\begin{pythonbox}[חישוב ממוצע: \en{Calculate Average}]
+# פונקציה פשוטה לחישוב ממוצע
+def calculate_average(numbers):
+    """מחשבת את הממוצע של רשימת מספרים"""
+    if len(numbers) == 0:
+        return 0
+    total = sum(numbers)
+    average = total / len(numbers)
+    return average
+
+# דוגמת שימוש
+data = [10, 20, 30, 40, 50]
+result = calculate_average(data)
+print(f"הממוצע הוא: {result}")
+\end{pythonbox}
+
+הקוד מדגים פונקציה פשוטה לחישוב ממוצע של רשימת מספרים.
+
+% ==================== CITATIONS ====================
+% Demonstrates: Basic citations
+
+\hebrewsection{ציטוטים בסיסיים: \entoc{Basic Citations}}
+
+מחקרים מראים שאלגוריתמי \en{Deep Learning} משיגים תוצאות מרשימות \cite{vaswani2017attention}.
+גישת \en{BERT} שפותחה על ידי \en{Google} הביאה לשיפור משמעותי בעיבוד שפה טבעית \cite{devlin2018bert}.
+
+ניתן לצטט מספר מקורות יחד \cite{vaswani2017attention,devlin2018bert} או להוסיף הפניה לעמוד מסוים \cite[עמ' 42]{hebrew_nlp_2023}.
+
+% ==================== BASIC FIGURE ====================
+% Demonstrates: Simple figure with caption
+
+\hebrewsection{איור בסיסי: \entoc{Basic Figure}}
+
+\begin{figure}[h]
+\centering
+\fbox{\parbox{8cm}{
+    \centering
+    \vspace{2cm}
+    {\Large דוגמת איור}\\[0.5cm]
+    \en{Sample Figure}\\[0.5cm]
+    (מקום לתמונה)\\
+    \vspace{2cm}
+}}
+\caption{איור פשוט: \entoc{Simple Figure}}
+\label{fig:simple}
+\end{figure}
+
+איור \ref{fig:simple} מדגים הוספת איור בסיסי עם כיתוב בעברית ואנגלית.
+
+% ==================== SIMPLE MATH ====================
+% Demonstrates: Basic mathematical expressions
+
+\hebrewsection{ביטויים מתמטיים: \entoc{Mathematical Expressions}}
+
+משוואה פשוטה במרכז:
+
+\begin{equation}
+    f(x) = ax^2 + bx + c
+    \label{eq:quadratic}
+\end{equation}
+
+משוואה \ref{eq:quadratic} היא הנוסחה הריבועית הסטנדרטית.
+
+ביטויים מתמטיים נוספים:
+\begin{itemize}
+    \item אינטגרל: $\int_0^1 x^2 dx = \frac{1}{3}$
+    \item סכום: $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$
+    \item גבול: $\lim_{x \to \infty} \frac{1}{x} = 0$
+\end{itemize}
+
+% ==================== SUBSECTIONS ====================
+% Demonstrates: \hebrewsubsection usage
+
+\hebrewsection{תת-סעיפים: \entoc{Subsections}}
+
+\hebrewsubsection{תת-סעיף ראשון: \entoc{First Subsection}}
+
+זהו תת-סעיף ראשון המדגים את השימוש בפקודת \texttt{hebrewsubsection}.
+הפקודה יוצרת תת-סעיף עם מספור אוטומטי וכותרת דו-לשונית.
+
+\hebrewsubsection{תת-סעיף שני: \entoc{Second Subsection}}
+
+תת-סעיף נוסף עם תוכן שונה. שימו לב שהמספור נעשה באופן אוטומטי.
+ניתן להוסיף כמה תת-סעיפים שרוצים תחת כל סעיף ראשי.
+
+% ==================== ENGLISH SECTION ====================
+% Demonstrates: \englishsection with \startenglish and \stopenglish
+
+\englishsection{English Section}
+
+\startenglish
+This is a pure English section that demonstrates left-to-right text flow.
+All content in this section is in English and follows standard English typography conventions.
+
+The template supports both Hebrew and English sections seamlessly.
+You can include:
+\begin{itemize}
+    \item Bulleted lists in English
+    \item Mathematical expressions like $y = mx + b$
+    \item Code snippets and technical terms
+    \item References to figures and equations
+\end{itemize}
+
+This section uses the \texttt{startenglish} and \texttt{stopenglish} commands to ensure proper text direction.
+\stopenglish
+
+% ==================== SUMMARY ====================
+% Demonstrates: Conclusion section
+
+\hebrewsection{סיכום: \entoc{Summary}}
+
+מסמך זה הדגים את היכולות הבסיסיות של התבנית האקדמית העברית גרסה 5.0:
+
+\begin{itemize}
+    \item כתיבה בעברית עם שילוב אנגלית באמצעות \texttt{\textbackslash en\{\}}
+    \item שימוש במספרים (\texttt{\textbackslash num\{\}}), שנים (\texttt{\textbackslash hebyear\{\}}), ואחוזים (\texttt{\textbackslash percent\{\}})
+    \item יצירת סעיפים ותת-סעיפים עם \texttt{\textbackslash entoc\{\}} לתוכן העניינים
+    \item טבלאות עם תוכן מעורב באמצעות \texttt{\textbackslash mixedcell\{\}}
+    \item הוספת קוד עם \texttt{pythonbox}
+    \item ציטוטים ביבליוגרפיים
+    \item איורים וביטויים מתמטיים
+    \item סעיפים באנגלית עם \texttt{\textbackslash startenglish} ו-\texttt{\textbackslash stopenglish}
+\end{itemize}
+
+התבנית מספקת כלים נוחים ופשוטים לכתיבת מסמכים אקדמיים בעברית עם אינטגרציה מלאה של תוכן באנגלית.
+
+% ==================== BIBLIOGRAPHY ====================
+% Print bibliography sections
+
+\newpage
+\printhebrewbibliography
+\printenglishbibliography
+
+\end{document}

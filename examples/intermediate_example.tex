@@ -1,0 +1,376 @@
+% ================================================
+% INTERMEDIATE EXAMPLE - Hebrew Academic Template v5.0
+% ================================================
+% This example demonstrates intermediate features
+% Compiles to approximately 8-10 pages
+% Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
+
+\documentclass{hebrew-academic-template}
+
+% Add bibliography file
+\addbibresource{advanced_references.bib}
+
+% Title page information
+\hebrewtitle{דוגמה ברמה בינונית - תבנית אקדמית עברית}
+\englishtitle{Intermediate Example - Hebrew Academic Template v5.0}
+\hebrewauthor{ד"ר סגל יורם}
+\hebrewversion{גרסה 5.0 - מתקדם}
+\date{\textenglish{November 2025}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% ==================== INTRODUCTION ====================
+% Demonstrates: Multiple section levels, advanced text commands
+
+\hebrewsection{מבוא מורחב: \entoc{Extended Introduction}}
+
+מסמך זה מדגים יכולות מתקדמות של התבנית האקדמית העברית גרסה 5.0.
+נכסה שימוש במגוון רחב של פקודות כולל \en{Deep Learning}, \ilm{neural networks}, ועיבוד נתונים מורכב.
+
+\hebrewsubsection{רקע תיאורטי: \entoc{Theoretical Background}}
+
+המחקר בתחום הבינה המלאכותית התפתח משמעותית בשנת \hebyear{2025}.
+נתונים מראים עלייה של \percent{45.7} בביצועים לעומת \hebyear{2020}.
+מודלים מודרניים מעבדים כ-\num{1000000} פרמטרים בשנייה.
+
+% Demonstrate advanced number formatting
+הדיוק הממוצע עומד על \percent{97.85}, עם סטיית תקן של \num{2.34}.
+זמן העיבוד הוא \num{0.0025} שניות למדגם, או \num{2.5e-3} בכתיב מדעי.
+
+\hebrewsubsection{מתודולוגיה מתקדמת: \entoc{Advanced Methodology}}
+
+השיטה המוצעת כוללת מספר שלבים מורכבים:
+
+\begin{enumerate}
+    \item איסוף נתונים מ-\num{50} מקורות שונים
+    \item עיבוד מקדים באמצעות \en{preprocessing pipeline}
+    \item הפעלת אלגוריתם \en{transformer} עם \num{12} שכבות
+    \item אופטימיזציה באמצעות \en{Adam optimizer}
+    \item הערכה על \num{10000} דגימות בדיקה
+\end{enumerate}
+
+% ==================== COMPLEX TABLES ====================
+% Demonstrates: Multiple \mixedcell usage, complex table structure
+
+\hebrewsection{טבלאות מורכבות: \entoc{Complex Tables}}
+
+\hebrewsubsection{טבלת השוואה מפורטת: \entoc{Detailed Comparison Table}}
+
+\begin{hebrewtable}[h]
+\caption{השוואת מודלים מתקדמת: \entoc{Advanced Model Comparison}}
+\begin{rtltabular}{|c|c|c|c|c|}
+\hline
+\mixedcell{\textbf{מודל / \en{Model}}} &
+\mixedcell{\textbf{דיוק / \en{Accuracy}}} &
+\mixedcell{\textbf{זמן / \en{Time}}} &
+\mixedcell{\textbf{זיכרון / \en{Memory}}} &
+\mixedcell{\textbf{שנה / \en{Year}}} \\
+\hline
+\en{BERT-Base} & \percent{92.3} & \num{2.5} \en{ms} & \num{110} \en{MB} & \hebyear{2018} \\
+\hline
+\en{GPT-3} & \percent{95.7} & \num{5.2} \en{ms} & \num{175000} \en{MB} & \hebyear{2020} \\
+\hline
+\en{GPT-4} & \percent{98.1} & \num{8.7} \en{ms} & \en{N/A} & \hebyear{2023} \\
+\hline
+\mixedcell{מודל עברי / \en{Hebrew Model}} & \percent{89.5} & \num{3.1} \en{ms} & \num{250} \en{MB} & \hebyear{2024} \\
+\hline
+\end{rtltabular}
+\end{hebrewtable}
+
+\hebrewsubsection{טבלת נתונים סטטיסטיים: \entoc{Statistical Data Table}}
+
+\begin{hebrewtable}[h]
+\caption{ניתוח סטטיסטי: \entoc{Statistical Analysis}}
+\begin{rtltabular}{|l|c|c|c|}
+\hline
+\mixedcell{\textbf{מדד / \en{Metric}}} &
+\mixedcell{\textbf{ערך / \en{Value}}} &
+\mixedcell{\textbf{סטיית תקן / \en{Std Dev}}} &
+\mixedcell{\textbf{מובהקות / \en{p-value}}} \\
+\hline
+\mixedcell{ממוצע כללי / \en{Mean}} & \num{85.42} & \num{12.35} & \num{0.001} \\
+\hline
+\mixedcell{חציון / \en{Median}} & \num{87.50} & \en{N/A} & \num{0.002} \\
+\hline
+\mixedcell{שכיח / \en{Mode}} & \num{90.00} & \en{N/A} & \num{0.005} \\
+\hline
+\mixedcell{טווח / \en{Range}} & \num{45.00} & \en{N/A} & \num{0.010} \\
+\hline
+\end{rtltabular}
+\end{hebrewtable}
+
+% ==================== CODE EXAMPLES ====================
+% Demonstrates: pythonbox and code formatting
+
+\hebrewsection{דוגמאות קוד מתקדמות: \entoc{Advanced Code Examples}}
+
+\hebrewsubsection{עיבוד נתונים עם פנדס: \entoc{Data Processing with Pandas}}
+
+\begin{pythonbox}[ניתוח נתונים: \en{Data Analysis}]
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+
+# Load and prepare data
+def process_data(file_path):
+    """
+    Process raw data for machine learning
+    """
+    # Read CSV file
+    df = pd.read_csv(file_path)
+
+    # Handle missing values
+    df.fillna(df.mean(), inplace=True)
+
+    # Feature engineering
+    df['ratio'] = df['feature1'] / (df['feature2'] + 1e-6)
+    df['log_value'] = np.log1p(df['value'])
+
+    # Normalize features
+    scaler = StandardScaler()
+    features = ['feature1', 'feature2', 'ratio', 'log_value']
+    df[features] = scaler.fit_transform(df[features])
+
+    return df
+
+# Example usage
+data = process_data('data.csv')
+print(f"Processed {len(data)} samples")
+print(f"Features: {data.columns.tolist()}")
+\end{pythonbox}
+
+\hebrewsubsection{מימוש רשת נוירונים: \entoc{Neural Network Implementation}}
+
+\begin{pythonbox}[רשת נוירונים ב-\en{PyTorch}]
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class AdvancedNetwork(nn.Module):
+    def __init__(self, input_dim, hidden_dim, output_dim, dropout=0.2):
+        super(AdvancedNetwork, self).__init__()
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, hidden_dim // 2)
+        self.fc3 = nn.Linear(hidden_dim // 2, output_dim)
+        self.dropout = nn.Dropout(dropout)
+        self.batch_norm1 = nn.BatchNorm1d(hidden_dim)
+        self.batch_norm2 = nn.BatchNorm1d(hidden_dim // 2)
+
+    def forward(self, x):
+        x = F.relu(self.batch_norm1(self.fc1(x)))
+        x = self.dropout(x)
+        x = F.relu(self.batch_norm2(self.fc2(x)))
+        x = self.dropout(x)
+        x = self.fc3(x)
+        return F.softmax(x, dim=1)
+
+# Initialize model
+model = AdvancedNetwork(input_dim=100, hidden_dim=256, output_dim=10)
+print(f"Total parameters: {sum(p.numel() for p in model.parameters())}")
+\end{pythonbox}
+
+% ==================== FIGURES WITH CAPTIONS ====================
+% Demonstrates: Multiple figures, cross-references
+
+\hebrewsection{איורים ודיאגרמות: \entoc{Figures and Diagrams}}
+
+\hebrewsubsection{ארכיטקטורת המערכת: \entoc{System Architecture}}
+
+\begin{figure}[h]
+\centering
+\fbox{\parbox{10cm}{
+    \centering
+    \vspace{1.5cm}
+    {\Large ארכיטקטורת \en{Transformer}}\\[0.5cm]
+    \begin{center}
+    \begin{tabular}{c}
+    \en{Input Embeddings} \\
+    $\downarrow$ \\
+    \en{Multi-Head Attention} \\
+    $\downarrow$ \\
+    \en{Feed Forward} \\
+    $\downarrow$ \\
+    \en{Output}
+    \end{tabular}
+    \end{center}
+    \vspace{1.5cm}
+}}
+\caption{מבנה רשת \en{Transformer}: \entoc{Transformer Network Structure}}
+\label{fig:transformer}
+\end{figure}
+
+כפי שמוצג באיור \ref{fig:transformer}, הארכיטקטורה כוללת מספר שכבות של \en{attention}.
+
+\hebrewsubsection{תוצאות ויזואליות: \entoc{Visual Results}}
+
+\begin{figure}[h]
+\centering
+\fbox{\parbox{12cm}{
+    \centering
+    \vspace{2cm}
+    \begin{tabular}{cc}
+    \fbox{\parbox{5cm}{\centering גרף דיוק\\[3cm]\en{Accuracy Graph}}} &
+    \fbox{\parbox{5cm}{\centering גרף הפסד\\[3cm]\en{Loss Graph}}} \\
+    \end{tabular}
+    \vspace{0.5cm}
+}}
+\caption{גרפי ביצועים: \entoc{Performance Graphs} - דיוק והפסד לאורך \num{100} אפוקים}
+\label{fig:performance}
+\end{figure}
+
+איור \ref{fig:performance} מציג את השיפור בביצועים לאורך זמן האימון.
+
+% ==================== ADVANCED CITATIONS ====================
+% Demonstrates: Multiple citations, citations with pages
+
+\hebrewsection{ציטוטים מתקדמים: \entoc{Advanced Citations}}
+
+מחקרים רבים תומכים בגישה זו \cite{vaswani2017attention,devlin2018bert,hebrew_nlp_2023}.
+באופן ספציפי, \cite[עמ' 234]{vaswani2017attention} מציין שהשיטה משפרת ביצועים ב-\percent{15}.
+
+עבודות נוספות \cite{bert_paper_2018,gpt3_paper_2020} מראות תוצאות דומות.
+ניתוח מעמיק \cite[פרק 3]{hebrew_linguistics_2022} מגלה מורכבויות נוספות בעיבוד עברית.
+
+% ==================== MATHEMATICAL FORMULAS ====================
+% Demonstrates: Complex math expressions
+
+\hebrewsection{נוסחאות מתמטיות מתקדמות: \entoc{Advanced Mathematical Formulas}}
+
+\hebrewsubsection{נוסחת הקשב: \entoc{Attention Formula}}
+
+נוסחת הקשב המלאה היא:
+
+\begin{equation}
+\text{Attention}(Q,K,V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+\label{eq:attention}
+\end{equation}
+
+כאשר $Q \in \mathbb{R}^{n \times d_k}$, $K \in \mathbb{R}^{m \times d_k}$, ו-$V \in \mathbb{R}^{m \times d_v}$.
+
+\hebrewsubsection{פונקציית הפסד: \entoc{Loss Function}}
+
+פונקציית ההפסד המשולבת:
+
+\begin{equation}
+\mathcal{L}_{\text{total}} = \alpha \mathcal{L}_{\text{CE}} + \beta \mathcal{L}_{\text{KL}} + \gamma ||\theta||^2
+\label{eq:loss}
+\end{equation}
+
+כאשר:
+\begin{itemize}
+    \item $\mathcal{L}_{\text{CE}}$ - \en{Cross Entropy Loss}
+    \item $\mathcal{L}_{\text{KL}}$ - \en{KL Divergence}
+    \item $||\theta||^2$ - רגולריזציה \en{L2}
+    \item $\alpha = \num{0.7}$, $\beta = \num{0.2}$, $\gamma = \num{0.1}$
+\end{itemize}
+
+% ==================== CROSS REFERENCES ====================
+% Demonstrates: References to equations, figures, tables
+
+\hebrewsection{הפניות צולבות: \entoc{Cross References}}
+
+במסמך זה הצגנו:
+\begin{itemize}
+    \item משוואת הקשב (משוואה \ref{eq:attention})
+    \item פונקציית ההפסד (משוואה \ref{eq:loss})
+    \item ארכיטקטורת הרשת (איור \ref{fig:transformer})
+    \item גרפי ביצועים (איור \ref{fig:performance})
+\end{itemize}
+
+כל האלמנטים הללו מקושרים ומאפשרים ניווט קל במסמך.
+
+% ==================== ADVANCED LISTS ====================
+% Demonstrates: Nested lists, mixed content
+
+\hebrewsection{רשימות מתקדמות: \entoc{Advanced Lists}}
+
+\hebrewsubsection{רשימה מקוננת: \entoc{Nested List}}
+
+תהליך המחקר המלא:
+
+\begin{enumerate}
+    \item שלב ההכנה
+    \begin{itemize}
+        \item איסוף נתונים מ-\num{5} מקורות
+        \item ניקוי נתונים: הסרת \percent{10} מהדגימות
+        \item חלוקה: \percent{70} אימון, \percent{20} בדיקה, \percent{10} ולידציה
+    \end{itemize}
+
+    \item שלב העיבוד
+    \begin{itemize}
+        \item נרמול באמצעות \en{StandardScaler}
+        \item הנדסת תכונות: יצירת \num{25} תכונות חדשות
+        \item בחירת תכונות: שימוש ב-\en{PCA} להפחתה ל-\num{15} ממדים
+    \end{itemize}
+
+    \item שלב המידול
+    \begin{enumerate}[a.]
+        \item אימון מודל בסיס (\en{baseline})
+        \item כיול היפר-פרמטרים
+        \item אימון מודל סופי
+        \item הערכת ביצועים
+    \end{enumerate}
+\end{enumerate}
+
+% ==================== ENGLISH SECTION ====================
+% Demonstrates: Full English section with technical content
+
+\englishsection{Advanced Technical Analysis}
+
+\startenglish
+This section demonstrates advanced English content within a Hebrew document.
+We present a comprehensive analysis of modern machine learning techniques.
+
+\textbf{Key Contributions:}
+\begin{enumerate}
+    \item Novel architecture achieving 98.5\% accuracy
+    \item Reduction in training time by 45\%
+    \item Memory-efficient implementation using only 250MB
+    \item Cross-lingual transfer learning capabilities
+\end{enumerate}
+
+The mathematical foundation relies on the following optimization problem:
+
+$$\min_{\theta} \sum_{i=1}^{N} L(f_\theta(x_i), y_i) + \lambda R(\theta)$$
+
+where $f_\theta$ represents our model parameterized by $\theta$, $L$ is the loss function,
+and $R(\theta)$ is the regularization term with weight $\lambda = 0.01$.
+
+Our experimental setup includes:
+\begin{itemize}
+    \item \textbf{Dataset:} 1M samples from diverse sources
+    \item \textbf{Hardware:} NVIDIA A100 GPU with 40GB memory
+    \item \textbf{Framework:} PyTorch 2.0 with mixed precision training
+    \item \textbf{Optimization:} AdamW with learning rate scheduling
+\end{itemize}
+\stopenglish
+
+% ==================== SUMMARY ====================
+
+\hebrewsection{סיכום ומסקנות: \entoc{Summary and Conclusions}}
+
+מסמך זה הדגים יכולות מתקדמות של התבנית:
+
+\begin{itemize}
+    \item טבלאות מורכבות עם \num{5} עמודות ותוכן מעורב
+    \item קוד מתקדם עם \en{Python} ו-\en{PyTorch}
+    \item נוסחאות מתמטיות מורכבות
+    \item איורים מרובים עם הפניות צולבות
+    \item רשימות מקוננות ומורכבות
+    \item שימוש בכל פקודות המספרים: \texttt{\textbackslash num}, \texttt{\textbackslash percent}, \texttt{\textbackslash hebyear}
+    \item ציטוטים מתקדמים עם הפניות לעמודים
+\end{itemize}
+
+התבנית מספקת גמישות מלאה לכתיבת מסמכים אקדמיים מורכבים בעברית.
+
+% ==================== BIBLIOGRAPHY ====================
+
+\newpage
+\printhebrewbibliography
+\printenglishbibliography
+
+\end{document}
