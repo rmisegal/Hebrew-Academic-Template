@@ -178,23 +178,34 @@ qa-agents/
 
 ---
 
-### 📁 QA Infrastructure Agent
-**File:** `qa-infrastructure-agent.md`
+### 📐 Typeset QA Agents (LaTeX Source Level)
+**Location:** `C:\Users\gal-t\.claude\skills\qa-typeset\`
 
-**Specialization:** Project file organization and cleanup
+**Specialization:** LaTeX compilation warnings and source-level fixes
+
+**Skill Family (Level 2):**
+| Skill | Purpose |
+|-------|---------|
+| `qa-typeset-detect` | Parse .log for hbox/vbox warnings |
+| `qa-mdframed-detect` | Detect mdframed page break issues |
+| `qa-table-overflow-detect` | Detect wide tables without resizebox wrapper |
+| `qa-typeset-fix-hbox` | Fix Overfull/Underfull hbox |
+| `qa-typeset-fix-vbox` | Fix Overfull/Underfull vbox |
+| `qa-mdframed-fix` | Fix mdframed page breaks |
+| `qa-table-overflow-fix` | Fix wide tables with `\resizebox{\textwidth}{!}{}` |
 
 **Key Capabilities:**
-- ✅ Verify and reorganize project folder structure
-- ✅ Create complete project backups
-- ✅ Categorize and move files to appropriate directories
-- ✅ Maintain clean project organization
+- ✅ Parse LaTeX .log files for compilation warnings
+- ✅ Detect wide tables (5+ columns) without resizebox wrapper
+- ✅ Detect TikZ pictures that may overflow text width
+- ✅ Provide fix patterns for overfull/underfull boxes
 
 **When to Use:**
-- Project cleanup and reorganization
-- Before major structural changes
-- Maintaining organized file hierarchy
+- After LaTeX compilation to check for warnings
+- Before releasing documents to ensure clean builds
+- When tables appear to overflow page margins
 
-**Execution Priority:** LOW (infrastructure, not document quality)
+**Execution Priority:** HIGH (run after every compilation)
 
 ---
 
@@ -539,14 +550,7 @@ QA History:
 
 ## Version History
 
-- **v1.0** (2025-11-10): Initial QA agents collection
-  - RTL/LTR QA Agent
-  - Table Layout QA Agent
-  - Code Block QA Agent
-  - Drawing/Image QA Agent
-  - Claude CLI Structure Agent
-  - QA Infrastructure Agent
-  - **QA Orchestrator Agent** (NEW - master coordinator)
+- **v1.1** (2025-12-05): Current stable release with full QA coverage
 
 ---
 

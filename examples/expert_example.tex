@@ -14,7 +14,7 @@
 \hebrewtitle{דוגמת מומחה - כל הפקודות של התבנית}
 \englishtitle{Expert Example - All Template Commands v5.0}
 \hebrewauthor{ד"ר סגל יורם}
-\hebrewversion{גרסה 5.0 - הדגמה מלאה}
+\hebrewversion{גרסה \textenglish{5.0} - הדגמה מלאה}
 \date{\textenglish{November 2025}}
 
 \begin{document}
@@ -100,7 +100,7 @@ We can include:
 \hebrewsubsection{טבלה מקיפה: \entoc{Comprehensive Table}}
 
 % Commands: \begin{hebrewtable}, \begin{rtltabular}
-\begin{hebrewtable}[h]
+\begin{hebrewtable}[htbp]
 \caption{כל פקודות הטבלה: \entoc{All Table Commands}}
 % Commands in table: \hebcell, \mixedcell, \encell, \hebheader, \enheader
 \begin{rtltabular}{|c|c|c|c|}
@@ -136,12 +136,12 @@ We can include:
 \hebrewsection{פקודות איורים: \entoc{Figure Commands}}
 
 % Command: \hebrewfigure (command form)
-\hebrewfigure[h]{
+\hebrewfigure[htbp]{
     \includegraphics[width=0.8\textwidth]{images/example-figure1.png}
 }{איור בפקודה: \entoc{Command Form Figure}}
 
 % Environment form (also supported)
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{images/example-figure2.png}
 \caption{איור בסביבה: \entoc{Environment Form Figure}}
@@ -154,10 +154,10 @@ We can include:
 \hebrewsubsection{קוד צף: \entoc{Floating Code}}
 
 % Command: \begin{pythonbox}
-\begin{pythonbox}[דוגמת קוד צף: \en{Floating Code Example}]
-# הדגמת קוד Python עם הדגשת תחביר
+\begin{pythonbox}[\hebtitle{דוגמת קוד צף: \en{Floating Code Example}}]
+# Python code demonstration with syntax highlighting
 def fibonacci(n):
-    """חישוב סדרת פיבונאצ'י"""
+    """Calculate Fibonacci sequence"""
     if n <= 1:
         return n
     a, b = 0, 1
@@ -165,7 +165,7 @@ def fibonacci(n):
         a, b = b, a + b
     return b
 
-# בדיקת הפונקציה
+# Test the function
 for i in range(10):
     print(f"F({i}) = {fibonacci(i)}")
 \end{pythonbox}
@@ -173,20 +173,20 @@ for i in range(10):
 \hebrewsubsection{קוד לא צף: \entoc{Non-Floating Code}}
 
 % Command: \begin{pythonbox*} (non-floating version)
-\begin{pythonbox*}[קוד ארוך לא צף: \en{Long Non-Floating Code}]
-# בלוק קוד לא-צף עבור רישומים ארוכים
+\begin{pythonbox*}[\hebtitle{קוד ארוך לא צף: \en{Long Non-Floating Code}}]
+# Non-floating code block for long listings
 class DataProcessor:
     def __init__(self, data):
         self.data = data
         self.processed = False
 
     def clean(self):
-        # הסרת ערכי null
+        # Remove null values
         self.data = [x for x in self.data if x is not None]
         return self
 
     def normalize(self):
-        # נרמול לטווח 0-1
+        # Normalize to 0-1 range
         if self.data:
             min_val = min(self.data)
             max_val = max(self.data)
@@ -196,7 +196,7 @@ class DataProcessor:
         self.processed = True
         return self
 
-# דוגמת שימוש
+# Example usage
 processor = DataProcessor([1, 2, None, 4, 5])
 processor.clean().normalize()
 \end{pythonbox*}
@@ -270,7 +270,7 @@ processor.clean().normalize()
 % Demonstrate complex nested usage
 טבלה עם כל הפקודות המתקדמות:
 
-\begin{hebrewtable}[h]
+\begin{hebrewtable}[htbp]
 \caption{שילוב פקודות: \entoc{Command Integration}}
 \begin{rtltabular}{|p{3cm}|p{3cm}|p{4cm}|}
 \hline
@@ -318,20 +318,20 @@ processor.clean().normalize()
 J(\theta) &= \frac{1}{N}\sum_{i=1}^{N} L_{\hebsub{הפסד}}(f_\theta(x_i), y_i) + \lambda R(\theta) \\
 \theta_{t+1} &= \theta_t - \alpha \nabla_\theta J(\theta_t) \\
 \theta^* &= \argmin_{\theta \in \Theta} J(\theta) \\
-\text{כאשר } & \alpha = \num{0.001}, \lambda = \num{1e-4}
+\hebmath{כאשר } & \alpha = \num{0.001}, \lambda = \num{1e-4}
 \end{align}
 
 \hebrewsubsection{קוד מתקדם עם הערות: \entoc{Advanced Code with Comments}}
 
-\begin{pythonbox}[מימוש \en{Attention} עם \hebmath{קשב}]
+\begin{pythonbox}[\hebtitle{מימוש \en{Attention} עם \hebmath{קשב}}]
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
 class MultiHeadAttention(nn.Module):
     """
-    מנגנון attention רב-ראשי
-    משמש בארכיטקטורת Transformer
+    Multi-head attention mechanism
+    Used in Transformer architecture
     """
     def __init__(self, d_model=512, n_heads=8):
         super().__init__()
@@ -339,7 +339,7 @@ class MultiHeadAttention(nn.Module):
         self.n_heads = n_heads
         self.d_k = d_model // n_heads
 
-        # היטלים לינאריים
+        # Linear projections
         self.W_q = nn.Linear(d_model, d_model)
         self.W_k = nn.Linear(d_model, d_model)
         self.W_v = nn.Linear(d_model, d_model)
@@ -348,17 +348,17 @@ class MultiHeadAttention(nn.Module):
     def forward(self, query, key, value, mask=None):
         batch_size = query.size(0)
 
-        # הטלה ועיצוב מחדש
+        # Project and reshape
         Q = self.W_q(query).view(batch_size, -1, self.n_heads, self.d_k)
         K = self.W_k(key).view(batch_size, -1, self.n_heads, self.d_k)
         V = self.W_v(value).view(batch_size, -1, self.n_heads, self.d_k)
 
-        # טרנספוזיציה עבור attention
+        # Transpose for attention
         Q = Q.transpose(1, 2)
         K = K.transpose(1, 2)
         V = V.transpose(1, 2)
 
-        # attention עם מכפלה סקלרית מנורמלת
+        # Scaled dot-product attention
         scores = torch.matmul(Q, K.transpose(-2, -1)) / (self.d_k ** 0.5)
 
         if mask is not None:
@@ -367,11 +367,11 @@ class MultiHeadAttention(nn.Module):
         attention = F.softmax(scores, dim=-1)
         context = torch.matmul(attention, V)
 
-        # שרשור ראשים
+        # Concatenate heads
         context = context.transpose(1, 2).contiguous()
         context = context.view(batch_size, -1, self.d_model)
 
-        # היטל סופי
+        # Final projection
         output = self.W_o(context)
 
         return output, attention
@@ -460,7 +460,7 @@ The environment ensures consistent English formatting throughout.
 
 \hebrewsection{דיאגרמות מתקדמות: \entoc{Advanced Diagrams}}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \begin{tikzcd}
 A \arrow[r, "\alpha"] \arrow[d, "\beta"'] & B \arrow[d, "\gamma"] \\

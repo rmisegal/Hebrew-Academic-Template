@@ -211,6 +211,8 @@ lualatex simple_example.tex
 | `\LTR{text}` | Force LTR direction | `\LTR{Left-to-Right}` |
 | `\RTL{text}` | Force RTL direction | `\RTL{מימין לשמאל}` |
 | `\entoc{text}`| English in Table of Contents | `\hebrewsection{מבוא: \entoc{Intro}}`|
+| `\hebfoot{text}` | Hebrew RTL in footer/header | `\hebfoot{כל הזכויות - \en{© Name}}` |
+| `\hebtitle{text}` | Hebrew RTL in pythonbox title | `[\hebtitle{כותרת בעברית}]` |
 
 ### Section Commands
 
@@ -295,6 +297,39 @@ print(correlation)
 \end{rtltabular}
 \end{hebrewtable}
 ```
+
+### Custom Footer/Header with Hebrew
+
+For custom footers or headers with Hebrew content, use `\hebfoot{}` with `\en{}` for English:
+
+```latex
+% Custom footer with Hebrew RTL and English LTR
+\fancyfoot[LE,RO]{\hebfoot{כל הזכויות שמורות - \en{© Dr. Your Name}}}
+
+% Custom header with mixed content
+\fancyhead[RE,LO]{\hebfoot{מסמך אקדמי - \en{Academic Document}}}
+```
+
+**Important:** Do NOT use `\texthebrew{}` in fancyhdr - it doesn't properly set RTL direction. Always use `\hebfoot{}` for Hebrew in footers/headers.
+
+### Hebrew Titles in Pythonbox
+
+For Hebrew titles in pythonbox, use `\hebtitle{}`:
+
+```latex
+\begin{pythonbox}[\hebtitle{פתרון SVM עם cvxopt}]
+import numpy as np
+\end{pythonbox}
+```
+
+For mixed Hebrew/English titles:
+```latex
+\begin{pythonbox}[\hebtitle{פתרון \en{SVM} עם \en{cvxopt}}]
+import numpy as np
+\end{pythonbox}
+```
+
+**Important:** Always use `\hebtitle{}` for Hebrew in pythonbox titles. Pure English titles don't need wrapping.
 
 ### Bibliography Setup
 

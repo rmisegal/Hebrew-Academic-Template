@@ -48,34 +48,66 @@ Analyze compiled PDF documents to verify:
 **Expected Result:** Light gray background present AND properly contained within page margins
 
 ### 2. Character Encoding Check
-**Requirement:** All hyphens/minus signs in code must be ASCII standard (U+002D)
+**Requirement:** All hyphens/minus signs in code must be ASCII standard (U+002D) and must render correctly in PDF
 
 **Problematic Characters to Detect:**
 - U+2212 (−) - Mathematical minus sign
 - U+2013 (–) - En dash
 - U+2014 (—) - Em dash
 - Any other non-ASCII hyphen/minus variants
+- **Unknown/Missing character boxes (□, �, or empty spaces where hyphen should be)**
+- **Visual rendering failures where hyphen appears as "unknown character"**
+- **CRITICAL: Abnormally wide spaces in Hebrew text (non-standard space characters)**
+- **U+2003 (EM SPACE), U+2002 (EN SPACE), U+2009 (THIN SPACE) instead of normal space (U+0020)**
+- **Excessive spacing between Hebrew words indicating Unicode space variants**
+- **Multiple consecutive space characters visible in rendered output**
 
 **Detection Method:**
-- Scan all code content character by character
-- Identify hyphen/minus characters
+- Scan all code content character by character in the PDF
+- Identify hyphen/minus characters and their visual rendering
 - Report Unicode code point for each
 - Flag any non-ASCII variants
+- **CRITICAL: Detect visual rendering issues:**
+  - Check if character displays as unknown/missing glyph box
+  - Check if hyphen position shows empty space or replacement character
+  - Compare source code with PDF rendering to detect missing characters
+  - Report lines where hyphens fail to render properly
 
-**Expected Result:** Only ASCII U+002D (-) hyphens
+**Visual Rendering Failure Indicators:**
+- **□** (replacement character box)
+- **�** (Unicode replacement character U+FFFD)
+- Empty space where hyphen should appear
+- Different character appears than expected
+- Character cannot be selected/copied from PDF
+- Character appears corrupted or as dots
+- **CRITICAL: Abnormally wide spacing between Hebrew words in code strings/comments**
+- **Multiple visible spaces between words (e.g., "word   word   word" instead of "word word word")**
+- **Hebrew text with excessive gaps that are wider than normal single space**
+- **Space characters that appear 2-3x wider than standard space**
 
-### 3. Hebrew Translation Check
-**Requirement:** All code comments and docstrings should be in Hebrew
+**Expected Result:** Only ASCII U+002D (-) hyphens that render correctly as visible "-" in the PDF
+
+### 3. Language Check - ENGLISH ONLY MANDATORY
+**CRITICAL REQUIREMENT:** All code comments, docstrings, and string content MUST be in English only
+
+**Rationale:**
+- Hebrew text in code blocks causes severe rendering issues (wide spaces, missing spaces, reversed text)
+- Listings package does not properly handle RTL (Right-to-Left) text
+- English-only code ensures consistent rendering across all PDF viewers
+- Industry standard: Code should use English for comments and strings
+- Prevents Unicode space character issues (U+2003, U+2002, etc.)
 
 **Detection Method:**
 - Identify Python comments (lines starting with #)
 - Identify Python docstrings ("""...""")
+- Identify string literals in code (print statements, f-strings, etc.)
 - Detect language using character ranges:
-  - Hebrew: U+0590 to U+05FF
-  - English: U+0041 to U+007A
-- Report any English text found in comments
+  - Hebrew: U+0590 to U+05FF (RTL script - NOT ALLOWED)
+  - English: U+0041 to U+007A (LTR script - REQUIRED)
+- Report ANY Hebrew text found in code
+- Flag ALL non-English comments/strings as CRITICAL FAILURES
 
-**Expected Result:** All comments in Hebrew
+**Expected Result:** ALL comments, docstrings, and strings in English only - ZERO Hebrew characters allowed
 
 ### 4. Code Block Structure
 **Requirement:** Code should maintain LTR direction with proper tcolorbox formatting
@@ -117,11 +149,12 @@ Location: Page [N]
    - Unicode variants: [N]
    - Details: [list specific character issues with line numbers]
 
-✅/❌ Hebrew Translation: [PASS/FAIL]
-   - Total comments: [N]
-   - Hebrew comments: [N]
-   - English comments: [N]
-   - Details: [list English comments with line numbers]
+✅/❌ Language Check (English Only): [PASS/FAIL]
+   - Total comments/strings: [N]
+   - English (REQUIRED): [N]
+   - Hebrew (FORBIDDEN): [N]
+   - Other languages (FORBIDDEN): [N]
+   - Details: [list all non-English text with translations]
 
 ✅ Structure: [PASS/FAIL]
    - Text direction: [LTR/RTL]
@@ -135,26 +168,80 @@ Line 3: Found U+2212 (−) instead of U+002D (-)
         Context: "average = total − len(numbers)"
 Line 5: Found U+2013 (–) instead of U+002D (-)
         Context: "result = calculate–average(data)"
+
+VISUAL RENDERING FAILURES:
+Line 4: Hyphen renders as unknown character (□ or �)
+        Source code: "if len(numbers) == 0:"
+        PDF displays: "if len(numbers) == 0:" with "=" showing as unknown char
+        Character at position: U+003D expected, renders as missing glyph
+
+Line 6: Hyphen renders as empty space
+        Source code: "average = total / len(numbers)"
+        PDF displays: "average   total / len(numbers)" (hyphen missing)
+        Expected: "-" or "=" visible
+        Actual: Empty space or replacement character
+
+Line 10: Multiple hyphens fail to render
+        Source code: "result = calculate_average(data)"
+        PDF displays: "result   calculate average(data)"
+        Missing characters: "=" and "_" (underscore also affected)
+
+HEBREW SPACING ISSUES (CRITICAL):
+Line 3: Abnormally wide spaces in Hebrew docstring
+        Source code: """מחשבת את הממוצע של רשימת מספרים"""
+        PDF displays: """םירפסמ   תמישר   לש   עצוממה   תא   תבשחמ"""
+        Issue: Multiple consecutive spaces (3-5 spaces wide) between Hebrew words
+        Expected: Single space (U+0020) between words
+        Actual: Wide Unicode space characters (U+2003 EM SPACE or similar)
+        Visual Impact: Hebrew text appears fragmented with excessive gaps
+        Character count: Normal would be ~8 spaces, actual shows ~40+ space width
+
+Line 1: Comment spacing issue
+        Source code: "# פונקציה פשוטה לחישוב ממוצע"
+        PDF displays: "# עצוממבושיחלהטושפהיצקנופ" (no spaces at all - words concatenated)
+        Issue: Spaces completely missing between Hebrew words
+        Visual Impact: Hebrew words run together, unreadable
+
+Line 13: Print statement spacing
+        Source code: print(f"הממוצע הוא: {result}")
+        PDF displays: print(f"עצוממה אוה:} result}")
+        Issue: Missing opening brace "{" and spacing irregularities
 ```
 
-### Translation Issue Details
+### Language Violation Details
 ```
-TRANSLATION ISSUES:
-Line 1: English comment detected
-        Text: "# Simple function to calculate average"
-        Should be: "# פונקציה פשוטה לחישוב ממוצע"
+LANGUAGE VIOLATIONS - HEBREW TEXT IN CODE (CRITICAL):
 
-Line 2: English docstring detected
-        Text: """Calculate the average of a list of numbers"""
-        Should be: """מחשבת את הממוצע של רשימת מספרים"""
+Line 1: Hebrew comment detected
+        Text: "# פונקציה פשוטה לחישוב ממוצע"
+        MUST BE: "# Simple function to calculate average"
+        Issue: Hebrew characters U+05E4, U+05D5, U+05E0... detected
+        Action: TRANSLATE TO ENGLISH
 
-Line 9: English comment detected
-        Text: "# Example usage"
-        Should be: "# דוגמת שימוש"
+Line 3: Hebrew docstring detected
+        Text: """מחשבת את הממוצע של רשימת מספרים"""
+        MUST BE: """Calculate the average of a list of numbers"""
+        Issue: Hebrew characters in docstring cause wide space rendering
+        Action: TRANSLATE TO ENGLISH
 
-Line 12: English in print statement
-        Text: print(f"The average is: {result}")
-        Should be: print(f"הממוצע הוא: {result}")
+Line 10: Hebrew comment detected
+        Text: "# דוגמת שימוש"
+        MUST BE: "# Example usage"
+        Issue: Hebrew characters U+05D3, U+05D5... detected
+        Action: TRANSLATE TO ENGLISH
+
+Line 13: Hebrew in print statement
+        Text: print(f"הממוצע הוא: {result}")
+        MUST BE: print(f"The average is: {result}")
+        Issue: Hebrew string causes spacing issues in PDF
+        Action: TRANSLATE TO ENGLISH
+
+AUTO-TRANSLATION SUGGESTIONS:
+================================
+פונקציה פשוטה לחישוב ממוצע → Simple function to calculate average
+מחשבת את הממוצע של רשימת מספרים → Calculate the average of a list of numbers
+דוגמת שימוש → Example usage
+הממוצע הוא → The average is
 ```
 
 ### Fix Recommendations
@@ -263,7 +350,14 @@ For each code line:
 - Scan for hyphen/minus characters
 - Report Unicode code point
 - Flag non-ASCII variants
+- **Compare source code with PDF rendering:**
+  - Read the .tex source to see what characters were intended
+  - Compare with what actually appears in the PDF
+  - Detect missing characters (empty spaces where char should be)
+  - Detect replacement characters (□, �)
+  - Detect unknown character boxes
 - Provide context (surrounding text)
+- **Report visual rendering failures with before/after comparison**
 
 ### Step 5: Analyze Language
 For comment lines and docstrings:
@@ -291,13 +385,19 @@ All of the following must be true:
 - ✅ **Background is properly contained within page margins (no overflow)**
 - ✅ **Background is fully visible and not cut off**
 - ✅ All hyphens are ASCII U+002D
-- ✅ All comments are in Hebrew
+- ✅ **ALL comments, docstrings, and strings are in ENGLISH ONLY (MANDATORY)**
+- ✅ **ZERO Hebrew characters in code (MANDATORY)**
 - ✅ Code structure is LTR with tcolorbox
 
 ### FAIL Verdict Triggers
 Any of the following:
 - ❌ Non-ASCII hyphen characters found
-- ❌ English comments found
+- ❌ **Visual rendering failures: hyphens/characters render as unknown/missing (CRITICAL)**
+- ❌ **Characters display as □, �, or empty spaces (CRITICAL)**
+- ❌ **Source code characters missing from PDF rendering (CRITICAL)**
+- ❌ **Hebrew characters found in code (CRITICAL - MANDATORY FAILURE)**
+- ❌ **Non-English comments, docstrings, or strings detected (CRITICAL)**
+- ❌ **Abnormally wide spaces in text (indicates RTL rendering issues)**
 - ❌ White or missing background
 - ❌ **Background overflow beyond page margins (CRITICAL)**
 - ❌ **Background not visible (cut off or outside viewport)**

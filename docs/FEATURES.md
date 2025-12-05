@@ -1,146 +1,148 @@
-# Hebrew Academic Template v5.0 - Complete Feature List
+# Hebrew Academic Template v5.6 - Complete Feature List
 
 ## Feature Overview
 
-The Hebrew Academic Template v5.0 provides 78 commands, 8 environments, and 24+ packages for professional Hebrew academic documents.
+The Hebrew Academic Template v5.6 provides 80 commands, 8 environments, and 24+ packages for professional Hebrew academic documents with full bidirectional text support.
 
 ## Feature Comparison Table
 
-| Category | v1.0 | v3.0 | v5.0 | Enhancement |
+| Category | v1.0 | v3.0 | v5.6 | Enhancement |
 |----------|------|------|------|-------------|
-| **Total Commands** | 60 | 72 | 78 | +30% from v1.0 |
+| **Total Commands** | 60 | 72 | 80 | +33% from v1.0 |
 | **Environments** | 6 | 8 | 8 | +33% from v1.0 |
 | **Packages** | 22 | 24 | 24+ | +10% from v1.0 |
-| **Text Direction** | 12 | 14 | 15 | Complete |
+| **Text Direction** | 12 | 14 | 17 | Complete BiDi support |
 | **Section Types** | 5 | 6 | 6 | Chapter support |
 | **Table Commands** | 4 | 7 | 8 | Advanced cells |
 | **Math Support** | 1 | 8 | 8 | Full Hebrew math |
-| **Code Features** | 3 | 7 | 7 | Non-floating |
-| **Bibliography** | Basic | Basic | Enhanced | Biber restored |
+| **Code Features** | 3 | 7 | 7 | Hebrew titles |
+| **Bibliography** | Basic | Basic | Enhanced | Biber backend |
 
-## Command Reference Table (All 78 Commands)
+## Command Reference Table (All 80 Commands)
 
-### Text Direction Commands (15)
+### Text Direction Commands (17)
 
-| Command | Version | Purpose |
-|---------|---------|---------|
-| `\en{}` | v1.0+ | English in Hebrew context |
-| `\heb{}` | v1.0+ | Hebrew in English context |
-| `\ilm{}` | v1.0+ | Inline LTR (legacy) |
-| `\num{}` | v1.0+ | Numbers in Hebrew |
-| `\percent{}` | v1.0, v5.0 | Percentages with % |
-| `\hebyear{}` | v1.0+ | Years in Hebrew text |
-| `\ltr{}` | v1.0, v5.0 | Protect LTR from bidi |
-| `\LTR{}` | v1.0+ | Force LTR direction |
-| `\RTL{}` | v1.0+ | Force RTL direction |
-| `\startenglish` | v1.0+ | Begin English section |
-| `\stopenglish` | v1.0+ | End English section |
-| `\stophebrew` | v1.0+ | Return to Hebrew |
-| `\textenglish{}` | v1.0+ | Polyglossia English |
-| `\texthebrew{}` | v1.0+ | Polyglossia Hebrew |
-| `\selectlanguage{}` | v1.0+ | Switch language |
+| Command | Purpose |
+|---------|---------|
+| `\en{}` | English in Hebrew context |
+| `\heb{}` | Hebrew in English context |
+| `\ilm{}` | Inline LTR (legacy) |
+| `\num{}` | Numbers in Hebrew |
+| `\percent{}` | Percentages with % |
+| `\hebyear{}` | Years in Hebrew text |
+| `\ltr{}` | Protect LTR from bidi |
+| `\LTR{}` | Force LTR direction |
+| `\RTL{}` | Force RTL direction |
+| `\startenglish` | Begin English section |
+| `\stopenglish` | End English section |
+| `\stophebrew` | Return to Hebrew |
+| `\textenglish{}` | Polyglossia English |
+| `\texthebrew{}` | Polyglossia Hebrew |
+| `\selectlanguage{}` | Switch language |
+| `\hebfoot{}` | Hebrew RTL in footer/header |
+| `\hebtitle{}` | Hebrew RTL in tcolorbox/pythonbox title |
 
 ### Section Commands (6)
 
-| Command | Version | Purpose |
-|---------|---------|---------|
-| `\hebrewchapter{}` | v3.0+ | Book chapters |
-| `\hebrewsection{}` | v1.0+ | Main sections |
-| `\englishsection{}` | v1.0+ | English sections |
-| `\hebrewsubsection{}` | v1.0+ | Subsections |
-| `\HebrewTitle{}` | v1.0+ | Format Hebrew title |
-| `\HebrewSubtitle{}` | v1.0+ | Format subtitle |
+| Command | Purpose |
+|---------|---------|
+| `\hebrewchapter{}` | Book chapters |
+| `\hebrewsection{}` | Main sections |
+| `\englishsection{}` | English sections |
+| `\hebrewsubsection{}` | Subsections |
+| `\HebrewTitle{}` | Format Hebrew title |
+| `\HebrewSubtitle{}` | Format subtitle |
 
 ### Table Commands (8)
 
-| Command | Version | Purpose |
-|---------|---------|---------|
-| `hebrewtable` | v1.0+ | RTL table environment |
-| `rtltabular` | v1.0+ | RTL column order |
-| `\hebcell{}` | v1.0+ | Hebrew cell (enhanced v3.0) |
-| `\mixedcell{}` | v1.0+ | Mixed cell (alias) |
-| `\encell{}` | v3.0+ | English cell |
-| `\hebheader{}` | v3.0+ | Hebrew header |
-| `\enheader{}` | v3.0+ | English header |
-| `\rtlrow{}` | v1.0 | Auto-reverse columns |
+| Command | Purpose |
+|---------|---------|
+| `hebrewtable` | RTL table environment |
+| `rtltabular` | RTL column order |
+| `\hebcell{}` | Hebrew cell with RTL support |
+| `\mixedcell{}` | **DEPRECATED** - alias for `\hebcell{}` |
+| `\encell{}` | English cell |
+| `\hebheader{}` | Hebrew header |
+| `\enheader{}` | English header |
+| `\rtlrow{}` | Auto-reverse columns |
 
 ### Figure Commands (2)
 
-| Command | Version | Purpose |
-|---------|---------|---------|
-| `\hebrewfigure` | v1.0+ | Command form |
-| `hebrewfigure` env | v3.0+ | Environment form |
+| Command | Purpose |
+|---------|---------|
+| `\hebrewfigure` | Command form |
+| `hebrewfigure` env | Environment form |
 
 ### Code Commands (7)
 
-| Command | Version | Purpose |
-|---------|---------|---------|
-| `pythonbox` | v1.0+ | Floating code |
-| `pythonbox*` | v3.0+ | Non-floating code |
-| `\code{}` | v1.0+ | Inline code |
-| `\englishterm{}` | v1.0+ | Technical terms |
-| `\enpath{}` | v3.0+ | File paths |
-| `\listingfont` | v3.0+ | Listing font |
-| `\courierfont` | v3.0+ | Courier family |
+| Command | Purpose |
+|---------|---------|
+| `pythonbox` | Floating code with syntax highlighting |
+| `pythonbox*` | Non-floating code (page breaks OK) |
+| `\code{}` | Inline code |
+| `\englishterm{}` | Technical terms |
+| `\enpath{}` | File paths with hyphens |
+| `\listingfont` | Listing font |
+| `\courierfont` | Courier family |
 
 ### Math Commands (8)
 
-| Command | Version | Purpose |
-|---------|---------|---------|
-| `\hebmath{}` | v3.0+ | Hebrew in math |
-| `\hebsub{}` | v3.0+ | Hebrew subscript |
-| `\hebtextmath{}` | v1.0+ | Legacy Hebrew math |
-| `\argmin` | v3.0+ | Argmin operator |
-| `\argmax` | v3.0+ | Argmax operator |
-| `\Rsquared` | v3.0+ | R² symbol |
-| `\Rtwo` | v3.0+ | R² alternative |
-| `\rarrow` | v3.0+ | RTL arrow |
+| Command | Purpose |
+|---------|---------|
+| `\hebmath{}` | Hebrew in math |
+| `\hebsub{}` | Hebrew subscript |
+| `\hebtextmath{}` | Legacy Hebrew math |
+| `\argmin` | Argmin operator |
+| `\argmax` | Argmax operator |
+| `\Rsquared` | R² symbol |
+| `\Rtwo` | R² alternative |
+| `\rarrow` | RTL arrow |
 
 ### Bibliography Commands (3)
 
-| Command | Version | Purpose |
-|---------|---------|---------|
-| `\printhebrewbibliography` | v1.0+ | Hebrew refs |
-| `\printenglishbibliography` | v1.0+ | English refs |
-| `\ltrnumber{}` | v1.0+ | LTR numbers |
+| Command | Purpose |
+|---------|---------|
+| `\printhebrewbibliography` | Hebrew references |
+| `\printenglishbibliography` | English references |
+| `\ltrnumber{}` | LTR numbers |
 
 ### Title Commands (5)
 
-| Command | Version | Purpose |
-|---------|---------|---------|
-| `\hebrewtitle{}` | v1.0+ | Hebrew title |
-| `\englishtitle{}` | v1.0+ | English title |
-| `\hebrewauthor{}` | v1.0+ | Author name |
-| `\hebrewversion{}` | v3.0+ | Document version |
-| `\maketitle` | v1.0+ | Generate title |
+| Command | Purpose |
+|---------|---------|
+| `\hebrewtitle{}` | Hebrew title |
+| `\englishtitle{}` | English title |
+| `\hebrewauthor{}` | Author name |
+| `\hebrewversion{}` | Document version |
+| `\maketitle` | Generate title |
 
 ### Symbol Commands (2)
 
-| Command | Version | Purpose |
-|---------|---------|---------|
-| `\warningsymbol` | v1.0, v5.0 | Warning triangle |
-| `\checksymbol` | v1.0, v5.0 | Checkmark |
+| Command | Purpose |
+|---------|---------|
+| `\warningsymbol` | Warning triangle |
+| `\checksymbol` | Checkmark |
 
 ### Other Commands (22)
 
-| Command | Version | Purpose |
-|---------|---------|---------|
-| `\Hitem{}` | v1.0+ | Hebrew list item |
-| `\clsversion` | v3.0+ | Template version |
-| Various internal | v1.0+ | PDF, counters, etc. |
+| Command | Purpose |
+|---------|---------|
+| `\Hitem{}` | Hebrew list item |
+| `\clsversion` | Template version |
+| Various internal | PDF, counters, etc. |
 
 ## Environment Reference Table (8 Environments)
 
-| Environment | Version | Purpose | Features |
-|-------------|---------|---------|----------|
-| `hebrewtable` | v1.0+ | RTL table wrapper | Right-aligned caption |
-| `rtltabular` | v1.0+ | RTL columns | Right-to-left order |
-| `hebrewfigure` | v3.0+ | Figure environment | Hebrew captions |
-| `pythonbox` | v1.0+ | Floating code | Syntax highlighting |
-| `pythonbox*` | v3.0+ | Non-floating code | Page breaks OK |
-| `python` | v1.0+ | Code float | Internal use |
-| `hebrew` | v1.0+ | Hebrew block | Polyglossia |
-| `english` | v1.0+ | English block | Polyglossia |
+| Environment | Purpose | Features |
+|-------------|---------|----------|
+| `hebrewtable` | RTL table wrapper | Centered caption, RTL support |
+| `rtltabular` | RTL columns | Right-to-left column order |
+| `hebrewfigure` | Figure environment | Hebrew captions |
+| `pythonbox` | Floating code | Syntax highlighting, Hebrew titles with `\hebtitle{}` |
+| `pythonbox*` | Non-floating code | Page breaks OK, long code blocks |
+| `python` | Code float | Internal use |
+| `hebrew` | Hebrew block | Polyglossia |
+| `english` | English block | Polyglossia |
 
 ## Package Dependencies Table
 
@@ -192,54 +194,42 @@ The Hebrew Academic Template v5.0 provides 78 commands, 8 environments, and 24+ 
 | setspace | Spacing | Line spacing |
 | hyperref | PDF | Links, bookmarks |
 
-## Feature Evolution Timeline
+## Key Features
 
-### Version 1.0 (Foundation)
-- Basic RTL/LTR support
-- Essential commands (60)
-- Bibliography with biber
-- Simple tables
-- Basic math
+### Complete Bidirectional Support
+- Full RTL/LTR text handling throughout the document
+- Footer and header BiDi support with `\hebfoot{}`
+- Code block Hebrew titles with `\hebtitle{}`
+- Automatic direction for numbers, citations, and page numbers
 
-### Version 3.0 (Extension)
-- Chapter support (+)
-- Enhanced tables (+)
-- Hebrew in math (+)
-- Non-floating code (+)
-- Path support (+)
-- Lost biber (-)
-- Lost RTL captions (-)
-- Lost symbols (-)
+### Chapter and Section Hierarchy
+- Book-length document support with `\hebrewchapter{}`
+- Automatic section numbering (adapts to chapter/no-chapter mode)
+- Proper PDF bookmarks for all structural elements
 
-### Version 5.0 (Unification)
-- All v1.0 features restored (+)
-- All v3.0 features preserved (+)
-- PDF bookmarks fixed (+)
-- 100% backward compatible (+)
-- Complete documentation (+)
+### Professional Code Blocks
+- Floating (`pythonbox`) and non-floating (`pythonbox*`) environments
+- Hebrew titles supported via `\hebtitle{}`
+- Light gray background with proper LTR code rendering
+- Syntax highlighting for Python
 
-## Unique Features by Version
+### Advanced Table Support
+- RTL column ordering with `rtltabular`
+- Mixed content cells with `\hebcell{}`
+- Centered captions for academic formatting
+- Header commands for proper alignment
 
-### v1.0 Unique (Restored in v5.0)
-- `backend=biber` - Superior Unicode
-- RTL caption alignment
-- `\ltr{}` command
-- Symbol commands
+### Mathematical Expressions
+- Hebrew text in math mode with `\hebmath{}`
+- Hebrew subscripts with `\hebsub{}`
+- Standard math operators (`\argmin`, `\argmax`)
+- Proper LTR math rendering in RTL documents
 
-### v3.0 Unique (Preserved in v5.0)
-- `\hebrewchapter{}`
-- `\encell{}`, `\hebheader{}`, `\enheader{}`
-- `\hebmath{}`, `\hebsub{}`
-- `\argmin`, `\argmax`
-- `pythonbox*`
-- `\enpath{}`
-- Special characters
-
-### v5.0 Exclusive
-- `\phantomsection` fixes
-- Unified command set (78)
-- Complete compatibility
-- Comprehensive docs
+### Bibliography Management
+- Biber backend for superior Unicode support
+- Automatic Hebrew/English reference separation
+- IEEE citation style
+- LTR citation numbers in RTL text
 
 ## Feature Categories
 
@@ -327,11 +317,12 @@ The Hebrew Academic Template v5.0 provides 78 commands, 8 environments, and 24+ 
 
 ## Summary
 
-Hebrew Academic Template v5.0 represents the most complete version with:
-- **78 commands** covering all use cases
+Hebrew Academic Template v5.6 provides comprehensive support for Hebrew academic documents:
+- **80 commands** covering all use cases
 - **8 environments** for structured content
 - **24+ packages** professionally integrated
-- **100% compatibility** with all versions
-- **Zero regressions** from any version
+- **100% backward compatibility** with all previous versions
+- **Complete BiDi support** including footers, headers, and code block titles
+- **Professional typography** with smart font fallback system
 
 This is the definitive template for Hebrew academic documents.

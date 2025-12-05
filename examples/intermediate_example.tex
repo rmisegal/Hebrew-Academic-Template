@@ -60,15 +60,16 @@
 
 \hebrewsubsection{טבלת השוואה מפורטת: \entoc{Detailed Comparison Table}}
 
-\begin{hebrewtable}[h]
+\begin{hebrewtable}[htbp]
 \caption{השוואת מודלים מתקדמת: \entoc{Advanced Model Comparison}}
+\resizebox{\textwidth}{!}{%
 \begin{rtltabular}{|c|c|c|c|c|}
 \hline
-\mixedcell{\textbf{מודל / \en{Model}}} &
-\mixedcell{\textbf{דיוק / \en{Accuracy}}} &
-\mixedcell{\textbf{זמן / \en{Time}}} &
-\mixedcell{\textbf{זיכרון / \en{Memory}}} &
-\mixedcell{\textbf{שנה / \en{Year}}} \\
+\hebheader{\textbf{מודל / \en{Model}}} &
+\hebheader{\textbf{דיוק / \en{Accuracy}}} &
+\hebheader{\textbf{זמן / \en{Time}}} &
+\hebheader{\textbf{זיכרון / \en{Memory}}} &
+\hebheader{\textbf{שנה / \en{Year}}} \\
 \hline
 \en{BERT-Base} & \percent{92.3} & \num{2.5} \en{ms} & \num{110} \en{MB} & \hebyear{2018} \\
 \hline
@@ -76,29 +77,30 @@
 \hline
 \en{GPT-4} & \percent{98.1} & \num{8.7} \en{ms} & \en{N/A} & \hebyear{2023} \\
 \hline
-\mixedcell{מודל עברי / \en{Hebrew Model}} & \percent{89.5} & \num{3.1} \en{ms} & \num{250} \en{MB} & \hebyear{2024} \\
+\hebcell{מודל עברי / \en{Hebrew Model}} & \percent{89.5} & \num{3.1} \en{ms} & \num{250} \en{MB} & \hebyear{2024} \\
 \hline
-\end{rtltabular}
+\end{rtltabular}%
+}
 \end{hebrewtable}
 
 \hebrewsubsection{טבלת נתונים סטטיסטיים: \entoc{Statistical Data Table}}
 
-\begin{hebrewtable}[h]
+\begin{hebrewtable}[htbp]
 \caption{ניתוח סטטיסטי: \entoc{Statistical Analysis}}
 \begin{rtltabular}{|l|c|c|c|}
 \hline
-\mixedcell{\textbf{מדד / \en{Metric}}} &
-\mixedcell{\textbf{ערך / \en{Value}}} &
-\mixedcell{\textbf{סטיית תקן / \en{Std Dev}}} &
-\mixedcell{\textbf{מובהקות / \en{p-value}}} \\
+\hebheader{\textbf{מדד / \en{Metric}}} &
+\hebheader{\textbf{ערך / \en{Value}}} &
+\hebheader{\textbf{סטיית תקן / \en{Std Dev}}} &
+\hebheader{\textbf{מובהקות / \en{p-value}}} \\
 \hline
-\mixedcell{ממוצע כללי / \en{Mean}} & \num{85.42} & \num{12.35} & \num{0.001} \\
+\hebcell{ממוצע כללי / \en{Mean}} & \num{85.42} & \num{12.35} & \num{0.001} \\
 \hline
-\mixedcell{חציון / \en{Median}} & \num{87.50} & \en{N/A} & \num{0.002} \\
+\hebcell{חציון / \en{Median}} & \num{87.50} & \en{N/A} & \num{0.002} \\
 \hline
-\mixedcell{שכיח / \en{Mode}} & \num{90.00} & \en{N/A} & \num{0.005} \\
+\hebcell{שכיח / \en{Mode}} & \num{90.00} & \en{N/A} & \num{0.005} \\
 \hline
-\mixedcell{טווח / \en{Range}} & \num{45.00} & \en{N/A} & \num{0.010} \\
+\hebcell{טווח / \en{Range}} & \num{45.00} & \en{N/A} & \num{0.010} \\
 \hline
 \end{rtltabular}
 \end{hebrewtable}
@@ -110,7 +112,7 @@
 
 \hebrewsubsection{עיבוד נתונים עם פנדס: \entoc{Data Processing with Pandas}}
 
-\begin{pythonbox}[ניתוח נתונים: \en{Data Analysis}]
+\begin{pythonbox}[\hebtitle{ניתוח נתונים: \en{Data Analysis}}]
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
@@ -145,7 +147,7 @@ print(f"Features: {data.columns.tolist()}")
 
 \hebrewsubsection{מימוש רשת נוירונים: \entoc{Neural Network Implementation}}
 
-\begin{pythonbox}[רשת נוירונים ב-\en{PyTorch}]
+\begin{pythonbox}[\hebtitle{רשת נוירונים ב-\en{PyTorch}}]
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -180,7 +182,7 @@ print(f"Total parameters: {sum(p.numel() for p in model.parameters())}")
 
 \hebrewsubsection{ארכיטקטורת המערכת: \entoc{System Architecture}}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \fbox{\parbox{10cm}{
     \centering
@@ -207,7 +209,7 @@ print(f"Total parameters: {sum(p.numel() for p in model.parameters())}")
 
 \hebrewsubsection{תוצאות ויזואליות: \entoc{Visual Results}}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \fbox{\parbox{12cm}{
     \centering

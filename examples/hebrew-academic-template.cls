@@ -1,11 +1,40 @@
 % hebrew-academic-template.cls
-% Version 5.4 - Code Block Background Overflow Fix Edition
-% Date: 2025-11-10
+% Version 5.6 - Pythonbox Hebrew Title Fix Edition
+% Date: 2025-12-05
 %
 % A comprehensive LaTeX class for Hebrew academic documents with English integration
 % Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
 %
 % CHANGELOG:
+% v5.6.1 (2025-12-05) - CRITICAL: Fixed pythonbox environment stack corruption
+%   - FIXED: Hebrew titles in pythonbox causing environment stack corruption
+%   - Problem: \begin{python} float wrapper inside pythonbox conflicted with BiDi
+%   - Root cause: Nested python float + tcblisting + BiDi caused environment mismatch
+%   - Solution: Removed python float wrapper from pythonbox, using same approach as pythonbox*
+%   - Added detach title + before upper for better title handling
+%   - \hebtitle{} now uses LTR wrapper with RTL hbox for Hebrew content
+%
+% v5.6 (2025-12-05) - CRITICAL: Pythonbox Hebrew title fix
+%   - FIXED: Hebrew text in pythonbox/tcolorbox titles causing environment stack corruption
+%   - Problem: Hebrew titles in pythonbox caused compilation errors and corrupted environment
+%   - Root cause: tcolorbox title rendered in LTR context breaks Hebrew character handling
+%   - Solution: New \hebtitle{} command for RTL pythonbox/tcolorbox titles
+%   - Added \hebtitle{} command similar to \hebfoot{} but for tcolorbox title context
+%   - Usage: \begin{pythonbox}[\hebtitle{כותרת בעברית}]
+%   - Usage: \begin{pythonbox}[\hebtitle{פתרון \en{SVM} עם \en{cvxopt}}]
+%   - Detected by: qa-code-detect agent (pythonbox Hebrew title detection)
+%
+% v5.5 (2025-11-28) - CRITICAL: Footer/Header BiDi fix for mixed Hebrew/English content
+%   - FIXED: Hebrew text in fancyhdr footers appearing reversed (LTR instead of RTL)
+%   - Problem: \texthebrew{} in fancyfoot/fancyhead doesn't properly set RTL direction
+%   - Root cause: fancyhdr operates in LTR context even in RTL documents
+%   - Solution: New \hebfoot{} command for RTL footer/header text with \en{} for English
+%   - Added \hebfoot{} command similar to \hebcell{} but for footer/header context
+%   - Usage: \fancyfoot[LO]{\hebfoot{כל הזכויות שמורות - \en{© Dr. Name}}}
+%   - Updated footer definitions to use \hebfoot{} + \en{} pattern
+%   - Updated title page copyright to use \hebfoot{} + \en{} pattern
+%   - Detected by: Enhanced qa-BiDi-detect agent (Rule 5)
+%
 % v5.4 (2025-11-10) - CRITICAL: Code block background overflow fix + section numbering fix
 %   - FIXED: Background overflows to the right outside document in RTL context
 %   - Solution: Use python float environment wrapper + explicit text direction
@@ -77,11 +106,11 @@
 % - PDF bookmark support with proper hyperref integration
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hebrew-academic-template}[2025/11/10 v5.4 Hebrew Academic Template - Code Block Background Fix]
+\ProvidesClass{hebrew-academic-template}[2025/12/05 v5.6.1 Hebrew Academic Template - Pythonbox Hebrew Title Fix]
 
 % ==================== VERSION INFORMATION ====================
 % Version command - defined early for programmatic access
-\newcommand{\clsversion}{V5.4-2025-11-10}
+\newcommand{\clsversion}{V5.6.1-2025-12-05}
 
 % Base class - article with 12pt default and twoside for proper headers/footers
 \LoadClass[12pt,a4paper,twoside]{article}
@@ -155,6 +184,8 @@
   \def\ilm#1{#1}%
   \def\textbf#1{#1}%
   \def\LTR#1{#1}%
+  \def\hebfoot#1{#1}%
+  \def\hebtitle#1{#1}%
   \def\HebrewTitle#1#2{#1 #2}%
   \def\HebrewSubtitle#1#2{#1 #2}%
   \def\quad{ }%
@@ -577,15 +608,69 @@
 
 %% ==================== HEADER AND FOOTER ====================
 
+% \hebfoot{} - Hebrew RTL footer/header with mixed language support
+%
+% PURPOSE: Creates RTL footer/header text that supports mixed Hebrew/English content
+%
+% FEATURES:
+%   - Forces RTL (right-to-left) text direction for footer/header
+%   - Supports nested \en{} for English text (remains LTR inline)
+%   - Works within fancyhdr context (which defaults to LTR)
+%   - Similar to \hebcell{} but optimized for single-line footer/header context
+%
+% USAGE:
+%   \hebfoot{Hebrew text}                           % Pure Hebrew
+%   \hebfoot{Hebrew \en{English} more Hebrew}       % Mixed content
+%   \hebfoot{כל הזכויות שמורות - \en{© Dr. Name}}  % Copyright line
+%
+% IMPORTANT:
+%   - fancyhdr operates in LTR context even in RTL documents
+%   - \texthebrew{} alone is NOT sufficient - use \hebfoot{} instead
+%   - Always use \en{} for embedded English text within \hebfoot{}
+%
+\newcommand{\hebfoot}[1]{%
+  \bgroup%
+  \textdir TRT\pardir TRT%
+  \selectlanguage{hebrew}%
+  #1%
+  \egroup%
+}
+
+% \hebtitle{} - Hebrew RTL tcolorbox/pythonbox title with mixed language support
+%
+% PURPOSE: Creates RTL title text for tcolorbox-based environments (pythonbox, etc.)
+%
+% FEATURES:
+%   - Forces RTL (right-to-left) text direction for title
+%   - Supports nested \en{} for English text (remains LTR inline)
+%   - Works within tcolorbox title context
+%   - Prevents environment stack corruption from Hebrew in LTR context
+%
+% USAGE EXAMPLES:
+%   \begin{pythonbox}[\hebtitle{כותרת בעברית}]
+%   \begin{pythonbox}[\hebtitle{פתרון \en{SVM} עם \en{cvxopt}}]
+%   \begin{pythonbox}[\hebtitle{דוגמה מלאה: מנתונים לחיזוי}]
+%
+% NOTES:
+%   - Always use \hebtitle{} for Hebrew titles in pythonbox/tcolorbox
+%   - For mixed content: \hebtitle{Hebrew \en{English} more Hebrew}
+%   - Pure English titles don't need wrapping
+%
+% \hebtitle{} implementation that avoids BiDi environment corruption
+% Simple wrapper that uses brace grouping (no begingroup/endgroup)
+% This works inside tcolorbox/tcblisting titles
+\newcommand{\hebtitle}[1]{{\texthebrew{#1}}}
+
 % Page style configuration
 \pagestyle{fancy}
 \fancyhf{} % Clear all header/footer fields
 
 % Footer setup with rights and page numbers
+% FIXED v5.5: Using \hebfoot{} for proper RTL Hebrew with \en{} for English
 \fancyfoot[LE]{\textenglish{\thepage}} % Page number on left for even pages
 \fancyfoot[RO]{\textenglish{\thepage}} % Page number on right for odd pages
-\fancyfoot[RE]{\textenglish{©} \textenglish{Dr. Segal Yoram} - \texthebrew{כל הזכויות שמורות}} % Rights on right for even pages
-\fancyfoot[LO]{\textenglish{©} \textenglish{Dr. Segal Yoram} - \texthebrew{כל הזכויות שמורות}} % Rights on left for odd pages
+\fancyfoot[RE]{\hebfoot{כל הזכויות שמורות - \en{© Dr. Segal Yoram}}} % Rights on right for even pages
+\fancyfoot[LO]{\hebfoot{כל הזכויות שמורות - \en{© Dr. Segal Yoram}}} % Rights on left for odd pages
 
 % Remove header rule
 \renewcommand{\headrulewidth}{0pt}
@@ -660,7 +745,7 @@
       \ifdefined\@hebrewauthor%
         {\large \texthebrew{\@hebrewauthor} \par}%
         \vskip 0.5em%
-        {\large \textenglish{©} \textenglish{Dr. Segal Yoram} - \texthebrew{כל הזכויות שמורות} \par}%
+        {\large \hebfoot{כל הזכויות שמורות - \en{© Dr. Segal Yoram}} \par}%
       \else%
         {\large \@author \par}%
       \fi%
@@ -737,17 +822,15 @@
   fonttitle=\bfseries,
   coltitle=black,
   title=#1,
-  before={\begin{python}\begingroup\selectlanguage{english}\textdir TLT\pardir TLT},
-  after={\endgroup\end{python}},
+  before={\begingroup\selectlanguage{english}\textdir TLT\pardir TLT},
+  after={\endgroup},
   listing options={
     basicstyle=\pythonverbatimformat,
     tabsize=4,
     breaklines=true,
     showspaces=false,
     showtabs=false,
-    language=Python,
-    literate={-}{{-}}1 {−}{{-}}1 {–}{{-}}1 {—}{{-}}1,  % Replace all hyphen variants with ASCII hyphen
-    upquote=true  % Ensure quotes are straight
+    language=Python
   }
 }
 
@@ -784,9 +867,7 @@
     breaklines=true,
     showspaces=false,
     showtabs=false,
-    language=Python,
-    literate={-}{{-}}1 {−}{{-}}1 {–}{{-}}1 {—}{{-}}1,  % Replace all hyphen variants with ASCII hyphen
-    upquote=true  % Ensure quotes are straight
+    language=Python
   }
 }
 

@@ -14,7 +14,9 @@
       "Bash(git remote add:*)",
       "Bash(git push:*)",
       "Bash(git fetch:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(/dev/null)",
+      "Bash(if not exist images mkdir images)"
     ],
     "deny": [],
     "ask": []

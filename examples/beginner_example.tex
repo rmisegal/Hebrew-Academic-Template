@@ -73,24 +73,24 @@
 
 להלן טבלה פשוטה המדגימה שימוש בפקודת \texttt{mixedcell} לתאים עם תוכן מעורב:
 
-\begin{hebrewtable}[h]
+\begin{hebrewtable}[htbp]
 \caption{נתונים בסיסיים: \entoc{Basic Data}}
 \begin{rtltabular}{|c|c|c|}
 \hline
-\mixedcell{\textbf{יחידה / \en{Unit}}} & \mixedcell{\textbf{ערך / \en{Value}}} & \mixedcell{\textbf{שם / \en{Name}}} \\
+\hebheader{\textbf{שם / \en{Name}}} & \hebheader{\textbf{ערך / \en{Value}}} & \hebheader{\textbf{יחידה / \en{Unit}}} \\
 \hline
-\en{km/h} & \num{100} & \mixedcell{מהירות / \en{Speed}} \\
+\hebcell{מהירות / \en{Speed}} & \num{100} & \en{km/h} \\
 \hline
-\en{°C} & \num{25.5} & \mixedcell{טמפרטורה / \en{Temperature}} \\
+\hebcell{טמפרטורה / \en{Temperature}} & \num{25.5} & \en{°C} \\
 \hline
-\mixedcell{אחוזים / \en{Percent}} & \percent{98.7} & \mixedcell{דיוק / \en{Accuracy}} \\
+\hebcell{דיוק / \en{Accuracy}} & \percent{98.7} & \hebcell{אחוזים / \en{Percent}} \\
 \hline
-\mixedcell{שניות / \en{Seconds}} & \num{3.14} & \mixedcell{זמן / \en{Time}} \\
+\hebcell{זמן / \en{Time}} & \num{3.14} & \hebcell{שניות / \en{Seconds}} \\
 \hline
 \end{rtltabular}
 \end{hebrewtable}
 
-כפי שניתן לראות בטבלה, הפקודה \texttt{mixedcell} מאפשרת שילוב נוח של עברית ואנגלית באותו תא.
+כפי שניתן לראות בטבלה, הפקודה \texttt{hebcell} מאפשרת שילוב נוח של עברית ואנגלית באותו תא.
 
 % ==================== SIMPLE CODE ====================
 % Demonstrates: Basic Python code box
@@ -99,20 +99,20 @@
 
 להלן דוגמת קוד פשוטה ב-\en{Python}:
 
-\begin{pythonbox}[חישוב ממוצע: \en{Calculate Average}]
-# פונקציה פשוטה לחישוב ממוצע
+\begin{pythonbox}[\hebtitle{חישוב ממוצע: \en{Calculate Average}}]
+# Simple function to calculate average
 def calculate_average(numbers):
-    """מחשבת את הממוצע של רשימת מספרים"""
+    """Calculate the average of a list of numbers"""
     if len(numbers) == 0:
         return 0
     total = sum(numbers)
     average = total / len(numbers)
     return average
 
-# דוגמת שימוש
+# Example usage
 data = [10, 20, 30, 40, 50]
 result = calculate_average(data)
-print(f"הממוצע הוא: {result}")
+print(f"The average is: {result}")
 \end{pythonbox}
 
 הקוד מדגים פונקציה פשוטה לחישוב ממוצע של רשימת מספרים.
@@ -132,16 +132,9 @@ print(f"הממוצע הוא: {result}")
 
 \hebrewsection{איור בסיסי: \entoc{Basic Figure}}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
-\fbox{\parbox{8cm}{
-    \centering
-    \vspace{2cm}
-    {\Large דוגמת איור}\\[0.5cm]
-    \en{Sample Figure}\\[0.5cm]
-    (מקום לתמונה)\\
-    \vspace{2cm}
-}}
+\includegraphics[width=0.7\textwidth]{images/example-figure1.png}
 \caption{איור פשוט: \entoc{Simple Figure}}
 \label{fig:simple}
 \end{figure}

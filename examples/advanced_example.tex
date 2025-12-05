@@ -51,14 +51,15 @@
 \begin{hebrewtable}[htbp]
 \caption{ביצועי מודלים על מטלות שונות: \entoc{Model Performance on Various Tasks}}
 \label{tab:performance}
+\resizebox{\textwidth}{!}{%
 \begin{rtltabular}{|c|c|c|c|c|l|}
 \hline
-\mixedcell{\textbf{ממוצע / \en{Average}}} &
-\mixedcell{\textbf{מענה / \en{QA}}} &
-\mixedcell{\textbf{סיכום / \en{Summarization}}} &
-\mixedcell{\textbf{תרגום / \en{Translation}}} &
-\mixedcell{\textbf{סיווג / \en{Classification}}} &
-\mixedcell{\textbf{מודל / \en{Model}}} \\
+\hebheader{\textbf{ממוצע / \en{Average}}} &
+\hebheader{\textbf{מענה / \en{QA}}} &
+\hebheader{\textbf{סיכום / \en{Summarization}}} &
+\hebheader{\textbf{תרגום / \en{Translation}}} &
+\hebheader{\textbf{סיווג / \en{Classification}}} &
+\hebheader{\textbf{מודל / \en{Model}}} \\
 \hline
 \hline
 \percent{88.8} & \percent{88.9} & \percent{85.2} & \en{N/A} & \percent{92.3} & \en{BERT-Base} \\
@@ -73,9 +74,10 @@
 \hline
 \percent{93.9} & \percent{94.1} & \percent{93.2} & \percent{92.4} & \percent{95.8} & \en{T5-Large} \\
 \hline
-\percent{83.9} & \percent{86.7} & \percent{81.2} & \percent{78.5} & \percent{89.3} & \mixedcell{מודל עברי / \en{HeBERT}} \\
+\percent{83.9} & \percent{86.7} & \percent{81.2} & \percent{78.5} & \percent{89.3} & \hebcell{מודל עברי / \en{HeBERT}} \\
 \hline
-\end{rtltabular}
+\end{rtltabular}%
+}
 \end{hebrewtable}
 
 כפי שניתן לראות בטבלה \ref{tab:performance}, המודלים הגדולים משיגים ביצועים טובים יותר.
@@ -85,13 +87,14 @@
 \begin{hebrewtable}[htbp]
 \caption{דרישות משאבי חישוב: \entoc{Computational Resource Requirements}}
 \label{tab:resources}
+\resizebox{\textwidth}{!}{%
 \begin{rtltabular}{|c|c|c|c|p{3cm}|}
 \hline
-\mixedcell{\textbf{עלות / \en{Cost}}} &
-\mixedcell{\textbf{זמן אימון / \en{Training Time}}} &
-\mixedcell{\textbf{זיכרון / \en{Memory}}} &
-\mixedcell{\textbf{פרמטרים / \en{Parameters}}} &
-\mixedcell{\textbf{מודל / \en{Model}}} \\
+\hebheader{\textbf{עלות / \en{Cost}}} &
+\hebheader{\textbf{זמן אימון / \en{Training Time}}} &
+\hebheader{\textbf{זיכרון / \en{Memory}}} &
+\hebheader{\textbf{פרמטרים / \en{Parameters}}} &
+\hebheader{\textbf{מודל / \en{Model}}} \\
 \hline
 \$\num{500} & \num{4} ימים & \num{440} \en{MB} & \num{110e6} & \en{BERT-Base} \\
 \hline
@@ -105,7 +108,8 @@
 \hline
 \$\num{50000} & \num{21} ימים & \num{44} \en{GB} & \num{11e9} & \en{T5-11B} \\
 \hline
-\end{rtltabular}
+\end{rtltabular}%
+}
 \end{hebrewtable}
 
 % ==================== MULTIPLE CODE EXAMPLES ====================
@@ -115,7 +119,7 @@
 \hebrewsubsection{מימוש מלא של רשת: \entoc{Complete Network Implementation}}
 
 % Using floating pythonbox
-\begin{pythonbox}[מימוש \en{Transformer} מלא]
+\begin{pythonbox}[\hebtitle{מימוש \en{Transformer} מלא}]
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -160,7 +164,7 @@ class MultiHeadAttention(nn.Module):
 \hebrewsubsection{עיבוד נתונים מתקדם: \entoc{Advanced Data Processing}}
 
 % Using non-floating pythonbox* (if supported in v5.0)
-\begin{pythonbox}[עיבוד מקדים לנתוני טקסט]
+\begin{pythonbox}[\hebtitle{עיבוד מקדים לנתוני טקסט}]
 import re
 import numpy as np
 from collections import Counter
@@ -332,6 +336,7 @@ $$
 
 \begin{figure}[htbp]
 \centering
+\resizebox{\textwidth}{!}{%
 \fbox{\parbox{14cm}{
     \centering
     \vspace{1.5cm}
@@ -348,7 +353,8 @@ $$
     \draw[->] (decode) -- (output);
     \end{tikzpicture}
     \vspace{1.5cm}
-}}
+}}%
+}
 \caption{תהליך עיבוד מלא: \entoc{Complete Processing Pipeline}}
 \label{fig:results}
 \end{figure}

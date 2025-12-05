@@ -2,6 +2,94 @@
 
 All notable changes to the Hebrew Academic Template are documented here.
 
+## [5.6.1] - 2025-12-05 - Pythonbox Environment Stability
+
+### Overview
+Stabilized pythonbox environment by removing conflicting float wrapper that caused environment stack issues with BiDi.
+
+### Fixed
+- **Pythonbox Environment Stability** - Removed `python` float wrapper from pythonbox environment
+  - Previous float wrapper conflicted with BiDi processing
+  - Now uses same stable approach as `pythonbox*`
+  - `\hebtitle{}` implementation simplified to use `\texthebrew{}` wrapper
+
+### Technical Details
+- **CLS Version:** V5.6.1-2025-12-05
+- **Total Commands:** 80
+- **Backward Compatibility:** 100%
+
+---
+
+## [5.6.0] - 2025-12-05 - Pythonbox Hebrew Title Support
+
+### Overview
+Added `\hebtitle{}` command for Hebrew titles in pythonbox/tcolorbox environments.
+
+### Added
+- **`\hebtitle{}`** - Hebrew RTL titles in pythonbox/tcolorbox
+  - Supports nested `\en{}` for English text
+  - Prevents rendering issues from Hebrew in code block titles
+- **PDF String Handling:** Added `\hebtitle` to `\pdfstringdefDisableCommands`
+
+### Usage Examples
+```latex
+% Pure Hebrew title
+\begin{pythonbox}[\hebtitle{כותרת בעברית}]
+...code...
+\end{pythonbox}
+
+% Mixed Hebrew/English title
+\begin{pythonbox}[\hebtitle{פתרון \en{SVM} עם \en{cvxopt}}]
+...code...
+\end{pythonbox}
+
+% Pure English title (no wrapper needed)
+\begin{pythonbox}[SVM Solution with cvxopt]
+...code...
+\end{pythonbox}
+```
+
+---
+
+## [5.5.0] - 2025-11-28 - Footer/Header BiDi Fix Edition
+
+### Overview
+CRITICAL fix for Hebrew text in fancyhdr footers/headers appearing reversed (LTR instead of RTL). Added new `\hebfoot{}` command for proper mixed Hebrew/English content in footer/header context.
+
+### Fixed (1 Critical Issue)
+- **CRITICAL: Fixed Hebrew text in footers appearing reversed (LTR)** - Hebrew now displays properly RTL
+  - **Problem:** Hebrew text "כל הזכויות שמורות" appeared as "תורומש תויוכז הלכ" (reversed) in page footers
+  - **Root Cause:** fancyhdr operates in LTR context even in RTL documents; `\texthebrew{}` alone doesn't set proper RTL direction
+  - **User Report:** "some of the pages the footer do not support bidi. see for example page 62 footer"
+  - **Solution:** New `\hebfoot{}` command that explicitly sets `\textdir TRT\pardir TRT` for footer/header context
+  - **Usage Pattern:** `\hebfoot{כל הזכויות שמורות - \en{© Dr. Name}}` (Hebrew RTL base with `\en{}` for English LTR)
+  - **Lines Changed:** CLS lines 591-617 (new command), 627-628 (footer definitions), 703 (title page)
+  - **Impact:** All document footers and title page copyright now display Hebrew correctly in RTL
+  - **Detected by:** Enhanced qa-BiDi-detect agent (Rule 5: Header/Footer Hebrew)
+
+### Added
+- **New Command:** `\hebfoot{}` - Hebrew RTL footer/header with mixed language support
+  - Forces RTL text direction for footer/header content
+  - Supports nested `\en{}` for English text (remains LTR inline)
+  - Similar to `\hebcell{}` but optimized for single-line footer/header context
+  - Works within fancyhdr context which defaults to LTR
+- **PDF String Handling:** Added `\hebfoot` to `\pdfstringdefDisableCommands` for hyperref compatibility
+
+### Changed
+- Footer definitions now use `\hebfoot{}` + `\en{}` pattern (lines 627-628)
+- Title page copyright now uses `\hebfoot{}` + `\en{}` pattern (line 703)
+- Version string: "V5.5-2025-11-28"
+
+### Technical Details
+- **CLS Version:** V5.5-2025-11-28
+- **Total Commands:** 79 (up from 78)
+- **Lines Changed:** CLS lines 591-617 (new `\hebfoot{}` command), 627-628 (footer definitions), 703 (title page copyright)
+- **Root Cause Analysis:** fancyhdr operates independently of document RTL settings; requires explicit text direction commands
+- **Fix Mechanism:** `\hebfoot{}` wraps content in `\bgroup\textdir TRT\pardir TRT\selectlanguage{hebrew}...\egroup`
+- **Pattern:** Follows established `\hebcell{}` pattern from table cell handling
+- **Backward Compatibility:** 100% - existing documents work unchanged, new `\hebfoot{}` available for custom footers
+- **Cross-Platform:** Uses standard luabidi commands, works on Windows/MiKTeX and Linux/TeX Live
+
 ## [5.4.0] - 2025-11-10 - Code Block Background Overflow Fix Edition
 
 ### Overview
@@ -301,37 +389,49 @@ The definitive version combining all features from previous versions with all re
 
 ## Version Comparison Summary
 
-| Feature | v1.0 | v3.0 | v5.0 |
-|---------|------|------|------|
-| Commands | 60 | 72 | 78 |
-| Environments | 6 | 8 | 8 |
-| Packages | 22 | 24 | 24+ |
-| Chapter Support | ✗ | ✓ | ✓ |
-| Enhanced Tables | ✗ | ✓ | ✓ |
-| Non-floating Code | ✗ | ✓ | ✓ |
-| Biber Backend | ✓ | ✗ | ✓ |
-| RTL Captions | ✓ | ✗ | ✓ |
-| PDF Bookmarks | Issues | Issues | ✓ |
-| Symbol Commands | ✓ | ✗ | ✓ |
+| Feature | v1.0 | v3.0 | v5.0 | v5.6 |
+|---------|------|------|------|------|
+| Commands | 60 | 72 | 78 | 80 |
+| Environments | 6 | 8 | 8 | 8 |
+| Packages | 22 | 24 | 24+ | 24+ |
+| Chapter Support | ✗ | ✓ | ✓ | ✓ |
+| Enhanced Tables | ✗ | ✓ | ✓ | ✓ |
+| Non-floating Code | ✗ | ✓ | ✓ | ✓ |
+| Biber Backend | ✓ | ✗ | ✓ | ✓ |
+| RTL Captions | ✓ | ✗ | ✓ | ✓ |
+| PDF Bookmarks | Issues | Issues | ✓ | ✓ |
+| Symbol Commands | ✓ | ✗ | ✓ | ✓ |
+| Footer BiDi | Issues | Issues | Issues | ✓ |
+| Code Block Hebrew Titles | ✗ | ✗ | ✗ | ✓ |
 
 ## Migration Notes
 
-### From v1.0 to v5.0
+### From v1.0 to v5.6
 - No changes required - fully backward compatible
 - New features available but not required
 - Consider using new table commands for better formatting
+- Footer/header Hebrew text displays correctly
+- Hebrew titles in code blocks supported with `\hebtitle{}`
 
-### From v3.0 to v5.0
+### From v3.0 to v5.6
 - No changes required - fully backward compatible
 - PDF bookmark errors automatically fixed
-- Table captions now properly aligned
+- Table captions properly centered
+- Footer Hebrew text displays correctly
+- Code block Hebrew titles supported
+
+### From v5.0/v5.4/v5.5 to v5.6
+- No changes required - fully backward compatible
+- For Hebrew titles in pythonbox, use `\hebtitle{}`
 
 ## Development History
 
 The Hebrew Academic Template evolved through community needs:
 
-1. **v1.0** - Created for basic Hebrew academic documents
+1. **v1.0** - Foundation for Hebrew academic documents
 2. **v3.0** - Extended for book-length works with chapters
 3. **v5.0** - Unified all features, fixed all regressions
+4. **v5.5** - Footer/header BiDi support
+5. **v5.6** - Pythonbox Hebrew title support
 
 Each version built upon user feedback and real-world usage in academic institutions.
