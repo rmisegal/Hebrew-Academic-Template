@@ -2,13 +2,13 @@
 
 **Copyright:** © 2025 Dr. Segal Yoram. All rights reserved.
 
-## 📋 Complete Mixed Content Rules
+## Complete Mixed Content Rules
 
 This guide provides detailed, precise, and technical instructions for creating professional documents that combine Hebrew and English in LaTeX using the `hebrew-academic-template.cls`. These rules ensure full compliance with academic standards and proper text direction handling.
 
-## 🎯 Critical Text Direction Rules
+## Text Direction Rules
 
-### ✅ **MUST Use LTR Direction:**
+### **LTR Direction (Use For):**
 
 1. **All Numbers** - Always wrap with `\num{}`
 2. **All Years** - Always wrap with `\hebyear{}`
@@ -21,7 +21,7 @@ This guide provides detailed, precise, and technical instructions for creating p
 9. **Copyright Symbol** - Always wrap with `\textenglish{©}`
 10. **Dates** - Always wrap with `\textenglish{}`
 
-### ✅ **Hebrew RTL Content:**
+### **Hebrew RTL Content:**
 
 1. **Main Text** - Hebrew paragraphs
 2. **Headings** - Hebrew part of mixed titles
@@ -30,7 +30,7 @@ This guide provides detailed, precise, and technical instructions for creating p
 
 ---
 
-## 📖 Detailed Examples by Document Element
+## Detailed Examples by Document Element
 
 ### 1. **Main Title (Title Page)**
 
@@ -377,7 +377,7 @@ print(f"Data shape: {data.shape}")
 
 ---
 
-## 🔧 **CLS Commands Reference**
+## CLS Commands Reference
 
 ### **Text Direction Commands:**
 - `\en{text}` - English LTR text
@@ -409,7 +409,7 @@ print(f"Data shape: {data.shape}")
 
 ---
 
-## 📝 **Complete Example Template**
+## Complete Example Template
 
 ```latex
 % Copyright (c) \hebyear{2025} Dr. Segal Yoram. All rights reserved.
@@ -461,7 +461,7 @@ data = np.array([1, 2, 3])
 
 ---
 
-## ⚠️ **Common Mistakes to Avoid**
+## Common Mistakes to Avoid
 
 1. **Never** put Hebrew comments in Python code
 2. **Never** use raw numbers in Hebrew text - always `\num{}`
@@ -471,6 +471,4 @@ data = np.array([1, 2, 3])
 6. **Never** forget to wrap dates with `\textenglish{}`
 7. **Never** put copyright and Hebrew rights on same side in footer
 
----
-
-**Following these rules ensures professional, academic-quality documents with perfect Hebrew RTL and English LTR integration!** 📝✨
+Following these rules ensures professional, academic-quality documents with proper Hebrew RTL and English LTR integration.

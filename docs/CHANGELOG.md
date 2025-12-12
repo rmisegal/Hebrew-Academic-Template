@@ -1,6 +1,94 @@
-# Hebrew Academic Template - Changelog
+# Hebrew Academic Template - Version History
 
-All notable changes to the Hebrew Academic Template are documented here.
+This document chronicles the development of the Hebrew Academic Template.
+
+## [5.8.0] - 2025-12-11 - Section Spacing Fix Edition
+
+### Overview
+CRITICAL fix for excessive section spacing. Previous version added `\vspace{2em}` on top of LaTeX's default subsection spacing, causing gaps of 3-4x font height. This version uses controlled spacing with proper orphan prevention.
+
+### Fixed (2 Critical Issues)
+- **CRITICAL: Fixed excessive section spacing** - Sections no longer have huge gaps
+  - **Problem:** `\vspace{2em}` was ADDITIVE to LaTeX's default `\subsection*` spacing
+  - **Root Cause:** Manual vspace added ON TOP of titlesec/article defaults (~1em)
+  - **Solution:** Reduced to `\vspace{1.5em}` total for sections, `\vspace{1em}` for subsections
+  - **Impact:** Section gaps now ≤2x font height as required
+
+- **CRITICAL: Fixed HebrewTitle/HebrewSubtitle TOC rendering** - Hebrew text in TOC now renders correctly
+  - **Problem:** Hebrew argument (#2) was not wrapped in `\texthebrew{}`, causing RTL issues in TOC
+  - **Solution:** Changed `\quad#2` to `\quad\texthebrew{#2}` in both commands
+  - **Impact:** TOC entries now display Hebrew text correctly in RTL
+
+### Changed
+- **Section Spacing**: 2em → 1.5em before section titles
+- **Subsection Spacing**: 1.5em → 1em before subsection titles
+- **HebrewTitle**: Now wraps #2 in `\texthebrew{}`
+- **HebrewSubtitle**: Now wraps #2 in `\texthebrew{}`
+- **Version String**: "V5.8.0-2025-12-11"
+
+### Spacing Rules Summary (v5.8.0)
+| Element | Spacing | Notes |
+|---------|---------|-------|
+| Before section | 1.5em | 1.5x font height (~18pt) |
+| Before subsection | 1em | 1x font height (~12pt) |
+| After section/subsection | 0.5em | 0.5x font height |
+| Section needspace | 5 lines | Orphan prevention |
+| Subsection needspace | 4 lines | Orphan prevention |
+| List item gap | 0.5ex | Half font height |
+
+### Technical Details
+- **CLS Version:** V5.8.0-2025-12-11
+- **Lines Changed:** 238-246 (HebrewTitle/HebrewSubtitle), 468-479 (hebrewsection), 492-505 (hebrewsubsection)
+- **Backward Compatibility:** 100% - documents compile unchanged, just better spacing
+- **QA Detection:** This issue should be detected by qa-typeset-detect (overfull vbox) and qa-BiDi-detect (TOC BiDi)
+
+---
+
+## [5.7.0] - 2025-12-11 - Spacing Standards Edition
+
+### Overview
+Added precise control over list and section spacing for academic document standards. Lists now have consistent half-font-height spacing, and sections have proper page break handling.
+
+### Added
+- **enumitem Package Integration** - Precise list spacing control
+  - `itemsep=0.5ex` - Half font height between list items
+  - `parsep=0pt` - No extra paragraph spacing within items
+  - `topsep=0.5ex` - Half font height above/below lists
+  - `partopsep=0pt` - No extra partial line spacing
+  - `leftmargin=2em` - Consistent left margin
+  - `labelsep=0.5em` - Label-to-text separation
+
+- **needspace Package Integration** - Section page break control
+  - Sections require minimum 5 lines available before starting
+  - Prevents orphaned section headers at page bottom
+  - `\needspace{5\baselineskip}` before each section
+
+### Changed
+- **Section Spacing Standards**
+  - `\hebrewsection`: 2em (24pt at 12pt font) space before title
+  - `\hebrewsubsection`: 1.5em (18pt at 12pt font) space before title
+  - 0.5em space after section/subsection titles
+  - Sections with ≤5 lines content start on new page
+
+- **Version String**: "V5.7.0-2025-12-11"
+
+### Technical Details
+- **CLS Version:** V5.7.0-2025-12-11
+- **Total Commands:** 80 (unchanged)
+- **New Packages:** enumitem, needspace
+- **Backward Compatibility:** 100% - existing documents automatically get improved spacing
+- **QA Verification:** All 16 CLS-examples compiled and verified
+
+### Spacing Rules Summary
+| Element | Spacing | Notes |
+|---------|---------|-------|
+| List item gap | 0.5ex | Half font height |
+| Before section | 2em | Double font height max |
+| Before subsection | 1.5em | 1.5x font height |
+| After section title | 0.5em | Half font height |
+| Section needspace | 5 lines | Prevents orphan headers |
+
+---
 
 ## [5.6.1] - 2025-12-05 - Pythonbox Environment Stability
 

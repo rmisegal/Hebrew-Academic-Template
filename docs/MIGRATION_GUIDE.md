@@ -1,29 +1,27 @@
-# Hebrew Academic Template v5.0 - Migration Guide
+# Hebrew Academic Template - Adoption Guide
 
 ## Overview
 
-Version 5.0 is 100% backward compatible with all previous versions. This guide helps you upgrade smoothly and take advantage of new features.
+This guide helps you adopt the template for your academic documents and understand the full range of capabilities available.
 
-## Quick Migration Summary
+## Quick Start Summary
 
-| From Version | Required Changes | Optional Improvements |
-|--------------|------------------|----------------------|
-| v1.0 → v5.0 | None | Use enhanced table commands |
-| v3.0 → v5.0 | None | Enjoy fixed regressions |
-| New User | N/A | Start with v5.0 directly |
+| User Type | Recommended Approach |
+|-----------|---------------------|
+| New User | Start with beginner_example.tex and gradually adopt advanced features |
+| Upgrading | Replace the .cls file - all documents work unchanged |
+| Advanced | Explore enhanced table commands, chapter support, and math features |
 
-## Upgrading from v1.0 to v5.0
+## Getting Started
 
-### Step 1: Replace Class File
+### Step 1: Set Up Your Environment
 ```bash
-# Backup old version
-cp hebrew-academic-template.cls hebrew-academic-template-v1.cls
-
-# Copy new version
-cp hebrew-academic-template-v5.cls hebrew-academic-template.cls
+# Ensure you have LuaLaTeX and Biber installed
+# Copy the class file to your project directory
+cp hebrew-academic-template.cls your-project/
 ```
 
-### Step 2: Recompile
+### Step 2: Compile Your Document
 ```bash
 lualatex document.tex
 biber document
@@ -32,22 +30,14 @@ lualatex document.tex
 ```
 
 ### Step 3: Verify Output
-Your document should compile without any changes. Check:
-- Table captions are right-aligned (fixed)
-- PDF bookmarks work (fixed)
-- All commands work as before
+Your document should compile with:
+- Table captions properly aligned
+- PDF bookmarks working correctly
+- All BiDi text rendering correctly
 
-### New Features Available
+## Available Features
 
-#### Enhanced Table Commands
-Old v1.0 style (still works):
-```latex
-\begin{rtltabular}{|c|c|}
-\hebcell{טקסט} & \num{123} \\
-\end{rtltabular}
-```
-
-New v5.0 style (recommended):
+### Enhanced Table Commands
 ```latex
 \begin{rtltabular}{|c|c|}
 \hebheader{כותרת} & \enheader{Header} \\
@@ -56,126 +46,101 @@ New v5.0 style (recommended):
 \end{rtltabular}
 ```
 
-#### Chapter Support
+### Chapter Support
 For book-length documents:
 ```latex
 \hebrewchapter{שם הפרק}
 \hebrewsection{סעיף בפרק: \entoc{Section}}
 ```
 
-#### Math Enhancements
+### Math with Hebrew
 ```latex
-% New Hebrew in math
+% Hebrew in math mode
 $\hebmath{משתנה}$
 $x_{\hebsub{תחתון}}$
 
-% New operators
+% Optimization operators
 $\argmin_x f(x)$
 $\argmax_x g(x)$
 ```
 
-## Upgrading from v3.0 to v5.0
+## Template Capabilities
 
-### Automatic Fixes
-These issues are automatically resolved:
+The template includes comprehensive support for:
 
-1. **Bibliography Backend**: Now uses biber (better Unicode)
-2. **RTL Captions**: Hebrew table captions properly aligned
-3. **PDF Bookmarks**: No more "duplicate identifier" errors
-4. **Restored Commands**: `\ltr{}`, `\warningsymbol`, `\checksymbol`
-
-### No Action Required
-Your v3.0 documents work unchanged. The fixes are automatic.
+1. **Bibliography**: Uses biber backend for superior Unicode handling
+2. **RTL Captions**: Hebrew table captions properly right-aligned
+3. **PDF Bookmarks**: Full bookmark support for all sections
+4. **Utility Commands**: `\ltr{}`, `\warningsymbol`, `\checksymbol`
 
 ### Version Check
-Verify you're using v5.0:
+Verify your template version:
 ```latex
 \documentclass{hebrew-academic-template}
 \begin{document}
-Version: \clsversion  % Should show V05-2025-11-09
+Version: \clsversion
 \end{document}
 ```
 
 ## Feature Adoption Guide
 
-### Recommended Adoptions by Priority
+### Recommended Features by Priority
 
-#### High Priority (Immediate Benefits)
+#### High Priority (Essential)
 1. Use `\encell{}` for English table cells
 2. Use `\hebheader{}` and `\enheader{}` for headers
 3. Use `pythonbox*` for long code blocks
 
-#### Medium Priority (Quality Improvements)
+#### Medium Priority (Enhanced Quality)
 1. Add `\hebrewchapter{}` for books
-2. Use `\hebmath{}` instead of `\hebtextmath{}`
+2. Use `\hebmath{}` for Hebrew in math mode
 3. Apply `\enpath{}` for file paths
 
-#### Low Priority (Nice to Have)
-1. Use `\argmin` and `\argmax` in optimization
-2. Apply special character commands
+#### Additional Features
+1. Use `\argmin` and `\argmax` in optimization expressions
+2. Apply special character commands like `\Rsquared`
 3. Add version tracking with `\hebrewversion{}`
 
-## Common Migration Scenarios
+## Common Usage Scenarios
 
 ### Scenario 1: Simple Article
-No changes needed. Just replace the .cls file.
+Standard article documents work out of the box with basic features.
 
 ### Scenario 2: Thesis with Tables
-Consider updating complex tables:
+Use the enhanced table commands for clarity:
 ```latex
-% Old style
-\mixedcell{Hebrew \en{English}}
-
-% New style (clearer)
-\hebcell{Hebrew \en{English}}  % For Hebrew-dominant
-\encell{Mostly English}         % For English-dominant
+\hebcell{Hebrew \en{English}}  % For Hebrew-dominant cells
+\encell{Mostly English}         % For English-dominant cells
 ```
 
 ### Scenario 3: Book with Chapters
-Add chapter structure:
+Use the full chapter hierarchy:
 ```latex
-% Old: Just sections
-\hebrewsection{Chapter 1: Introduction}
-
-% New: Proper hierarchy
 \hebrewchapter{Introduction}
 \hebrewsection{Background: \entoc{Background}}
 ```
 
 ### Scenario 4: Technical Document with Code
-Use non-floating for long code:
+Use non-floating for long code blocks:
 ```latex
-% Old: May cause page overflow
-\begin{pythonbox}[Long Code]
-# 100+ lines...
-\end{pythonbox}
-
-% New: Handles page breaks
 \begin{pythonbox*}[Long Code]
-# 100+ lines...
+# Handles page breaks properly for 100+ lines
 \end{pythonbox*}
 ```
 
-## Deprecation Notes
+## Command Aliases
 
-### No Deprecated Commands
-All v1.0 and v3.0 commands remain functional:
-- `\mixedcell{}` works (alias to `\hebcell{}`)
-- Old figure commands work
-- All text direction commands preserved
+For flexibility, the template provides command aliases:
+- `\mixedcell{}` is an alias for `\hebcell{}`
+- `\hebtextmath{}` is an alias for `\hebmath{}`
+- All text direction commands work interchangeably
 
-### Future Considerations
-While not deprecated, consider modern alternatives:
-- Use `\hebmath{}` over `\hebtextmath{}`
-- Use `\encell{}` for clarity over generic `\mixedcell{}`
-- Use structured chapters for books
+## Verification Checklist
 
-## Testing Checklist
-
-After migration, verify:
+Verify your document output:
 
 - [ ] Document compiles without errors
-- [ ] Table captions are right-aligned
+- [ ] Table captions are properly aligned
 - [ ] PDF bookmarks work
 - [ ] Citations appear correctly
 - [ ] Math expressions render properly
@@ -185,9 +150,9 @@ After migration, verify:
 - [ ] Section numbers are correct
 - [ ] Bibliography formats correctly
 
-## Troubleshooting Migration
+## Troubleshooting
 
-### Issue: Compilation Errors
+### Compilation Errors
 ```bash
 # Clean and rebuild
 rm *.aux *.bbl *.bcf *.blg *.log
@@ -196,16 +161,8 @@ biber document
 lualatex document.tex
 ```
 
-### Issue: Missing Commands
-Ensure using v5.0:
-```bash
-# Check first line of .cls file
-head -n 1 hebrew-academic-template.cls
-# Should show: % Version 5.0 - Unified Edition
-```
-
-### Issue: Font Problems
-v5.0 has improved fallbacks. If issues persist:
+### Font Issues
+The template includes smart font fallbacks. If issues persist:
 ```latex
 % Force font refresh
 \setmainfont{Times New Roman}[
@@ -214,34 +171,20 @@ v5.0 has improved fallbacks. If issues persist:
 ]
 ```
 
-## Migration Benefits Summary
+## Template Benefits
 
-### From v1.0
-- 18 new features
-- Better table handling
-- Chapter support
-- Enhanced math
-- Improved code blocks
-
-### From v3.0
-- 4 critical fixes
-- Restored biber backend
-- Fixed PDF bookmarks
-- RTL captions work
-- Symbol commands back
-
-### For New Users
-- Start with the most complete version
-- All features integrated
-- Best practices built-in
-- Comprehensive documentation
+- **Complete Feature Set**: 80 commands covering all academic document needs
+- **Professional Tables**: Enhanced table handling with Hebrew support
+- **Chapter Support**: Full book-length document capability
+- **Math Integration**: Hebrew text in math mode
+- **Code Blocks**: Professional code formatting with page break handling
+- **Smart Fonts**: Automatic font fallback system
+- **Documentation**: Comprehensive examples and guides
 
 ## Support
 
-For migration help:
+For help:
 1. Check documentation files
 2. See examples in /examples directory
-3. Review FAQ section
+3. Review the troubleshooting section
 4. Report issues on GitHub
-
-Remember: v5.0 is designed for zero-friction upgrade. Your documents should just work!

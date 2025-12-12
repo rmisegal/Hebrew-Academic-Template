@@ -4,37 +4,15 @@
 
 A comprehensive LaTeX template for Hebrew academic documents with seamless English integration, designed for professional academic writing with proper RTL/LTR text direction handling.
 
-## 🎉 **STATUS: ALL MAJOR ISSUES RESOLVED!**
+## Features
 
-### **✅ CRITICAL FIXES COMPLETED (v5.1):**
-- **English in Titles**: ✅ FIXED - `\entoc{}` now renders English text LTR (not reversed) in section titles
-- **Table of Contents**: ✅ FIXED - All mixed Hebrew/English entries display correctly
-- **Captions**: ✅ FIXED - Table and figure captions with English text render properly
-- **Percentage Formatting**: ✅ PERFECT - `\percent{95.5}` shows **95.5%** with % on the right in LTR
-- **List Numbering**: ✅ PERFECT - All enumerate lists show **1.**, **2.**, **3.** in LTR direction
-- **Table Cell Content**: ✅ PERFECT - `\mixedcell{}` handles Hebrew/English mixed content flawlessly
-- **Equation Numbering**: ✅ PERFECT - Manual numbering `\quad (1.1)` positioned on the right in LTR
-- **Section Numbering**: ✅ PERFECT - All section numbers (**1**, **1.1**, **2**, etc.) in LTR direction
-- **Citation Format**: ✅ PERFECT - IEEE-style **[1]**, **[2]**, **[3]** with LTR brackets
-
-**The template is now production-ready for academic use!** 🚀
-
-### **🆕 NEW IN v5.3 (2025-11-10):**
-- **Reorganized agent structure** - Separated agents into `book-creator-agents/` and `qa-agents/` folders for better organization
-- **Enhanced QA capabilities** - Added specialized QA agents for comprehensive testing
-- **Fixed critical RTL/LTR bug** in `\entoc{}` command - English text in titles no longer appears reversed
-- **Added RTL/LTR QA Agent** - Automated detection of bidirectional text problems in PDFs
-- **All 7 examples verified** - Pass comprehensive quality assurance inspection
-
-## 🌟 Features
-
-### ✅ **Bilingual Support**
+### **Bilingual Support**
 - **Hebrew RTL** text with proper direction handling
 - **English LTR** integration within Hebrew text
 - **Mixed language** titles, subtitles, and content
 - **Smart font fallback** system (Windows/Linux compatible)
 
-### ✅ **Academic Formatting**
+### **Academic Formatting**
 - **IEEE-style bibliography** with automatic language categorization
 - **Professional numbering** (all numbers in LTR direction)
 - **Mathematical expressions** with proper LTR orientation
@@ -42,22 +20,22 @@ A comprehensive LaTeX template for Hebrew academic documents with seamless Engli
 - **Tables** with mixed Hebrew/English content
 - **Figures** with bilingual captions
 
-### ✅ **Cross-Platform Compatibility**
+### **Cross-Platform Compatibility**
 - **Windows + MiKTeX**: Uses Times New Roman, David CLM, Arial, Courier New
 - **Linux + TeX Live**: Automatic fallback to Latin Modern, DejaVu Sans fonts
 - **Smart detection**: Automatically chooses best available fonts
 
-### ✅ **Professional Layout**
+### **Professional Layout**
 - **Custom headers/footers** with copyright and page numbers
 - **Proper margins** and spacing for academic documents
 - **Table of contents** with mixed language support
 - **Title page** with bilingual information
 
-## 📁 Repository Contents
+## Repository Contents
 
 ```
 hebrew_academic_template/
-├── hebrew-academic-template.cls    # Main template class file (v5.3)
+├── hebrew-academic-template.cls    # Main template class file
 ├── docs/                          # Complete documentation
 │   ├── README.md                  # Main documentation (this file)
 │   ├── USAGE_GUIDE.md            # Detailed command reference
@@ -79,7 +57,7 @@ hebrew_academic_template/
 └── comprehensive_references.bib   # Sample bibliography file
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. **Basic Document Setup**
 
@@ -136,7 +114,7 @@ lualatex -output-directory=build document.tex
 Copy-Item build\document.pdf .
 ```
 
-## 📖 Key Commands Reference
+## Key Commands Reference
 
 ### **Text Direction & Language**
 ```latex
@@ -167,9 +145,9 @@ Copy-Item build\document.pdf .
 % This is the ONLY way to create properly aligned Hebrew section titles
 ```
 
-### **🔥 CRITICAL: English Sections (LTR, Left-Aligned)**
+### **English Sections (LTR, Left-Aligned)**
 
-For **pure English sections** that must be **LTR and left-aligned**:
+For **pure English sections** that are **LTR and left-aligned**:
 
 ```latex
 % Method 1: Complete English section with automatic direction control
@@ -199,7 +177,7 @@ $$E = mc^2 \quad (1.1)$$
 זהו טקסט עברי (RTL, right-aligned) עם מונחים באנגלית כמו \en{Machine Learning}
 ```
 
-### **📋 Text Direction Patterns**
+### **Text Direction Patterns**
 
 | Content Type | Command | Direction | Alignment | Usage |
 |--------------|---------|-----------|-----------|-------|
@@ -242,22 +220,22 @@ keywords={english}  % For English references
 keywords={hebrew}   % For Hebrew references
 ```
 
-## 🎯 Text Direction Rules
+## Text Direction Rules
 
-### **MUST Use LTR Direction:**
-- ✅ **All numbers**: `\num{123}`, `\hebyear{2025}`
-- ✅ **Page numbers**: Automatic LTR formatting
-- ✅ **Section numbers**: Automatic LTR in headings
-- ✅ **Mathematical formulas**: Always LTR
-- ✅ **Python code**: Always LTR with gray background
-- ✅ **Citations**: `[1]`, `[2]` always LTR
-- ✅ **Bibliography**: English references left-aligned
+### **LTR Direction (Automatic):**
+- **All numbers**: `\num{123}`, `\hebyear{2025}`
+- **Page numbers**: Automatic LTR formatting
+- **Section numbers**: Automatic LTR in headings
+- **Mathematical formulas**: Always LTR
+- **Python code**: Always LTR with gray background
+- **Citations**: `[1]`, `[2]` always LTR
+- **Bibliography**: English references left-aligned
 
 ### **Hebrew RTL Content:**
-- ✅ **Main text**: Hebrew paragraphs
-- ✅ **Headings**: Hebrew part of mixed titles
-- ✅ **Table content**: Hebrew cells
-- ✅ **Figure captions**: Hebrew descriptions
+- **Main text**: Hebrew paragraphs
+- **Headings**: Hebrew part of mixed titles
+- **Table content**: Hebrew cells
+- **Figure captions**: Hebrew descriptions
 
 ### **Mixed Content Examples:**
 ```latex
@@ -271,7 +249,7 @@ keywords={hebrew}   % For Hebrew references
 \mixedcell{רגרסיה ליניארית\\Linear Regression}
 ```
 
-## 📚 Adding References - Complete Guide
+## Adding References - Complete Guide
 
 ### **Step 1: Create Your Bibliography File**
 
@@ -346,17 +324,17 @@ Create a `.bib` file (e.g., `references.bib`) with your references. **CRITICAL**
 
 ### **Step 3: Critical Bibliography Rules**
 
-#### ✅ **MUST DO:**
+#### **Required:**
 1. **Add keywords**: Every reference MUST have `keywords={english}` or `keywords={hebrew}`
-2. **Use 'and' for authors**: `author={Smith, John and Johnson, Mary}` ✅
-3. **Use double dashes for page ranges**: `pages={45--67}` ✅
-4. **Include urldate for websites**: `urldate={2024-12-01}` ✅
+2. **Use 'and' for authors**: `author={Smith, John and Johnson, Mary}`
+3. **Use double dashes for page ranges**: `pages={45--67}`
+4. **Include urldate for websites**: `urldate={2024-12-01}`
 
-#### ❌ **DON'T DO:**
-1. **Missing keywords**: References without keywords won't appear ❌
-2. **Comma-separated authors**: `author={Smith, John, Johnson, Mary}` ❌
-3. **Single dash for pages**: `pages={45-67}` ❌
-4. **Missing urldate for URLs**: Online sources need access dates ❌
+#### **Avoid:**
+1. **Missing keywords**: References without keywords won't appear
+2. **Comma-separated authors**: `author={Smith, John, Johnson, Mary}`
+3. **Single dash for pages**: `pages={45-67}`
+4. **Missing urldate for URLs**: Online sources need access dates
 
 ### **Step 4: Using Citations in Your Document**
 
@@ -427,7 +405,7 @@ The accuracy increased from \num{85}\% to \num{94}\%.
 \end{document}
 ```
 
-## 📚 Examples
+## Examples
 
 ### **Beginner Example**
 See `beginner_example.tex` for a minimal working document with basic citations.
@@ -440,63 +418,23 @@ See `advanced_example.tex` for extensive examples of all features including:
 
 ### **Learning Level Examples**
 
-| File | Learning Level | Status | Completeness | Recommended Use |
-|------|----------------|--------|--------------|-----------------|
-| **`expert_example.tex`** | **Expert** | ✅ **LATEST & BEST** | 100% Complete | **Complete feature testing & reference** |
-| `advanced_example.tex` | **Advanced** | ✅ **FULLY WORKING** | 95% Complete | **Complex features & professional use** |
-| `intermediate_example.tex` | **Intermediate** | ✅ **FULLY WORKING** | 85% Complete | **Extended features & real projects** |
-| `beginner_example.tex` | **Beginner** | ✅ **BASIC WORKING** | 60% Complete | **Getting started & basic usage** |
+| File | Learning Level | Completeness | Recommended Use |
+|------|----------------|--------------|-----------------|
+| **`expert_example.tex`** | **Expert** | 100% Complete | **Complete feature testing & reference** |
+| `advanced_example.tex` | **Advanced** | 95% Complete | **Complex features & professional use** |
+| `intermediate_example.tex` | **Intermediate** | 85% Complete | **Extended features & real projects** |
+| `beginner_example.tex` | **Beginner** | 60% Complete | **Getting started & basic usage** |
 
 ### **Sample Output**
-All examples now compile to professional academic documents with:
-- **Perfect IEEE-style citations**: [1], [2], [3] with brackets
+All examples compile to professional academic documents with:
+- **IEEE-style citations**: [1], [2], [3] with brackets
 - Proper Hebrew RTL and English LTR text directions
 - LTR numbering throughout (pages, sections, citations)
 - Professional code blocks with gray background
 - Mixed-language tables and figures
 - IEEE-style bibliography with automatic Hebrew/English separation
 
-## 🔧 **Important Fixes & New Commands**
-
-### **Percentage Handling - FIXED!**
-```latex
-% OLD (WRONG - % symbol in wrong position):
-\num{95.5}\%
-
-% NEW (CORRECT - % symbol in proper LTR position):
-\percent{95.5}
-```
-
-### **Table Cell Content - FIXED!**
-```latex
-% For mixed Hebrew/English content in table cells:
-\mixedcell{Hebrew text / \en{English text}}
-
-% For Hebrew-only content in cells:
-\hebcell{Hebrew text only}
-
-% Example table with proper formatting:
-\begin{rtltabular}{|c|c|c|}
-    \hline
-    \mixedcell{\textbf{מודל / \en{Model}}} & \mixedcell{\textbf{דיוק / \en{Accuracy}}} \\
-    \hline
-    \en{BERT} & \percent{94.5} \\
-    \hline
-    \mixedcell{עיבוד עברית / \en{Hebrew NLP}} & \percent{89.3} \\
-    \hline
-\end{rtltabular}
-```
-
-### **English Section Alignment - FIXED!**
-```latex
-% English sections are now automatically left-aligned:
-\englishsection{English Section Title}  % Automatically LTR, left-aligned
-
-% Hebrew sections remain RTL:
-\hebrewsection{Hebrew Title: \entoc{English Part}}
-```
-
-## 🔧 Requirements
+## Requirements
 
 ### **LaTeX Distribution**
 - **Windows**: MiKTeX with LuaLaTeX
@@ -515,26 +453,26 @@ All packages are included in modern LaTeX distributions:
 - **Linux/TeX Live**: Automatic fallback to Latin Modern, DejaVu Sans
 - **Smart detection**: Template automatically chooses best available fonts
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### **Common Issues**
 
 1. **Font not found errors**
-   - ✅ **Solution**: Template includes automatic fallback fonts
-   - ✅ **Windows**: Ensure MiKTeX is updated
-   - ✅ **Linux**: Use TeX Live full installation
+   - **Solution**: Template includes automatic fallback fonts
+   - **Windows**: Ensure MiKTeX is updated
+   - **Linux**: Use TeX Live full installation
 
 2. **Wrong text direction**
-   - ✅ **Solution**: Use `\en{}` for English, `\num{}` for numbers, and `\entoc{}` for English in titles.
-   - ✅ **Check**: All numbers wrapped with `\num{}`
+   - **Solution**: Use `\en{}` for English, `\num{}` for numbers, and `\entoc{}` for English in titles
+   - **Check**: All numbers wrapped with `\num{}`
 
 3. **Bibliography not showing**
-   - ✅ **Solution**: Add `keywords={english}` or `keywords={hebrew}` to all `.bib` entries
-   - ✅ **Check**: Run `biber` after first `lualatex` compilation
+   - **Solution**: Add `keywords={english}` or `keywords={hebrew}` to all `.bib` entries
+   - **Check**: Run `biber` after first `lualatex` compilation
 
 4. **Code blocks not working**
-   - ✅ **Solution**: Use `pythonbox` environment
-   - ✅ **Check**: No Hebrew comments in code blocks
+   - **Solution**: Use `pythonbox` environment
+   - **Check**: No Hebrew comments in code blocks
 
 ### **Compilation Order**
 Always use this sequence:
@@ -545,17 +483,12 @@ lualatex document.tex    # Second pass
 lualatex document.tex    # Final pass (optional)
 ```
 
-## 📄 License
+## License
 
 **Copyright © 2025 Dr. Segal Yoram. All rights reserved.**
 
 This template is provided for academic and educational use. All rights are reserved to Dr. Segal Yoram.
 
-## 🤝 Support
+## Support
 
 For questions, issues, or contributions, please refer to the comprehensive documentation in `comprehensive_example.tex` or examine the working examples provided.
-
----
-
-**Happy Academic Writing! 📝✨**
-

@@ -2,7 +2,7 @@
 
 **Copyright:** © 2025 Dr. Segal Yoram. All rights reserved.
 
-## 📋 Table of Contents
+## Table of Contents
 
 1. [Installation & Setup](#installation--setup)
 2. [Document Structure](#document-structure)
@@ -12,7 +12,7 @@
 6. [Best Practices](#best-practices)
 7. [Troubleshooting](#troubleshooting)
 
-## 🛠 Installation & Setup
+## Installation & Setup
 
 ### Windows (MiKTeX + PowerShell)
 
@@ -46,7 +46,7 @@ biber simple_example
 lualatex simple_example.tex
 ```
 
-## 📄 Document Structure
+## Document Structure
 
 ### Basic Template Structure
 
@@ -90,11 +90,11 @@ lualatex simple_example.tex
 3. **hebrew-academic-template.cls**: Template class file
 4. **Images**: Any PNG/JPG files referenced in the document
 
-## 🧭 Text Direction Guidelines
+## Text Direction Guidelines
 
 ### Critical Rules for Professional Output
 
-#### ✅ **ALWAYS Use LTR Direction For:**
+#### **LTR Direction (Use For):**
 
 1. **Numbers in Hebrew text**
    ```latex
@@ -152,7 +152,7 @@ lualatex simple_example.tex
    \printhebrewbibliography
    ```
 
-#### ✅ **Hebrew RTL Content:**
+#### **Hebrew RTL Content:**
 
 1. **Main paragraph text**
    ```latex
@@ -198,7 +198,7 @@ lualatex simple_example.tex
 \end{hebrewtable}
 ```
 
-## 📚 Command Reference
+## Command Reference
 
 ### Language & Direction Commands
 
@@ -244,7 +244,7 @@ lualatex simple_example.tex
 | `\printenglishbibliography` | English references | End of document |
 | `\printhebrewbibliography` | Hebrew references | End of document |
 
-## 🔧 Advanced Features
+## Advanced Features
 
 ### Smart Font Fallback System
 
@@ -361,7 +361,7 @@ import numpy as np
 מחקרים רבים \cite{smith2023,jones2022,hebrew_book} הראו שיפור משמעותי.
 ```
 
-## 💡 Best Practices
+## Best Practices
 
 ### 1. **Always Use Number Commands**
 ```latex
@@ -407,7 +407,7 @@ print(f"Accuracy: {accuracy:.3f}")
 - Use author names in English within `\en{}`.
 - Cite immediately after mentioning the work.
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Compilation Issues
 
@@ -488,16 +488,11 @@ Copy-Item build\document.pdf .
 lualatex -interaction=nonstopmode -file-line-error document.tex
 ```
 
-## 📞 Getting Help
+## Getting Help
 
 1. **Check Examples**: Review `simple_example.tex` and `comprehensive_example.tex`.
 2. **Verify Setup**: Ensure LuaLaTeX and Biber are installed.
 3. **Test Compilation**: Try compiling the provided examples first.
 4. **Check Logs**: Review .log files for specific error messages.
 
----
-
-**Happy Academic Writing! 📝✨**
-
 *For more examples and detailed demonstrations, see `comprehensive_example.tex`*
-
