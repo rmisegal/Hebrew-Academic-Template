@@ -1,5 +1,5 @@
 % ================================================
-% IMAGE EXAMPLE - Hebrew Academic Template v5.0
+% IMAGE EXAMPLE - Hebrew Academic Template
 % ================================================
 % This example focuses on figures and images in Hebrew RTL documents
 % Compiles to approximately 4-5 pages
@@ -12,7 +12,7 @@
 
 % Title page information
 \hebrewtitle{דוגמת איורים ותמונות - תבנית אקדמית עברית}
-\englishtitle{Image and Figure Example - Hebrew Academic Template v5.0}
+\englishtitle{Image and Figure Example - Hebrew Academic Template \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
 \date{\textenglish{November 2025}}
 
@@ -163,7 +163,7 @@
 \fbox{\parbox{5cm}{\centering\vspace{2cm}איור 3\\[2cm]}} &
 \fbox{\parbox{5cm}{\centering\vspace{2cm}איור 4\\[2cm]}}
 \end{tabular}
-\caption{רשת איורים 2×2: \entoc{2×2 Figure Grid}}
+\caption{רשת איורים $2\times2$: \entoc{$2\times2$ Figure Grid}}
 \label{fig:grid}
 \end{figure}
 
@@ -280,6 +280,7 @@
 
 \begin{figure}[h]
 \centering
+\begin{english}
 \begin{tikzpicture}
     % Nodes
     \node[draw, circle] (A) at (0,0) {א};
@@ -297,6 +298,7 @@
     \draw[->] (C) -- (E);
     \draw[->] (D) -- (E);
 \end{tikzpicture}
+\end{english}
 \caption{גרף מכוון: \entoc{Directed Graph} - דוגמה עם \en{TikZ}}
 \label{fig:tikz}
 \end{figure}

@@ -1,7 +1,7 @@
 % ================================================
-% EXPERT EXAMPLE - Hebrew Academic Template v5.0
+% EXPERT EXAMPLE - Hebrew Academic Template
 % ================================================
-% THIS EXAMPLE DEMONSTRATES ALL 78 COMMANDS FROM CLS v5.0
+% THIS EXAMPLE DEMONSTRATES ALL COMMANDS FROM THE CLS
 % Compiles to approximately 15-20 pages
 % Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
 
@@ -12,9 +12,9 @@
 
 % Title page information - Commands: \hebrewtitle, \englishtitle, \hebrewauthor, \hebrewversion
 \hebrewtitle{דוגמת מומחה - כל הפקודות של התבנית}
-\englishtitle{Expert Example - All Template Commands v5.0}
+\englishtitle{Expert Example - All Template Commands \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
-\hebrewversion{גרסה \textenglish{5.0} - הדגמה מלאה}
+\hebrewversion{גרסה \clsversion}
 \date{\textenglish{November 2025}}
 
 \begin{document}
@@ -28,11 +28,16 @@
 
 % ==================== CHAPTER DEMONSTRATION ====================
 % Command: \hebrewchapter (v3.0 feature)
+% v5.10.0: Added \label for cross-chapter reference testing
 
 \hebrewchapter{פרק ראשון: הדגמת כל הפקודות}
+\hebrewchapterlabel{chap:first}
 
-מסמך זה מדגים את כל \num{78} הפקודות הזמינות בתבנית האקדמית העברית גרסה 5.0.
+מסמך זה מדגים את כל הפקודות הזמינות בתבנית האקדמית העברית גרסה \clsversion.
 הגרסה הנוכחית: \clsversion{} % Command: \clsversion
+
+התבנית תומכת בעבודה עם מקורות ביבליוגרפיים כמו \cite{vaswani2017attention,devlin2018bert}.
+מחקרים בעברית \cite{hebrew_nlp_2023} משולבים בצורה חלקה עם מקורות באנגלית.
 
 % ==================== TEXT DIRECTION COMMANDS ====================
 
@@ -129,7 +134,7 @@ We can include:
 הפקודה \texttt{\textbackslash rtlrow} זמינה לסידור אוטומטי של עמודות RTL.
 
 % Command: \ltrnumber (for bibliography numbers)
-מספרי ביבליוגרפיה: \ltrnumber{123}
+מספר ביבליוגרפי: \ltrnumber{123}
 
 % ==================== FIGURE COMMANDS ====================
 
@@ -213,57 +218,7 @@ processor.clean().normalize()
 
 % ==================== MATHEMATICAL COMMANDS ====================
 
-\hebrewsection{פקודות מתמטיות: \entoc{Mathematical Commands}}
-
-\hebrewsubsection{אופרטורים ונוסחאות: \entoc{Operators and Formulas}}
-
-% Commands: \argmin, \argmax
-פונקציות אופטימיזציה:
-\begin{equation}
-\theta^* = \argmin_\theta L(\theta) = \argmax_\theta -L(\theta)
-\end{equation}
-
-% Command: \hebmath (Hebrew in math)
-נוסחה עם עברית: $x_{\hebmath{מקס}} = \argmax_{x} f(x)$
-
-% Command: \hebsub (Hebrew subscript)
-תת-כתב עברי: $A_{\hebsub{התחלה}}$, $B_{\hebsub{סוף}}$
-
-% Commands: \Rsquared, \Rtwo (R² alternatives)
-מקדם הקביעה: \Rsquared{} או \Rtwo{}
-
-% Command: \rarrow (arrow in RTL)
-חץ בהקשר RTL: א \rarrow{} ב
-
-% ==================== LIST COMMANDS ====================
-
-\hebrewsection{פקודות רשימות: \entoc{List Commands}}
-
-% Command: \Hitem
-\begin{itemize}
-    \Hitem{פריט עברי ראשון}
-    \Hitem{פריט עברי שני עם \en{English}}
-    \item Regular item פריט רגיל
-    \Hitem{פריט עברי שלישי}
-\end{itemize}
-
-% ==================== BIBLIOGRAPHY COMMANDS ====================
-
-\hebrewsection{פקודות ביבליוגרפיה: \entoc{Bibliography Commands}}
-
-\hebrewsubsection{ציטוטים מגוונים: \entoc{Various Citations}}
-
-ציטוט בודד \cite{vaswani2017attention}.
-ציטוטים מרובים \cite{devlin2018bert,brown2020language}.
-ציטוט עם עמוד \cite[עמ' 42]{hebrew_nlp_2023}.
-ציטוט בסוגריים (\cite{gpt3_paper_2020}).
-
-% Test multiple citation styles
-המחקרים \cite{bert_paper_2018,radford2019language,hebrew_linguistics_2022} מראים התקדמות.
-
-% ==================== ADVANCED FEATURES ====================
-
-\hebrewsection{תכונות מתקדמות: \entoc{Advanced Features}}
+\hebrewsection{פקודות מתקדמות: \entoc{Advanced Features}}
 
 \hebrewsubsection{שילוב מורכב: \entoc{Complex Integration}}
 
@@ -323,7 +278,7 @@ J(\theta) &= \frac{1}{N}\sum_{i=1}^{N} L_{\hebsub{הפסד}}(f_\theta(x_i), y_i)
 
 \hebrewsubsection{קוד מתקדם עם הערות: \entoc{Advanced Code with Comments}}
 
-\begin{pythonbox}[\hebtitle{מימוש \en{Attention} עם \hebmath{קשב}}]
+\begin{pythonbox}[\hebtitle{מימוש \en{Attention} עם קשב}]
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -462,10 +417,12 @@ The environment ensures consistent English formatting throughout.
 
 \begin{figure}[htbp]
 \centering
+\begin{english}
 \begin{tikzcd}
-A \arrow[r, "\alpha"] \arrow[d, "\beta"'] & B \arrow[d, "\gamma"] \\
-C \arrow[r, "\delta"'] & D
+ A \arrow[r, "\alpha"] \arrow[d, "\beta"'] & B \arrow[d, "\gamma"] \\
+ C \arrow[r, "\delta"'] & D
 \end{tikzcd}
+\end{english}
 \caption{דיאגרמה עם \en{TikZ}: \entoc{TikZ Diagram}}
 \end{figure}
 
@@ -522,8 +479,12 @@ C \arrow[r, "\delta"'] & D
 % ==================== FINAL DEMONSTRATION ====================
 
 \hebrewchapter{פרק שני: סיכום ההדגמה}
+\hebrewchapterlabel{chap:second}
 
 \hebrewsection{סיכום כל הפקודות: \entoc{Summary of All Commands}}
+
+% v5.10.0: Test cross-chapter reference - should show "1" in LTR, not "1" reversed
+בפרק~\ref{chap:first} הדגמנו את כל הפקודות. כעת בפרק~\ref{chap:second} נסכם אותן.
 
 מסמך זה הדגים בהצלחה את כל \num{78} הפקודות:
 
@@ -551,7 +512,7 @@ C \arrow[r, "\delta"'] & D
 
 \hebrewsection{מסקנות: \entoc{Conclusions}}
 
-התבנית האקדמית העברית גרסה 5.0 מספקת:
+התבנית האקדמית העברית גרסה \clsversion{} מספקת:
 
 \begin{enumerate}
     \item תמיכה מלאה בכתיבה דו-כיוונית
@@ -565,6 +526,16 @@ C \arrow[r, "\delta"'] & D
 \end{enumerate}
 
 הגרסה הנוכחית של התבנית: \clsversion{}
+
+% ==================== NEW v5.11.4 TEST: SPACE ARTIFACTS ====================
+\hebrewsection{בדיקת רווחים בקוד: \entoc{Code Space Artifacts Test}}
+
+\begin{pythonbox}[\hebtitle{בדיקת מחרוזות עם רווחים: \en{String Space Test}}]
+def print_message():
+    # These strings should contain invisible spaces, not markers
+    message = "Hello World From Python"
+    print(f"Message: {message}")
+\end{pythonbox}
 
 % ==================== BIBLIOGRAPHY ====================
 

@@ -1,5 +1,5 @@
 % ================================================
-% INTERMEDIATE EXAMPLE - Hebrew Academic Template v5.0
+% INTERMEDIATE EXAMPLE - Hebrew Academic Template
 % ================================================
 % This example demonstrates intermediate features
 % Compiles to approximately 8-10 pages
@@ -12,9 +12,9 @@
 
 % Title page information
 \hebrewtitle{דוגמה ברמה בינונית - תבנית אקדמית עברית}
-\englishtitle{Intermediate Example - Hebrew Academic Template v5.0}
+\englishtitle{Intermediate Example - Hebrew Academic Template \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
-\hebrewversion{גרסה 5.0 - מתקדם}
+\hebrewversion{גרסה \clsversion}
 \date{\textenglish{November 2025}}
 
 \begin{document}
@@ -28,7 +28,7 @@
 
 \hebrewsection{מבוא מורחב: \entoc{Extended Introduction}}
 
-מסמך זה מדגים יכולות מתקדמות של התבנית האקדמית העברית גרסה 5.0.
+מסמך זה מדגים יכולות מתקדמות של התבנית האקדמית העברית גרסה \clsversion.
 נכסה שימוש במגוון רחב של פקודות כולל \en{Deep Learning}, \ilm{neural networks}, ועיבוד נתונים מורכב.
 
 \hebrewsubsection{רקע תיאורטי: \entoc{Theoretical Background}}
@@ -310,7 +310,7 @@ print(f"Total parameters: {sum(p.numel() for p in model.parameters())}")
     \end{itemize}
 
     \item שלב המידול
-    \begin{enumerate}[a.]
+    \begin{enumerate}[label=\alph*.]
         \item אימון מודל בסיס (\en{baseline})
         \item כיול היפר-פרמטרים
         \item אימון מודל סופי

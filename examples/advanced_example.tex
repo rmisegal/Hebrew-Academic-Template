@@ -1,5 +1,5 @@
 % ================================================
-% ADVANCED EXAMPLE - Hebrew Academic Template v5.0
+% ADVANCED EXAMPLE - Hebrew Academic Template
 % ================================================
 % This example demonstrates advanced features including bibliography,
 % complex tables, multiple code examples, and cross-references
@@ -13,9 +13,9 @@
 
 % Title page information
 \hebrewtitle{דוגמה מתקדמת - תבנית אקדמית עברית}
-\englishtitle{Advanced Example - Hebrew Academic Template v5.0}
+\englishtitle{Advanced Example - Hebrew Academic Template \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
-\hebrewversion{גרסה 5.0 - מתקדמת}
+\hebrewversion{גרסה \clsversion}
 \date{\textenglish{November 2025}}
 
 \begin{document}
@@ -30,7 +30,7 @@
 
 \hebrewsection{מבוא מתקדם: \entoc{Advanced Introduction}}
 
-מסמך זה מדגים יכולות מתקדמות של התבנית האקדמית העברית גרסה 5.0,
+מסמך זה מדגים יכולות מתקדמות של התבנית האקדמית העברית גרסה \clsversion,
 כולל שימוש בביבליוגרפיה מתקדמת, טבלאות מורכבות, ודוגמאות קוד מרובות.
 
 \hebrewsubsection{סקירת ספרות מקיפה: \entoc{Comprehensive Literature Review}}
@@ -163,7 +163,7 @@ class MultiHeadAttention(nn.Module):
 
 \hebrewsubsection{עיבוד נתונים מתקדם: \entoc{Advanced Data Processing}}
 
-% Using non-floating pythonbox* (if supported in v5.0)
+% Using non-floating pythonbox*
 \begin{pythonbox}[\hebtitle{עיבוד מקדים לנתוני טקסט}]
 import re
 import numpy as np
@@ -340,6 +340,7 @@ $$
 \fbox{\parbox{14cm}{
     \centering
     \vspace{1.5cm}
+    \begin{english}
     \begin{tikzpicture}
     \node[draw, rectangle] (input) at (0,0) {קלט / \en{Input}};
     \node[draw, rectangle] (embed) at (3,0) {הטמעה / \en{Embedding}};
@@ -352,6 +353,7 @@ $$
     \draw[->] (encode) -- (decode);
     \draw[->] (decode) -- (output);
     \end{tikzpicture}
+    \end{english}
     \vspace{1.5cm}
 }}%
 }

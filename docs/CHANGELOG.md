@@ -2,6 +2,190 @@
 
 This document chronicles the development of the Hebrew Academic Template.
 
+## [5.11.9] - 2025-12-20 - TOC RTL Alignment Fix Edition
+
+### Overview
+CRITICAL fix for TOC subsection/subsubsection entries that were aligned LEFT instead of RIGHT in Hebrew RTL documents, even when Hebrew text was properly wrapped with `\texthebrew{}`.
+
+### Fixed (1 Critical Issue)
+- **CRITICAL: Fixed TOC entry alignment** - Subsection/subsubsection entries now align to RIGHT
+  - **Problem:** TOC entries like "2.0.5 המלצות הגנה" aligned to left margin instead of right
+  - **Root Cause:** l@subsection and l@subsubsection macros created LTR paragraphs even with `\texthebrew{}` content
+  - **Solution:** Added `\pardir TRT\textdir TRT` to l@subsection and l@subsubsection macros
+  - **Impact:** All TOC entries now properly align to right margin in RTL documents
+  - **Detected by:** qa-cls-toc-detect Rule 5
+
+### Technical Details
+- **CLS Version:** V5.11.9-2025-12-20
+- **Lines Changed:** 729 (l@subsection), 749 (l@subsubsection)
+- **Fix Mechanism:** Setting paragraph direction to RTL makes entries flow right-to-left
+- **Backward Compatibility:** 100%
+
+---
+
+## [5.11.8] - 2025-12-20 - TOC Hebrew Text Fix Edition
+
+### Overview
+CRITICAL fix for standard `\subsection{Hebrew text}` commands not wrapping Hebrew text with `\texthebrew{}` for TOC entries.
+
+### Fixed (2 Critical Issues)
+- **CRITICAL: Fixed standard \subsection{} Hebrew TOC wrapping**
+  - **Problem:** Standard `\subsection{Hebrew text}` created TOC entry with raw Hebrew (no RTL wrapper)
+  - **Root Cause:** LaTeX's `\subsection` adds text directly to TOC without language wrappers
+  - **Solution:** Override `\subsection` command to use `\texthebrew{}` in `\addcontentsline`
+  - **Impact:** Hebrew text in TOC now renders RTL correctly
+
+- **CRITICAL: Fixed \contentsline hyperref compatibility**
+  - **Problem:** `\contentsline` was redefined for 3 arguments but hyperref uses 4
+  - **Solution:** Changed to handle 4 arguments: `\contentsline{type}{text}{page}{hyperlink}`
+
+### Technical Details
+- **CLS Version:** V5.11.8-2025-12-20
+- **Lines Changed:** 761-796 (subsection override), 654 (contentsline fix)
+- **Backward Compatibility:** 100%
+
+---
+
+## [5.11.7] - 2025-12-20 - TOC RTL Direction Fix (Reverted)
+
+### Overview
+Attempted fix for TOC Hebrew text direction that caused entries to overflow right margin. This version was reverted in favor of v5.11.8 approach.
+
+### Notes
+- Added `\textdir TRT\pardir TRT` to l@ macros
+- Caused entries to extend beyond right page margin
+- Reverted - proper fix in v5.11.8 uses `\texthebrew{}` wrapper instead
+
+---
+
+## [5.11.6] - 2025-12-19 - TOC l@subsubsection BiDi Fix Edition
+
+### Overview
+Added missing `l@subsubsection` definition for proper TOC formatting of subsubsection entries.
+
+### Added
+- **l@subsubsection TOC formatter** - Subsubsection entries now properly formatted in TOC
+  - Consistent indentation with l@chapter, l@section, l@subsection
+  - Proper dot leaders and page number alignment
+  - Hebrew text direction support
+
+### Technical Details
+- **CLS Version:** V5.11.6-2025-12-19
+- **Lines Added:** 741-759 (l@subsubsection definition)
+
+---
+
+## [5.11.5] - 2025-12-19 - TOC Dot Leaders Fix Edition
+
+### Overview
+Fixed TOC showing literal "m@th" text instead of dot leaders between entry and page number.
+
+### Fixed (1 Issue)
+- **Fixed TOC dot leaders** - Now show proper "......" pattern
+  - **Problem:** TOC showed "m@th" text instead of dots
+  - **Root Cause:** Double backslash `\\m@th` instead of single `\m@th` in l@chapter/l@section/l@subsection
+  - **Solution:** Fixed escape sequences in all l@ macros
+  - **Lines Changed:** 674, 694, 712
+
+---
+
+## [5.11.4] - 2025-12-19 - Code Block Space Artifacts Fix
+
+### Overview
+Fixed visible space markers (u-like characters) appearing in code strings.
+
+### Fixed
+- **Code string space rendering** - No more visible space markers
+  - Added global `\lstset` with `showstringspaces=false, columns=flexible`
+  - Updated pythonbox/pythonbox* to use `literate={ }{\ }1` for robust space rendering
+
+---
+
+## [5.11.3] - 2025-12-19 - Table Row Color Support
+
+### Overview
+Added support for `\rowcolor{}` in tables.
+
+### Added
+- **xcolor table option** - `\PassOptionsToPackage{table}{xcolor}` for `\rowcolor` support
+  - `\rowcolor{blue!15}` now works in rtltabular table headers
+  - Note: xcolor table option must be passed before tikz-cd loads xcolor
+
+---
+
+## [5.11.2] - 2025-12-14 - TOC BiDi Fixes Edition
+
+### Overview
+Comprehensive TOC BiDi fixes for proper Hebrew rendering.
+
+### Fixed
+- **TOC page numbers** - Now render LTR (not reversed)
+- **TOC chapter/section numbers** - Now render LTR
+- **TOC dot leaders** - Work correctly in RTL context
+- **Redefined l@chapter, l@section, l@subsection** - For BiDi support
+- **Redefined \numberline** - Wraps numbers in `\textenglish{}`
+- **Redefined \contentsline** - Ensures LTR page numbers
+- **Removed deprecated polyglossia keys** - Eliminated 102 warnings
+
+---
+
+## [5.11.1] - 2025-12-14 - Compatibility Environments
+
+### Overview
+Added backward compatibility environments and new academic environments.
+
+### Added
+- **'latin' environment** - Alias for 'english' (backward compatibility)
+- **'exercise' environment** - Alias for 'exercisebox' (backward compatibility)
+- **'definition' environment** - Styled box for definitions (blue theme)
+- **'abstract' environment** - For book mode (centered title, quotation style)
+
+---
+
+## [5.11.0] - 2025-12-14 - Book Class Support Edition
+
+### Overview
+Major update adding full book class support for academic books.
+
+### Added
+- **'book' class option** - `\documentclass[book]{hebrew-academic-template}`
+- **Book structure commands** - `\frontmatter`, `\mainmatter`, `\backmatter`
+- **Hebrew TOC** - RTL title "תוכן עניינים"
+- **Hebrew LOF** - RTL title "רשימת איורים"
+- **Hebrew LOT** - RTL title "רשימת טבלאות"
+- **`\appendix` command** - With Hebrew support
+- **`\hebrewappendix{}`** - For Hebrew appendix chapters
+- **Book-compatible `\hebrewchapter{}`** - Uses native `\chapter*` internally
+
+---
+
+## [5.10.0] - 2025-12-12 - Chapter Reference Support Edition
+
+### Overview
+Added chapter reference support for `\ref{}` to work with `\hebrewchapter{}`.
+
+### Added
+- **`\hebrewchapterlabel{}`** - Proper label command for Hebrew chapters
+  - `\ref{chap:intro}` now returns correct chapter number
+  - Fixes issue where `\label{}` after `\hebrewchapter{}` returned empty
+
+### Technical Details
+- **Root Cause:** `\hebrewchapter{}` uses `\section*` which doesn't set `\@currentlabel` properly
+- **Solution:** `\hebrewchapterlabel{}` explicitly sets reference value before creating label
+
+---
+
+## [5.9.0] - 2025-12-12 - Section Spacing Strict Enforcement
+
+### Overview
+Enforced strict section spacing rules for consistent academic formatting.
+
+### Changed
+- **Strict spacing enforcement** - Sections now have exact specified spacing
+- **Orphan section prevention** - Improved page break handling
+
+---
+
 ## [5.8.0] - 2025-12-11 - Section Spacing Fix Edition
 
 ### Overview
@@ -477,40 +661,50 @@ The definitive version combining all features from previous versions with all re
 
 ## Version Comparison Summary
 
-| Feature | v1.0 | v3.0 | v5.0 | v5.6 |
-|---------|------|------|------|------|
-| Commands | 60 | 72 | 78 | 80 |
-| Environments | 6 | 8 | 8 | 8 |
-| Packages | 22 | 24 | 24+ | 24+ |
-| Chapter Support | ✗ | ✓ | ✓ | ✓ |
-| Enhanced Tables | ✗ | ✓ | ✓ | ✓ |
-| Non-floating Code | ✗ | ✓ | ✓ | ✓ |
-| Biber Backend | ✓ | ✗ | ✓ | ✓ |
-| RTL Captions | ✓ | ✗ | ✓ | ✓ |
-| PDF Bookmarks | Issues | Issues | ✓ | ✓ |
-| Symbol Commands | ✓ | ✗ | ✓ | ✓ |
-| Footer BiDi | Issues | Issues | Issues | ✓ |
-| Code Block Hebrew Titles | ✗ | ✗ | ✗ | ✓ |
+| Feature | v1.0 | v3.0 | v5.0 | v5.6 | v5.11 |
+|---------|------|------|------|------|-------|
+| Commands | 60 | 72 | 78 | 80 | 85+ |
+| Environments | 6 | 8 | 8 | 8 | 12 |
+| Packages | 22 | 24 | 24+ | 24+ | 26+ |
+| Chapter Support | ✗ | ✓ | ✓ | ✓ | ✓ |
+| Enhanced Tables | ✗ | ✓ | ✓ | ✓ | ✓ |
+| Non-floating Code | ✗ | ✓ | ✓ | ✓ | ✓ |
+| Biber Backend | ✓ | ✗ | ✓ | ✓ | ✓ |
+| RTL Captions | ✓ | ✗ | ✓ | ✓ | ✓ |
+| PDF Bookmarks | Issues | Issues | ✓ | ✓ | ✓ |
+| Symbol Commands | ✓ | ✗ | ✓ | ✓ | ✓ |
+| Footer BiDi | Issues | Issues | Issues | ✓ | ✓ |
+| Code Block Hebrew Titles | ✗ | ✗ | ✗ | ✓ | ✓ |
+| Book Class Support | ✗ | ✗ | ✗ | ✗ | ✓ |
+| TOC BiDi Complete | Issues | Issues | Issues | Issues | ✓ |
+| Row Color Tables | ✗ | ✗ | ✗ | ✗ | ✓ |
+| Chapter References | ✗ | ✗ | ✗ | ✗ | ✓ |
 
 ## Migration Notes
 
-### From v1.0 to v5.6
+### From v1.0 to v5.11
 - No changes required - fully backward compatible
 - New features available but not required
 - Consider using new table commands for better formatting
 - Footer/header Hebrew text displays correctly
 - Hebrew titles in code blocks supported with `\hebtitle{}`
+- Full book class support available with `[book]` option
+- TOC now fully BiDi compliant
 
-### From v3.0 to v5.6
+### From v3.0 to v5.11
 - No changes required - fully backward compatible
 - PDF bookmark errors automatically fixed
 - Table captions properly centered
 - Footer Hebrew text displays correctly
 - Code block Hebrew titles supported
+- Book class available for full-length books
 
-### From v5.0/v5.4/v5.5 to v5.6
+### From v5.0/v5.4/v5.5/v5.6 to v5.11
 - No changes required - fully backward compatible
 - For Hebrew titles in pythonbox, use `\hebtitle{}`
+- TOC Hebrew text now properly aligned to right
+- Book mode available with `\documentclass[book]{hebrew-academic-template}`
+- Use `\hebrewchapterlabel{}` after `\hebrewchapter{}` for proper references
 
 ## Development History
 
@@ -521,5 +715,8 @@ The Hebrew Academic Template evolved through community needs:
 3. **v5.0** - Unified all features, fixed all regressions
 4. **v5.5** - Footer/header BiDi support
 5. **v5.6** - Pythonbox Hebrew title support
+6. **v5.8** - Section spacing fixes
+7. **v5.10** - Chapter reference support
+8. **v5.11** - Full book class support, TOC BiDi complete
 
 Each version built upon user feedback and real-world usage in academic institutions.
