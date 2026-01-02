@@ -1,6 +1,6 @@
 # Hebrew Academic Template
 
-**Version 7.0.4** | January 2026
+**Version 7.0.5** | January 2026
 
 A comprehensive LaTeX class for Hebrew academic documents with seamless English integration, designed for LuaLaTeX with polyglossia and luabidi.
 
@@ -148,6 +148,13 @@ lualatex document.tex
 ```
 
 ## Changelog
+
+### v7.0.5 (2026-01-02)
+- **FIXED**: List of Figures (LOF) page numbers now render LTR instead of RTL
+- **FIXED**: List of Tables (LOT) page numbers now render LTR instead of RTL
+- **NEW**: Added `l@figure` redefinition with `\textdir TLT` for proper BiDi
+- **NEW**: Added `l@table` redefinition with `\textdir TLT` for proper BiDi
+- **NEW**: Python scripts for generating example figures in `examples/images/`
 
 ### v7.0.4 (2026-01-02)
 - **FIXED**: `R{width}` column type now uses tabularray's Q column
