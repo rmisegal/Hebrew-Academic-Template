@@ -212,35 +212,41 @@
 \hebrewsubsection{פתרון בעיות מיקום איורים: \entoc{Float Positioning Solution}}
 \label{subsec:positioning}
 
-\textbf{הבעיה:} ב-\LaTeX{}, האפשרויות \texttt{[h]}, \texttt{[t]}, \texttt{[b]}, \texttt{[p]} הן \emph{הצעות} בלבד.
-\LaTeX{} עלול להתעלם מהן ולהזיז איורים לעמודים מאוחרים יותר, במיוחד כאשר האיורים גדולים.
+\textbf{הבעיה:} ב-\en{LaTeX}, האפשרויות \texttt{[h]}, \texttt{[t]}, \texttt{[b]}, \texttt{[p]} הן \emph{הצעות} בלבד.
+\en{LaTeX} עלול להתעלם מהן ולהזיז איורים לעמודים מאוחרים יותר, במיוחד כאשר האיורים גדולים.
 
 \textbf{הפתרון:} שימוש בחבילת \en{float} ובאפשרות \texttt{[H]} (אות גדולה):
 
 \begin{enumerate}
     \item \textbf{הוספת החבילה:} הוסיפו בתחילת המסמך:
-    \begin{verbatim}
-    \usepackage{float}
-    \end{verbatim}
+\begin{english}
+\begin{verbatim}
+\usepackage{float}
+\end{verbatim}
+\end{english}
 
     \item \textbf{שימוש ב-\en{[H]}:} החליפו את \texttt{[h]} ב-\texttt{[H]}:
-    \begin{verbatim}
-    \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{image.pdf}
-    \caption{כיתוב האיור}
-    \end{figure}
-    \end{verbatim}
+\begin{english}
+\begin{verbatim}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{image.pdf}
+\caption{Figure caption}
+\end{figure}
+\end{verbatim}
+\end{english}
 
     \item \textbf{עבור \en{hebrewfigure}:} השתמשו ב-\texttt{[H]} גם כן:
-    \begin{verbatim}
-    \hebrewfigure[H]{...}{כיתוב}
-    \end{verbatim}
+\begin{english}
+\begin{verbatim}
+\hebrewfigure[H]{...}{caption}
+\end{verbatim}
+\end{english}
 \end{enumerate}
 
 \textbf{השוואת אפשרויות מיקום:}
 \begin{itemize}
-    \item \texttt{[h]} -- כאן (הצעה, \LaTeX{} עלול להתעלם)
+    \item \texttt{[h]} -- כאן (הצעה, \en{LaTeX} עלול להתעלם)
     \item \texttt{[t]} -- בראש העמוד (הצעה)
     \item \texttt{[b]} -- בתחתית העמוד (הצעה)
     \item \texttt{[p]} -- בעמוד נפרד (הצעה)
@@ -251,10 +257,10 @@
 
 התבנית תומכת במגוון פורמטים:
 \begin{itemize}
-    \item \textbf{PDF:} מומלץ לגרפיקה וקטורית
-    \item \textbf{PNG:} מומלץ לצילומי מסך ודיאגרמות
-    \item \textbf{JPG:} מומלץ לתמונות צילום
-    \item \textbf{TikZ/Python:} ליצירת גרפיקה ב-\LaTeX{} או \en{Matplotlib}
+    \item \textbf{\en{PDF}:} מומלץ לגרפיקה וקטורית
+    \item \textbf{\en{PNG}:} מומלץ לצילומי מסך ודיאגרמות
+    \item \textbf{\en{JPG}:} מומלץ לתמונות צילום
+    \item \textbf{\en{TikZ/Python}:} ליצירת גרפיקה ב-\en{LaTeX} או \en{Matplotlib}
 \end{itemize}
 
 % ==================== SUMMARY ====================
