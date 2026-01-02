@@ -17,7 +17,7 @@
 \hebrewtitle{דוגמה למתחילים - תבנית אקדמית עברית}
 \englishtitle{Beginner Example - Hebrew Academic Template \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
-\hebrewversion{גרסה \clsversion}
+\hebrewversion{גרסה \en{\clsversion}}
 \date{\textenglish{January 2026}}
 
 \begin{document}
@@ -31,7 +31,7 @@
 
 \hebrewsection{מבוא: \entoc{Introduction}}
 
-זהו מסמך דוגמה למתחילים המדגים את היכולות הבסיסיות של התבנית האקדמית העברית גרסה \clsversion.
+זהו מסמך דוגמה למתחילים המדגים את היכולות הבסיסיות של התבנית האקדמית העברית גרסה \en{\clsversion}.
 התבנית מאפשרת כתיבה בעברית עם שילוב טקסט באנגלית כמו \en{Machine Learning} ו-\en{Artificial Intelligence}.
 
 % Demonstrate basic text direction commands
@@ -93,6 +93,7 @@
 
 להלן דוגמת קוד פשוטה ב-\en{Python}:
 
+\begin{english}
 \begin{pythonbox}[\hebtitle{חישוב ממוצע: \en{Calculate Average}}]
 # Simple function to calculate average
 def calculate_average(numbers):
@@ -108,6 +109,7 @@ data = [10, 20, 30, 40, 50]
 result = calculate_average(data)
 print(f"The average is: {result}")
 \end{pythonbox}
+\end{english}
 
 הקוד מדגים פונקציה פשוטה לחישוב ממוצע של רשימת מספרים.
 
@@ -128,7 +130,7 @@ print(f"The average is: {result}")
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{images/example-figure1.png}
+\includegraphics[width=0.8\textwidth]{images/fig_beginner.pdf}
 \caption{איור פשוט: \entoc{Simple Figure}}
 \label{fig:simple}
 \end{figure}
@@ -197,17 +199,17 @@ This section uses the \texttt{startenglish} and \texttt{stopenglish} commands to
 
 \hebrewsection{סיכום: \entoc{Summary}}
 
-מסמך זה הדגים את היכולות הבסיסיות של התבנית האקדמית העברית גרסה \clsversion:
+מסמך זה הדגים את היכולות הבסיסיות של התבנית האקדמית העברית גרסה \en{\clsversion}:
 
 \begin{itemize}
-    \item כתיבה בעברית עם שילוב אנגלית באמצעות \texttt{\textbackslash en\{\}}
-    \item שימוש במספרים (\texttt{\textbackslash num\{\}}), שנים (\texttt{\textbackslash hebyear\{\}}), ואחוזים (\texttt{\textbackslash percent\{\}})
-    \item יצירת סעיפים ותת-סעיפים עם \texttt{\textbackslash entoc\{\}} לתוכן העניינים
+    \item כתיבה בעברית עם שילוב אנגלית באמצעות \en{\texttt{\textbackslash en\{\}}}
+    \item שימוש במספרים (\en{\texttt{\textbackslash num\{\}}}), שנים (\en{\texttt{\textbackslash hebyear\{\}}}), ואחוזים (\en{\texttt{\textbackslash percent\{\}}})
+    \item יצירת סעיפים ותת-סעיפים עם \en{\texttt{\textbackslash entoc\{\}}} לתוכן העניינים
     \item טבלאות עם תוכן מעורב באמצעות סביבת \en{fancytable}
-    \item הוספת קוד עם \texttt{pythonbox}
+    \item הוספת קוד עם \en{\texttt{pythonbox}}
     \item ציטוטים ביבליוגרפיים
     \item איורים וביטויים מתמטיים
-    \item סעיפים באנגלית עם \texttt{\textbackslash startenglish} ו-\texttt{\textbackslash stopenglish}
+    \item סעיפים באנגלית עם \en{\texttt{\textbackslash startenglish}} ו-\en{\texttt{\textbackslash stopenglish}}
 \end{itemize}
 
 התבנית מספקת כלים נוחים ופשוטים לכתיבת מסמכים אקדמיים בעברית עם אינטגרציה מלאה של תוכן באנגלית.
