@@ -1,0 +1,92 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+
+\newfontfamily\hebrewfont{David CLM}[Script=Hebrew]
+\newfontfamily\englishfont{Arial}
+
+\usepackage{tabularray}
+\usepackage{ragged2e}
+
+\begin{document}
+
+\section*{Test 1: tblr cmd=raggedright (RTL context)}
+
+\begin{tblr}{
+    width = \linewidth,
+    colspec = {X X X},
+    hlines, vlines,
+    cells = {cmd=\raggedright}
+}
+    שיטה & יתרונות & חסרונות \\
+    למידה מונחית & דיוק גבוה כאשר יש נתונים מתויגים & דורש כמות גדולה של נתונים מתויגים \\
+    למידה לא מונחית & לא דורש תיוג, מגלה מבנים נסתרים & קשה להעריך את הביצועים \\
+\end{tblr}
+
+\section*{Test 2: tblr halign=r}
+
+\begin{tblr}{
+    width = \linewidth,
+    colspec = {X X X},
+    hlines, vlines,
+    cells = {halign=r}
+}
+    שיטה & יתרונות & חסרונות \\
+    למידה מונחית & דיוק גבוה כאשר יש נתונים מתויגים & דורש כמות גדולה של נתונים מתויגים \\
+    למידה לא מונחית & לא דורש תיוג, מגלה מבנים נסתרים & קשה להעריך את הביצועים \\
+\end{tblr}
+
+\section*{Test 3: tblr r in colspec}
+
+\begin{tblr}{
+    width = \linewidth,
+    colspec = {X[r] X[r] X[r]},
+    hlines, vlines,
+}
+    שיטה & יתרונות & חסרונות \\
+    למידה מונחית & דיוק גבוה כאשר יש נתונים מתויגים & דורש כמות גדולה של נתונים מתויגים \\
+    למידה לא מונחית & לא דורש תיוג, מגלה מבנים נסתרים & קשה להעריך את הביצועים \\
+\end{tblr}
+
+\section*{Test 4: tblr cmd=RaggedRight}
+
+\begin{tblr}{
+    width = \linewidth,
+    colspec = {X X X},
+    hlines, vlines,
+    cells = {cmd=\RaggedRight}
+}
+    שיטה & יתרונות & חסרונות \\
+    למידה מונחית & דיוק גבוה כאשר יש נתונים מתויגים & דורש כמות גדולה של נתונים מתויגים \\
+    למידה לא מונחית & לא דורש תיוג, מגלה מבנים נסתרים & קשה להעריך את הביצועים \\
+\end{tblr}
+
+\section*{Test 5: tblr cmd=RaggedLeft}
+
+\begin{tblr}{
+    width = \linewidth,
+    colspec = {X X X},
+    hlines, vlines,
+    cells = {cmd=\RaggedLeft}
+}
+    שיטה & יתרונות & חסרונות \\
+    למידה מונחית & דיוק גבוה כאשר יש נתונים מתויגים & דורש כמות גדולה של נתונים מתויגים \\
+    למידה לא מונחית & לא דורש תיוג, מגלה מבנים נסתרים & קשה להעריך את הביצועים \\
+\end{tblr}
+
+\section*{Test 6: tblr j=r}
+
+\begin{tblr}{
+    width = \linewidth,
+    colspec = {X X X},
+    hlines, vlines,
+    cells = {j=r}
+}
+    שיטה & יתרונות & חסרונות \\
+    למידה מונחית & דיוק גבוה כאשר יש נתונים מתויגים & דורש כמות גדולה של נתונים מתויגים \\
+    למידה לא מונחית & לא דורש תיוג, מגלה מבנים נסתרים & קשה להעריך את הביצועים \\
+\end{tblr}
+
+\end{document}

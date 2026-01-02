@@ -527,6 +527,27 @@ The environment ensures consistent English formatting throughout.
 
 הגרסה הנוכחית של התבנית: \clsversion{}
 
+% ==================== NEW v6.3.5 TEST: CROSS-CHAPTER REFERENCES ====================
+\hebrewsection{הפניות בין-פרקים: \entoc{Cross-Chapter References}}
+
+% Test the new chapterref commands added in v6.3.5
+הפקודות החדשות מאפשרות הפניה לפרקים בצורה עקבית:
+
+\begin{itemize}
+    \item \textbf{הפניה לפרק בודד:} \chapterref{3} % Should show "פרק 3"
+    \item \textbf{טווח פרקים:} \chapterrefrange{2}{5} % Should show "פרקים 2-5"
+    \item \textbf{רשימת פרקים:} \chapterreflist{1, 4 ו-7} % Should show "פרקים 1, 4 ו-7"
+    \item \textbf{הפניה קדימה:} \chapterrefforward{8} % Should show "יוסבר בפרק 8"
+\end{itemize}
+
+דוגמאות בהקשר:
+\begin{enumerate}
+    \item ראו \chapterref{2} לפרטים נוספים על הנושא.
+    \item הנושאים מכוסים ב\chapterrefrange{3}{6}.
+    \item ראו \chapterreflist{1, 3 ו-5} לרקע תיאורטי.
+    \item מימוש מתקדם \chapterrefforward{10}.
+\end{enumerate}
+
 % ==================== NEW v5.11.4 TEST: SPACE ARTIFACTS ====================
 \hebrewsection{בדיקת רווחים בקוד: \entoc{Code Space Artifacts Test}}
 

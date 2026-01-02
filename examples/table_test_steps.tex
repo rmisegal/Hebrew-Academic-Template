@@ -1,0 +1,136 @@
+% Test with mixed content: Hebrew, English, numbers, formulas
+
+\documentclass{hebrew-academic-template}
+
+\begin{document}
+
+\hebrewsection{בדיקת טבלאות עם תוכן מעורב}
+
+% ============================================================================
+% Test 1: Mixed Hebrew and English
+% ============================================================================
+\hebrewsubsection{טבלה 1: עברית ואנגלית}
+
+\begin{table}[H]
+\centering
+\caption{עברית ואנגלית}
+\begin{tblr}{
+    colspec = {X X X},
+    hlines, vlines,
+    row{1} = {bg=blue!15, font=\bfseries},
+    cells = {cmd=\raggedright}
+}
+    שם האלגוריתם & סיבוכיות זמן & סיבוכיות מקום \\
+    \en{Bubble Sort} מיון בועות & $O(n^2)$ & $O(1)$ \\
+    \en{Merge Sort} מיון מיזוג & $O(n \log n)$ & $O(n)$ \\
+    \en{Quick Sort} מיון מהיר & $O(n \log n)$ & $O(\log n)$ \\
+\end{tblr}
+\end{table}
+
+% ============================================================================
+% Test 2: With numbers
+% ============================================================================
+\hebrewsubsection{טבלה 2: מספרים}
+
+\begin{table}[H]
+\centering
+\caption{מספרים}
+\begin{tblr}{
+    colspec = {X X X},
+    hlines, vlines,
+    row{1} = {bg=blue!15, font=\bfseries},
+    cells = {cmd=\raggedright}
+}
+    פריט & כמות & מחיר \\
+    מחשב נייד & \en{15} & \en{4,500} ש"ח \\
+    מסך \en{27} אינץ' & \en{30} & \en{1,200} ש"ח \\
+    מקלדת מכאנית & \en{50} & \en{350} ש"ח \\
+\end{tblr}
+\end{table}
+
+% ============================================================================
+% Test 3: With formulas
+% ============================================================================
+\hebrewsubsection{טבלה 3: נוסחאות}
+
+\begin{table}[H]
+\centering
+\caption{פונקציות אקטיבציה}
+\begin{tblr}{
+    colspec = {X X X},
+    hlines, vlines,
+    row{1} = {bg=blue!15, font=\bfseries},
+    cells = {cmd=\raggedright}
+}
+    שם הפונקציה & הנוסחה $f(x)$ & הנגזרת $f'(x)$ \\
+    \en{Sigmoid} סיגמואיד & $\frac{1}{1+e^{-x}}$ & $f(x)(1-f(x))$ \\
+    \en{Tanh} טנגנס היפרבולי & $\frac{e^x-e^{-x}}{e^x+e^{-x}}$ & $1-f(x)^2$ \\
+    \en{ReLU} & $\max(0,x)$ & $\begin{cases} 1 & x>0 \\ 0 & x \leq 0 \end{cases}$ \\
+\end{tblr}
+\end{table}
+
+% ============================================================================
+% Test 4: XOR truth table
+% ============================================================================
+\hebrewsubsection{טבלה 4: טבלת אמת XOR}
+
+\begin{table}[H]
+\centering
+\caption{טבלת אמת של שער \en{XOR}}
+\begin{tblr}{
+    colspec = {c c c},
+    hlines, vlines,
+    row{1} = {bg=blue!15, font=\bfseries},
+    cells = {cmd=\raggedright}
+}
+    $x_1$ & $x_2$ & \en{XOR} \\
+    0 & 0 & 0 \\
+    0 & 1 & 1 \\
+    1 & 0 & 1 \\
+    1 & 1 & 0 \\
+\end{tblr}
+\end{table}
+
+% ============================================================================
+% Test 5: Full mixed content
+% ============================================================================
+\hebrewsubsection{טבלה 5: תוכן מעורב מלא}
+
+\begin{table}[H]
+\centering
+\caption{השוואת שיטות למידה -- \en{Learning Methods}}
+\begin{tblr}{
+    colspec = {X X X},
+    hlines, vlines,
+    row{1} = {bg=blue!15, font=\bfseries},
+    cells = {cmd=\raggedright}
+}
+    שיטה & יתרונות & חסרונות \\
+    למידה מונחית \en{Supervised} & דיוק גבוה כאשר יש נתונים מתויגים & דורש כמות גדולה של נתונים מתויגים \\
+    למידה לא מונחית \en{Unsupervised} & לא דורש תיוג, מגלה מבנים נסתרים & קשה להעריך את הביצועים \\
+    למידת חיזוק \en{Reinforcement} & לומד מניסיון ללא פיקוח ישיר & דורש הרבה אינטראקציות, איטי \\
+\end{tblr}
+\end{table}
+
+% ============================================================================
+% Test 6: Fixed width with mixed content
+% ============================================================================
+\hebrewsubsection{טבלה 6: רוחב קבוע עם תוכן מעורב}
+
+\begin{table}[H]
+\centering
+\caption{רוחב קבוע עם תוכן מעורב}
+\begin{tblr}{
+    colspec = {Q[3cm] Q[4cm] Q[4cm]},
+    hlines, vlines,
+    row{1} = {bg=blue!15, font=\bfseries},
+    cells = {cmd=\raggedright}
+}
+    שיטה & יתרונות & חסרונות \\
+    למידה מונחית \en{Supervised} & דיוק גבוה כאשר יש נתונים מתויגים & דורש כמות גדולה של נתונים מתויגים \\
+    למידה לא מונחית \en{Unsupervised} & לא דורש תיוג, מגלה מבנים נסתרים & קשה להעריך את הביצועים \\
+    למידת חיזוק \en{Reinforcement} & לומד מניסיון ללא פיקוח ישיר & דורש הרבה אינטראקציות, איטי \\
+\end{tblr}
+\end{table}
+
+\end{document}

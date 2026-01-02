@@ -1,0 +1,33 @@
+% Test RTL column modifiers
+\documentclass{hebrew-academic-template}
+
+\begin{document}
+
+\section*{Test 1: Manual (baseline)}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|>{\textdir TRT\selectlanguage{hebrew}}c|>{\textdir TRT\selectlanguage{hebrew}}c|>{\textdir TRT\selectlanguage{hebrew}}c|}
+\hline
+\textbf{כותרת א'} & \textbf{כותרת ב'} & \textbf{כותרת ג'} \\
+\hline
+נתון 1 & נתון 2 & נתון 3 \\
+\hline
+\end{tabular}
+\caption{Manual - should work}
+\end{table}
+
+\section*{Test 2: rtltabular (auto)}
+
+\begin{hebrewtable}[H]
+\caption{rtltabular auto RTL}
+\begin{rtltabular}{|c|c|c|}
+\hline
+\textbf{כותרת א'} & \textbf{כותרת ב'} & \textbf{כותרת ג'} \\
+\hline
+נתון 1 & נתון 2 & נתון 3 \\
+\hline
+\end{rtltabular}
+\end{hebrewtable}
+
+\end{document}

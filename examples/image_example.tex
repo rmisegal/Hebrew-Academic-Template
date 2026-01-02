@@ -7,6 +7,9 @@
 
 \documentclass{hebrew-academic-template}
 
+% Force figure positioning
+\usepackage{float}
+
 % Add bibliography file
 \addbibresource{example_references.bib}
 
@@ -37,7 +40,7 @@
 \hebrewsubsection{איור פשוט: \entoc{Simple Figure}}
 
 % Using standard figure environment
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{images/fig_basic.pdf}
 \caption{איור בסיסי: \entoc{Basic Figure} - דוגמה פשוטה}
@@ -49,7 +52,7 @@
 \hebrewsubsection{איור עם פקודת \en{hebrewfigure}: \entoc{Figure with hebrewfigure Command}}
 
 % Using \hebrewfigure command
-\hebrewfigure[h]{
+\hebrewfigure[H]{
     \includegraphics[width=0.6\textwidth]{images/fig_hebrewfigure.pdf}
 }{איור עם פקודה: \entoc{Command Figure} - שימוש בפקודת \en{hebrewfigure}}
 
@@ -59,7 +62,7 @@
 
 \hebrewsubsection{מיקום בראש העמוד: \entoc{Top Position}}
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{images/fig_top.pdf}
 \caption{איור עם מיקום עליון: \entoc{Top-Positioned Figure} - משתמש ב-\texttt{[t]}}
@@ -70,7 +73,7 @@
 
 \hebrewsubsection{מיקום בתחתית העמוד: \entoc{Bottom Position}}
 
-\begin{figure}[b]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{images/fig_bottom.pdf}
 \caption{איור עם מיקום תחתון: \entoc{Bottom-Positioned Figure} - משתמש ב-\texttt{[b]}}
@@ -81,7 +84,7 @@
 
 \hebrewsubsection{מיקום בעמוד נפרד: \entoc{Page Position}}
 
-\begin{figure}[p]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{images/fig_page.pdf}
 \caption{איור בעמוד נפרד: \entoc{Page Figure} - משתמש ב-\texttt{[p]}}
@@ -96,7 +99,7 @@
 
 \hebrewsubsection{איורים זה לצד זה: \entoc{Side-by-Side Figures}}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{images/fig_sidebyside.pdf}
 \caption{איורים זה לצד זה: \entoc{Side-by-Side Figures}}
@@ -107,7 +110,7 @@
 
 \hebrewsubsection{רשת איורים: \entoc{Figure Grid}}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{images/fig_grid.pdf}
 \caption{רשת איורים $2\times2$: \entoc{$2\times2$ Figure Grid}}
@@ -122,7 +125,7 @@
 
 \hebrewsubsection{דיאגרמה עם טקסט: \entoc{Diagram with Text}}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{images/fig_architecture.pdf}
 \caption{דיאגרמת ארכיטקטורה: \entoc{Architecture Diagram} - מבנה שלוש שכבות}
@@ -133,7 +136,7 @@
 
 \hebrewsubsection{גרפים ונתונים: \entoc{Graphs and Data}}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{images/fig_data.pdf}
 \caption{נתוני ניסוי: \entoc{Experimental Data} - מגמות לאורך זמן}
@@ -148,7 +151,7 @@
 
 \hebrewsubsection{כיתובים מפורטים: \entoc{Detailed Captions}}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{images/fig_detailed.pdf}
 \caption[כיתוב קצר: \entoc{Short Caption}]{כיתוב ארוך ומפורט: \entoc{Long Detailed Caption} - איור זה מדגים שימוש בכיתוב ארוך המסביר בפירוט את תוכן האיור. ניתן לכלול הסברים נוספים, הפניות למחקרים \cite{vaswani2017attention}, ואפילו נוסחאות מתמטיות כמו $y = mx + b$. הכיתוב הקצר מופיע ברשימת האיורים.}
@@ -170,7 +173,7 @@
 
 \hebrewsection{תת-איורים: \entoc{Subfigures}}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{images/fig_subfigures.pdf}
 \caption{איור עם תת-איורים: \entoc{Figure with Subfigures} - (א) חלק ראשון, (ב) חלק שני, (ג) חלק שלישי, (ד) חלק רביעי}
@@ -183,7 +186,7 @@
 
 \hebrewsection{איורי TikZ: \entoc{TikZ Figures}}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{images/fig_graph.pdf}
 \caption{גרף מכוון: \entoc{Directed Graph} - דוגמה עם \en{Python/Matplotlib}}

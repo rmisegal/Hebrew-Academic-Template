@@ -1,11 +1,18 @@
 % hebrew-academic-template.cls
-% Version 7.0.4 - R{} Column Type Fix for RTL
+% Version 7.0.5 - LOF/LOT BiDi Page Number Fix
 % Date: 2026-01-02
 %
 % A comprehensive LaTeX class for Hebrew academic documents with English integration
 % Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
 %
 % CHANGELOG:
+% v7.0.5 (2026-01-02) - LOF/LOT BiDi Page Number Fix
+%   - FIXED: List of Figures (LOF) page numbers now render LTR instead of RTL
+%   - FIXED: List of Tables (LOT) page numbers now render LTR instead of RTL
+%   - NEW: Added l@figure redefinition with \textdir TLT for page numbers
+%   - NEW: Added l@table redefinition with \textdir TLT for page numbers
+%   - Both use \pardir TRT\textdir TRT for Hebrew caption text with LTR page numbers
+%
 % v7.0.4 (2026-01-02) - R{} Column Type Fix for RTL
 %   - FIXED: R{width} column type now uses Q[wd=width] instead of tabular-style definition
 %   - R{} now properly inherits cells={cmd=\raggedright} from themes for correct Hebrew alignment
@@ -409,11 +416,11 @@
 % - PDF bookmark support with proper hyperref integration
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hebrew-academic-template}[2026/01/02 v7.0.4 Hebrew Academic Template - R{} Column Type Fix for RTL]
+\ProvidesClass{hebrew-academic-template}[2026/01/02 v7.0.5 Hebrew Academic Template - LOF/LOT BiDi Fix]
 
 % ==================== VERSION INFORMATION ====================
 % Version command - defined early for programmatic access
-\newcommand{\clsversion}{V7.0.4-2026-01-02}
+\newcommand{\clsversion}{V7.0.5-2026-01-02}
 
 % ==================== CLASS OPTIONS ====================
 % 'book' option - enables full book class with chapters, frontmatter, etc.
@@ -1038,6 +1045,48 @@
       \begingroup
         \pardir TRT\textdir TRT
         \parindent \z@ \leftskip 4.6em \rightskip \@tocrmarg
+        \parfillskip -\rightskip
+        \leavevmode
+        \advance\leftskip\@tempdima
+        \hskip -\leftskip
+        #1\nobreak\leaders\hbox{$\m@th
+          \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+          mu$}\hfill\nobreak\hb@xt@\@pnumwidth{\hss {\textdir TLT #2}}\par
+      \endgroup
+    \fi
+  }
+
+  % v7.0.5: Redefine l@figure for proper BiDi handling in List of Figures
+  % Ensures page numbers render LTR and Hebrew captions render RTL
+  \renewcommand*\l@figure[2]{%
+    \ifnum \c@lofdepth >\z@
+      \addpenalty{-\@highpenalty}%
+      \addvspace{1.0em \@plus\p@}%
+      \setlength{\@tempdima}{2.3em}%
+      \begingroup
+        \pardir TRT\textdir TRT
+        \parindent \z@ \leftskip \z@ \rightskip \@tocrmarg
+        \parfillskip -\rightskip
+        \leavevmode
+        \advance\leftskip\@tempdima
+        \hskip -\leftskip
+        #1\nobreak\leaders\hbox{$\m@th
+          \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+          mu$}\hfill\nobreak\hb@xt@\@pnumwidth{\hss {\textdir TLT #2}}\par
+      \endgroup
+    \fi
+  }
+
+  % v7.0.5: Redefine l@table for proper BiDi handling in List of Tables
+  % Ensures page numbers render LTR and Hebrew captions render RTL
+  \renewcommand*\l@table[2]{%
+    \ifnum \c@lotdepth >\z@
+      \addpenalty{-\@highpenalty}%
+      \addvspace{1.0em \@plus\p@}%
+      \setlength{\@tempdima}{2.3em}%
+      \begingroup
+        \pardir TRT\textdir TRT
+        \parindent \z@ \leftskip \z@ \rightskip \@tocrmarg
         \parfillskip -\rightskip
         \leavevmode
         \advance\leftskip\@tempdima
