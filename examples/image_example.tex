@@ -14,7 +14,7 @@
 \hebrewtitle{דוגמת איורים ותמונות - תבנית אקדמית עברית}
 \englishtitle{Image and Figure Example - Hebrew Academic Template \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
-\date{\textenglish{November 2025}}
+\date{\textenglish{January 2026}}
 
 \begin{document}
 
@@ -39,13 +39,7 @@
 % Using standard figure environment
 \begin{figure}[h]
 \centering
-\fbox{\parbox{10cm}{
-    \centering
-    \vspace{3cm}
-    מקום לתמונה\\
-    \en{Image Placeholder}\\
-    \vspace{3cm}
-}}
+\includegraphics[width=0.8\textwidth]{images/fig_basic.pdf}
 \caption{איור בסיסי: \entoc{Basic Figure} - דוגמה פשוטה}
 \label{fig:basic}
 \end{figure}
@@ -56,13 +50,7 @@
 
 % Using \hebrewfigure command
 \hebrewfigure[h]{
-    \fbox{\parbox{8cm}{
-        \centering
-        \vspace{2cm}
-        איור עם \texttt{hebrewfigure}\\
-        \en{Using hebrewfigure command}\\
-        \vspace{2cm}
-    }}
+    \includegraphics[width=0.6\textwidth]{images/fig_hebrewfigure.pdf}
 }{איור עם פקודה: \entoc{Command Figure} - שימוש בפקודת \texttt{hebrewfigure}}
 
 % ==================== POSITIONING OPTIONS ====================
@@ -73,14 +61,7 @@
 
 \begin{figure}[t]
 \centering
-\fbox{\parbox{12cm}{
-    \centering
-    \vspace{2cm}
-    איור בראש העמוד\\
-    \en{Top-positioned figure}\\
-    מיקום: \texttt{[t]}\\
-    \vspace{2cm}
-}}
+\includegraphics[width=0.9\textwidth]{images/fig_top.pdf}
 \caption{איור עם מיקום עליון: \entoc{Top-Positioned Figure} - משתמש ב-\texttt{[t]}}
 \label{fig:top}
 \end{figure}
@@ -91,14 +72,7 @@
 
 \begin{figure}[b]
 \centering
-\fbox{\parbox{12cm}{
-    \centering
-    \vspace{2cm}
-    איור בתחתית העמוד\\
-    \en{Bottom-positioned figure}\\
-    מיקום: \texttt{[b]}\\
-    \vspace{2cm}
-}}
+\includegraphics[width=0.9\textwidth]{images/fig_bottom.pdf}
 \caption{איור עם מיקום תחתון: \entoc{Bottom-Positioned Figure} - משתמש ב-\texttt{[b]}}
 \label{fig:bottom}
 \end{figure}
@@ -109,14 +83,7 @@
 
 \begin{figure}[p]
 \centering
-\fbox{\parbox{14cm}{
-    \centering
-    \vspace{5cm}
-    איור גדול בעמוד נפרד\\
-    \en{Large figure on separate page}\\
-    מיקום: \texttt{[p]}\\
-    \vspace{5cm}
-}}
+\includegraphics[width=0.9\textwidth]{images/fig_page.pdf}
 \caption{איור בעמוד נפרד: \entoc{Page Figure} - משתמש ב-\texttt{[p]}}
 \label{fig:page}
 \end{figure}
@@ -131,22 +98,7 @@
 
 \begin{figure}[h]
 \centering
-\begin{tabular}{cc}
-\fbox{\parbox{6cm}{
-    \centering
-    \vspace{2cm}
-    איור ימני\\
-    \en{Right Figure}\\
-    \vspace{2cm}
-}} &
-\fbox{\parbox{6cm}{
-    \centering
-    \vspace{2cm}
-    איור שמאלי\\
-    \en{Left Figure}\\
-    \vspace{2cm}
-}}
-\end{tabular}
+\includegraphics[width=0.95\textwidth]{images/fig_sidebyside.pdf}
 \caption{איורים זה לצד זה: \entoc{Side-by-Side Figures}}
 \label{fig:sidebyside}
 \end{figure}
@@ -157,12 +109,7 @@
 
 \begin{figure}[h]
 \centering
-\begin{tabular}{cc}
-\fbox{\parbox{5cm}{\centering\vspace{2cm}איור 1\\[2cm]}} &
-\fbox{\parbox{5cm}{\centering\vspace{2cm}איור 2\\[2cm]}} \\[0.5cm]
-\fbox{\parbox{5cm}{\centering\vspace{2cm}איור 3\\[2cm]}} &
-\fbox{\parbox{5cm}{\centering\vspace{2cm}איור 4\\[2cm]}}
-\end{tabular}
+\includegraphics[width=0.9\textwidth]{images/fig_grid.pdf}
 \caption{רשת איורים $2\times2$: \entoc{$2\times2$ Figure Grid}}
 \label{fig:grid}
 \end{figure}
@@ -177,19 +124,7 @@
 
 \begin{figure}[h]
 \centering
-\fbox{\parbox{12cm}{
-    \centering
-    \vspace{1cm}
-    \textbf{ארכיטקטורת המערכת}\\[0.5cm]
-    \begin{tabular}{c}
-    \fbox{\parbox{8cm}{\centering שכבת קלט / \en{Input Layer}\\[0.3cm]}} \\[0.3cm]
-    $\downarrow$ \\[0.3cm]
-    \fbox{\parbox{8cm}{\centering שכבת עיבוד / \en{Processing Layer}\\[0.3cm]}} \\[0.3cm]
-    $\downarrow$ \\[0.3cm]
-    \fbox{\parbox{8cm}{\centering שכבת פלט / \en{Output Layer}\\[0.3cm]}}
-    \end{tabular}
-    \vspace{1cm}
-}}
+\includegraphics[width=0.9\textwidth]{images/fig_architecture.pdf}
 \caption{דיאגרמת ארכיטקטורה: \entoc{Architecture Diagram} - מבנה שלוש שכבות}
 \label{fig:architecture}
 \end{figure}
@@ -200,25 +135,7 @@
 
 \begin{figure}[h]
 \centering
-\fbox{\parbox{14cm}{
-    \centering
-    \vspace{1cm}
-    \textbf{תוצאות הניסוי}\\[0.5cm]
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-    זמן & ערך א & ערך ב & ערך ג \\
-    \hline
-    \hebyear{2020} & \num{10} & \num{20} & \num{30} \\
-    \hebyear{2021} & \num{15} & \num{25} & \num{35} \\
-    \hebyear{2022} & \num{20} & \num{30} & \num{40} \\
-    \hebyear{2023} & \num{25} & \num{35} & \num{45} \\
-    \hebyear{2024} & \num{30} & \num{40} & \num{50} \\
-    \hebyear{2025} & \num{35} & \num{45} & \num{55} \\
-    \hline
-    \end{tabular}\\[0.5cm]
-    \small{הנתונים מראים עלייה קבועה לאורך השנים}\\
-    \vspace{0.5cm}
-}}
+\includegraphics[width=0.9\textwidth]{images/fig_data.pdf}
 \caption{נתוני ניסוי: \entoc{Experimental Data} - מגמות לאורך זמן}
 \label{fig:data}
 \end{figure}
@@ -233,12 +150,7 @@
 
 \begin{figure}[h]
 \centering
-\fbox{\parbox{10cm}{
-    \centering
-    \vspace{3cm}
-    איור עם כיתוב מפורט\\
-    \vspace{3cm}
-}}
+\includegraphics[width=0.8\textwidth]{images/fig_detailed.pdf}
 \caption[כיתוב קצר: \entoc{Short Caption}]{כיתוב ארוך ומפורט: \entoc{Long Detailed Caption} - איור זה מדגים שימוש בכיתוב ארוך המסביר בפירוט את תוכן האיור. ניתן לכלול הסברים נוספים, הפניות למחקרים \cite{vaswani2017attention}, ואפילו נוסחאות מתמטיות כמו $y = mx + b$. הכיתוב הקצר מופיע ברשימת האיורים.}
 \label{fig:detailed}
 \end{figure}
@@ -260,14 +172,7 @@
 
 \begin{figure}[h]
 \centering
-\begin{tabular}{cc}
-(א) & (ב) \\
-\fbox{\parbox{5cm}{\centering\vspace{2cm}תת-איור א\\[2cm]}} &
-\fbox{\parbox{5cm}{\centering\vspace{2cm}תת-איור ב\\[2cm]}} \\[0.5cm]
-(ג) & (ד) \\
-\fbox{\parbox{5cm}{\centering\vspace{2cm}תת-איור ג\\[2cm]}} &
-\fbox{\parbox{5cm}{\centering\vspace{2cm}תת-איור ד\\[2cm]}}
-\end{tabular}
+\includegraphics[width=0.9\textwidth]{images/fig_subfigures.pdf}
 \caption{איור עם תת-איורים: \entoc{Figure with Subfigures} - (א) חלק ראשון, (ב) חלק שני, (ג) חלק שלישי, (ד) חלק רביעי}
 \label{fig:subfigures}
 \end{figure}
@@ -280,30 +185,12 @@
 
 \begin{figure}[h]
 \centering
-\begin{english}
-\begin{tikzpicture}
-    % Nodes
-    \node[draw, circle] (A) at (0,0) {א};
-    \node[draw, circle] (B) at (3,0) {ב};
-    \node[draw, circle] (C) at (6,0) {ג};
-    \node[draw, circle] (D) at (1.5,-2) {ד};
-    \node[draw, circle] (E) at (4.5,-2) {ה};
-
-    % Edges
-    \draw[->] (A) -- (B);
-    \draw[->] (B) -- (C);
-    \draw[->] (A) -- (D);
-    \draw[->] (B) -- (D);
-    \draw[->] (B) -- (E);
-    \draw[->] (C) -- (E);
-    \draw[->] (D) -- (E);
-\end{tikzpicture}
-\end{english}
-\caption{גרף מכוון: \entoc{Directed Graph} - דוגמה עם \en{TikZ}}
+\includegraphics[width=0.7\textwidth]{images/fig_graph.pdf}
+\caption{גרף מכוון: \entoc{Directed Graph} - דוגמה עם \en{Python/Matplotlib}}
 \label{fig:tikz}
 \end{figure}
 
-איור \ref{fig:tikz} נוצר באמצעות חבילת \en{TikZ}.
+איור \ref{fig:tikz} נוצר באמצעות \en{Python} ו-\en{Matplotlib}.
 
 % ==================== BEST PRACTICES ====================
 
@@ -326,7 +213,7 @@
     \item \textbf{PDF:} מומלץ לגרפיקה וקטורית
     \item \textbf{PNG:} מומלץ לצילומי מסך ודיאגרמות
     \item \textbf{JPG:} מומלץ לתמונות צילום
-    \item \textbf{TikZ:} ליצירת גרפיקה ישירות ב-\LaTeX
+    \item \textbf{TikZ/Python:} ליצירת גרפיקה ב-\LaTeX{} או \en{Matplotlib}
 \end{itemize}
 
 % ==================== SUMMARY ====================
@@ -340,7 +227,7 @@
     \item איורים מרובים וסידורים שונים
     \item כיתובים דו-לשוניים עם \texttt{\textbackslash entoc\{\}}
     \item הפניות צולבות לאיורים
-    \item שילוב עם \en{TikZ} ליצירת גרפיקה
+    \item שילוב עם \en{TikZ} או \en{Python/Matplotlib} ליצירת גרפיקה
     \item עקרונות מומלצים לעבודה עם איורים
 \end{itemize}
 

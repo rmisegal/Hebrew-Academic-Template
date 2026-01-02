@@ -1,16 +1,15 @@
-% book_example.tex - Test for Book Class Support (v5.11.x)
-% This example tests all book-specific features from v5.11.0 through v5.11.9
+% book_example.tex - Test for Book Class Support (v7.0.4)
+% This example demonstrates all book-specific features of hebrew-academic-template
 % Compiler: LuaLaTeX
 %
-% Features tested:
-%   v5.11.0 - Book class, frontmatter/mainmatter/backmatter, hebrewchapter, hebrewappendix
-%   v5.11.1 - 'definition' environment, 'abstract' environment
-%   v5.11.2 - TOC BiDi fixes (page numbers LTR, dot leaders)
-%   v5.11.3 - \rowcolor{} support in tables
-%   v5.11.4 - Code block space artifacts fix
-%   v5.11.5 - TOC dot leaders fix
-%   v5.11.6 - l@subsubsection TOC formatter
-%   v5.11.7-v5.11.9 - TOC RTL alignment fixes
+% Features demonstrated:
+%   - Book class with frontmatter/mainmatter/backmatter
+%   - hebrewchapter, hebrewappendix commands
+%   - 'definition', 'abstract' environments
+%   - TOC BiDi fixes (page numbers LTR, dot leaders)
+%   - Modern tabularray tables with fancytable
+%   - Code blocks with pythonbox
+%   - Cross-chapter references
 
 \documentclass[book]{hebrew-academic-template}
 
@@ -33,7 +32,7 @@
 {\Large\en{Test Book for Hebrew Academic Template}}
 \vspace{1cm}
 
-{\large בדיקת כל תכונות גרסה \en{5.11.x}}
+{\large הדגמת תכונות התבנית האקדמית העברית}
 \vspace{2cm}
 
 {\Large מאת}
@@ -42,7 +41,7 @@
 {\Large\bfseries דר' יורם סגל}
 \vspace{3cm}
 
-{\large גרסת \en{CLS}: \clsversion}
+{\large גרסת \en{CLS}: \en{\clsversion}}
 \vspace{2cm}
 
 {\normalsize מהדורה ראשונה -- דצמבר \en{2025}}
@@ -58,19 +57,19 @@
 \end{center}
 \vspace*{\fill}
 
-%% Abstract (v5.11.1 - New 'abstract' environment for book mode)
+%% Abstract
 \newpage
 \begin{abstract}
-ספר זה מהווה מדריך מקיף לתבנית האקדמית העברית. התבנית תומכת בכתיבה דו-כיוונית (\en{BiDi}) עבור מסמכים אקדמיים הכוללים עברית ואנגלית.
+ספר זה מהווה מדריך מקיף לתבנית האקדמית העברית גרסה \en{\clsversion}. התבנית תומכת בכתיבה דו-כיוונית (\en{BiDi}) עבור מסמכים אקדמיים הכוללים עברית ואנגלית.
 
-גרסה \en{5.11} מוסיפה תמיכה מלאה במחלקת ספר (\en{book class}), כולל:
+התבנית כוללת תמיכה מלאה במחלקת ספר (\en{book class}):
 \begin{itemize}
     \item מבנה ספר מלא עם \en{frontmatter/mainmatter/backmatter}
     \item תוכן עניינים, רשימת איורים, ורשימת טבלאות בעברית
     \item פרקים עבריים עם מספור \en{LTR}
     \item נספחים עם מספור עברי (א, ב, ג)
-    \item סביבות חדשות כמו \en{definition} ו-\en{abstract}
-    \item תמיכה ב-\en{\textbackslash rowcolor\{\}} בטבלאות
+    \item סביבות מעוצבות: \en{definition}, \en{abstract}, \en{notebox}, \en{warningbox}
+    \item טבלאות מודרניות עם \en{tabularray} וערכות נושא מובנות
 \end{itemize}
 \end{abstract}
 
@@ -87,41 +86,43 @@
 \chapter*{הקדמה}
 \addcontentsline{toc}{chapter}{הקדמה}
 
-זהו ספר בדיקה לבדיקת תמיכת מחלקת הספר (\en{book class}) בתבנית האקדמית העברית גרסאות \en{5.11.0} עד \en{5.11.9}.
+זהו ספר להדגמת תכונות מחלקת הספר (\en{book class}) בתבנית האקדמית העברית גרסה \en{\clsversion}.
 התבנית מבוססת על עקרונות מודרניים של עיבוד שפה טבעית \cite{vaswani2017attention}.
 
-\hebrewsection{תכונות \en{v5.11.x} הנבדקות}
+\hebrewsection{תכונות עיקריות}
 
 \begin{itemize}
-    \item \textbf{\en{v5.11.0}}: תמיכת מחלקת ספר (\en{book class})
+    \item \textbf{מבנה ספר}: תמיכת מחלקת ספר (\en{book class})
     \begin{itemize}
         \item \en{frontmatter/mainmatter/backmatter}
         \item \en{\textbackslash hebrewchapter\{\}} ו-\en{\textbackslash hebrewappendix\{\}}
         \item תוכן עניינים, רשימת איורים, רשימת טבלאות בעברית
     \end{itemize}
 
-    \item \textbf{\en{v5.11.1}}: סביבות חדשות
+    \item \textbf{סביבות מעוצבות}:
     \begin{itemize}
         \item סביבת \en{abstract} למצב ספר
         \item סביבת \en{definition} לתיבות הגדרה
+        \item \en{notebox}, \en{warningbox}, \en{examplebox}
     \end{itemize}
 
-    \item \textbf{\en{v5.11.2}}: תיקוני \en{TOC BiDi}
+    \item \textbf{טבלאות מודרניות}:
     \begin{itemize}
-        \item מספרי עמודים ב-\en{LTR}
-        \item נקודות מוביל (\en{dot leaders}) תקינות
+        \item \en{fancytable} -- טבלה פשוטה עם כותרת
+        \item ארבע ערכות נושא: \en{fancy}, \en{minimal}, \en{striped}, \en{academic}
+        \item יישור עברי (\en{RTL}) תקין בכל הטבלאות
     \end{itemize}
 
-    \item \textbf{\en{v5.11.3}}: תמיכת צבעי שורות בטבלאות (\en{\textbackslash rowcolor\{\}})
-
-    \item \textbf{\en{v5.11.4}}: תיקון רווחים במחרוזות קוד
-
-    \item \textbf{\en{v5.11.5-v5.11.9}}: תיקוני יישור \en{RTL} בתוכן עניינים
+    \item \textbf{קוד ותמונות}:
+    \begin{itemize}
+        \item \en{pythonbox} לקוד \en{Python} עם הדגשת תחביר
+        \item תמיכה בתמונות ואיורי \en{TikZ}
+    \end{itemize}
 \end{itemize}
 
 \hebrewsection{הפניות לפרקים}
 
-ניתן להפנות לפרקים באמצעות \en{\textbackslash hebrewchapterlabel\{\}} (גרסה \en{5.10.0}):
+ניתן להפנות לפרקים באמצעות \en{\textbackslash ref\{\}}:
 \begin{itemize}
     \item פרק~\ref{chap:intro} -- פרק ראשון
     \item פרק~\ref{chap:tables} -- טבלאות ואיורים
@@ -187,45 +188,28 @@ E = mc^2
 
 \hebrewsection{טבלה לדוגמה}
 
-\begin{hebrewtable}[H]
-\caption{טבלת בדיקה}
+\begin{fancytable}{ccc}{טבלת בדיקה}
 \label{tab:test}
-\begin{rtltabular}{|p{3cm}|p{3cm}|p{3cm}|}
-\hline
-\textbf{\hebheader{עמודה ג}} & \textbf{\hebheader{עמודה ב}} & \textbf{\hebheader{עמודה א}} \\
-\hline
-\hebcell{ערך \en{3}} & \hebcell{ערך \en{2}} & \hebcell{ערך \en{1}} \\
-\hline
-\hebcell{נתון נוסף} & \hebcell{מידע} & \hebcell{תוכן} \\
-\hline
-\end{rtltabular}
-\end{hebrewtable}
+עמודה א & עמודה ב & עמודה ג \\
+ערך \en{1} & ערך \en{2} & ערך \en{3} \\
+תוכן & מידע & נתון נוסף \\
+\end{fancytable}
 
-%% Row Color Support (v5.11.3 - \rowcolor{} now works in tables)
 \hebrewsection{טבלה עם צבעי שורות}
 
-טבלה זו מדגימה את תמיכת \en{\textbackslash rowcolor\{\}} החדשה (גרסה \en{5.11.3}):
+טבלה זו מדגימה את ערכת הנושא \en{striped} עם שורות מתחלפות:
 
-\begin{hebrewtable}[H]
+\begin{table}[H]
+\centering
 \caption{טבלה עם שורות צבעוניות}
 \label{tab:colored}
-\begin{rtltabular}{|p{3cm}|p{4cm}|p{2cm}|}
-\hline
-\rowcolor{blue!15}
-\textbf{\hebheader{גרסה}} & \textbf{\hebheader{תכונה}} & \textbf{\hebheader{סטטוס}} \\
-\hline
-\hebcell{\en{v5.11.0}} & \hebcell{תמיכת מחלקת ספר} & \hebcell{פעיל} \\
-\hline
-\rowcolor{green!10}
-\hebcell{\en{v5.11.1}} & \hebcell{סביבות \en{definition} ו-\en{abstract}} & \hebcell{פעיל} \\
-\hline
-\hebcell{\en{v5.11.3}} & \hebcell{תמיכת \en{\textbackslash rowcolor}} & \hebcell{פעיל} \\
-\hline
-\rowcolor{yellow!15}
-\hebcell{\en{v5.11.9}} & \hebcell{תיקון יישור \en{TOC RTL}} & \hebcell{פעיל} \\
-\hline
-\end{rtltabular}
-\end{hebrewtable}
+\begin{tblrstriped}{R{3cm}R{4cm}R{2cm}}
+גרסה & תכונה & סטטוס \\
+\en{v7.0.0} & תמיכת \en{tabularray} & פעיל \\
+\en{v7.0.3} & יישור עברי בטבלאות & פעיל \\
+\en{v7.0.4} & תיקון עמודות \en{R\{\}} & פעיל \\
+\end{tblrstriped}
+\end{table}
 
 \hebrewsection{איור לדוגמה}
 
@@ -249,19 +233,19 @@ E = mc^2
 
 \hebrewsection{קוד לדוגמה}
 
-%% Code Space Artifacts Fix (v5.11.4 - Spaces in strings render correctly)
-הקוד הבא מדגים את תיקון רווחי המחרוזות (גרסה \en{5.11.4}). רווחים במחרוזות צריכים להיות נקיים ללא סימנים מיוחדים:
+הקוד הבא מדגים את סביבת \en{pythonbox} עם הדגשת תחביר:
 
-\begin{pythonbox}[\hebtitle{קוד \en{Python} עם רווחים במחרוזות}]
+\begin{english}
+\begin{pythonbox}[\hebtitle{קוד \en{Python} לדוגמה}]
 def hello_world():
-    # Hebrew comment: פונקציית שלום עולם
-    message = "Hello World with spaces"  # Spaces should be clean
-    greeting = "שלום עולם"               # Hebrew string
+    # Function to greet the world
+    message = "Hello World with spaces"
+    greeting = "Shalom"
     print(f"Message: {message}")
     print(f"Greeting: {greeting}")
     return True
 
-# Test various string patterns (v5.11.4 fix)
+# Test various string patterns
 test_strings = [
     "hello world",      # Simple spaces
     "a    b    c",      # Multiple spaces
@@ -269,14 +253,17 @@ test_strings = [
     "trailing   "       # Trailing spaces
 ]
 \end{pythonbox}
+\end{english}
 
 %% ============================================
 %% Back Matter
 %% ============================================
 \backmatter
 
-%% Bibliography
-\printbibliography[heading=bibintoc,title={רשימת מקורות}]
+%% Bibliography (English references - left-aligned, LTR)
+\begin{english}
+\printbibliography[heading=bibintoc,title={References}]
+\end{english}
 
 %% Appendices
 \appendix
