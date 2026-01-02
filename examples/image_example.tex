@@ -204,10 +204,48 @@
 \begin{enumerate}
     \item \textbf{גודל מתאים:} וודאו שהאיור קריא ולא גדול מדי
     \item \textbf{כיתובים ברורים:} השתמשו בכיתובים דו-לשוניים עם \en{\textbackslash entoc\{\}}
-    \item \textbf{מיקום נכון:} בחרו במיקום המתאים - \texttt{[h]}, \texttt{[t]}, \texttt{[b]}, או \texttt{[p]}
+    \item \textbf{מיקום נכון:} השתמשו ב-\texttt{[H]} לכפיית מיקום מדויק (ראו סעיף \ref{subsec:positioning})
     \item \textbf{הפניות:} השתמשו תמיד ב-\en{\textbackslash label} ו-\en{\textbackslash ref}
     \item \textbf{רזולוציה:} לתמונות אמיתיות, השתמשו ברזולוציה של לפחות 300 DPI
 \end{enumerate}
+
+\hebrewsubsection{פתרון בעיות מיקום איורים: \entoc{Float Positioning Solution}}
+\label{subsec:positioning}
+
+\textbf{הבעיה:} ב-\LaTeX{}, האפשרויות \texttt{[h]}, \texttt{[t]}, \texttt{[b]}, \texttt{[p]} הן \emph{הצעות} בלבד.
+\LaTeX{} עלול להתעלם מהן ולהזיז איורים לעמודים מאוחרים יותר, במיוחד כאשר האיורים גדולים.
+
+\textbf{הפתרון:} שימוש בחבילת \en{float} ובאפשרות \texttt{[H]} (אות גדולה):
+
+\begin{enumerate}
+    \item \textbf{הוספת החבילה:} הוסיפו בתחילת המסמך:
+    \begin{verbatim}
+    \usepackage{float}
+    \end{verbatim}
+
+    \item \textbf{שימוש ב-\en{[H]}:} החליפו את \texttt{[h]} ב-\texttt{[H]}:
+    \begin{verbatim}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{image.pdf}
+    \caption{כיתוב האיור}
+    \end{figure}
+    \end{verbatim}
+
+    \item \textbf{עבור \en{hebrewfigure}:} השתמשו ב-\texttt{[H]} גם כן:
+    \begin{verbatim}
+    \hebrewfigure[H]{...}{כיתוב}
+    \end{verbatim}
+\end{enumerate}
+
+\textbf{השוואת אפשרויות מיקום:}
+\begin{itemize}
+    \item \texttt{[h]} -- כאן (הצעה, \LaTeX{} עלול להתעלם)
+    \item \texttt{[t]} -- בראש העמוד (הצעה)
+    \item \texttt{[b]} -- בתחתית העמוד (הצעה)
+    \item \texttt{[p]} -- בעמוד נפרד (הצעה)
+    \item \texttt{[H]} -- \textbf{כאן בדיוק} (כפייה, דורש חבילת \en{float})
+\end{itemize}
 
 \hebrewsubsection{פורמטים נתמכים: \entoc{Supported Formats}}
 
@@ -227,6 +265,7 @@
 \begin{itemize}
     \item שימוש בסביבת \en{figure} ובפקודת \en{\textbackslash hebrewfigure}
     \item אפשרויות מיקום שונות (\texttt{[h]}, \texttt{[t]}, \texttt{[b]}, \texttt{[p]})
+    \item \textbf{פתרון בעיות מיקום:} שימוש ב-\texttt{[H]} עם חבילת \en{float}
     \item איורים מרובים וסידורים שונים
     \item כיתובים דו-לשוניים עם \en{\textbackslash entoc\{\}}
     \item הפניות צולבות לאיורים
