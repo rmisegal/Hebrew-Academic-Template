@@ -7,6 +7,9 @@
 
 \documentclass{hebrew-academic-template}
 
+% Force figure positioning
+\usepackage{float}
+
 % Add bibliography file
 \addbibresource{example_references.bib}
 
@@ -14,7 +17,7 @@
 \hebrewtitle{דוגמת הערות שוליים - תבנית אקדמית עברית}
 \englishtitle{Footnote Example - Hebrew Academic Template \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
-\date{\textenglish{November 2025}}
+\date{\textenglish{January 2026}}
 
 \begin{document}
 
@@ -115,7 +118,7 @@ Multiple footnotes work correctly\footnote{First English footnote.}\footnote{Sec
 
 \hebrewsubsection{הערות בטבלאות: \entoc{Footnotes in Tables}}
 
-\begin{hebrewtable}[h]
+\begin{hebrewtable}[H]
 \caption{טבלה עם הערות שוליים: \entoc{Table with Footnotes}}
 \begin{rtltabular}{|c|c|c|}
 \hline
@@ -132,7 +135,7 @@ Multiple footnotes work correctly\footnote{First English footnote.}\footnote{Sec
 
 \hebrewsubsection{הערות באיורים: \entoc{Footnotes in Figures}}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \fbox{\parbox{10cm}{
     \centering
