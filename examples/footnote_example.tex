@@ -131,21 +131,15 @@ Multiple footnotes work correctly\footnote{First English footnote.}\footnote{Sec
 
 \begin{figure}[H]
 \centering
-\fbox{\parbox{10cm}{
-    \centering
-    \vspace{2cm}
-    דיאגרמה עם הערה\footnote{הערת שוליים מתוך איור - מקרה מיוחד.}\\
-    \en{Diagram with footnote}\\
-    \vspace{2cm}
-}}
-\caption{איור עם הערת שוליים: \entoc{Figure with Footnote}}
+\includegraphics[width=0.8\textwidth]{images/fig_footnote_diagram.pdf}
+\caption{איור עם הערת שוליים\footnote{הערת שוליים מתוך איור - מקרה מיוחד.}: \entoc{Figure with Footnote}}
 \end{figure}
 
 \hebrewsubsection{הערות בנוסחאות: \entoc{Footnotes in Equations}}
 
-נוסחה מתמטית עם הערה:
+נוסחה מתמטית עם הערה\footnote{המשוואה המפורסמת של איינשטיין.}:
 \begin{equation}
-E = mc^2 \footnote{המשוואה המפורסמת של איינשטיין.}
+E = mc^2
 \end{equation}
 
 או בתוך טקסט מתמטי: $x_{\text{max}}$\footnote{הערך המקסימלי של $x$.} = \num{100}.
