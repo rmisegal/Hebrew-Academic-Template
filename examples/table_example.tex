@@ -1,0 +1,279 @@
+% ================================================
+% Table Examples - hebrew-academic-template v7.0.4
+% Demonstrates all table layouts and themes
+% ================================================
+
+\documentclass{hebrew-academic-template}
+
+\hebrewtitle{דוגמאות טבלאות -- \en{Table Examples}}
+\englishtitle{Table Examples - hebrew-academic-template v7.0.4}
+\hebrewauthor{תבנית אקדמית עברית}
+\hebrewversion{גרסה \en{7.0.4}}
+\date{\en{January 2026}}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\textbf{מילות מפתח:}
+טבלאות, \en{tabularray}, ערכות נושא, עברית-אנגלית, נוסחאות
+\end{center}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+% ============================================================================
+% Section 1: Available Table Themes
+% ============================================================================
+\hebrewsection{ערכות נושא זמינות לטבלאות}
+
+התבנית מספקת ארבע ערכות נושא (\en{themes}) מובנות לטבלאות:
+
+\begin{enumerate}
+    \item \textbf{\en{fancy}} -- ברירת מחדל: כותרת כחולה, כל הגבולות, כותרות מודגשות
+    \item \textbf{\en{minimal}} -- סגנון \en{booktabs}: ללא קווים אנכיים, קווים אופקיים בלבד
+    \item \textbf{\en{striped}} -- צבעים מתחלפים: שורות אפורות לסירוגין, כותרת כחולה
+    \item \textbf{\en{academic}} -- סגנון אקדמי: קווים עבים למעלה ולמטה, נקי
+\end{enumerate}
+
+% ============================================================================
+% Section 2: Basic Fancy Table
+% ============================================================================
+\hebrewsection{טבלת \en{Fancy} בסיסית}
+
+הטבלה הבסיסית עם ערכת נושא \en{fancy} (ברירת מחדל):
+
+\begin{fancytable}{ccc}{טבלת אמת של שער \en{XOR}}
+$x_1$ & $x_2$ & \en{XOR} \\
+0 & 0 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+1 & 1 & 0 \\
+\end{fancytable}
+
+\hebrewsubsection{תחביר}
+
+\begin{english}
+\begin{verbatim}
+\begin{fancytable}{colspec}{caption}
+Header1 & Header2 & Header3 \\
+data & data & data \\
+\end{fancytable}
+\end{verbatim}
+\end{english}
+
+% ============================================================================
+% Section 3: Mixed Hebrew/English Content
+% ============================================================================
+\hebrewsection{תוכן מעורב עברית-אנגלית}
+
+טבלה עם תוכן מעורב בכותרות ובתאים:
+
+\begin{fancytable}{Hcc}{השוואת אלגוריתמים -- \en{Algorithm Comparison}}
+שם האלגוריתם & סיבוכיות זמן & סיבוכיות מקום \\
+\en{Bubble Sort} מיון בועות & $O(n^2)$ & $O(1)$ \\
+\en{Merge Sort} מיון מיזוג & $O(n \log n)$ & $O(n)$ \\
+\en{Quick Sort} מיון מהיר & $O(n \log n)$ & $O(\log n)$ \\
+\en{Heap Sort} מיון ערימה & $O(n \log n)$ & $O(1)$ \\
+\end{fancytable}
+
+% ============================================================================
+% Section 4: Table with Formulas
+% ============================================================================
+\hebrewsection{טבלה עם נוסחאות מתמטיות}
+
+טבלה המכילה נוסחאות בכותרות ובתאים:
+
+\begin{fancytable}{Hcc}{פונקציות אקטיבציה -- \en{Activation Functions}}
+שם הפונקציה & הנוסחה $f(x)$ & הנגזרת $f'(x)$ \\
+\en{Sigmoid} סיגמואיד & $\frac{1}{1+e^{-x}}$ & $f(x)(1-f(x))$ \\
+\en{Tanh} טנגנס היפרבולי & $\frac{e^x-e^{-x}}{e^x+e^{-x}}$ & $1-f(x)^2$ \\
+\en{ReLU} & $\max(0,x)$ & $\begin{cases} 1 & x>0 \\ 0 & x \leq 0 \end{cases}$ \\
+\en{Softmax} & $\frac{e^{x_i}}{\sum_j e^{x_j}}$ & מורכב \\
+\end{fancytable}
+
+% ============================================================================
+% Section 5: Theme Comparison
+% ============================================================================
+\hebrewsection{השוואת ערכות נושא}
+
+\hebrewsubsection{ערכת נושא \en{fancy} (ברירת מחדל)}
+
+\begin{table}[H]
+\centering
+\caption{ערכת נושא \en{fancy}}
+\begin{tblrfancy}{ccc}
+כותרת א' & כותרת ב' & כותרת ג' \\
+נתון \en{1} & נתון \en{2} & נתון \en{3} \\
+נתון \en{4} & נתון \en{5} & נתון \en{6} \\
+נתון \en{7} & נתון \en{8} & נתון \en{9} \\
+\end{tblrfancy}
+\end{table}
+
+\hebrewsubsection{ערכת נושא \en{minimal}}
+
+\begin{table}[H]
+\centering
+\caption{ערכת נושא \en{minimal} -- סגנון \en{booktabs}}
+\begin{tblrminimal}{ccc}
+כותרת א' & כותרת ב' & כותרת ג' \\
+נתון \en{1} & נתון \en{2} & נתון \en{3} \\
+נתון \en{4} & נתון \en{5} & נתון \en{6} \\
+נתון \en{7} & נתון \en{8} & נתון \en{9} \\
+\end{tblrminimal}
+\end{table}
+
+\hebrewsubsection{ערכת נושא \en{striped}}
+
+\begin{table}[H]
+\centering
+\caption{ערכת נושא \en{striped} -- שורות מתחלפות}
+\begin{tblrstriped}{ccc}
+כותרת א' & כותרת ב' & כותרת ג' \\
+נתון \en{1} & נתון \en{2} & נתון \en{3} \\
+נתון \en{4} & נתון \en{5} & נתון \en{6} \\
+נתון \en{7} & נתון \en{8} & נתון \en{9} \\
+נתון \en{10} & נתון \en{11} & נתון \en{12} \\
+\end{tblrstriped}
+\end{table}
+
+\hebrewsubsection{ערכת נושא \en{academic}}
+
+\begin{table}[H]
+\centering
+\caption{ערכת נושא \en{academic} -- סגנון אקדמי}
+\begin{tblracademic}{ccc}
+כותרת א' & כותרת ב' & כותרת ג' \\
+נתון \en{1} & נתון \en{2} & נתון \en{3} \\
+נתון \en{4} & נתון \en{5} & נתון \en{6} \\
+נתון \en{7} & נתון \en{8} & נתון \en{9} \\
+\end{tblracademic}
+\end{table}
+
+% ============================================================================
+% Section 6: Customization Options
+% ============================================================================
+\hebrewsection{אפשרויות התאמה אישית}
+
+\hebrewsubsection{רשימת אפשרויות}
+
+להלן האפשרויות הזמינות להתאמה אישית של טבלאות \en{tabularray}:
+
+\begin{fancytable}{lR{8cm}}{אפשרויות התאמה אישית -- \en{Customization Options}}
+אפשרות & תיאור \\
+\en{colspec} & הגדרת עמודות: \en{c} (מרכז), \en{l} (שמאל), \en{r} (ימין), \en{p\{width\}} (רוחב קבוע) \\
+\en{hlines} & הוספת כל הקווים האופקיים \\
+\en{vlines} & הוספת כל הקווים האנכיים \\
+\en{row\{N\}} & עיצוב שורה \en{N}: \en{bg=color}, \en{fg=color}, \en{font=\textbackslash bfseries} \\
+\en{column\{N\}} & עיצוב עמודה \en{N} \\
+\en{cell\{R\}\{C\}} & עיצוב תא ספציפי בשורה \en{R} ועמודה \en{C} \\
+\en{rowsep} & ריווח אנכי בין שורות \\
+\en{colsep} & ריווח אופקי בין עמודות \\
+\en{hline\{N\}} & עיצוב קו אופקי \en{N} (עובי, צבע) \\
+\en{vline\{N\}} & עיצוב קו אנכי \en{N} \\
+\end{fancytable}
+
+\hebrewsubsection{דוגמה לטבלה מותאמת אישית}
+
+\begin{table}[H]
+\centering
+\caption{טבלה עם התאמה אישית}
+\begin{tblr}{
+  colspec = {ccc},
+  row{1} = {bg=green!20, font=\bfseries},
+  row{3} = {bg=yellow!20},
+  cell{2}{2} = {bg=red!20},
+  hlines,
+  vlines,
+  hline{1,Z} = {1.5pt, blue},
+}
+כותרת א' & כותרת ב' & כותרת ג' \\
+נתון 1 & תא מודגש & נתון 3 \\
+שורה מודגשת & נתון 5 & נתון 6 \\
+נתון 7 & נתון 8 & נתון 9 \\
+\end{tblr}
+\end{table}
+
+% ============================================================================
+% Section 7: Wide Column Tables
+% ============================================================================
+\hebrewsection{טבלאות עם עמודות רחבות}
+
+טבלה עם עמודות ברוחב קבוע לטקסט ארוך:
+
+\begin{fancytable}{R{3cm}R{4cm}R{4cm}}{השוואת שיטות למידה -- \en{Learning Methods}}
+שיטה & יתרונות & חסרונות \\
+למידה מונחית \en{Supervised} & דיוק גבוה כאשר יש נתונים מתויגים & דורש כמות גדולה של נתונים מתויגים \\
+למידה לא מונחית \en{Unsupervised} & לא דורש תיוג, מגלה מבנים נסתרים & קשה להעריך את הביצועים \\
+למידת חיזוק \en{Reinforcement} & לומד מניסיון ללא פיקוח ישיר & דורש הרבה אינטראקציות, איטי \\
+\end{fancytable}
+
+% ============================================================================
+% Section 8: Legacy Table Support
+% ============================================================================
+\hebrewsection{תמיכה בטבלאות קודמות}
+
+התבנית תומכת גם בתחביר הטבלאות הישן (\en{hebrewtable + rtltabular}):
+
+\begin{hebrewtable}[H]
+\caption{טבלה בתחביר ישן (תאימות לאחור)}
+\begin{rtltabular}{|c|c|c|}
+\hline
+\textbf{\hebcellc{כותרת א'}} & \textbf{\hebcellc{כותרת ב'}} & \textbf{\hebcellc{כותרת ג'}} \\
+\hline
+\hebcellc{נתון \en{1}} & \hebcellc{נתון \en{2}} & \hebcellc{נתון \en{3}} \\
+\hline
+\hebcellc{נתון \en{4}} & \hebcellc{נתון \en{5}} & \hebcellc{נתון \en{6}} \\
+\hline
+\end{rtltabular}
+\end{hebrewtable}
+
+\textbf{הערה:} מומלץ להשתמש ב-\en{fancytable} החדש לטבלאות חדשות. בטבלאות ישנות, יש לעטוף תוכן עברי ב-\en{\textbackslash hebcellc\{\}}.
+
+% ============================================================================
+% Section 9: Quick Reference
+% ============================================================================
+\hebrewsection{מדריך מהיר}
+
+\hebrewsubsection{יצירת טבלה פשוטה}
+
+\begin{english}
+\begin{verbatim}
+\begin{fancytable}{ccc}{Caption Text}
+Header1 & Header2 & Header3 \\
+data1 & data2 & data3 \\
+\end{fancytable}
+\end{verbatim}
+\end{english}
+
+\hebrewsubsection{שימוש בערכת נושא ספציפית}
+
+\begin{english}
+\begin{verbatim}
+\begin{table}[H]
+\centering
+\caption{Caption}
+\begin{tblrminimal}{ccc}  % or tblrfancy, tblrstriped, tblracademic
+...
+\end{tblrminimal}
+\end{table}
+\end{verbatim}
+\end{english}
+
+\hebrewsubsection{טבלה מותאמת אישית}
+
+\begin{english}
+\begin{verbatim}
+\begin{tblr}{
+  colspec = {ccc},
+  row{1} = {bg=blue!15, font=\bfseries},
+  hlines, vlines,
+}
+...
+\end{tblr}
+\end{verbatim}
+\end{english}
+
+\end{document}
