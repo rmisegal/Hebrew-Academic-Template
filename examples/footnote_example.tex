@@ -131,8 +131,14 @@ Multiple footnotes work correctly\footnote{First English footnote.}\footnote{Sec
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{images/fig_footnote_diagram.pdf}
-\caption{איור עם הערת שוליים\footnote{הערת שוליים מתוך איור - מקרה מיוחד.}: \entoc{Figure with Footnote}}
+\fbox{\parbox{12cm}{
+    \centering
+    \vspace{0.5cm}
+    \includegraphics[width=10cm]{images/fig_footnote_diagram.pdf}\\[0.3cm]
+    דיאגרמה עם הערה\footnote{הערת שוליים מתוך איור - מקרה מיוחד.}\\
+    \vspace{0.3cm}
+}}
+\caption{איור עם הערת שוליים: \entoc{Figure with Footnote}}
 \end{figure}
 
 \hebrewsubsection{הערות בנוסחאות: \entoc{Footnotes in Equations}}
