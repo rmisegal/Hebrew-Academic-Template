@@ -7,6 +7,9 @@
 
 \documentclass{hebrew-academic-template}
 
+% Force figure/table positioning
+\usepackage{float}
+
 % Add bibliography file
 \addbibresource{example_references.bib}
 
@@ -15,7 +18,7 @@
 \englishtitle{Beginner Example - Hebrew Academic Template \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
 \hebrewversion{גרסה \clsversion}
-\date{\textenglish{November 2025}}
+\date{\textenglish{January 2026}}
 
 \begin{document}
 
@@ -71,26 +74,17 @@
 
 \hebrewsection{טבלה בסיסית: \entoc{Basic Table}}
 
-להלן טבלה פשוטה המדגימה שימוש בפקודת \texttt{mixedcell} לתאים עם תוכן מעורב:
+להלן טבלה פשוטה המדגימה שימוש בסביבת \en{fancytable} לתאים עם תוכן מעורב:
 
-\begin{hebrewtable}[htbp]
-\caption{נתונים בסיסיים: \entoc{Basic Data}}
-\begin{rtltabular}{|c|c|c|}
-\hline
-\hebheader{\textbf{שם / \en{Name}}} & \hebheader{\textbf{ערך / \en{Value}}} & \hebheader{\textbf{יחידה / \en{Unit}}} \\
-\hline
-\hebcell{מהירות / \en{Speed}} & \num{100} & \en{km/h} \\
-\hline
-\hebcell{טמפרטורה / \en{Temperature}} & \num{25.5} & \en{°C} \\
-\hline
-\hebcell{דיוק / \en{Accuracy}} & \percent{98.7} & \hebcell{אחוזים / \en{Percent}} \\
-\hline
-\hebcell{זמן / \en{Time}} & \num{3.14} & \hebcell{שניות / \en{Seconds}} \\
-\hline
-\end{rtltabular}
-\end{hebrewtable}
+\begin{fancytable}{ccc}{נתונים בסיסיים: \entoc{Basic Data}}
+\textbf{יחידה / \en{Unit}} & \textbf{ערך / \en{Value}} & \textbf{שם / \en{Name}} \\
+\en{km/h} & \en{100} & מהירות / \en{Speed} \\
+\en{°C} & \en{25.5} & טמפרטורה / \en{Temperature} \\
+אחוזים / \en{Percent} & \en{98.7}\en{\%} & דיוק / \en{Accuracy} \\
+שניות / \en{Seconds} & \en{3.14} & זמן / \en{Time} \\
+\end{fancytable}
 
-כפי שניתן לראות בטבלה, הפקודה \texttt{hebcell} מאפשרת שילוב נוח של עברית ואנגלית באותו תא.
+כפי שניתן לראות בטבלה, סביבת \en{fancytable} מאפשרת שילוב נוח של עברית ואנגלית באותו תא.
 
 % ==================== SIMPLE CODE ====================
 % Demonstrates: Basic Python code box
@@ -132,7 +126,7 @@ print(f"The average is: {result}")
 
 \hebrewsection{איור בסיסי: \entoc{Basic Figure}}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{images/example-figure1.png}
 \caption{איור פשוט: \entoc{Simple Figure}}
@@ -209,7 +203,7 @@ This section uses the \texttt{startenglish} and \texttt{stopenglish} commands to
     \item כתיבה בעברית עם שילוב אנגלית באמצעות \texttt{\textbackslash en\{\}}
     \item שימוש במספרים (\texttt{\textbackslash num\{\}}), שנים (\texttt{\textbackslash hebyear\{\}}), ואחוזים (\texttt{\textbackslash percent\{\}})
     \item יצירת סעיפים ותת-סעיפים עם \texttt{\textbackslash entoc\{\}} לתוכן העניינים
-    \item טבלאות עם תוכן מעורב באמצעות \texttt{\textbackslash mixedcell\{\}}
+    \item טבלאות עם תוכן מעורב באמצעות סביבת \en{fancytable}
     \item הוספת קוד עם \texttt{pythonbox}
     \item ציטוטים ביבליוגרפיים
     \item איורים וביטויים מתמטיים
