@@ -1,11 +1,17 @@
 % hebrew-academic-template.cls
-% Version 7.0.5 - LOF/LOT BiDi Page Number Fix
+% Version 7.0.6 - LOF/LOT Empty List Fix
 % Date: 2026-01-02
 %
 % A comprehensive LaTeX class for Hebrew academic documents with English integration
 % Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
 %
 % CHANGELOG:
+% v7.0.6 (2026-01-02) - LOF/LOT Empty List Fix
+%   - FIXED: List of Figures and List of Tables were empty (not rendering entries)
+%   - Root cause: l@figure checked \c@lofdepth, l@table checked \c@lotdepth
+%   - These counters are NOT defined without tocloft package, causing \ifnum to fail
+%   - Solution: Removed the undefined counter checks from l@figure and l@table
+%
 % v7.0.5 (2026-01-02) - LOF/LOT BiDi Page Number Fix
 %   - FIXED: List of Figures (LOF) page numbers now render LTR instead of RTL
 %   - FIXED: List of Tables (LOT) page numbers now render LTR instead of RTL
@@ -416,11 +422,11 @@
 % - PDF bookmark support with proper hyperref integration
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hebrew-academic-template}[2026/01/02 v7.0.5 Hebrew Academic Template - LOF/LOT BiDi Fix]
+\ProvidesClass{hebrew-academic-template}[2026/01/02 v7.0.6 Hebrew Academic Template - LOF/LOT Empty Fix]
 
 % ==================== VERSION INFORMATION ====================
 % Version command - defined early for programmatic access
-\newcommand{\clsversion}{V7.0.5-2026-01-02}
+\newcommand{\clsversion}{V7.0.6-2026-01-02}
 
 % ==================== CLASS OPTIONS ====================
 % 'book' option - enables full book class with chapters, frontmatter, etc.
@@ -1058,44 +1064,42 @@
 
   % v7.0.5: Redefine l@figure for proper BiDi handling in List of Figures
   % Ensures page numbers render LTR and Hebrew captions render RTL
+  % v7.0.6: Removed \c@lofdepth check (counter not defined without tocloft)
   \renewcommand*\l@figure[2]{%
-    \ifnum \c@lofdepth >\z@
-      \addpenalty{-\@highpenalty}%
-      \addvspace{1.0em \@plus\p@}%
-      \setlength{\@tempdima}{2.3em}%
-      \begingroup
-        \pardir TRT\textdir TRT
-        \parindent \z@ \leftskip \z@ \rightskip \@tocrmarg
-        \parfillskip -\rightskip
-        \leavevmode
-        \advance\leftskip\@tempdima
-        \hskip -\leftskip
-        #1\nobreak\leaders\hbox{$\m@th
-          \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
-          mu$}\hfill\nobreak\hb@xt@\@pnumwidth{\hss {\textdir TLT #2}}\par
-      \endgroup
-    \fi
+    \addpenalty{-\@highpenalty}%
+    \addvspace{1.0em \@plus\p@}%
+    \setlength{\@tempdima}{2.3em}%
+    \begingroup
+      \pardir TRT\textdir TRT
+      \parindent \z@ \leftskip \z@ \rightskip \@tocrmarg
+      \parfillskip -\rightskip
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}\hfill\nobreak\hb@xt@\@pnumwidth{\hss {\textdir TLT #2}}\par
+    \endgroup
   }
 
   % v7.0.5: Redefine l@table for proper BiDi handling in List of Tables
   % Ensures page numbers render LTR and Hebrew captions render RTL
+  % v7.0.6: Removed \c@lotdepth check (counter not defined without tocloft)
   \renewcommand*\l@table[2]{%
-    \ifnum \c@lotdepth >\z@
-      \addpenalty{-\@highpenalty}%
-      \addvspace{1.0em \@plus\p@}%
-      \setlength{\@tempdima}{2.3em}%
-      \begingroup
-        \pardir TRT\textdir TRT
-        \parindent \z@ \leftskip \z@ \rightskip \@tocrmarg
-        \parfillskip -\rightskip
-        \leavevmode
-        \advance\leftskip\@tempdima
-        \hskip -\leftskip
-        #1\nobreak\leaders\hbox{$\m@th
-          \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
-          mu$}\hfill\nobreak\hb@xt@\@pnumwidth{\hss {\textdir TLT #2}}\par
-      \endgroup
-    \fi
+    \addpenalty{-\@highpenalty}%
+    \addvspace{1.0em \@plus\p@}%
+    \setlength{\@tempdima}{2.3em}%
+    \begingroup
+      \pardir TRT\textdir TRT
+      \parindent \z@ \leftskip \z@ \rightskip \@tocrmarg
+      \parfillskip -\rightskip
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}\hfill\nobreak\hb@xt@\@pnumwidth{\hss {\textdir TLT #2}}\par
+    \endgroup
   }
 
   % ---- Fix standard section commands for Hebrew TOC (v5.11.8, v5.13.1) ----

@@ -13,6 +13,9 @@
 
 \documentclass[book]{hebrew-academic-template}
 
+% Force figure/table positioning
+\usepackage{float}
+
 \addbibresource{example_references.bib}
 
 \begin{document}
@@ -44,7 +47,7 @@
 {\large גרסת \en{CLS}: \en{\clsversion}}
 \vspace{2cm}
 
-{\normalsize מהדורה ראשונה -- דצמבר \en{2025}}
+{\normalsize מהדורה ראשונה -- ינואר \en{2026}}
 \end{center}
 \end{titlepage}
 
@@ -53,7 +56,7 @@
 \thispagestyle{empty}
 \vspace*{\fill}
 \begin{center}
-{\small כל הזכויות שמורות \textenglish{©} \en{2025}}
+{\small כל הזכויות שמורות \textenglish{©} \en{2026}}
 \end{center}
 \vspace*{\fill}
 
@@ -261,8 +264,9 @@ test_strings = [
 \backmatter
 
 %% Bibliography (English references - left-aligned, LTR)
+\addcontentsline{toc}{chapter}{{\textdir TLT References}}
 \begin{english}
-\printbibliography[heading=bibintoc,title={References}]
+\printbibliography[title={References}]
 \end{english}
 
 %% Appendices

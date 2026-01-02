@@ -7,6 +7,9 @@
 
 \documentclass{hebrew-academic-template}
 
+% Force figure/table positioning
+\usepackage{float}
+
 % Add bibliography file
 \addbibresource{advanced_references.bib}
 
@@ -14,8 +17,8 @@
 \hebrewtitle{דוגמה ברמה בינונית - תבנית אקדמית עברית}
 \englishtitle{Intermediate Example - Hebrew Academic Template \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
-\hebrewversion{גרסה \clsversion}
-\date{\textenglish{November 2025}}
+\hebrewversion{גרסה \en{\clsversion}}
+\date{\textenglish{January 2026}}
 
 \begin{document}
 
@@ -28,7 +31,7 @@
 
 \hebrewsection{מבוא מורחב: \entoc{Extended Introduction}}
 
-מסמך זה מדגים יכולות מתקדמות של התבנית האקדמית העברית גרסה \clsversion.
+מסמך זה מדגים יכולות מתקדמות של התבנית האקדמית העברית גרסה \en{\clsversion}.
 נכסה שימוש במגוון רחב של פקודות כולל \en{Deep Learning}, \ilm{neural networks}, ועיבוד נתונים מורכב.
 
 \hebrewsubsection{רקע תיאורטי: \entoc{Theoretical Background}}
@@ -60,50 +63,45 @@
 
 \hebrewsubsection{טבלת השוואה מפורטת: \entoc{Detailed Comparison Table}}
 
-\begin{hebrewtable}[htbp]
+\begin{table}[H]
 \caption{השוואת מודלים מתקדמת: \entoc{Advanced Model Comparison}}
+\centering
 \resizebox{\textwidth}{!}{%
-\begin{rtltabular}{|c|c|c|c|c|}
-\hline
-\hebheader{\textbf{מודל / \en{Model}}} &
-\hebheader{\textbf{דיוק / \en{Accuracy}}} &
-\hebheader{\textbf{זמן / \en{Time}}} &
-\hebheader{\textbf{זיכרון / \en{Memory}}} &
-\hebheader{\textbf{שנה / \en{Year}}} \\
-\hline
-\en{BERT-Base} & \percent{92.3} & \num{2.5} \en{ms} & \num{110} \en{MB} & \hebyear{2018} \\
-\hline
-\en{GPT-3} & \percent{95.7} & \num{5.2} \en{ms} & \num{175000} \en{MB} & \hebyear{2020} \\
-\hline
-\en{GPT-4} & \percent{98.1} & \num{8.7} \en{ms} & \en{N/A} & \hebyear{2023} \\
-\hline
-\hebcell{מודל עברי / \en{Hebrew Model}} & \percent{89.5} & \num{3.1} \en{ms} & \num{250} \en{MB} & \hebyear{2024} \\
-\hline
-\end{rtltabular}%
+\begin{tblr}{
+  colspec = {ccccc},
+  row{1} = {font=\bfseries, bg=blue9, fg=white},
+  row{even} = {bg=gray9},
+  hlines,
+  vlines,
 }
-\end{hebrewtable}
+מודל / \en{Model} & דיוק / \en{Accuracy} & זמן / \en{Time} & זיכרון / \en{Memory} & שנה / \en{Year} \\
+\en{BERT-Base} & \percent{92.3} & \num{2.5} \en{ms} & \num{110} \en{MB} & \hebyear{2018} \\
+\en{GPT-3} & \percent{95.7} & \num{5.2} \en{ms} & \num{175000} \en{MB} & \hebyear{2020} \\
+\en{GPT-4} & \percent{98.1} & \num{8.7} \en{ms} & \en{N/A} & \hebyear{2023} \\
+מודל עברי / \en{Hebrew Model} & \percent{89.5} & \num{3.1} \en{ms} & \num{250} \en{MB} & \hebyear{2024} \\
+\end{tblr}%
+}
+\end{table}
 
 \hebrewsubsection{טבלת נתונים סטטיסטיים: \entoc{Statistical Data Table}}
 
-\begin{hebrewtable}[htbp]
+\begin{table}[H]
 \caption{ניתוח סטטיסטי: \entoc{Statistical Analysis}}
-\begin{rtltabular}{|l|c|c|c|}
-\hline
-\hebheader{\textbf{מדד / \en{Metric}}} &
-\hebheader{\textbf{ערך / \en{Value}}} &
-\hebheader{\textbf{סטיית תקן / \en{Std Dev}}} &
-\hebheader{\textbf{מובהקות / \en{p-value}}} \\
-\hline
-\hebcell{ממוצע כללי / \en{Mean}} & \num{85.42} & \num{12.35} & \num{0.001} \\
-\hline
-\hebcell{חציון / \en{Median}} & \num{87.50} & \en{N/A} & \num{0.002} \\
-\hline
-\hebcell{שכיח / \en{Mode}} & \num{90.00} & \en{N/A} & \num{0.005} \\
-\hline
-\hebcell{טווח / \en{Range}} & \num{45.00} & \en{N/A} & \num{0.010} \\
-\hline
-\end{rtltabular}
-\end{hebrewtable}
+\centering
+\begin{tblr}{
+  colspec = {cccc},
+  row{1} = {font=\bfseries, bg=blue9, fg=white},
+  row{even} = {bg=gray9},
+  hlines,
+  vlines,
+}
+מדד / \en{Metric} & ערך / \en{Value} & סטיית תקן / \en{Std Dev} & מובהקות / \en{p-value} \\
+ממוצע כללי / \en{Mean} & \num{85.42} & \num{12.35} & \num{0.001} \\
+חציון / \en{Median} & \num{87.50} & \en{N/A} & \num{0.002} \\
+שכיח / \en{Mode} & \num{90.00} & \en{N/A} & \num{0.005} \\
+טווח / \en{Range} & \num{45.00} & \en{N/A} & \num{0.010} \\
+\end{tblr}
+\end{table}
 
 % ==================== CODE EXAMPLES ====================
 % Demonstrates: pythonbox and code formatting
@@ -112,6 +110,7 @@
 
 \hebrewsubsection{עיבוד נתונים עם פנדס: \entoc{Data Processing with Pandas}}
 
+\begin{english}
 \begin{pythonbox}[\hebtitle{ניתוח נתונים: \en{Data Analysis}}]
 import pandas as pd
 import numpy as np
@@ -144,9 +143,11 @@ data = process_data('data.csv')
 print(f"Processed {len(data)} samples")
 print(f"Features: {data.columns.tolist()}")
 \end{pythonbox}
+\end{english}
 
 \hebrewsubsection{מימוש רשת נוירונים: \entoc{Neural Network Implementation}}
 
+\begin{english}
 \begin{pythonbox}[\hebtitle{רשת נוירונים ב-\en{PyTorch}}]
 import torch
 import torch.nn as nn
@@ -174,6 +175,7 @@ class AdvancedNetwork(nn.Module):
 model = AdvancedNetwork(input_dim=100, hidden_dim=256, output_dim=10)
 print(f"Total parameters: {sum(p.numel() for p in model.parameters())}")
 \end{pythonbox}
+\end{english}
 
 % ==================== FIGURES WITH CAPTIONS ====================
 % Demonstrates: Multiple figures, cross-references
@@ -182,25 +184,27 @@ print(f"Total parameters: {sum(p.numel() for p in model.parameters())}")
 
 \hebrewsubsection{ארכיטקטורת המערכת: \entoc{System Architecture}}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
+\begin{english}
 \fbox{\parbox{10cm}{
     \centering
     \vspace{1.5cm}
-    {\Large ארכיטקטורת \en{Transformer}}\\[0.5cm]
+    {\Large Transformer Architecture}\\[0.5cm]
     \begin{center}
     \begin{tabular}{c}
-    \en{Input Embeddings} \\
+    Input Embeddings \\
     $\downarrow$ \\
-    \en{Multi-Head Attention} \\
+    Multi-Head Attention \\
     $\downarrow$ \\
-    \en{Feed Forward} \\
+    Feed Forward \\
     $\downarrow$ \\
-    \en{Output}
+    Output
     \end{tabular}
     \end{center}
     \vspace{1.5cm}
 }}
+\end{english}
 \caption{מבנה רשת \en{Transformer}: \entoc{Transformer Network Structure}}
 \label{fig:transformer}
 \end{figure}
@@ -209,17 +213,19 @@ print(f"Total parameters: {sum(p.numel() for p in model.parameters())}")
 
 \hebrewsubsection{תוצאות ויזואליות: \entoc{Visual Results}}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
+\begin{english}
 \fbox{\parbox{12cm}{
     \centering
     \vspace{2cm}
     \begin{tabular}{cc}
-    \fbox{\parbox{5cm}{\centering גרף דיוק\\[3cm]\en{Accuracy Graph}}} &
-    \fbox{\parbox{5cm}{\centering גרף הפסד\\[3cm]\en{Loss Graph}}} \\
+    \fbox{\parbox{5cm}{\centering Accuracy Graph\\[3cm]}} &
+    \fbox{\parbox{5cm}{\centering Loss Graph\\[3cm]}} \\
     \end{tabular}
     \vspace{0.5cm}
 }}
+\end{english}
 \caption{גרפי ביצועים: \entoc{Performance Graphs} - דיוק והפסד לאורך \num{100} אפוקים}
 \label{fig:performance}
 \end{figure}
@@ -363,7 +369,7 @@ Our experimental setup includes:
     \item נוסחאות מתמטיות מורכבות
     \item איורים מרובים עם הפניות צולבות
     \item רשימות מקוננות ומורכבות
-    \item שימוש בכל פקודות המספרים: \texttt{\textbackslash num}, \texttt{\textbackslash percent}, \texttt{\textbackslash hebyear}
+    \item שימוש בכל פקודות המספרים: \en{\texttt{\textbackslash num}}, \en{\texttt{\textbackslash percent}}, \en{\texttt{\textbackslash hebyear}}
     \item ציטוטים מתקדמים עם הפניות לעמודים
 \end{itemize}
 

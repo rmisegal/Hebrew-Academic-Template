@@ -7,6 +7,9 @@
 
 \documentclass{hebrew-academic-template}
 
+% Force figure/table positioning
+\usepackage{float}
+
 % Add bibliography file
 \addbibresource{advanced_references.bib}
 
@@ -14,8 +17,8 @@
 \hebrewtitle{דוגמת מומחה - כל הפקודות של התבנית}
 \englishtitle{Expert Example - All Template Commands \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
-\hebrewversion{גרסה \clsversion}
-\date{\textenglish{November 2025}}
+\hebrewversion{גרסה \en{\clsversion}}
+\date{\textenglish{January 2026}}
 
 \begin{document}
 
@@ -33,8 +36,8 @@
 \hebrewchapter{פרק ראשון: הדגמת כל הפקודות}
 \hebrewchapterlabel{chap:first}
 
-מסמך זה מדגים את כל הפקודות הזמינות בתבנית האקדמית העברית גרסה \clsversion.
-הגרסה הנוכחית: \clsversion{} % Command: \clsversion
+מסמך זה מדגים את כל הפקודות הזמינות בתבנית האקדמית העברית גרסה \en{\clsversion}.
+הגרסה הנוכחית: \en{\clsversion} % Command: \clsversion
 
 התבנית תומכת בעבודה עם מקורות ביבליוגרפיים כמו \cite{vaswani2017attention,devlin2018bert}.
 מחקרים בעברית \cite{hebrew_nlp_2023} משולבים בצורה חלקה עם מקורות באנגלית.
@@ -96,7 +99,7 @@ We can include:
 חזרנו לטקסט עברי עם יישור RTL.
 
 % Commands: \HebrewTitle, \HebrewSubtitle (internal title helpers)
-הכותרות משתמשות בפקודות פנימיות כמו \texttt{HebrewTitle} ו-\texttt{HebrewSubtitle}.
+הכותרות משתמשות בפקודות פנימיות כמו \en{\texttt{HebrewTitle}} ו-\en{\texttt{HebrewSubtitle}}.
 
 % ==================== TABLE COMMANDS ====================
 
@@ -105,33 +108,25 @@ We can include:
 \hebrewsubsection{טבלה מקיפה: \entoc{Comprehensive Table}}
 
 % Commands: \begin{hebrewtable}, \begin{rtltabular}
-\begin{hebrewtable}[htbp]
+\begin{table}[H]
 \caption{כל פקודות הטבלה: \entoc{All Table Commands}}
+\centering
+\begin{tblr}{
+  colspec = {cccc},
+  row{1} = {font=\bfseries, bg=blue9, fg=white},
+  row{even} = {bg=gray9},
+  hlines,
+  vlines,
+}
 % Commands in table: \hebcell, \mixedcell, \encell, \hebheader, \enheader
-\begin{rtltabular}{|c|c|c|c|}
-\hline
-% \hebheader and \enheader for headers - RTL ORDER (rightmost to leftmost)
-\textbf{\enheader{Pure English}} &
-\textbf{\hebheader{כותרת מעורבת / \en{Mixed}}} &
-\textbf{\enheader{English Header}} &
-\textbf{\hebheader{כותרת עברית}} \\
-\hline
-% Cells in RTL order (rightmost to leftmost)
-\encell{Data: 42} &
-\mixedcell{תא מעורב / \en{Mixed cell}} &
-\encell{English cell} &
-\hebcell{תא עברי} \\
-\hline
-\encell{$\alpha = 0.05$} &
-\mixedcell{שנה / \en{Year}: \hebyear{2025}} &
-\encell{\percent{95.5}} &
-\hebcell{נתונים: \num{100}} \\
-\hline
-\end{rtltabular}
-\end{hebrewtable}
+כותרת עברית & \en{English Header} & כותרת מעורבת / \en{Mixed} & \en{Pure English} \\
+תא עברי & \en{English cell} & תא מעורב / \en{Mixed cell} & \en{Data: 42} \\
+נתונים: \num{100} & \percent{95.5} & שנה / \en{Year}: \hebyear{2025} & $\alpha = 0.05$ \\
+\end{tblr}
+\end{table}
 
 % Command: \rtlrow (optional helper from v1.0)
-הפקודה \texttt{\textbackslash rtlrow} זמינה לסידור אוטומטי של עמודות RTL.
+הפקודה \en{\texttt{\textbackslash rtlrow}} זמינה לסידור אוטומטי של עמודות RTL.
 
 % Command: \ltrnumber (for bibliography numbers)
 מספר ביבליוגרפי: \ltrnumber{123}
@@ -141,14 +136,14 @@ We can include:
 \hebrewsection{פקודות איורים: \entoc{Figure Commands}}
 
 % Command: \hebrewfigure (command form)
-\hebrewfigure[htbp]{
-    \includegraphics[width=0.8\textwidth]{images/example-figure1.png}
+\hebrewfigure[H]{
+    \includegraphics[width=0.8\textwidth]{images/fig_expert1.pdf}
 }{איור בפקודה: \entoc{Command Form Figure}}
 
 % Environment form (also supported)
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{images/example-figure2.png}
+\includegraphics[width=0.8\textwidth]{images/fig_expert2.pdf}
 \caption{איור בסביבה: \entoc{Environment Form Figure}}
 \end{figure}
 
@@ -159,6 +154,7 @@ We can include:
 \hebrewsubsection{קוד צף: \entoc{Floating Code}}
 
 % Command: \begin{pythonbox}
+\begin{english}
 \begin{pythonbox}[\hebtitle{דוגמת קוד צף: \en{Floating Code Example}}]
 # Python code demonstration with syntax highlighting
 def fibonacci(n):
@@ -174,10 +170,12 @@ def fibonacci(n):
 for i in range(10):
     print(f"F({i}) = {fibonacci(i)}")
 \end{pythonbox}
+\end{english}
 
 \hebrewsubsection{קוד לא צף: \entoc{Non-Floating Code}}
 
 % Command: \begin{pythonbox*} (non-floating version)
+\begin{english}
 \begin{pythonbox*}[\hebtitle{קוד ארוך לא צף: \en{Long Non-Floating Code}}]
 # Non-floating code block for long listings
 class DataProcessor:
@@ -205,9 +203,10 @@ class DataProcessor:
 processor = DataProcessor([1, 2, None, 4, 5])
 processor.clean().normalize()
 \end{pythonbox*}
+\end{english}
 
 % Commands: \pythonverbatimformat (internal), \listingfont, \courierfont (internal)
-הפקודות הפנימיות \texttt{pythonverbatimformat}, \texttt{listingfont}, ו-\texttt{courierfont} מטפלות בעיצוב.
+הפקודות הפנימיות \en{\texttt{pythonverbatimformat}}, \en{\texttt{listingfont}}, ו-\en{\texttt{courierfont}} מטפלות בעיצוב.
 
 % Command: \enpath (for paths with hyphens)
 נתיב עם מקפים: \enpath{/usr/local/bin/python-3.9}
@@ -225,45 +224,27 @@ processor.clean().normalize()
 % Demonstrate complex nested usage
 טבלה עם כל הפקודות המתקדמות:
 
-\begin{hebrewtable}[htbp]
+\begin{table}[H]
 \caption{שילוב פקודות: \entoc{Command Integration}}
-\begin{rtltabular}{|p{3cm}|p{3cm}|p{4cm}|}
-\hline
-% RTL ORDER (rightmost to leftmost): Result - Example - Command
-\textbf{\enheader{Result}} &
-\textbf{\hebheader{דוגמה / \en{Example}}} &
-\textbf{\hebheader{פקודה / \en{Command}}} \\
-\hline
-\encell{3.14159} &
-\hebcell{\num{3.14159}} &
-\hebcell{\texttt{\textbackslash num}} \\
-\hline
-\encell{99.99\%} &
-\hebcell{\percent{99.99}} &
-\hebcell{\texttt{\textbackslash percent}} \\
-\hline
-\encell{2025} &
-\hebcell{\hebyear{2025}} &
-\hebcell{\texttt{\textbackslash hebyear}} \\
-\hline
-\encell{$\blacktriangle$} &
-\hebcell{\warningsymbol} &
-\hebcell{\texttt{\textbackslash warningsymbol}} \\
-\hline
-\encell{$\checkmark$} &
-\hebcell{\checksymbol} &
-\hebcell{\texttt{\textbackslash checksymbol}} \\
-\hline
-\encell{$R^2$} &
-\hebcell{\Rsquared} &
-\hebcell{\texttt{\textbackslash Rsquared}} \\
-\hline
-\encell{A $\leftarrow$ B} &
-\hebcell{א \rarrow{} ב} &
-\hebcell{\texttt{\textbackslash rarrow}} \\
-\hline
-\end{rtltabular}
-\end{hebrewtable}
+\centering
+\begin{tblr}{
+  colspec = {ccc},
+  row{1} = {font=\bfseries, bg=blue9, fg=white},
+  row{even} = {bg=gray9},
+  hlines,
+  vlines,
+}
+% RTL ORDER: Command - Example - Result
+פקודה / \en{Command} & דוגמה / \en{Example} & \en{Result} \\
+\en{\texttt{\textbackslash num}} & \num{3.14159} & \en{3.14159} \\
+\en{\texttt{\textbackslash percent}} & \percent{99.99} & \en{99.99\%} \\
+\en{\texttt{\textbackslash hebyear}} & \hebyear{2025} & \en{2025} \\
+\en{\texttt{\textbackslash warningsymbol}} & \warningsymbol & $\blacktriangle$ \\
+\en{\texttt{\textbackslash checksymbol}} & \checksymbol & $\checkmark$ \\
+\en{\texttt{\textbackslash Rsquared}} & \Rsquared & $R^2$ \\
+\en{\texttt{\textbackslash rarrow}} & א \rarrow{} ב & \en{A} $\leftarrow$ \en{B} \\
+\end{tblr}
+\end{table}
 
 \hebrewsubsection{נוסחאות מורכבות: \entoc{Complex Formulas}}
 
@@ -278,6 +259,7 @@ J(\theta) &= \frac{1}{N}\sum_{i=1}^{N} L_{\hebsub{הפסד}}(f_\theta(x_i), y_i)
 
 \hebrewsubsection{קוד מתקדם עם הערות: \entoc{Advanced Code with Comments}}
 
+\begin{english}
 \begin{pythonbox}[\hebtitle{מימוש \en{Attention} עם קשב}]
 import torch
 import torch.nn as nn
@@ -331,6 +313,7 @@ class MultiHeadAttention(nn.Module):
 
         return output, attention
 \end{pythonbox}
+\end{english}
 
 % ==================== SPECIAL ENVIRONMENTS ====================
 
@@ -415,7 +398,7 @@ The environment ensures consistent English formatting throughout.
 
 \hebrewsection{דיאגרמות מתקדמות: \entoc{Advanced Diagrams}}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \begin{english}
 \begin{tikzcd}
@@ -445,27 +428,26 @@ The environment ensures consistent English formatting throughout.
 
 טבלת סיכום:
 
-\begin{tabularx}{\textwidth}{|X|c|c|}
-\hline
-\textbf{\hebheader{קטגוריה / \en{Category}}} &
-\textbf{\hebheader{כמות / \en{Count}}} &
-\textbf{\enheader{Percentage}} \\
-\hline
-\hebcell{פקודות טקסט / \en{Text Commands}} & \num{15} & \percent{19.2} \\
-\hline
-\hebcell{פקודות סעיפים / \en{Section Commands}} & \num{6} & \percent{7.7} \\
-\hline
-\hebcell{פקודות טבלה / \en{Table Commands}} & \num{8} & \percent{10.3} \\
-\hline
-\hebcell{פקודות קוד / \en{Code Commands}} & \num{7} & \percent{9.0} \\
-\hline
-\hebcell{פקודות מתמטיקה / \en{Math Commands}} & \num{8} & \percent{10.3} \\
-\hline
-\hebcell{אחרות / \en{Others}} & \num{34} & \percent{43.5} \\
-\hline
-\textbf{\hebcell{סה"כ / \en{Total}}} & \textbf{\num{78}} & \textbf{\percent{100}} \\
-\hline
-\end{tabularx}
+\begin{table}[H]
+\centering
+\begin{tblr}{
+  colspec = {ccc},
+  row{1} = {font=\bfseries, bg=blue9, fg=white},
+  row{even} = {bg=gray9},
+  row{8} = {font=\bfseries},
+  hlines,
+  vlines,
+}
+קטגוריה / \en{Category} & כמות / \en{Count} & \en{Percentage} \\
+פקודות טקסט / \en{Text Commands} & \num{15} & \percent{19.2} \\
+פקודות סעיפים / \en{Section Commands} & \num{6} & \percent{7.7} \\
+פקודות טבלה / \en{Table Commands} & \num{8} & \percent{10.3} \\
+פקודות קוד / \en{Code Commands} & \num{7} & \percent{9.0} \\
+פקודות מתמטיקה / \en{Math Commands} & \num{8} & \percent{10.3} \\
+אחרות / \en{Others} & \num{34} & \percent{43.5} \\
+סה"כ / \en{Total} & \num{78} & \percent{100} \\
+\end{tblr}
+\end{table}
 
 % ==================== FOOTNOTES ====================
 
@@ -489,30 +471,30 @@ The environment ensures consistent English formatting throughout.
 מסמך זה הדגים בהצלחה את כל \num{78} הפקודות:
 
 \begin{itemize}
-    \item \textbf{פקודות טקסט (15):} \texttt{\textbackslash en}, \texttt{\textbackslash heb}, \texttt{\textbackslash ilm}, \texttt{\textbackslash num}, \texttt{\textbackslash hebyear}, \texttt{\textbackslash percent}, \texttt{\textbackslash ltr}, \texttt{\textbackslash LTR}, \texttt{\textbackslash RTL}, \texttt{\textbackslash startenglish}, \texttt{\textbackslash stopenglish}, \texttt{\textbackslash stophebrew}, \texttt{\textbackslash warningsymbol}, \texttt{\textbackslash checksymbol}
+    \item \textbf{פקודות טקסט (\en{15}):} \en{\texttt{\textbackslash en}}, \en{\texttt{\textbackslash heb}}, \en{\texttt{\textbackslash ilm}}, \en{\texttt{\textbackslash num}}, \en{\texttt{\textbackslash hebyear}}, \en{\texttt{\textbackslash percent}}, \en{\texttt{\textbackslash ltr}}, \en{\texttt{\textbackslash LTR}}, \en{\texttt{\textbackslash RTL}}, \en{\texttt{\textbackslash startenglish}}, \en{\texttt{\textbackslash stopenglish}}, \en{\texttt{\textbackslash stophebrew}}, \en{\texttt{\textbackslash warningsymbol}}, \en{\texttt{\textbackslash checksymbol}}
 
-    \item \textbf{פקודות סעיפים (6):} \texttt{\textbackslash hebrewchapter}, \texttt{\textbackslash hebrewsection}, \texttt{\textbackslash hebrewsubsection}, \texttt{\textbackslash englishsection}, \texttt{\textbackslash HebrewTitle}, \texttt{\textbackslash HebrewSubtitle}
+    \item \textbf{פקודות סעיפים (\en{6}):} \en{\texttt{\textbackslash hebrewchapter}}, \en{\texttt{\textbackslash hebrewsection}}, \en{\texttt{\textbackslash hebrewsubsection}}, \en{\texttt{\textbackslash englishsection}}, \en{\texttt{\textbackslash HebrewTitle}}, \en{\texttt{\textbackslash HebrewSubtitle}}
 
-    \item \textbf{פקודות טבלה (8):} \texttt{hebrewtable}, \texttt{rtltabular}, \texttt{\textbackslash hebcell}, \texttt{\textbackslash encell}, \texttt{\textbackslash mixedcell}, \texttt{\textbackslash hebheader}, \texttt{\textbackslash enheader}, \texttt{\textbackslash rtlrow}
+    \item \textbf{פקודות טבלה (\en{8}):} \en{\texttt{hebrewtable}}, \en{\texttt{rtltabular}}, \en{\texttt{\textbackslash hebcell}}, \en{\texttt{\textbackslash encell}}, \en{\texttt{\textbackslash mixedcell}}, \en{\texttt{\textbackslash hebheader}}, \en{\texttt{\textbackslash enheader}}, \en{\texttt{\textbackslash rtlrow}}
 
-    \item \textbf{פקודות איור (2):} \texttt{\textbackslash hebrewfigure}, סביבת \texttt{figure}
+    \item \textbf{פקודות איור (\en{2}):} \en{\texttt{\textbackslash hebrewfigure}}, סביבת \en{\texttt{figure}}
 
-    \item \textbf{פקודות קוד (7):} \texttt{pythonbox}, \texttt{pythonbox*}, \texttt{\textbackslash pythonverbatimformat}, \texttt{\textbackslash listingfont}, \texttt{\textbackslash courierfont}, \texttt{\textbackslash enpath}, \texttt{\textbackslash code}, \texttt{\textbackslash englishterm}
+    \item \textbf{פקודות קוד (\en{7}):} \en{\texttt{pythonbox}}, \en{\texttt{pythonbox*}}, \en{\texttt{\textbackslash pythonverbatimformat}}, \en{\texttt{\textbackslash listingfont}}, \en{\texttt{\textbackslash courierfont}}, \en{\texttt{\textbackslash enpath}}, \en{\texttt{\textbackslash code}}, \en{\texttt{\textbackslash englishterm}}
 
-    \item \textbf{פקודות מתמטיקה (8):} \texttt{\textbackslash argmin}, \texttt{\textbackslash argmax}, \texttt{\textbackslash hebmath}, \texttt{\textbackslash hebsub}, \texttt{\textbackslash Rsquared}, \texttt{\textbackslash Rtwo}, \texttt{\textbackslash rarrow}
+    \item \textbf{פקודות מתמטיקה (\en{8}):} \en{\texttt{\textbackslash argmin}}, \en{\texttt{\textbackslash argmax}}, \en{\texttt{\textbackslash hebmath}}, \en{\texttt{\textbackslash hebsub}}, \en{\texttt{\textbackslash Rsquared}}, \en{\texttt{\textbackslash Rtwo}}, \en{\texttt{\textbackslash rarrow}}
 
-    \item \textbf{פקודות כותרת (5):} \texttt{\textbackslash hebrewtitle}, \texttt{\textbackslash englishtitle}, \texttt{\textbackslash hebrewauthor}, \texttt{\textbackslash hebrewversion}, \texttt{\textbackslash maketitle}
+    \item \textbf{פקודות כותרת (\en{5}):} \en{\texttt{\textbackslash hebrewtitle}}, \en{\texttt{\textbackslash englishtitle}}, \en{\texttt{\textbackslash hebrewauthor}}, \en{\texttt{\textbackslash hebrewversion}}, \en{\texttt{\textbackslash maketitle}}
 
-    \item \textbf{פקודות ביבליוגרפיה (3):} \texttt{\textbackslash printhebrewbibliography}, \texttt{\textbackslash printenglishbibliography}, \texttt{\textbackslash ltrnumber}
+    \item \textbf{פקודות ביבליוגרפיה (\en{3}):} \en{\texttt{\textbackslash printhebrewbibliography}}, \en{\texttt{\textbackslash printenglishbibliography}}, \en{\texttt{\textbackslash ltrnumber}}
 
-    \item \textbf{פקודות רשימה (1):} \texttt{\textbackslash Hitem}
+    \item \textbf{פקודות רשימה (\en{1}):} \en{\texttt{\textbackslash Hitem}}
 
-    \item \textbf{פקודת גרסה (1):} \texttt{\textbackslash clsversion}
+    \item \textbf{פקודת גרסה (\en{1}):} \en{\texttt{\textbackslash clsversion}}
 \end{itemize}
 
 \hebrewsection{מסקנות: \entoc{Conclusions}}
 
-התבנית האקדמית העברית גרסה \clsversion{} מספקת:
+התבנית האקדמית העברית גרסה \en{\clsversion} מספקת:
 
 \begin{enumerate}
     \item תמיכה מלאה בכתיבה דו-כיוונית
@@ -525,7 +507,7 @@ The environment ensures consistent English formatting throughout.
     \item ביבליוגרפיה דו-לשונית
 \end{enumerate}
 
-הגרסה הנוכחית של התבנית: \clsversion{}
+הגרסה הנוכחית של התבנית: \en{\clsversion}
 
 % ==================== NEW v6.3.5 TEST: CROSS-CHAPTER REFERENCES ====================
 \hebrewsection{הפניות בין-פרקים: \entoc{Cross-Chapter References}}
@@ -551,12 +533,14 @@ The environment ensures consistent English formatting throughout.
 % ==================== NEW v5.11.4 TEST: SPACE ARTIFACTS ====================
 \hebrewsection{בדיקת רווחים בקוד: \entoc{Code Space Artifacts Test}}
 
+\begin{english}
 \begin{pythonbox}[\hebtitle{בדיקת מחרוזות עם רווחים: \en{String Space Test}}]
 def print_message():
     # These strings should contain invisible spaces, not markers
     message = "Hello World From Python"
     print(f"Message: {message}")
 \end{pythonbox}
+\end{english}
 
 % ==================== BIBLIOGRAPHY ====================
 

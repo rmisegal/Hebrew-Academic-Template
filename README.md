@@ -1,6 +1,6 @@
 # Hebrew Academic Template
 
-**Version 7.0.5** | January 2026
+**Version 7.0.6** | January 2026
 
 A comprehensive LaTeX class for Hebrew academic documents with seamless English integration, designed for LuaLaTeX with polyglossia and luabidi.
 
@@ -149,6 +149,12 @@ lualatex document.tex
 
 ## Changelog
 
+### v7.0.6 (2026-01-02)
+- **FIXED**: Empty List of Figures (LOF) and List of Tables (LOT) in book mode
+- **FIXED**: Removed `\c@lofdepth` and `\c@lotdepth` checks from `l@figure` and `l@table`
+- These counters are only defined when tocloft package is loaded, causing LOF/LOT to be empty
+- LOF/LOT now correctly display all figures and tables with proper BiDi page numbers
+
 ### v7.0.5 (2026-01-02)
 - **FIXED**: List of Figures (LOF) page numbers now render LTR instead of RTL
 - **FIXED**: List of Tables (LOT) page numbers now render LTR instead of RTL
@@ -208,7 +214,7 @@ lualatex document.tex
 
 ## License
 
-Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
+Copyright (c) 2025-2026 Dr. Segal Yoram. All rights reserved.
 
 ## Contributing
 

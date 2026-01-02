@@ -7,6 +7,9 @@
 
 \documentclass{hebrew-academic-template}
 
+% Force figure/table positioning
+\usepackage{float}
+
 % Add bibliography file
 \addbibresource{advanced_references.bib}
 
@@ -14,7 +17,8 @@
 \hebrewtitle{דוגמת ביבליוגרפיה - תבנית אקדמית עברית}
 \englishtitle{Bibliography Example - Hebrew Academic Template \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
-\date{\textenglish{November 2025}}
+\hebrewversion{גרסה \en{\clsversion}}
+\date{\textenglish{January 2026}}
 
 \begin{document}
 
@@ -131,12 +135,12 @@
     \item עיצוב מותאם לכל שפה
 \end{enumerate}
 
-\hebrewsubsection{שימוש ב-keywords: \entoc{Using Keywords}}
+\hebrewsubsection{שימוש ב-\en{keywords}: \entoc{Using Keywords}}
 
-כל מקור בקובץ ה-\texttt{.bib} צריך לכלול:
+כל מקור בקובץ ה-\en{\texttt{.bib}} צריך לכלול:
 \begin{itemize}
-    \item \texttt{keywords=\{hebrew\}} למקורות בעברית
-    \item \texttt{keywords=\{english\}} למקורות באנגלית
+    \item \en{\texttt{keywords=\{hebrew\}}} למקורות בעברית
+    \item \en{\texttt{keywords=\{english\}}} למקורות באנגלית
     \item שדה זה קובע באיזה חלק יופיע המקור
 \end{itemize}
 
@@ -170,22 +174,23 @@
 
 \hebrewsubsection{ציטוטים בטבלאות: \entoc{Citations in Tables}}
 
-\begin{hebrewtable}[h]
+\begin{table}[H]
 \caption{השוואת מחקרים: \entoc{Research Comparison}}
-\begin{rtltabular}{|c|c|c|}
-\hline
-\mixedcell{\textbf{מחקר / \en{Study}}} & \mixedcell{\textbf{שנה / \en{Year}}} & \mixedcell{\textbf{תרומה / \en{Contribution}}} \\
-\hline
+\centering
+\begin{tblr}{
+  colspec = {ccc},
+  row{1} = {font=\bfseries, bg=blue9, fg=white},
+  row{even} = {bg=gray9},
+  hlines,
+  vlines,
+}
+מחקר / \en{Study} & שנה / \en{Year} & תרומה / \en{Contribution} \\
 \cite{vaswani2017attention} & \hebyear{2017} & \en{Self-attention} \\
-\hline
 \cite{devlin2018bert} & \hebyear{2018} & \en{Bidirectional} \\
-\hline
 \cite{brown2020language} & \hebyear{2020} & \en{GPT-3 scale} \\
-\hline
-\cite{hebrew_nlp_2023} & \hebyear{2023} & \mixedcell{עיבוד עברית} \\
-\hline
-\end{rtltabular}
-\end{hebrewtable}
+\cite{hebrew_nlp_2023} & \hebyear{2023} & עיבוד עברית \\
+\end{tblr}
+\end{table}
 
 \hebrewsubsection{ציטוטים בהערות שוליים: \entoc{Citations in Footnotes}}
 
@@ -218,7 +223,7 @@ Hebrew-specific research \cite{hebrew_nlp_2023,hebrew_linguistics_2022} addresse
     \item סגנונות ציטוט שונים (בתוך משפט, בסוגריים)
     \item ציטוטים בטבלאות, הערות שוליים, ואיורים
     \item ניהול וארגון ביבליוגרפיה
-    \item שימוש ב-\texttt{keywords} להפרדת שפות
+    \item שימוש ב-\en{\texttt{keywords}} להפרדת שפות
 \end{itemize}
 
 המערכת מספקת גמישות מלאה בניהול מקורות ביבליוגרפיים במסמכים אקדמיים דו-לשוניים.
