@@ -46,12 +46,12 @@
 
 כפי שניתן לראות באיור \ref{fig:basic}, זהו איור בסיסי עם כיתוב דו-לשוני.
 
-\hebrewsubsection{איור עם פקודת hebrewfigure: \entoc{Figure with hebrewfigure Command}}
+\hebrewsubsection{איור עם פקודת \en{hebrewfigure}: \entoc{Figure with hebrewfigure Command}}
 
 % Using \hebrewfigure command
 \hebrewfigure[h]{
     \includegraphics[width=0.6\textwidth]{images/fig_hebrewfigure.pdf}
-}{איור עם פקודה: \entoc{Command Figure} - שימוש בפקודת \texttt{hebrewfigure}}
+}{איור עם פקודה: \entoc{Command Figure} - שימוש בפקודת \en{hebrewfigure}}
 
 % ==================== POSITIONING OPTIONS ====================
 
@@ -200,9 +200,9 @@
 
 \begin{enumerate}
     \item \textbf{גודל מתאים:} וודאו שהאיור קריא ולא גדול מדי
-    \item \textbf{כיתובים ברורים:} השתמשו בכיתובים דו-לשוניים עם \texttt{\textbackslash entoc\{\}}
+    \item \textbf{כיתובים ברורים:} השתמשו בכיתובים דו-לשוניים עם \en{\textbackslash entoc\{\}}
     \item \textbf{מיקום נכון:} בחרו במיקום המתאים - \texttt{[h]}, \texttt{[t]}, \texttt{[b]}, או \texttt{[p]}
-    \item \textbf{הפניות:} השתמשו תמיד ב-\texttt{\textbackslash label} ו-\texttt{\textbackslash ref}
+    \item \textbf{הפניות:} השתמשו תמיד ב-\en{\textbackslash label} ו-\en{\textbackslash ref}
     \item \textbf{רזולוציה:} לתמונות אמיתיות, השתמשו ברזולוציה של לפחות 300 DPI
 \end{enumerate}
 
@@ -222,10 +222,10 @@
 
 מסמך זה הדגים:
 \begin{itemize}
-    \item שימוש בסביבת \texttt{figure} ובפקודת \texttt{\textbackslash hebrewfigure}
+    \item שימוש בסביבת \en{figure} ובפקודת \en{\textbackslash hebrewfigure}
     \item אפשרויות מיקום שונות (\texttt{[h]}, \texttt{[t]}, \texttt{[b]}, \texttt{[p]})
     \item איורים מרובים וסידורים שונים
-    \item כיתובים דו-לשוניים עם \texttt{\textbackslash entoc\{\}}
+    \item כיתובים דו-לשוניים עם \en{\textbackslash entoc\{\}}
     \item הפניות צולבות לאיורים
     \item שילוב עם \en{TikZ} או \en{Python/Matplotlib} ליצירת גרפיקה
     \item עקרונות מומלצים לעבודה עם איורים
@@ -236,7 +236,8 @@
 % ==================== BIBLIOGRAPHY ====================
 
 \newpage
-\printhebrewbibliography
-\printenglishbibliography
+\begin{english}
+\printbibliography[heading=bibintoc,title={References}]
+\end{english}
 
 \end{document}
