@@ -73,13 +73,15 @@
 שימו לב שכל הנקודות חשובות באותה מידה.}.
 
 ניתן גם לכלול טבלאות קטנות בהערות\footnote{%
+\begin{english}
 \begin{tabular}{|c|c|}
 \hline
-ערך א & \num{10} \\
+\texthebrew{ערך א} & 10 \\
 \hline
-ערך ב & \num{20} \\
+\texthebrew{ערך ב} & 20 \\
 \hline
 \end{tabular}
+\end{english}
 - טבלה פשוטה להמחשה.}.
 
 % ==================== FOOTNOTE NUMBERING ====================
@@ -118,20 +120,12 @@ Multiple footnotes work correctly\footnote{First English footnote.}\footnote{Sec
 
 \hebrewsubsection{הערות בטבלאות: \entoc{Footnotes in Tables}}
 
-\begin{hebrewtable}[H]
-\caption{טבלה עם הערות שוליים: \entoc{Table with Footnotes}}
-\begin{rtltabular}{|c|c|c|}
-\hline
-\mixedcell{\textbf{שם / \en{Name}}} & \mixedcell{\textbf{ערך / \en{Value}}} & \mixedcell{\textbf{הערה / \en{Note}}} \\
-\hline
-\mixedcell{פריט א\footnote{הערה לפריט א.}} & \num{100} & \mixedcell{רגיל} \\
-\hline
-\mixedcell{פריט ב} & \num{200}\footnote{ערך זה נמדד ב-\hebyear{2025}.} & \mixedcell{מיוחד} \\
-\hline
-\mixedcell{פריט ג} & \num{300} & \mixedcell{חשוב\footnote{ראה פירוט בנספח.}} \\
-\hline
-\end{rtltabular}
-\end{hebrewtable}
+\begin{fancytable}{ccc}{טבלה עם הערות שוליים: \entoc{Table with Footnotes}}
+\textbf{הערה / \en{Note}} & \textbf{ערך / \en{Value}} & \textbf{שם / \en{Name}} \\
+רגיל & \en{100} & פריט א\footnote{הערה לפריט א.} \\
+מיוחד & \en{200}\footnote{ערך זה נמדד ב-\en{2025}.} & פריט ב \\
+חשוב\footnote{ראה פירוט בנספח.} & \en{300} & פריט ג \\
+\end{fancytable}
 
 \hebrewsubsection{הערות באיורים: \entoc{Footnotes in Figures}}
 
