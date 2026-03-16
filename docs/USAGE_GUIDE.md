@@ -90,6 +90,31 @@ lualatex simple_example.tex
 3. **hebrew-academic-template.cls**: Template class file
 4. **Images**: Any PNG/JPG files referenced in the document
 
+### Custom Page Margins (v7.3.0)
+
+The geometry package is built-in (no need to `\usepackage{geometry}`).
+Use `\geometry{...}` in the preamble to set custom margins:
+
+```latex
+\documentclass{hebrew-academic-template}
+
+% Custom margins for invoices, forms, certificates, etc.
+\geometry{top=8mm, bottom=6mm, left=12mm, right=12mm}
+
+\begin{document}
+% Your custom-layout content
+\end{document}
+```
+
+**Available commands:**
+| Command | Usage | Context |
+|---------|-------|---------|
+| `\geometry{...}` | Set margins | Preamble only |
+| `\newgeometry{...}` | Change margins | Document body |
+| `\restoregeometry` | Restore defaults | Document body |
+
+**Note:** Without calling `\geometry{...}`, the default article/book class margins are used (100% backward compatible).
+
 ## Text Direction Guidelines
 
 ### Critical Rules for Professional Output

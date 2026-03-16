@@ -28,6 +28,7 @@ A comprehensive LaTeX template for Hebrew academic documents with seamless Engli
 ### **Professional Layout**
 - **Custom headers/footers** with copyright and page numbers
 - **Proper margins** and spacing for academic documents
+- **Custom page margins** (v7.3.0) via built-in geometry: `\geometry{top=8mm, ...}`
 - **Table of contents** with mixed language support
 - **Title page** with bilingual information
 

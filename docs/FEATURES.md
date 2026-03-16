@@ -8,7 +8,7 @@ The Hebrew Academic Template provides 80 commands, 8 environments, and 24+ packa
 
 | Category | Count | Description |
 |----------|-------|-------------|
-| **Total Commands** | 80 | Complete command set for all use cases |
+| **Total Commands** | 80+ | Complete command set for all use cases |
 | **Environments** | 8 | Structured content environments |
 | **Packages** | 24+ | Professionally integrated packages |
 | **Text Direction** | 17 | Complete BiDi support |
@@ -188,7 +188,7 @@ The Hebrew Academic Template provides 80 commands, 8 environments, and 24+ packa
 ### Layout Packages
 | Package | Purpose | Features |
 |---------|---------|----------|
-| geometry | Page layout | Margins |
+| geometry | Page layout | Margins, `\geometry{}`, `\newgeometry{}`, `\restoregeometry` (v7.3.0: built-in with `pass` option) |
 | fancyhdr | Headers | Custom headers |
 | titlesec | Sections | Formatting |
 | setspace | Spacing | Line spacing |

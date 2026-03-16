@@ -2,6 +2,92 @@
 
 This document chronicles the development of the Hebrew Academic Template.
 
+## [7.3.0] - 2026-03-16 - Geometry Page Layout Support
+
+### Overview
+Built-in geometry package support for custom page margins. Enables invoice, form, certificate, and other custom-layout documents while maintaining 100% backward compatibility with existing academic documents.
+
+### Added (1 New Feature)
+- **NEW: geometry package loaded with `pass` option**
+  - No default margin changes - existing documents compile identically
+  - Users can call `\geometry{...}` in preamble to set custom margins
+  - Supports `\newgeometry{...}` for mid-document margin changes
+  - Supports `\restoregeometry` to revert to defaults
+  - Enables invoice, form, and custom-layout documents using the CLS
+
+### Technical Details
+- **CLS Version:** V7.3.0-2026-03-16
+- **Lines Added:** geometry RequirePackage in REQUIRED PACKAGES section
+- **Dependencies:** geometry package (standard LaTeX)
+- **Backward Compatibility:** 100% - `pass` option ensures no layout changes
+
+### Usage Example
+```latex
+\documentclass{hebrew-academic-template}
+
+% Set custom margins (no need to \usepackage{geometry})
+\geometry{top=8mm, bottom=6mm, left=12mm, right=12mm}
+
+\begin{document}
+% Custom-layout content (invoices, forms, etc.)
+\end{document}
+```
+
+### New Example
+- `geometry_example.tex` - Demonstrates custom margins for invoice-style documents
+
+---
+
+## [7.2.0] - 2026-01-15 - Framed Schema Page Command
+
+### Overview
+New command for displaying full-page rotated diagrams with decorative frame. Ideal for database schema diagrams, architecture diagrams, and flowcharts in Hebrew RTL documents.
+
+### Added (1 New Feature)
+- **NEW: `\framedschemapage{image}` command**
+  - Displays landscape images rotated 90° counter-clockwise to portrait orientation
+  - Centers image on page with simple decorative frame (1.5pt, black!70)
+  - Works correctly in RTL documents (uses english environment internally)
+  - Optional size parameter: `\framedschemapage[0.8\textwidth]{image}`
+  - Default size: 0.75\textwidth
+  - Creates empty page (no headers/footers)
+
+### Technical Details
+- **CLS Version:** V7.2.0-2026-01-15
+- **Lines Added:** 1826-1850 (framedschemapage command)
+- **Dependencies:** TikZ (already loaded), graphicx (already loaded)
+- **Backward Compatibility:** 100%
+
+### Usage Example
+```latex
+% Basic usage - rotated image with frame
+\framedschemapage{images/database_schema.png}
+
+% Custom size (80% of text width)
+\framedschemapage[0.8\textwidth]{images/architecture.png}
+```
+
+---
+
+## [7.1.0] - 2026-01-15 - Cover Page Enhancements
+
+### Overview
+Enhanced title page with cover image support, signature block, and decorative double frame.
+
+### Added (5 New Features)
+- **NEW: `\coverimage{path}` command** - Add cover image with faded edges to title page
+- **NEW: `\hebrewsignature{name}` command** - Hebrew name in handwriting font (Guttman Yad)
+- **NEW: `\signatureimage{path}` command** - Signature image below handwriting name
+- **NEW: `\makesignature` command** - Renders signature block (name + image, left-aligned)
+- **NEW: Decorative double frame** - Outer 3pt + inner 1pt frame on title page
+
+### Technical Details
+- **CLS Version:** V7.1.0-2026-01-15
+- **Font Fallback:** If Guttman Yad not installed, uses bold italic text
+- **Backward Compatibility:** 100%
+
+---
+
 ## [5.11.9] - 2025-12-20 - TOC RTL Alignment Fix Edition
 
 ### Overview

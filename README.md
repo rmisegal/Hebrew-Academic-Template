@@ -1,6 +1,6 @@
 # Hebrew Academic Template
 
-**Version 7.0.6** | January 2026
+**Version 7.3.0** | March 2026
 
 A comprehensive LaTeX class for Hebrew academic documents with seamless English integration, designed for LuaLaTeX with polyglossia and luabidi.
 
@@ -103,6 +103,8 @@ The `examples/` folder contains complete working examples:
 | `footnote_example.tex` | Footnotes | Hebrew/English footnotes |
 | `image_example.tex` | Figures | Image handling in RTL |
 | `book_example.tex` | Book | Multi-chapter book structure |
+| `framedschemapage_example.tex` | Schema | Full-page rotated diagrams with frame |
+| `geometry_example.tex` | Layout | Custom page margins for invoices/forms |
 
 ## Compiling
 
@@ -147,7 +149,49 @@ lualatex document.tex
 \printenglishbibliography % English sources
 ```
 
+### Full-Page Diagrams (v7.2.0)
+```latex
+% Display rotated landscape image on full page with decorative frame
+\framedschemapage{path/to/schema.png}
+
+% With custom size (default is 0.75\textwidth)
+\framedschemapage[0.8\textwidth]{path/to/schema.png}
+```
+
+### Custom Page Margins (v7.3.0)
+```latex
+% Set custom margins in preamble (geometry is built-in, no \usepackage needed)
+\geometry{top=8mm, bottom=6mm, left=12mm, right=12mm}
+
+% Change margins mid-document
+\newgeometry{top=25mm, bottom=25mm, left=25mm, right=25mm}
+
+% Restore original margins
+\restoregeometry
+```
+
 ## Changelog
+
+### v7.3.0 (2026-03-16)
+- **NEW**: Built-in geometry package support for custom page margins
+- Loaded with `pass` option for 100% backward compatibility
+- Enables invoice, form, certificate, and custom-layout documents
+- New example: `geometry_example.tex`
+
+### v7.2.0 (2026-01-15)
+- **NEW**: `\framedschemapage{image}` - Full-page rotated image with decorative frame
+- Rotates landscape images 90° counter-clockwise to portrait orientation
+- Centers image on page with simple frame (1.5pt, black!70)
+- Works correctly in RTL documents (uses english environment internally)
+- Optional size parameter: `\framedschemapage[0.8\textwidth]{image}`
+- Ideal for database schema diagrams, architecture diagrams, flowcharts
+
+### v7.1.0 (2026-01-15)
+- **NEW**: `\coverimage{path}` - Add cover image with faded edges to title page
+- **NEW**: `\hebrewsignature{name}` - Hebrew name in handwriting font (Guttman Yad)
+- **NEW**: `\signatureimage{path}` - Signature image below handwriting name
+- **NEW**: `\makesignature` - Renders signature block (name + image, left-aligned)
+- **NEW**: Decorative double frame on title page (outer 3pt + inner 1pt)
 
 ### v7.0.6 (2026-01-02)
 - **FIXED**: Empty List of Figures (LOF) and List of Tables (LOT) in book mode

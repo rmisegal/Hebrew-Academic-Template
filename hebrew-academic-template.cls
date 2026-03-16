@@ -1,11 +1,39 @@
 % hebrew-academic-template.cls
-% Version 7.0.6 - LOF/LOT Empty List Fix
-% Date: 2026-01-02
+% Version 7.3.0 - Geometry Page Layout Support
+% Date: 2026-03-16
 %
 % A comprehensive LaTeX class for Hebrew academic documents with English integration
 % Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
 %
 % CHANGELOG:
+% v7.3.0 (2026-03-16) - Geometry Page Layout Support
+%   - NEW: geometry package loaded (with 'pass' option for backward compatibility)
+%   - Users can call \geometry{...} in preamble to set custom margins
+%   - No default margin changes - existing documents compile identically
+%   - Enables invoice, form, and custom-layout documents using the CLS
+%   - Example: \geometry{top=8mm, bottom=6mm, left=12mm, right=12mm}
+%   - NEW: geometry_example.tex demonstrating custom margin layouts
+%
+% v7.2.0 (2026-01-15) - Framed Schema Page Command
+%   - NEW: \framedschemapage{image} - Full-page rotated image with decorative frame
+%   - Rotates landscape images 90° counter-clockwise to portrait orientation
+%   - Centers image on page with simple frame (1.5pt, black!70)
+%   - Works correctly in RTL documents (uses english environment internally)
+%   - Optional size parameter: \framedschemapage[0.8\textwidth]{image}
+%   - Default size: 0.75\textwidth
+%   - Ideal for database schema diagrams, architecture diagrams, flowcharts
+%
+% v7.1.0 (2026-01-15) - Cover Page Enhancements
+%   - NEW: \coverimage{path} - Add cover image with faded edges to title page
+%   - NEW: \hebrewsignature{name} - Hebrew name in handwriting font (Guttman Yad)
+%   - NEW: \signatureimage{path} - Signature image below handwriting name
+%   - NEW: \makesignature - Renders signature block (name + image, left-aligned)
+%   - NEW: Decorative double frame on title page (outer 3pt + inner 1pt)
+%   - NEW: Cover image fading effect on all four edges using TikZ fadings
+%   - NEW: \usetikzlibrary{fadings} added for fade effects
+%   - Font fallback: If Guttman Yad not installed, uses bold italic text
+%   - Signature block aligned left with 5em offset from margin
+%
 % v7.0.6 (2026-01-02) - LOF/LOT Empty List Fix
 %   - FIXED: List of Figures and List of Tables were empty (not rendering entries)
 %   - Root cause: l@figure checked \c@lofdepth, l@table checked \c@lotdepth
@@ -422,11 +450,11 @@
 % - PDF bookmark support with proper hyperref integration
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hebrew-academic-template}[2026/01/02 v7.0.6 Hebrew Academic Template - LOF/LOT Empty Fix]
+\ProvidesClass{hebrew-academic-template}[2026/03/16 v7.3.0 Hebrew Academic Template - Geometry Page Layout Support]
 
 % ==================== VERSION INFORMATION ====================
 % Version command - defined early for programmatic access
-\newcommand{\clsversion}{V7.0.6-2026-01-02}
+\newcommand{\clsversion}{V7.3.0-2026-03-16}
 
 % ==================== CLASS OPTIONS ====================
 % 'book' option - enables full book class with chapters, frontmatter, etc.
@@ -474,6 +502,12 @@
 \RequirePackage{titlesec}
 \RequirePackage{needspace}  % v5.7.0: For section page break control
 
+% v7.3.0: Page layout control
+% Loaded with 'pass' for 100% backward compatibility (no default margin changes)
+% Users can override in preamble: \geometry{top=8mm, bottom=6mm, left=12mm, right=12mm}
+% Enables custom-layout documents (invoices, forms, certificates) using the CLS
+\RequirePackage[pass]{geometry}
+
 % Bibliography support - FIXED: Using biber backend (not bibtex) for Unicode support
 \RequirePackage[backend=biber, style=ieee]{biblatex}
 \DeclareLanguageMapping{hebrew}{english}
@@ -508,6 +542,7 @@
 
 % TikZ packages for diagrams
 \RequirePackage{tikz-cd}
+\usetikzlibrary{fadings}  % v7.1.0: Required for cover image faded edges
 
 % Hyperref for PDF bookmarks and links
 \RequirePackage[unicode, pdfencoding=auto, bookmarks=true, colorlinks=true, linkcolor=blue, citecolor=red, urlcolor=blue]{hyperref}
@@ -1693,16 +1728,69 @@
 }
 
 %% ==================== TITLE PAGE COMMANDS ====================
+% v7.1.0: Enhanced cover page with decorative frame, cover image, and signature support
+%
+% USAGE - Metadata commands (in preamble):
+%   \hebrewtitle{כותרת בעברית}        - Hebrew title (required)
+%   \englishtitle{English Title}       - English title (required)
+%   \hebrewsubtitle{כותרת משנה}        - Hebrew subtitle (optional)
+%   \hebrewauthor{שם המחבר}            - Author name (optional)
+%   \hebrewversion{גרסה 1.0}           - Version string (optional)
+%   \coverimage{path/to/image.png}     - Cover image with faded edges (optional)
+%   \hebrewsignature{יורם}             - Hebrew name in handwriting font (optional)
+%   \signatureimage{path/to/sig.png}   - Signature image (optional)
+%
+% USAGE - Rendering commands:
+%   \maketitle                         - Renders full title page with frame
+%   \makesignature                     - Renders signature block (name + image)
 
 \newcommand{\hebrewtitle}[1]{\def\@hebrewtitle{#1}}
 \newcommand{\englishtitle}[1]{\def\@englishtitle{#1}}
 \newcommand{\hebrewsubtitle}[1]{\def\@hebrewsubtitle{#1}}
 \newcommand{\hebrewauthor}[1]{\def\@hebrewauthor{#1}}
 \newcommand{\hebrewversion}[1]{\def\@hebrewversion{#1}}
+\newcommand{\coverimage}[1]{\def\@coverimage{#1}}
+\newcommand{\hebrewsignature}[1]{\def\@hebrewsignature{#1}}
+\newcommand{\signatureimage}[1]{\def\@signatureimage{#1}}
 
-% Custom title page for Hebrew documents
+% Signature block command - renders Hebrew name in handwriting font + signature image
+% Aligned to left margin, Hebrew name centered above image
+% USAGE: \makesignature (after setting \hebrewsignature{} and/or \signatureimage{})
+\newcommand{\makesignature}{%
+  \begin{english}%
+  \raggedright%
+  \begin{minipage}{5cm}%
+    \centering%
+    \ifdefined\@hebrewsignature%
+      \IfFontExistsTF{Guttman Yad}{%
+        {\bgroup\textdir TRT\fontspec{Guttman Yad}[Script=Hebrew,Renderer=Harfbuzz]\Large\@hebrewsignature\egroup}%
+      }{%
+        {\bgroup\textdir TRT\Large\textit{\textbf{\@hebrewsignature}}\egroup}%
+      }\\[0.1cm]%
+    \fi%
+    \ifdefined\@signatureimage%
+      \includegraphics[width=5cm]{\@signatureimage}%
+    \fi%
+  \end{minipage}%
+  \end{english}%
+}
+
+% Custom title page for Hebrew documents with decorative frame
 \renewcommand{\maketitle}{%
   \begin{titlepage}%
+    % Decorative double page frame using TikZ overlay
+    \begin{tikzpicture}[remember picture, overlay, shift={(current page.center)}]
+      % Outer frame - thick (3pt, dark gray)
+      \draw[line width=3pt, color=black!60]
+        (-0.5\paperwidth+1.2cm, 0.5\paperheight-1.2cm)
+        rectangle
+        (0.5\paperwidth-1.2cm, -0.5\paperheight+1.2cm);
+      % Inner frame - thin (1pt, light gray)
+      \draw[line width=1pt, color=black!40]
+        (-0.5\paperwidth+1.5cm, 0.5\paperheight-1.5cm)
+        rectangle
+        (0.5\paperwidth-1.5cm, -0.5\paperheight+1.5cm);
+    \end{tikzpicture}
     \null\vfil%
     \begin{center}%
       \texthebrew{\LARGE\bfseries\@hebrewtitle}\par%
@@ -1715,7 +1803,25 @@
       \vskip 3em%
       \ifdefined\@hebrewauthor%
         {\large \texthebrew{\@hebrewauthor} \par}%
-        \vskip 0.5em%
+      \fi%
+      % Cover image with faded edges (v7.1.0)
+      \ifdefined\@coverimage%
+        \vskip 1em%
+        \begin{tikzpicture}
+          \node[inner sep=0] (img) {\includegraphics[width=0.7\textwidth]{\@coverimage}};
+          % Faded white overlay on edges
+          \fill[white, path fading=south, fading angle=90, opacity=0.9]
+            ([yshift=-0.5cm]img.south west) rectangle ([yshift=1cm]img.south east);
+          \fill[white, path fading=north, fading angle=90, opacity=0.9]
+            ([yshift=0.5cm]img.north west) rectangle ([yshift=-1cm]img.north east);
+          \fill[white, path fading=east, fading angle=0, opacity=0.7]
+            ([xshift=-0.5cm]img.west) rectangle ([xshift=1.5cm]img.east |- img.south);
+          \fill[white, path fading=west, fading angle=0, opacity=0.7]
+            ([xshift=0.5cm]img.east) rectangle ([xshift=-1.5cm]img.west |- img.north);
+        \end{tikzpicture}
+        \vskip 1em%
+      \fi%
+      \ifdefined\@hebrewauthor%
         {\large \hebfoot{כל הזכויות שמורות - \en{©} \@hebrewauthor} \par}%
       \else%
         {\large \@author \par}%
@@ -1729,6 +1835,32 @@
     \end{center}%
     \vfil\null%
   \end{titlepage}%
+}
+
+%% ==================== FRAMED SCHEMA PAGE (v7.2.0) ====================
+% Full-page command for displaying rotated schema diagrams with decorative frame
+% Usage: \framedschemapage{path/to/image.png}
+% - Rotates image 90° counter-clockwise (landscape to portrait)
+% - Centers image on page with simple frame
+% - Works correctly in RTL documents (uses english environment)
+\newcommand{\framedschemapage}[2][0.75\textwidth]{%
+  \clearpage
+  \thispagestyle{empty}%
+  \begin{english}%
+    \vspace*{\fill}%
+    \begin{center}%
+      \rotatebox{-90}{\includegraphics[height=#1]{#2}}%
+    \end{center}%
+    \vspace*{\fill}%
+    % Simple frame using TikZ overlay (draws on current page)
+    \begin{tikzpicture}[remember picture, overlay, shift={(current page.center)}]
+      \draw[line width=1.5pt, color=black!70]
+        (-0.5\paperwidth+1.5cm, 0.5\paperheight-1.5cm)
+        rectangle
+        (0.5\paperwidth-1.5cm, -0.5\paperheight+1.5cm);
+    \end{tikzpicture}%
+  \end{english}%
+  \clearpage
 }
 
 %% ==================== CUSTOM LISTS ====================
