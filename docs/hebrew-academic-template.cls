@@ -2147,7 +2147,8 @@
 %% ==================== DOCUMENT LAYOUT ====================
 
 % A4 paper with appropriate margins for Hebrew
-\RequirePackage[a4paper, margin=2.5cm]{geometry}
+% v7.3.0: geometry loaded earlier with 'pass' option - no duplicate load needed
+% Users override margins via \geometry{...} in preamble
 
 % Book mode: prevent excessive vertical stretching between elements
 \makeatletter
