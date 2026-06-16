@@ -1,11 +1,36 @@
 % hebrew-academic-template.cls
-% Version 7.3.0 - Geometry Page Layout Support
-% Date: 2026-03-16
+% Version 7.3.2 - Article-Mode TOC Page-Number BiDi Fix
+% Date: 2026-06-16
 %
 % A comprehensive LaTeX class for Hebrew academic documents with English integration
 % Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
 %
 % CHANGELOG:
+% v7.3.2 (2026-06-16) - Article-Mode TOC Page-Number BiDi Fix (QA-detected via qa-cls-toc-detect)
+%   - FIXED: In article mode, two-digit TOC page numbers rendered reversed in the
+%     RTL table of contents (page 10 displayed as "01", 12 as "21", 13 as "31", ...).
+%     Single-digit page numbers were unaffected.
+%   - Root cause: the book-mode \contentsline redefinition and l@* BiDi handlers
+%     (which force LTR page numbers via \textenglish / \textdir TLT) live entirely
+%     inside the \if@bookmode block. In the default article mode none of them apply,
+%     so the RTL paragraph reorders the weak digit run of multi-digit page numbers.
+%   - Solution: added an \else (article-mode) branch to that \if@bookmode block which
+%     redefines \contentsline to wrap the page-number argument (#3) in the CLS's own
+%     \ltr{} command ({\textdir TLT\textenglish{#1}}). Uses only existing CLS macros.
+%   - hyperref uses the 4-argument \contentsline{type}{text}{page}{anchor} form.
+%   - Article-mode l@section/l@subsection already align RTL correctly; only the page
+%     number direction needed forcing, so the fix is minimal and book mode is untouched.
+%
+% v7.3.1 (2026-06-03) - TOC Compound Number BiDi Fix (QA-detected via qa-cls-toc-detect)
+%   - FIXED: \hebrewsubsection TOC entries rendered compound number reversed
+%     (section 1.2 displayed as "2.1", 1.3 as "3.1", 2.1 as "1.2", etc.)
+%   - Root cause: \numberline{\thehebrewsection.\thehebrewsubsection} placed a bare
+%     dot between TWO separate \textenglish{} islands inside the RTL TOC line; the
+%     bidi algorithm reordered the two LTR runs around the neutral dot.
+%   - Solution: wrap the whole compound number in a SINGLE \textenglish{} island:
+%     \numberline{\textenglish{\arabic{hebrewsection}.\arabic{hebrewsubsection}}}
+%   - Body headings were already correct (HebrewSubtitle uses an LTR hbox); only TOC affected.
+%
 % v7.3.0 (2026-03-16) - Geometry Page Layout Support
 %   - NEW: geometry package loaded (with 'pass' option for backward compatibility)
 %   - Users can call \geometry{...} in preamble to set custom margins
@@ -450,11 +475,11 @@
 % - PDF bookmark support with proper hyperref integration
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hebrew-academic-template}[2026/03/16 v7.3.0 Hebrew Academic Template - Geometry Page Layout Support]
+\ProvidesClass{hebrew-academic-template}[2026/06/16 v7.3.2 Hebrew Academic Template - Article-Mode TOC Page-Number BiDi Fix]
 
 % ==================== VERSION INFORMATION ====================
 % Version command - defined early for programmatic access
-\newcommand{\clsversion}{V7.3.0-2026-03-16}
+\newcommand{\clsversion}{V7.3.2-2026-06-16}
 
 % ==================== CLASS OPTIONS ====================
 % 'book' option - enables full book class with chapters, frontmatter, etc.
@@ -932,7 +957,9 @@
   \stepcounter{hebrewsubsection}%
   \subsubsection*{\HebrewSubtitle{\thehebrewsection.\thehebrewsubsection}{#1}}%
   \phantomsection% CRITICAL - Added for PDF bookmarks
-  \addcontentsline{toc}{subsubsection}{\protect\numberline{\thehebrewsection.\thehebrewsubsection}\texthebrew{#1}}%
+  % v7.3.1: Wrap compound number in a SINGLE \textenglish island so the dot
+  % does not flip between two LTR runs in the RTL TOC line (was rendering "1.2" as "2.1")
+  \addcontentsline{toc}{subsubsection}{\protect\numberline{\protect\textenglish{\arabic{hebrewsection}.\arabic{hebrewsubsection}}}\texthebrew{#1}}%
   % v5.13.0: Sync BOTH subsection AND subsubsection counters for standard commands
   \setcounter{subsection}{\value{hebrewsubsection}}% Sync subsection counter
   \setcounter{subsubsection}{0}% Reset subsubsection for new subsection
@@ -1260,6 +1287,20 @@
     \phantomsection%
     \addcontentsline{toc}{chapter}{\HebrewTitle{\thehebrewchapter}{#1}}%
     \setcounter{section}{\value{hebrewchapter}}%
+  }
+\else
+  % ---- Article-mode TOC BiDi Fix (v7.3.2) ----
+  % QA-detected (qa-cls-toc-detect): in article mode the book-mode \contentsline
+  % LTR page-number fix above is skipped, so two-digit TOC page numbers render
+  % reversed in the RTL TOC (e.g. page 10 shows "01", 12 -> "21", 13 -> "31").
+  % Single-digit pages are unaffected. Standard article l@section/l@subsection
+  % already align correctly RTL; only the page number direction needs forcing.
+  % Solution: wrap the page-number argument (#3) of \contentsline in the CLS's
+  % own \ltr{} command ({\textdir TLT\textenglish{#1}}) to force LTR rendering.
+  % hyperref uses the 4-argument form: \contentsline{type}{text}{page}{anchor}.
+  \let\orig@contentsline\contentsline
+  \renewcommand{\contentsline}[4]{%
+    \orig@contentsline{#1}{#2}{\ltr{#3}}{#4}%
   }
 \fi
 \makeatother

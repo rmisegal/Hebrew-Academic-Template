@@ -1,0 +1,87 @@
+% ================================================================
+% TOC ARTICLE PAGE-NUMBER EXAMPLE - Hebrew Academic Template
+% ================================================================
+% Regression example for v7.3.2:
+%   Verifies that two-digit page numbers in the Table of Contents render
+%   correctly (LTR) in the DEFAULT article mode.
+%   Before v7.3.2 the TOC showed page 10 as "01", 12 as "21", 13 as "31", ...
+%   because the book-mode \contentsline LTR fix was skipped in article mode.
+%
+% The document is intentionally padded with \newpage so the later sections
+% land on two-digit pages, exercising the fix in the generated TOC.
+%
+% Compile: lualatex toc_article_pagenum_example.tex   (run twice for the TOC)
+% Copyright (c) 2026 Dr. Segal Yoram. All rights reserved.
+% ================================================================
+
+\documentclass{hebrew-academic-template}   % article mode (default)
+
+\usepackage{float}
+
+\hebrewtitle{בדיקת מספרי עמודים בתוכן העניינים - מצב \en{article}}
+\englishtitle{TOC Page-Number BiDi Test (article mode) \clsversion}
+\hebrewauthor{ד"ר סגל יורם}
+\hebrewversion{גרסה \en{\clsversion}}
+\date{\textenglish{June 2026}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% Each section is pushed onto a fresh page so that sections 8+ land on
+% two-digit pages. The TOC must show those page numbers LTR (10, 11, 12...).
+
+\hebrewsection{סעיף ראשון: \entoc{First Section}}
+תוכן הסעיף הראשון. מספרים בתוך טקסט עברי כמו \num{100} ו-\percent{42} נשארים \en{LTR}.
+\newpage
+
+\hebrewsection{סעיף שני: \entoc{Second Section}}
+תוכן הסעיף השני. מונחים באנגלית כמו \en{Machine Learning} משולבים בעברית.
+\newpage
+
+\hebrewsection{סעיף שלישי: \entoc{Third Section}}
+תוכן הסעיף השלישי, כולל תת-סעיף.
+\hebrewsubsection{תת-סעיף: \entoc{Subsection}}
+מספר מורכב בתוכן העניינים, למשל \num{3.1}, צריך להופיע נכון.
+\newpage
+
+\hebrewsection{סעיף רביעי: \entoc{Fourth Section}}
+תוכן הסעיף הרביעי.
+\newpage
+
+\hebrewsection{סעיף חמישי: \entoc{Fifth Section}}
+תוכן הסעיף החמישי.
+\newpage
+
+\hebrewsection{סעיף שישי: \entoc{Sixth Section}}
+תוכן הסעיף השישי.
+\newpage
+
+\hebrewsection{סעיף שביעי: \entoc{Seventh Section}}
+תוכן הסעיף השביעי.
+\newpage
+
+\hebrewsection{סעיף שמיני: \entoc{Eighth Section}}
+סעיף זה נמצא בעמוד דו-ספרתי. מספר העמוד שלו בתוכן העניינים חייב להיות \en{LTR}.
+\newpage
+
+\hebrewsection{סעיף תשיעי: \entoc{Ninth Section}}
+תוכן הסעיף התשיעי.
+\newpage
+
+\hebrewsection{סעיף עשירי: \entoc{Tenth Section}}
+תוכן הסעיף העשירי - עמוד דו-ספרתי.
+\newpage
+
+\hebrewsection{סעיף אחד-עשר: \entoc{Eleventh Section}}
+תוכן הסעיף האחד-עשר.
+\newpage
+
+\hebrewsection{סעיף שנים-עשר: \entoc{Twelfth Section}}
+תוכן הסעיף השנים-עשר. אם מספרי העמודים בתוכן העניינים מופיעים נכון
+(\num{10}, \num{11}, \num{12} ולא \en{01}, \en{11}, \en{21}), התיקון של גרסה
+\en{7.3.2} עובד כראוי.
+
+\end{document}

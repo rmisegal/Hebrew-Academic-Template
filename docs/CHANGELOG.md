@@ -2,6 +2,62 @@
 
 This document chronicles the development of the Hebrew Academic Template.
 
+## [7.3.2] - 2026-06-16 - Article-Mode TOC Page-Number BiDi Fix
+
+### Overview
+Fixes reversed two-digit page numbers in the table of contents when the class is
+used in its default **article** mode. The book-mode BiDi fix already existed; this
+release extends the same protection to article mode.
+
+### Fixed (1 Bug)
+- **FIXED: Two-digit TOC page numbers rendered reversed in article mode**
+  - Symptom: in the RTL table of contents, page 10 displayed as "01", 12 as "21",
+    13 as "31", etc. Single-digit page numbers were unaffected.
+  - Root cause: the book-mode `\contentsline` redefinition and the `l@*` BiDi
+    handlers (which force LTR page numbers) live entirely inside the `\if@bookmode`
+    block. In the default article mode none of them apply, so the RTL paragraph
+    reorders the weak digit run of multi-digit page numbers.
+  - Solution: added an `\else` (article-mode) branch to the `\if@bookmode` block
+    that redefines `\contentsline` to wrap the page-number argument in the class's
+    own `\ltr{}` command (`{\textdir TLT\textenglish{#1}}`). Uses only existing
+    CLS macros; book mode is untouched.
+
+### Technical Details
+- **CLS Version:** V7.3.2-2026-06-16
+- **Detected by:** qa-cls-toc-detect (visual TOC inspection of a 24-page article doc)
+- **Dependencies:** none (uses existing `\ltr` / `\textenglish` / `\textdir`)
+- **Backward Compatibility:** 100% - book mode unchanged; article mode only gains
+  correct LTR page numbers (no layout/spacing change)
+
+### Verification
+- Article-mode 24-page document: TOC now shows 10, 11, 12, ... correctly.
+- All example files (article and book mode) recompile without regression.
+
+---
+
+## [7.3.1] - 2026-06-03 - TOC Compound Number BiDi Fix
+
+### Overview
+Fixes reversed compound section numbers (e.g. "1.2") in the table of contents.
+
+### Fixed (1 Bug)
+- **FIXED: `\hebrewsubsection` TOC entries rendered the compound number reversed**
+  - Symptom: section 1.2 displayed as "2.1", 1.3 as "3.1", 2.1 as "1.2", etc.
+  - Root cause: `\numberline{\thehebrewsection.\thehebrewsubsection}` placed a bare
+    dot between TWO separate `\textenglish{}` islands inside the RTL TOC line; the
+    bidi algorithm reordered the two LTR runs around the neutral dot.
+  - Solution: wrap the whole compound number in a SINGLE `\textenglish{}` island:
+    `\numberline{\textenglish{\arabic{hebrewsection}.\arabic{hebrewsubsection}}}`.
+  - Body headings were already correct (HebrewSubtitle uses an LTR hbox); only the
+    TOC was affected.
+
+### Technical Details
+- **CLS Version:** V7.3.1-2026-06-03
+- **Detected by:** qa-cls-toc-detect
+- **Backward Compatibility:** 100%
+
+---
+
 ## [7.3.0] - 2026-03-16 - Geometry Page Layout Support
 
 ### Overview
