@@ -129,3 +129,32 @@ Uncovered demos were added to `expert_example.tex` for: `\Hitem`, `\Rtwo`,
 
 These 2 are internal helpers, so **effective public-API coverage is 100%**.
 
+---
+
+## 7. Downstream verification (Phase 6)
+
+Compiled 6 representative real consumer documents (one per project, next to an overwritten copy):
+
+| Project | Doc | Result |
+|---|---|---|
+| EX | `L8/.../direction-test.tex` | ✅ compiled |
+| BIU | `RL/.../standalone-chapter02/main-02.tex` | ✅ 11pp |
+| app | `visual-agentic-orange/.../e-bill...he.tex` | ✅ 2pp (invoice/geometry) |
+| Haifa | `CS/Lessons/L02/Summary/main.tex` | ✅ 10pp |
+| GeneralLearning | `.../chapter06-stand-alone/main_chapter06.tex` | ❌ pre-existing (`\chapter` undefined in standalone/article mode) |
+| Richman | `Toki/.../master/master-main.tex` | ❌ pre-existing (`\definition` clash with doc's own `\newtheorem`) |
+
+**The 2 failures are NOT swap regressions.** Recompiling each with its **backed-up 7.0.6 CLS**
+reproduced the identical error and produced no PDF — i.e. they were already broken before the
+alignment. The `\definition` environment (source of the Richman clash) has existed since v5.11.1,
+so it was present in the old 7.0.6 too. **The v7.3.6 upgrade introduced zero regressions.**
+
+## 8. Result
+
+- All live CLS copies under `C:\25D` (311) now share one hash `a3cde0bbbea9` (**v7.3.6**).
+- 4 `docs\dev-history\**` snapshots intentionally preserved.
+- All originals backed up to `D:\25D\CLS-examples\backups\cls-align-2026-07-13\` (`manifest.csv`, 309 rows).
+- All 16 examples recompile clean; public-API coverage effectively 100%.
+- v7.3.6 committed, tagged, and pushed; README + CHANGELOG + FEATURES + `cls_info_config.json` help built-in synced.
+
+
