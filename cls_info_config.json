@@ -1,7 +1,23 @@
 {
-  "cls_version": "7.3.2",
-  "version_date": "2026-06-16",
+  "cls_version": "7.3.6",
+  "version_date": "2026-07-13",
   "versions": {
+    "7.3.6": {
+      "date": "2026-07-13 - Capability Superset Merge",
+      "info": "### Overview\nCross-`C:\\25D` CLS alignment: four capabilities found in older/variant CLS copies\nelsewhere were merged into the canonical class so it is a strict superset. See\n`docs/CLS-ALIGNMENT-REPORT.md`.\n\n### Added (3 New, 1 Restored)\n- **NEW: `\\englishauthor{}`** - English author name cover metadata (companion to `\\hebrewauthor`).\n- **NEW: `\\coverdisclaimer{}`** - optional disclaimer line rendered centered/italic under the\n  cover title. Empty by default; 100% backward compatible.\n- **NEW: `ltrblock` environment** - centered block wrapper (companion to inline `\\ltr{}`).\n- **RESTORED: `\\hebtextmath{}`** - Hebrew text inside math mode (`\\text{\\texthebrew{#1}}`).\n  Shipped in v1.0, dropped in later versions, now restored. Distinct from `\\hebmath`\n  (which forces `\\textdir TRT`).\n\n### Technical Details\n- **CLS Version:** V7.3.6-2026-07-13\n- **Backward Compatibility:** 100% - all four are additive; the disclaimer renders only when set.\n\n---"
+    },
+    "7.3.5": {
+      "date": "2026-07-12 - Colored-Box List-Label Frame Overflow Fix",
+      "info": "### Overview\nEnumerate numbers / itemize bullets inside colored boxes overflowed the RTL start\n(right) frame edge by ~2-4pt.\n\n### Fixed (1 Bug)\n- **FIXED: colored-box list labels overflowed the start (right) frame edge**\n  - The in-box `\\setlist` now adds `rightmargin=1.6em`, pulling the hanging label off\n    the start frame edge (re-measured: labels sit 17.4pt inside the frame).\n  - Diagnosis by measuring the label glyph bbox vs. the tcolorbox fill rect in the\n    rendered PDF (BiDi inverts naive L/R reasoning).\n\n### Technical Details\n- **CLS Version:** V7.3.5-2026-07-12\n- **Backward Compatibility:** 100%\n\n---"
+    },
+    "7.3.4": {
+      "date": "2026-07-12 - \\enpath Inline RTL Justification Fix",
+      "info": "### Overview\nAn inline `\\enpath{...}` inside a running Hebrew paragraph was thrown left with a large\ninter-word gap, breaking RTL justification.\n\n### Fixed (1 Bug)\n- **FIXED: `\\enpath` broke RTL justification**\n  - Root cause: `\\enpath` used `\\LTR{#1}` = a hard `\\textdir TLT` directional isolate\n    that cannot stretch.\n  - Solution: `\\enpath` now uses `\\textenglish{#1}` + `\\courierfont` (still LTR + monospace\n    + hyphen-safe), so the line justifies normally.\n\n### Technical Details\n- **CLS Version:** V7.3.4-2026-07-12\n- **Backward Compatibility:** 100%\n\n---"
+    },
+    "7.3.3": {
+      "date": "2026-07-12 - Colored-Box Inner Padding + In-Box List Margins",
+      "info": "### Overview\nText in colored boxes (notebox/warningbox/examplebox/exercisebox/formulabox/codebox/\ndefinition) touched or overflowed the frame, especially list content.\n\n### Fixed (1 Bug)\n- **FIXED: colored-box content touched/overflowed the frame**\n  - The seven `NAME@inner` boxes now set explicit inner padding\n    (left=3mm,right=3mm,top=2mm,bottom=2mm,boxsep=1mm).\n  - Public wrapper environments add a reduced in-box `\\setlist{leftmargin=1.4em}` so\n    lists clear the frame.\n\n### Technical Details\n- **CLS Version:** V7.3.3-2026-07-12\n- **Backward Compatibility:** 100% - no color/geometry changes to body text or titles.\n\n---"
+    },
     "7.3.2": {
       "date": "2026-06-16 - Article-Mode TOC Page-Number BiDi Fix",
       "info": "### Overview\nFixes reversed two-digit page numbers in the table of contents when the class is\nused in its default **article** mode. The book-mode BiDi fix already existed; this\nrelease extends the same protection to article mode.\n\n### Fixed (1 Bug)\n- **FIXED: Two-digit TOC page numbers rendered reversed in article mode**\n  - Symptom: in the RTL table of contents, page 10 displayed as \"01\", 12 as \"21\",\n    13 as \"31\", etc. Single-digit page numbers were unaffected.\n  - Root cause: the book-mode `\\contentsline` redefinition and the `l@*` BiDi\n    handlers (which force LTR page numbers) live entirely inside the `\\if@bookmode`\n    block. In the default article mode none of them apply, so the RTL paragraph\n    reorders the weak digit run of multi-digit page numbers.\n  - Solution: added an `\\else` (article-mode) branch to the `\\if@bookmode` block\n    that redefines `\\contentsline` to wrap the page-number argument in the class's\n    own `\\ltr{}` command (`{\\textdir TLT\\textenglish{#1}}`). Uses only existing\n    CLS macros; book mode is untouched.\n\n### Technical Details\n- **CLS Version:** V7.3.2-2026-06-16\n- **Detected by:** qa-cls-toc-detect (visual TOC inspection of a 24-page article doc)\n- **Dependencies:** none (uses existing `\\ltr` / `\\textenglish` / `\\textdir`)\n- **Backward Compatibility:** 100% - book mode unchanged; article mode only gains\n  correct LTR page numbers (no layout/spacing change)\n\n### Verification\n- Article-mode 24-page document: TOC now shows 10, 11, 12, ... correctly.\n- All example files (article and book mode) recompile without regression.\n\n---"
@@ -145,6 +161,10 @@
       "description": "Courier family"
     },
     {
+      "command": "\\coverdisclaimer{}",
+      "description": "Cover-page disclaimer line"
+    },
+    {
       "command": "\\encell{}",
       "description": "English cell"
     },
@@ -152,6 +172,10 @@
       "command": "english",
       "description": "English block",
       "type": "environment"
+    },
+    {
+      "command": "\\englishauthor{}",
+      "description": "English author name"
     },
     {
       "command": "\\englishsection{}",
@@ -514,6 +538,118 @@
       "title": "Hebrew Academic Template - Version History",
       "path": "Hebrew Academic Template - Version History",
       "content": "This document chronicles the development of the Hebrew Academic Template.",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 2,
+      "title": "[7.3.6] - 2026-07-13 - Capability Superset Merge",
+      "path": "Hebrew Academic Template - Version History > [7.3.6] - 2026-07-13 - Capability Superset Merge",
+      "content": "",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Overview",
+      "path": "Hebrew Academic Template - Version History > [7.3.6] - 2026-07-13 - Capability Superset Merge > Overview",
+      "content": "Cross-`C:\\25D` CLS alignment: four capabilities found in older/variant CLS copies\nelsewhere were merged into the canonical class so it is a strict superset. See\n`docs/CLS-ALIGNMENT-REPORT.md`.",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Added (3 New, 1 Restored)",
+      "path": "Hebrew Academic Template - Version History > [7.3.6] - 2026-07-13 - Capability Superset Merge > Added (3 New, 1 Restored)",
+      "content": "- **NEW: `\\englishauthor{}`** - English author name cover metadata (companion to `\\hebrewauthor`).\n- **NEW: `\\coverdisclaimer{}`** - optional disclaimer line rendered centered/italic under the\n  cover title. Empty by default; 100% backward compatible.\n- **NEW: `ltrblock` environment** - centered block wrapper (companion to inline `\\ltr{}`).\n- **RESTORED: `\\hebtextmath{}`** - Hebrew text inside math mode (`\\text{\\texthebrew{#1}}`).\n  Shipped in v1.0, dropped in later versions, now restored. Distinct from `\\hebmath`\n  (which forces `\\textdir TRT`).",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Technical Details",
+      "path": "Hebrew Academic Template - Version History > [7.3.6] - 2026-07-13 - Capability Superset Merge > Technical Details",
+      "content": "- **CLS Version:** V7.3.6-2026-07-13\n- **Backward Compatibility:** 100% - all four are additive; the disclaimer renders only when set.\n---",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 2,
+      "title": "[7.3.5] - 2026-07-12 - Colored-Box List-Label Frame Overflow Fix",
+      "path": "Hebrew Academic Template - Version History > [7.3.5] - 2026-07-12 - Colored-Box List-Label Frame Overflow Fix",
+      "content": "",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Overview",
+      "path": "Hebrew Academic Template - Version History > [7.3.5] - 2026-07-12 - Colored-Box List-Label Frame Overflow Fix > Overview",
+      "content": "Enumerate numbers / itemize bullets inside colored boxes overflowed the RTL start\n(right) frame edge by ~2-4pt.",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Fixed (1 Bug)",
+      "path": "Hebrew Academic Template - Version History > [7.3.5] - 2026-07-12 - Colored-Box List-Label Frame Overflow Fix > Fixed (1 Bug)",
+      "content": "- **FIXED: colored-box list labels overflowed the start (right) frame edge**\n  - The in-box `\\setlist` now adds `rightmargin=1.6em`, pulling the hanging label off\n    the start frame edge (re-measured: labels sit 17.4pt inside the frame).\n  - Diagnosis by measuring the label glyph bbox vs. the tcolorbox fill rect in the\n    rendered PDF (BiDi inverts naive L/R reasoning).",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Technical Details",
+      "path": "Hebrew Academic Template - Version History > [7.3.5] - 2026-07-12 - Colored-Box List-Label Frame Overflow Fix > Technical Details",
+      "content": "- **CLS Version:** V7.3.5-2026-07-12\n- **Backward Compatibility:** 100%\n---",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 2,
+      "title": "[7.3.4] - 2026-07-12 - \\enpath Inline RTL Justification Fix",
+      "path": "Hebrew Academic Template - Version History > [7.3.4] - 2026-07-12 - \\enpath Inline RTL Justification Fix",
+      "content": "",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Overview",
+      "path": "Hebrew Academic Template - Version History > [7.3.4] - 2026-07-12 - \\enpath Inline RTL Justification Fix > Overview",
+      "content": "An inline `\\enpath{...}` inside a running Hebrew paragraph was thrown left with a large\ninter-word gap, breaking RTL justification.",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Fixed (1 Bug)",
+      "path": "Hebrew Academic Template - Version History > [7.3.4] - 2026-07-12 - \\enpath Inline RTL Justification Fix > Fixed (1 Bug)",
+      "content": "- **FIXED: `\\enpath` broke RTL justification**\n  - Root cause: `\\enpath` used `\\LTR{#1}` = a hard `\\textdir TLT` directional isolate\n    that cannot stretch.\n  - Solution: `\\enpath` now uses `\\textenglish{#1}` + `\\courierfont` (still LTR + monospace\n    + hyphen-safe), so the line justifies normally.",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Technical Details",
+      "path": "Hebrew Academic Template - Version History > [7.3.4] - 2026-07-12 - \\enpath Inline RTL Justification Fix > Technical Details",
+      "content": "- **CLS Version:** V7.3.4-2026-07-12\n- **Backward Compatibility:** 100%\n---",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 2,
+      "title": "[7.3.3] - 2026-07-12 - Colored-Box Inner Padding + In-Box List Margins",
+      "path": "Hebrew Academic Template - Version History > [7.3.3] - 2026-07-12 - Colored-Box Inner Padding + In-Box List Margins",
+      "content": "",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Overview",
+      "path": "Hebrew Academic Template - Version History > [7.3.3] - 2026-07-12 - Colored-Box Inner Padding + In-Box List Margins > Overview",
+      "content": "Text in colored boxes (notebox/warningbox/examplebox/exercisebox/formulabox/codebox/\ndefinition) touched or overflowed the frame, especially list content.",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Fixed (1 Bug)",
+      "path": "Hebrew Academic Template - Version History > [7.3.3] - 2026-07-12 - Colored-Box Inner Padding + In-Box List Margins > Fixed (1 Bug)",
+      "content": "- **FIXED: colored-box content touched/overflowed the frame**\n  - The seven `NAME@inner` boxes now set explicit inner padding\n    (left=3mm,right=3mm,top=2mm,bottom=2mm,boxsep=1mm).\n  - Public wrapper environments add a reduced in-box `\\setlist{leftmargin=1.4em}` so\n    lists clear the frame.",
+      "file": "CHANGELOG.md"
+    },
+    {
+      "level": 3,
+      "title": "Technical Details",
+      "path": "Hebrew Academic Template - Version History > [7.3.3] - 2026-07-12 - Colored-Box Inner Padding + In-Box List Margins > Technical Details",
+      "content": "- **CLS Version:** V7.3.3-2026-07-12\n- **Backward Compatibility:** 100% - no color/geometry changes to body text or titles.\n---",
       "file": "CHANGELOG.md"
     },
     {
@@ -1470,6 +1606,69 @@
     },
     {
       "level": 1,
+      "title": "CLS Version Alignment Report",
+      "path": "CLS Version Alignment Report",
+      "content": "**Generated:** 2026-07-13\n**Canonical latest:** `hebrew-academic-template.cls` **v7.3.5** (hash `5f1fdca98593`, 110 public commands)\n**Canonical source:** `C:\\25D\\CLS-examples\\hebrew-academic-template.cls`\n---",
+      "file": "CLS-ALIGNMENT-REPORT.md"
+    },
+    {
+      "level": 2,
+      "title": "1. Discovery summary",
+      "path": "CLS Version Alignment Report > 1. Discovery summary",
+      "content": "- **336** `.cls` files found under `C:\\25D` (heavy dirs pruned).\n- **315** are named `hebrew-academic-template.cls` (the target class).\n- **7** are derivatives: `hebrew-academic-template_fixed.cls` (×5), `hebrew-academic-template-fixed.cls` (×1), `agent-g-hebrew-academic-template-fixed.cls` (×1).\n- **14** are unrelated classes (`gtai-template.cls`, `IntechOpen-Book.cls`, `haifa-syllabus.cls`, `phddissertation.cls`) — **out of scope**, not touched.",
+      "file": "CLS-ALIGNMENT-REPORT.md"
+    },
+    {
+      "level": 3,
+      "title": "Copies per top-level project (315 canonical-named)",
+      "path": "CLS Version Alignment Report > 1. Discovery summary > Copies per top-level project (315 canonical-named)",
+      "content": "| Project | Copies |\n|---|---|\n| GeneralLearning | 101 |\n| EX | 60 |\n| BIU | 58 |\n| Richman | 49 |\n| Haifa | 26 |\n| app | 9 |",
+      "file": "CLS-ALIGNMENT-REPORT.md"
+    },
+    {
+      "level": 2,
+      "title": "2. Version map (315 copies -> 13 versions, 22 distinct content hashes)",
+      "path": "CLS Version Alignment Report > 2. Version map (315 copies → 13 versions, 22 distinct content hashes)",
+      "content": "| Version | Content hash | Count |\n|---|---|---|\n| 5.0 | 05e23fad2618 | 1 |\n| 5.0 | 2f59ccbd9c7f | 1 |\n| 5.7.0 | 5020aad96401 | 4 |\n| 5.11.0 | df3ec399ab7a | 1 |\n| 5.11.4 | d2f29a3f49be | 1 |\n| 6.3.2 | 5e528e4ca08f | 22 |",
+      "file": "CLS-ALIGNMENT-REPORT.md"
+    },
+    {
+      "level": 3,
+      "title": "The 3 current v7.3.5 copies",
+      "path": "CLS Version Alignment Report > 2. Version map (315 copies → 13 versions, 22 distinct content hashes) > The 3 current v7.3.5 copies",
+      "content": "- `CLS-examples\\hebrew-academic-template.cls` (canonical)\n- `CLS-examples\\examples\\hebrew-academic-template.cls`\n- `Haifa\\CS\\Lessons\\L11\\final-project\\book-guidelines\\hebrew-academic-template.cls`\n---",
+      "file": "CLS-ALIGNMENT-REPORT.md"
+    },
+    {
+      "level": 2,
+      "title": "3. Collision check — SAME version number, DIFFERENT content ⚠️",
+      "path": "CLS Version Alignment Report > 3. Collision check — SAME version number, DIFFERENT content ⚠️",
+      "content": "The user's exact concern is confirmed and widespread. These version numbers exist with **multiple distinct byte contents**:\n| Version | # distinct contents | Hashes |\n|---|---|---|\n| 5.0 | 2 | 05e23fad2618, 2f59ccbd9c7f |\n| **7.0.6** | **3** | 9f8829f701cf, c67baac0d6f8, d29231956612 |\n| **7.2.0** | **3** | da64711ec50d, b1df2ced1018, 52521adf9f67 |\n| **7.3.0** | **4** | d4551bb79595, ba2b5744ddac, 5cc91809f351, cc788558a231 |\n| 7.3.2 | 2 | 016f8ec24f5b, aff1e27bade8 |",
+      "file": "CLS-ALIGNMENT-REPORT.md"
+    },
+    {
+      "level": 2,
+      "title": "4. Newer-drops-older check — capabilities in old copies MISSING from v7.3.5",
+      "path": "CLS Version Alignment Report > 4. Newer-drops-older check — capabilities in old copies MISSING from v7.3.5",
+      "content": "Public-command sets of all 22 variants + 7 derivatives were diffed against v7.3.5. **6** commands appear somewhere but not in v7.3.5:\n| Command | Found in | Verdict |\n|---|---|---|\n| `\\numberline` | 5.11.4 | **Noise** — redefinition of a standard LaTeX TOC macro, not a feature. |\n| `\\to` | 7.0.6 (d29231956612) | **Noise** — local redefinition of the standard math arrow. |\n| `\\englishauthor{}` | 7.0.6 (c67baac0d6f8) | **Real** — `\\newcommand{\\englishauthor}[1]{\\def\\@englishauthor{#1}}` (English author cover metadata). v7.3.5 has `\\hebrewauthor` but not `\\englishauthor`. |\n| `ltrblock` (env) | 7.0.6 (c67baac0d6f8) | **Real** — `\\newenvironment{ltrblock}{\\par\\begin{center}...}` (centered LTR block). |\n| `\\coverdisclaimer{}` | 7.3.0 (5cc91809f351) | **Real** — `\\newcommand{\\coverdisclaimer}[1]{...}` + rendered on titlepage (cover-page disclaimer text). |",
+      "file": "CLS-ALIGNMENT-REPORT.md"
+    },
+    {
+      "level": 2,
+      "title": "5. Replacement plan (Phase 5)",
+      "path": "CLS Version Alignment Report > 5. Replacement plan (Phase 5)",
+      "content": "- **Target:** 315 canonical-named copies **minus 4** under `CLS-examples\\docs\\dev-history\\` (historical, excluded) = **311** copies to align.\n- 3 are already v7.3.5; the other **308** get overwritten with the canonical file (after backup).\n- **7 `*_fixed` derivatives** are flagged, NOT auto-replaced (different class name = judgment call).\n- Backups -> `D:\\25D\\CLS-examples\\backups\\cls-align-2026-07-13\\` mirroring relative paths + `manifest.csv` (path, old_version, sha256).\n---",
+      "file": "CLS-ALIGNMENT-REPORT.md"
+    },
+    {
+      "level": 2,
+      "title": "6. Coverage audit (Phase 4)",
+      "path": "CLS Version Alignment Report > 6. Coverage audit (Phase 4)",
+      "content": "_To be filled after example recompilation: table of the 110 public commands vs. which example demonstrates each; grouped list of any command exercised by no example PDF._",
+      "file": "CLS-ALIGNMENT-REPORT.md"
+    },
+    {
+      "level": 1,
       "title": "Hebrew Academic Template - Complete Feature List",
       "path": "Hebrew Academic Template - Complete Feature List",
       "content": "",
@@ -1547,9 +1746,9 @@
     },
     {
       "level": 3,
-      "title": "Title Commands (5)",
-      "path": "Hebrew Academic Template - Complete Feature List > Command Reference Table (All 80 Commands) > Title Commands (5)",
-      "content": "| Command | Purpose |\n|---------|---------|\n| `\\hebrewtitle{}` | Hebrew title |\n| `\\englishtitle{}` | English title |\n| `\\hebrewauthor{}` | Author name |\n| `\\hebrewversion{}` | Document version |\n| `\\maketitle` | Generate title |",
+      "title": "Title Commands (7)",
+      "path": "Hebrew Academic Template - Complete Feature List > Command Reference Table (All 80 Commands) > Title Commands (7)",
+      "content": "| Command | Purpose |\n|---------|---------|\n| `\\hebrewtitle{}` | Hebrew title |\n| `\\englishtitle{}` | English title |\n| `\\hebrewauthor{}` | Author name |\n| `\\englishauthor{}` | English author name |\n| `\\coverdisclaimer{}` | Cover-page disclaimer line |\n| `\\hebrewversion{}` | Document version |",
       "file": "FEATURES.md"
     },
     {
@@ -1568,8 +1767,8 @@
     },
     {
       "level": 2,
-      "title": "Environment Reference Table (8 Environments)",
-      "path": "Hebrew Academic Template - Complete Feature List > Environment Reference Table (8 Environments)",
+      "title": "Environment Reference Table (9 Environments)",
+      "path": "Hebrew Academic Template - Complete Feature List > Environment Reference Table (9 Environments)",
       "content": "| Environment | Purpose | Features |\n|-------------|---------|----------|\n| `hebrewtable` | RTL table wrapper | Centered caption, RTL support |\n| `rtltabular` | RTL columns | Right-to-left column order |\n| `hebrewfigure` | Figure environment | Hebrew captions |\n| `pythonbox` | Floating code | Syntax highlighting, Hebrew titles with `\\hebtitle{}` |\n| `pythonbox*` | Non-floating code | Page breaks OK, long code blocks |\n| `python` | Code float | Internal use |",
       "file": "FEATURES.md"
     },

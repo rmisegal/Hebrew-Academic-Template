@@ -1,11 +1,22 @@
 % hebrew-academic-template.cls
-% Version 7.3.5 - Colored-Box List-Label Frame Overflow Fix (start-side)
-% Date: 2026-07-12
+% Version 7.3.6 - Capability Superset Merge (englishauthor, coverdisclaimer, ltrblock, hebtextmath)
+% Date: 2026-07-13
 %
 % A comprehensive LaTeX class for Hebrew academic documents with English integration
 % Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
 %
 % CHANGELOG:
+% v7.3.6 (2026-07-13) - Capability Superset Merge (cross-C:\25D CLS alignment)
+%   - NEW: \englishauthor{} - English author name cover metadata (companion to \hebrewauthor).
+%   - NEW: \coverdisclaimer{} - optional disclaimer line rendered (centered, italic) under the
+%     title on the cover page. Empty by default; 100% backward compatible.
+%   - NEW: ltrblock environment - centered block wrapper (companion to inline \ltr{}).
+%   - RESTORED: \hebtextmath{} - Hebrew text inside math mode (\text{\texthebrew{#1}}); this
+%     command shipped in v1.0 but was dropped in later versions. Distinct from \hebmath (which
+%     forces \textdir TRT); \hebtextmath is the lightweight amsmath \text wrapper.
+%   - These four were discovered in older/variant CLS copies elsewhere under C:\25D and merged
+%     so the canonical class is a strict superset. See docs/CLS-ALIGNMENT-REPORT.md.
+%
 % v7.3.5 (2026-07-12) - Colored-Box List-Label Frame Overflow Fix (QA-detected via qa-typeset, PDF-geometry-measured)
 %   - FIXED: enumerate NUMBERS / itemize BULLETS inside colored boxes overflowed the
 %     RTL reading-start (right) frame edge by ~2-4pt — the label hangs outward toward
@@ -514,7 +525,7 @@
 
 % ==================== VERSION INFORMATION ====================
 % Version command - defined early for programmatic access
-\newcommand{\clsversion}{V7.3.5-2026-07-12}
+\newcommand{\clsversion}{V7.3.6-2026-07-13}
 
 % ==================== CLASS OPTIONS ====================
 % 'book' option - enables full book class with chapters, frontmatter, etc.
@@ -1778,6 +1789,11 @@
   \text{\begingroup\selectlanguage{hebrew}\textdir TRT #1\endgroup}%
 }
 
+% v7.3.6: Lightweight Hebrew text inside math mode (amsmath \text wrapper).
+% Shipped in v1.0, dropped in later versions, restored during C:\25D CLS alignment.
+% Usage: $x = \hebtextmath{ערך}$  (no explicit \textdir; relies on polyglossia + \text)
+\newcommand{\hebtextmath}[1]{\text{\texthebrew{#1}}}
+
 % Alternative: Hebrew subscript in math (e.g., x_{\hebsub{עברי}})
 \newcommand{\hebsub}[1]{%
   \text{\scriptsize\begingroup\selectlanguage{hebrew}\textdir TRT #1\endgroup}%
@@ -1803,6 +1819,15 @@
   R\textsuperscript{2}%
 }
 
+% v7.3.6: Centered block wrapper (companion to the inline \ltr{} command).
+% Restored from older C:\25D CLS copies during alignment. Usage:
+%   \begin{ltrblock} ... \end{ltrblock}
+\newenvironment{ltrblock}{%
+  \par\begin{center}%
+}{%
+  \end{center}\par%
+}
+
 %% ==================== TITLE PAGE COMMANDS ====================
 % v7.1.0: Enhanced cover page with decorative frame, cover image, and signature support
 %
@@ -1824,10 +1849,14 @@
 \newcommand{\englishtitle}[1]{\def\@englishtitle{#1}}
 \newcommand{\hebrewsubtitle}[1]{\def\@hebrewsubtitle{#1}}
 \newcommand{\hebrewauthor}[1]{\def\@hebrewauthor{#1}}
+\newcommand{\englishauthor}[1]{\def\@englishauthor{#1}}% v7.3.6: English author cover metadata
 \newcommand{\hebrewversion}[1]{\def\@hebrewversion{#1}}
 \newcommand{\coverimage}[1]{\def\@coverimage{#1}}
 \newcommand{\hebrewsignature}[1]{\def\@hebrewsignature{#1}}
 \newcommand{\signatureimage}[1]{\def\@signatureimage{#1}}
+% v7.3.6: optional cover-page disclaimer (empty by default, rendered under the title)
+\newcommand{\@coverdisclaimer}{}
+\newcommand{\coverdisclaimer}[1]{\def\@coverdisclaimer{#1}}
 
 % Signature block command - renders Hebrew name in handwriting font + signature image
 % Aligned to left margin, Hebrew name centered above image
@@ -1875,6 +1904,10 @@
       \ifdefined\@hebrewsubtitle%
         \vskip 0.5em%
         {\large \texthebrew{\@hebrewsubtitle} \par}%
+      \fi%
+      \ifx\@coverdisclaimer\@empty\else% v7.3.6: optional disclaimer line
+        \vskip 0.5em%
+        {\small\itshape \texthebrew{\@coverdisclaimer} \par}%
       \fi%
       \vskip 3em%
       \ifdefined\@hebrewauthor%

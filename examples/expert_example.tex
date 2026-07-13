@@ -17,7 +17,9 @@
 \hebrewtitle{דוגמת מומחה - כל הפקודות של התבנית}
 \englishtitle{Expert Example - All Template Commands \clsversion}
 \hebrewauthor{ד"ר סגל יורם}
+\englishauthor{Dr. Yoram Segal}% v7.3.6
 \hebrewversion{גרסה \en{\clsversion}}
+\coverdisclaimer{מסמך הדגמה לכל פקודות התבנית}% v7.3.6
 \date{\textenglish{January 2026}}
 
 \begin{document}
@@ -541,6 +543,82 @@ def print_message():
     print(f"Message: {message}")
 \end{pythonbox}
 \end{english}
+
+% ==================== v7.3.4 TEST: \enpath INLINE RTL JUSTIFICATION ====================
+% Inline \enpath tokens in a running Hebrew paragraph must justify (not be thrown left).
+\hebrewsection{בדיקת \en{enpath} בטקסט רץ \entoc{v7.3.4 enpath inline}}
+כל מאגר \en{GitHub} חייב לכלול, לכל הפחות: קובץ \enpath{README.md} (הדוח האקדמי); קובצי התצורה (\enpath{config/}); הנתיב \enpath{config/game-rules.toml} וגם \enpath{Game-P2P-Cop-Chase}; קובץ תוכנית העבודה (\enpath{PLAN}); וקובצי המשימות (\enpath{TODO}). קבצים אלה מספרים את סיפור הפיתוח ומאפשרים לבוחן לשחזר את דרך העבודה — כל השורות אמורות להיות מיושרות לשני הצדדים.
+
+% ==================== v7.3.3 TEST: COLORED-BOX INNER PADDING + IN-BOX LISTS ====================
+% Boxes with itemize/enumerate must show a clear margin between list content and the frame.
+\hebrewsection{בדיקת ריפוד תיבות צבעוניות ורשימות בתוכן \entoc{v7.3.3 box padding}}
+
+\begin{exercisebox}[תרגיל עם רשימה ממוספרת — בדיקת ריפוד]
+הטקסט הבא נמצא בתוך תיבה צבעונית עם רשימה ממוספרת; יש לוודא מרווח ברור בין תוכן הרשימה למסגרת התיבה:
+\begin{enumerate}
+  \item הפריט הראשון ברשימה, עם טקסט ארוך מספיק כדי לבדוק את הגלישה אל מסגרת התיבה משני הצדדים.
+  \item הפריט השני, הכולל מונח באנגלית \en{Reinforcement Learning} ומספר \num{12345}.
+  \item הפריט השלישי והאחרון.
+\end{enumerate}
+\end{exercisebox}
+
+\begin{notebox}[הערה עם רשימת תבליטים]
+\begin{itemize}
+  \item תבליט ראשון בתוך תיבת הערה, לבדיקת הריפוד.
+  \item תבליט שני, לבדיקת המרווח השמאלי והימני של התוכן בתוך המסגרת.
+\end{itemize}
+\end{notebox}
+
+\begin{warningbox}[אזהרה עם מספור]
+\begin{enumerate}
+  \item שורת אזהרה ממוספרת ראשונה.
+  \item שורת אזהרה ממוספרת שנייה.
+\end{enumerate}
+\end{warningbox}
+
+% ==================== v7.3.6 NEW COMMANDS ====================
+\hebrewsection{פקודות חדשות (\en{v7.3.6})}
+
+% Command: \hebtextmath - Hebrew text inside math mode
+נוסחה עם טקסט עברי במתמטיקה: $E_{\hebtextmath{אנרגיה}} = mc^2$.
+
+% Environment: ltrblock - centered LTR block
+\begin{ltrblock}
+This is a centered LTR block produced by the \texttt{ltrblock} environment.
+\end{ltrblock}
+
+הפקודות \en{\texttt{\textbackslash englishauthor}} ו-\en{\texttt{\textbackslash coverdisclaimer}}
+מודגמות בעמוד השער.
+
+% ==================== COVERAGE DEMOS (remaining public API) ====================
+\hebrewsectionnotoc{מקטע ללא תוכן עניינים (\en{\textbackslash hebrewsectionnotoc})}
+מקטע זה אינו מופיע בתוכן העניינים. ערך \Rtwo\ מוצג כאן.
+
+\englishsectionunnumbered{Unnumbered English Section}
+This section uses \texttt{\textbackslash englishsectionunnumbered}.
+
+\hebrewsection{פריטי רשימה והדגמות סביבה}
+\begin{itemize}
+  \Hitem{פריט רשימה עברי באמצעות \en{\textbackslash Hitem}}
+\end{itemize}
+
+\begin{formulabox}
+נוסחה לדוגמה: $a^2 + b^2 = c^2$.
+\end{formulabox}
+
+\begin{exercise}
+תרגיל לדוגמה בסביבת \en{\texttt{exercise}}.
+\end{exercise}
+
+\begin{codebox}
+דוגמת תיבת קוד (\en{\texttt{codebox}}).
+\end{codebox}
+
+\begin{latin}
+This text is inside the \texttt{latin} environment (English alias).
+\end{latin}
+
+זכויות יוצרים בכותרת התחתונה: \hebfoot{כל הזכויות שמורות - \en{\textcopyright\ Segal}}.
 
 % ==================== BIBLIOGRAPHY ====================
 

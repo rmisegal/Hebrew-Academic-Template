@@ -1,6 +1,6 @@
 # Hebrew Academic Template
 
-**Version 7.3.5** | July 2026
+**Version 7.3.6** | July 2026
 
 A comprehensive LaTeX class for Hebrew academic documents with seamless English integration, designed for LuaLaTeX with polyglossia and luabidi.
 
@@ -171,6 +171,13 @@ lualatex document.tex
 ```
 
 ## Changelog
+
+### v7.3.6 (2026-07-13)
+- **NEW**: `\englishauthor{}` - English author name cover metadata (companion to `\hebrewauthor`)
+- **NEW**: `\coverdisclaimer{}` - optional disclaimer line under the cover title (empty by default)
+- **NEW**: `ltrblock` environment - centered LTR block (companion to inline `\ltr{}`)
+- **RESTORED**: `\hebtextmath{}` - Hebrew text inside math mode (shipped in v1.0, dropped, now back)
+- Capability superset merge from cross-`C:\25D` CLS alignment (see `docs/CLS-ALIGNMENT-REPORT.md`)
 
 ### v7.3.5 (2026-07-12)
 - **FIXED**: Enumerate numbers / itemize bullets inside colored boxes overflowed the RTL start (right) frame edge by ~2-4pt

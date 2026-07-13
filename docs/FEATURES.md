@@ -106,13 +106,15 @@ The Hebrew Academic Template provides 80 commands, 8 environments, and 24+ packa
 | `\printenglishbibliography` | English references |
 | `\ltrnumber{}` | LTR numbers |
 
-### Title Commands (5)
+### Title Commands (7)
 
 | Command | Purpose |
 |---------|---------|
 | `\hebrewtitle{}` | Hebrew title |
 | `\englishtitle{}` | English title |
 | `\hebrewauthor{}` | Author name |
+| `\englishauthor{}` | English author name |
+| `\coverdisclaimer{}` | Cover-page disclaimer line |
 | `\hebrewversion{}` | Document version |
 | `\maketitle` | Generate title |
 
@@ -131,7 +133,7 @@ The Hebrew Academic Template provides 80 commands, 8 environments, and 24+ packa
 | `\clsversion` | Template version |
 | Various internal | PDF, counters, etc. |
 
-## Environment Reference Table (8 Environments)
+## Environment Reference Table (9 Environments)
 
 | Environment | Purpose | Features |
 |-------------|---------|----------|
@@ -143,6 +145,7 @@ The Hebrew Academic Template provides 80 commands, 8 environments, and 24+ packa
 | `python` | Code float | Internal use |
 | `hebrew` | Hebrew block | Polyglossia |
 | `english` | English block | Polyglossia |
+| `ltrblock` | Centered LTR block | Companion to inline `\ltr{}` (v7.3.6) |
 
 ## Package Dependencies Table
 

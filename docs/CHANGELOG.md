@@ -2,6 +2,85 @@
 
 This document chronicles the development of the Hebrew Academic Template.
 
+## [7.3.6] - 2026-07-13 - Capability Superset Merge
+
+### Overview
+Cross-`C:\25D` CLS alignment: four capabilities found in older/variant CLS copies
+elsewhere were merged into the canonical class so it is a strict superset. See
+`docs/CLS-ALIGNMENT-REPORT.md`.
+
+### Added (3 New, 1 Restored)
+- **NEW: `\englishauthor{}`** - English author name cover metadata (companion to `\hebrewauthor`).
+- **NEW: `\coverdisclaimer{}`** - optional disclaimer line rendered centered/italic under the
+  cover title. Empty by default; 100% backward compatible.
+- **NEW: `ltrblock` environment** - centered block wrapper (companion to inline `\ltr{}`).
+- **RESTORED: `\hebtextmath{}`** - Hebrew text inside math mode (`\text{\texthebrew{#1}}`).
+  Shipped in v1.0, dropped in later versions, now restored. Distinct from `\hebmath`
+  (which forces `\textdir TRT`).
+
+### Technical Details
+- **CLS Version:** V7.3.6-2026-07-13
+- **Backward Compatibility:** 100% - all four are additive; the disclaimer renders only when set.
+
+---
+
+## [7.3.5] - 2026-07-12 - Colored-Box List-Label Frame Overflow Fix
+
+### Overview
+Enumerate numbers / itemize bullets inside colored boxes overflowed the RTL start
+(right) frame edge by ~2-4pt.
+
+### Fixed (1 Bug)
+- **FIXED: colored-box list labels overflowed the start (right) frame edge**
+  - The in-box `\setlist` now adds `rightmargin=1.6em`, pulling the hanging label off
+    the start frame edge (re-measured: labels sit 17.4pt inside the frame).
+  - Diagnosis by measuring the label glyph bbox vs. the tcolorbox fill rect in the
+    rendered PDF (BiDi inverts naive L/R reasoning).
+
+### Technical Details
+- **CLS Version:** V7.3.5-2026-07-12
+- **Backward Compatibility:** 100%
+
+---
+
+## [7.3.4] - 2026-07-12 - \enpath Inline RTL Justification Fix
+
+### Overview
+An inline `\enpath{...}` inside a running Hebrew paragraph was thrown left with a large
+inter-word gap, breaking RTL justification.
+
+### Fixed (1 Bug)
+- **FIXED: `\enpath` broke RTL justification**
+  - Root cause: `\enpath` used `\LTR{#1}` = a hard `\textdir TLT` directional isolate
+    that cannot stretch.
+  - Solution: `\enpath` now uses `\textenglish{#1}` + `\courierfont` (still LTR + monospace
+    + hyphen-safe), so the line justifies normally.
+
+### Technical Details
+- **CLS Version:** V7.3.4-2026-07-12
+- **Backward Compatibility:** 100%
+
+---
+
+## [7.3.3] - 2026-07-12 - Colored-Box Inner Padding + In-Box List Margins
+
+### Overview
+Text in colored boxes (notebox/warningbox/examplebox/exercisebox/formulabox/codebox/
+definition) touched or overflowed the frame, especially list content.
+
+### Fixed (1 Bug)
+- **FIXED: colored-box content touched/overflowed the frame**
+  - The seven `NAME@inner` boxes now set explicit inner padding
+    (left=3mm,right=3mm,top=2mm,bottom=2mm,boxsep=1mm).
+  - Public wrapper environments add a reduced in-box `\setlist{leftmargin=1.4em}` so
+    lists clear the frame.
+
+### Technical Details
+- **CLS Version:** V7.3.3-2026-07-12
+- **Backward Compatibility:** 100% - no color/geometry changes to body text or titles.
+
+---
+
 ## [7.3.2] - 2026-06-16 - Article-Mode TOC Page-Number BiDi Fix
 
 ### Overview
