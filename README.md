@@ -1,6 +1,6 @@
 # Hebrew Academic Template
 
-**Version 7.3.0** | March 2026
+**Version 7.3.5** | July 2026
 
 A comprehensive LaTeX class for Hebrew academic documents with seamless English integration, designed for LuaLaTeX with polyglossia and luabidi.
 
@@ -171,6 +171,27 @@ lualatex document.tex
 ```
 
 ## Changelog
+
+### v7.3.5 (2026-07-12)
+- **FIXED**: Enumerate numbers / itemize bullets inside colored boxes overflowed the RTL start (right) frame edge by ~2-4pt
+- In-box `\setlist` now adds `rightmargin=1.6em`, pulling the hanging label off the start frame edge (re-measured: labels sit 17.4pt inside the frame)
+- Diagnosis done by measuring the label glyph bbox vs. the tcolorbox fill rect in the rendered PDF
+
+### v7.3.4 (2026-07-12)
+- **FIXED**: Inline `\enpath{...}` inside a running Hebrew paragraph was thrown left with a large inter-word gap (broke RTL justification)
+- `\enpath` now uses `\textenglish{#1}` + `\courierfont` instead of a hard `\LTR` directional isolate, so the line justifies normally (still LTR + monospace + hyphen-safe)
+
+### v7.3.3 (2026-07-12)
+- **FIXED**: Text in colored boxes (notebox/warningbox/examplebox/exercisebox/formulabox/codebox/definition) touched or overflowed the frame
+- Added explicit inner padding to the seven `NAME@inner` boxes and a reduced in-box `\setlist{leftmargin=1.4em}` so lists clear the frame
+
+### v7.3.2 (2026-06-16)
+- **FIXED**: Article-mode TOC two-digit page numbers rendered reversed in the RTL table of contents (10→"01", 12→"21")
+- Added an article-mode branch redefining `\contentsline` to wrap the page number in `\ltr{}`
+
+### v7.3.1 (2026-06-03)
+- **FIXED**: `\hebrewsubsection` TOC entries rendered the compound number reversed (1.2 displayed as "2.1")
+- Wrapped the whole compound number in a single `\textenglish{}` island
 
 ### v7.3.0 (2026-03-16)
 - **NEW**: Built-in geometry package support for custom page margins

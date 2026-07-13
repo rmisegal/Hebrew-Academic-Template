@@ -1,11 +1,46 @@
 % hebrew-academic-template.cls
-% Version 7.3.2 - Article-Mode TOC Page-Number BiDi Fix
-% Date: 2026-06-16
+% Version 7.3.5 - Colored-Box List-Label Frame Overflow Fix (start-side)
+% Date: 2026-07-12
 %
 % A comprehensive LaTeX class for Hebrew academic documents with English integration
 % Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
 %
 % CHANGELOG:
+% v7.3.5 (2026-07-12) - Colored-Box List-Label Frame Overflow Fix (QA-detected via qa-typeset, PDF-geometry-measured)
+%   - FIXED: enumerate NUMBERS / itemize BULLETS inside colored boxes overflowed the
+%     RTL reading-start (right) frame edge by ~2-4pt — the label hangs outward toward
+%     the start margin, and the v7.3.3 in-box \setlist set only leftmargin, leaving the
+%     start (right) side with no clearance for the hanging label. Visible in the book on
+%     pages 80/95/96 (README exercisebox numbers, notebox bullets).
+%   - Diagnosis was done by MEASURING the label glyph bbox vs. the tcolorbox fill rect in
+%     the rendered PDF (not by eyeballing L/R, which BiDi inverts): labels reached x1=473.6
+%     while the frame ended at x1=470.5.
+%   - Solution: the public box wrapper environments now add rightmargin=1.6em to the in-box
+%     \setlist{leftmargin=1.4em,rightmargin=1.6em}, pulling the hanging label off the start
+%     frame edge. Re-measured: labels now sit 17.4pt inside the frame. Numbers/bullets are
+%     unchanged in side (correct RTL start side) — only the overflow is removed.
+%
+% v7.3.4 (2026-07-12) - \enpath Inline RTL Justification Fix (QA-detected via qa-BiDi, rendered-verified)
+%   - FIXED: an inline \enpath{...} token (README.md, config/, PLAN, ...) inside a
+%     running Hebrew paragraph was thrown to the LEFT with a large inter-word gap,
+%     so the line read as left-aligned/broken instead of justified. Visible e.g. in
+%     section 9.4.1 of the police-thief guidelines book.
+%   - Root cause: \enpath used \LTR{#1} = a hard \textdir TLT directional isolate,
+%     which cannot stretch, so RTL justification pushed the token to the frame edge.
+%   - Solution: \enpath now uses \textenglish{#1} (polyglossia LTR language switch) +
+%     \courierfont. Still LTR + monospace + hyphen-safe (verified with paths like
+%     config/game-rules.toml), but the line justifies normally.
+%
+% v7.3.3 (2026-07-12) - Colored-Box Inner Padding + In-Box List Margins (QA-detected via qa-typeset/qa-BiDi)
+%   - FIXED: text in colored boxes (notebox/warningbox/examplebox/exercisebox/formulabox/
+%     codebox/definition) touched or overflowed the frame, especially itemize/enumerate
+%     content — the boxes set no inner padding (inherited tcolorbox defaults) and the global
+%     \setlist leftmargin=2em pushed list content against the frame.
+%   - Solution: the seven NAME@inner \newtcolorbox defs now set explicit inner padding
+%     (left=3mm,right=3mm,top=2mm,bottom=2mm,boxsep=1mm); the public wrapper environments
+%     add a reduced in-box \setlist{leftmargin=1.4em} so lists clear the frame.
+%   - No color/geometry changes otherwise; body text and titles are unaffected.
+%
 % v7.3.2 (2026-06-16) - Article-Mode TOC Page-Number BiDi Fix (QA-detected via qa-cls-toc-detect)
 %   - FIXED: In article mode, two-digit TOC page numbers rendered reversed in the
 %     RTL table of contents (page 10 displayed as "01", 12 as "21", 13 as "31", ...).
@@ -475,11 +510,11 @@
 % - PDF bookmark support with proper hyperref integration
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hebrew-academic-template}[2026/06/16 v7.3.2 Hebrew Academic Template - Article-Mode TOC Page-Number BiDi Fix]
+\ProvidesClass{hebrew-academic-template}[2026/07/12 v7.3.5 Hebrew Academic Template - Colored-Box List-Label Frame Overflow Fix]
 
 % ==================== VERSION INFORMATION ====================
 % Version command - defined early for programmatic access
-\newcommand{\clsversion}{V7.3.2-2026-06-16}
+\newcommand{\clsversion}{V7.3.5-2026-07-12}
 
 % ==================== CLASS OPTIONS ====================
 % 'book' option - enables full book class with chapters, frontmatter, etc.
@@ -2039,6 +2074,7 @@
 \newtcolorbox{notebox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=yellow!10,
   colframe=yellow!50!black,
   fonttitle=\bfseries,
@@ -2051,6 +2087,7 @@
 \newtcolorbox{warningbox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=red!5,
   colframe=red!70!black,
   fonttitle=\bfseries,
@@ -2063,6 +2100,7 @@
 \newtcolorbox{examplebox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=blue!5,
   colframe=blue!50!black,
   fonttitle=\bfseries,
@@ -2075,6 +2113,7 @@
 \newtcolorbox{exercisebox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=orange!5,
   colframe=orange!70!black,
   fonttitle=\bfseries,
@@ -2087,6 +2126,7 @@
 \newtcolorbox{formulabox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=green!5,
   colframe=green!50!black,
   fonttitle=\bfseries,
@@ -2099,6 +2139,7 @@
 \newtcolorbox{codebox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=codegray,
   colframe=gray!50,
   fonttitle=\bfseries\ttfamily,
@@ -2111,27 +2152,27 @@
 % BiDi-safe wrapper environments
 % Force LTR for box drawing, RTL for content inside
 \newenvironment{notebox}[1][]
-  {\begin{english}\begin{notebox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{notebox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{notebox@inner}\end{english}}
 
 \newenvironment{warningbox}[1][]
-  {\begin{english}\begin{warningbox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{warningbox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{warningbox@inner}\end{english}}
 
 \newenvironment{examplebox}[1][]
-  {\begin{english}\begin{examplebox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{examplebox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{examplebox@inner}\end{english}}
 
 \newenvironment{exercisebox}[1][]
-  {\begin{english}\begin{exercisebox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{exercisebox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{exercisebox@inner}\end{english}}
 
 \newenvironment{formulabox}[1][]
-  {\begin{english}\begin{formulabox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{formulabox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{formulabox@inner}\end{english}}
 
 \newenvironment{codebox}[1][]
-  {\begin{english}\begin{codebox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{codebox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{codebox@inner}\end{english}}
 
 %% ==================== CODE LISTING FONT SUPPORT ====================
@@ -2143,8 +2184,13 @@
 % Command for paths/filenames with hyphens in captions and text
 % Usage: caption={\enpath{/mnt/user-data}} or caption={\enpath{Fork-Join}}
 % Made robust to work in moving arguments like lstlisting captions
+% v7.3.4: use \textenglish (polyglossia LTR language switch) instead of the hard
+% \LTR (\textdir TLT) directional isolate. The isolate broke RTL justification —
+% an inline \enpath token in a running Hebrew paragraph was thrown to the left
+% with a large gap (line looked left-aligned). \textenglish is still LTR and
+% keeps \courierfont + hyphen handling, but lets the line justify normally.
 \DeclareRobustCommand{\enpath}[1]{%
-  {\courierfont\LTR{#1}}%
+  {\courierfont\textenglish{#1}}%
 }
 
 %% ==================== COMPATIBILITY ENVIRONMENTS ====================
@@ -2159,6 +2205,7 @@
 \newtcolorbox{definition@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=blue!5,
   colframe=blue!40!black,
   fonttitle=\bfseries,
@@ -2168,7 +2215,7 @@
   boxrule=1pt
 }
 \newenvironment{definition}[1][]
-  {\begin{english}\begin{definition@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{definition@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{definition@inner}\end{english}}
 
 % abstract environment for book mode (title-page style abstract)
