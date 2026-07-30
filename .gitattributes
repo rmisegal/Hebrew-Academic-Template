@@ -1,0 +1,14 @@
+# Large, regenerable knowledge graph stored gzipped in git via the gzip_graph
+# clean/smudge filter. The working tree keeps flat JSON (so graphify reads it
+# unchanged); the blob git stores and pushes is the compressed one.
+#
+# The filter DEFINITION lives in .git/config, not here -- git will not run
+# repo-supplied commands on clone. Run `bash scripts/setup-git.sh` once per
+# clone to install it. Until then this binding is a harmless no-op and
+# graph.json on disk will be the raw gzipped bytes (expected, not corruption).
+graphify-out/graph.json filter=gzip_graph
+
+# Hooks and shell scripts must keep LF endings: a CRLF after #! is fatal to
+# bash under core.autocrlf=true on Windows.
+*.sh                          text eol=lf
+scripts/git-hooks/pre-commit  text eol=lf

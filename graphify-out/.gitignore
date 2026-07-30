@@ -1,0 +1,27 @@
+# What is TRACKED in graphify-out/:
+#   graph.json            - the graph itself, stored GZIPPED via the gzip_graph
+#                           clean/smudge filter (see ../.gitattributes)
+#   GRAPH_REPORT.md       - human-readable audit report
+#   manifest.json         - incremental-update bookkeeping; --update diffs against it
+#   cost.json             - cumulative token-cost tracker
+#   .graphify_labels.json - community labels
+#   converted/            - converted source artifacts
+#
+# Everything below is regenerable local state and must stay out of git.
+
+cache/
+20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/
+.graphify_analysis.json
+memory/
+backups/
+
+# 600 KB of regenerated embedded JS -- rebuilt by any graphify run.
+graph.html
+
+# Hardcodes one machine's interpreter path.
+.graphify_python
+
+# Pipeline scratch files.
+.graphify_*.json
+.graphify_*.txt
+.graphify_*.py

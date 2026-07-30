@@ -4,6 +4,25 @@
 
 A comprehensive LaTeX class for Hebrew academic documents with seamless English integration, designed for LuaLaTeX with polyglossia and luabidi.
 
+## After cloning — run this once
+
+This repo tracks its graphify knowledge graph (`graphify-out/graph.json`) **stored gzipped**
+in git via a clean/smudge filter. Filter definitions cannot live in the repo (git refuses to
+version `.git/config`, since a repo that could install executable filters on clone would be a
+remote-code-execution hole), so activate it once per clone:
+
+```bash
+bash scripts/setup-git.sh                 # define the filter + install the size guard
+git checkout -- graphify-out/graph.json   # inflate the gzipped blob to flat JSON
+graphify hook install                     # optional: auto-rebuild the graph on commit
+```
+
+Until you run this, `graphify-out/graph.json` on disk is the **raw gzipped bytes**, not JSON.
+That is expected graceful degradation, not corruption: a filter named in `.gitattributes` with
+no definition in `.git/config` is simply a no-op. After the one-time setup every pull and
+checkout inflates automatically. Working tree stays flat JSON; only the git blob is compressed
+(1.1 MB → 80 KB here).
+
 ## Features
 
 ### Core Capabilities

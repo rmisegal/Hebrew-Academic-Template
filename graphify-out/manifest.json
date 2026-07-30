@@ -1,0 +1,942 @@
+{
+  "C:\\25D\\CLS-examples\\cls_info.py": {
+    "mtime": 1781589546.6754944,
+    "ast_hash": "6f5242ed3d6ba7c2a8ccf65b0117a3bb",
+    "semantic_hash": "6f5242ed3d6ba7c2a8ccf65b0117a3bb"
+  },
+  "C:\\25D\\CLS-examples\\cls_info_config.json": {
+    "mtime": 1785420636.6561747,
+    "ast_hash": "3c45d4895e8a0bc008d8f7123fa4ce3d",
+    "semantic_hash": "3c45d4895e8a0bc008d8f7123fa4ce3d"
+  },
+  "C:\\25D\\CLS-examples\\.claude\\settings.local.json": {
+    "mtime": 1762801545.8157887,
+    "ast_hash": "f9f4415ea51052b4f605ed03701d6331",
+    "semantic_hash": "f9f4415ea51052b4f605ed03701d6331"
+  },
+  "C:\\25D\\CLS-examples\\examples\\check_bidi.py": {
+    "mtime": 1764937255.4264815,
+    "ast_hash": "e794ee60f7e5d1387c45791a41ab01ab",
+    "semantic_hash": "e794ee60f7e5d1387c45791a41ab01ab"
+  },
+  "C:\\25D\\CLS-examples\\examples\\check_bidi_refined.py": {
+    "mtime": 1764937308.5135493,
+    "ast_hash": "834eafec79e215a2503d1895659b5ecc",
+    "semantic_hash": "834eafec79e215a2503d1895659b5ecc"
+  },
+  "C:\\25D\\CLS-examples\\examples\\create_placeholder_images.py": {
+    "mtime": 1762801552.0476723,
+    "ast_hash": "24ca4484372e8e8b6cc5017536084bba",
+    "semantic_hash": "24ca4484372e8e8b6cc5017536084bba"
+  },
+  "C:\\25D\\CLS-examples\\examples\\qa_bidi_comprehensive.py": {
+    "mtime": 1764937463.441116,
+    "ast_hash": "b204305050c6e38c368fcf1fe9f00fe8",
+    "semantic_hash": "b204305050c6e38c368fcf1fe9f00fe8"
+  },
+  "C:\\25D\\CLS-examples\\examples\\qa_bidi_detect_final.py": {
+    "mtime": 1764937368.6241033,
+    "ast_hash": "73951a15b70ba9ec6a5e375dbab2fce2",
+    "semantic_hash": "73951a15b70ba9ec6a5e375dbab2fce2"
+  },
+  "C:\\25D\\CLS-examples\\examples\\qa_bidi_final.py": {
+    "mtime": 1764937401.848944,
+    "ast_hash": "e47e02ec33aae92a0d467fbdf52f0105",
+    "semantic_hash": "e47e02ec33aae92a0d467fbdf52f0105"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_all.py": {
+    "mtime": 1767373944.8149238,
+    "ast_hash": "0766314ad91c826b567960c477b1b29b",
+    "semantic_hash": "0766314ad91c826b567960c477b1b29b"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_architecture.py": {
+    "mtime": 1767373850.1028254,
+    "ast_hash": "14783e48dcee19dede4005a10159ad94",
+    "semantic_hash": "14783e48dcee19dede4005a10159ad94"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_basic_figure.py": {
+    "mtime": 1767373847.7191358,
+    "ast_hash": "63053272d3451428ccdb88de2e048ca3",
+    "semantic_hash": "63053272d3451428ccdb88de2e048ca3"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_beginner_figure.py": {
+    "mtime": 1767382783.5293264,
+    "ast_hash": "064c0a6619b5fd448d133faeeafd1b8a",
+    "semantic_hash": "064c0a6619b5fd448d133faeeafd1b8a"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_data_graph.py": {
+    "mtime": 1767373852.4592202,
+    "ast_hash": "2c1767b0e3fa7fded576a7cf0d749158",
+    "semantic_hash": "2c1767b0e3fa7fded576a7cf0d749158"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_detailed_caption.py": {
+    "mtime": 1767373930.7502453,
+    "ast_hash": "281e6486996e003c9f9b6b23d0d66e25",
+    "semantic_hash": "281e6486996e003c9f9b6b23d0d66e25"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_directed_graph.py": {
+    "mtime": 1767373880.3749874,
+    "ast_hash": "56621eed7ffeb77ad3bd768c5a39d172",
+    "semantic_hash": "56621eed7ffeb77ad3bd768c5a39d172"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_expert_figures.py": {
+    "mtime": 1767383919.785216,
+    "ast_hash": "6db8bb580d177cf1d560e65bc1a550ac",
+    "semantic_hash": "6db8bb580d177cf1d560e65bc1a550ac"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_footnote_diagram.py": {
+    "mtime": 1767381273.6468358,
+    "ast_hash": "e74bfdd2b4e1a2608803be5414663601",
+    "semantic_hash": "e74bfdd2b4e1a2608803be5414663601"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_grid.py": {
+    "mtime": 1767373885.1064298,
+    "ast_hash": "62be5c04de2219ba87e182508affd442",
+    "semantic_hash": "62be5c04de2219ba87e182508affd442"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_hebrewfigure.py": {
+    "mtime": 1767373928.3813844,
+    "ast_hash": "f9a85ebbf8aa720c823046a74ecbe723",
+    "semantic_hash": "f9a85ebbf8aa720c823046a74ecbe723"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_position_examples.py": {
+    "mtime": 1767373925.991918,
+    "ast_hash": "541839296c9aef25a5c92c933fc202ff",
+    "semantic_hash": "541839296c9aef25a5c92c933fc202ff"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_sidebyside.py": {
+    "mtime": 1767373882.7305832,
+    "ast_hash": "7a7ec3164baafd6c9857df5da0fe07e6",
+    "semantic_hash": "7a7ec3164baafd6c9857df5da0fe07e6"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\generate_subfigures.py": {
+    "mtime": 1767373923.659561,
+    "ast_hash": "5a1c46a3117393d92597a681f5f13a03",
+    "semantic_hash": "5a1c46a3117393d92597a681f5f13a03"
+  },
+  "C:\\25D\\CLS-examples\\graphify-out\\converted\\cls_files_analysis_33610714.md": {
+    "mtime": 1780327558.8349152,
+    "ast_hash": "c431952cd40ab7ef432550ffc32d8224",
+    "semantic_hash": "c431952cd40ab7ef432550ffc32d8224"
+  },
+  "C:\\25D\\CLS-examples\\Context-Windows-7-0-6.md": {
+    "mtime": 1767387757.6377392,
+    "ast_hash": "1ce46d9001ad32085d6245847ee4d61a",
+    "semantic_hash": "1ce46d9001ad32085d6245847ee4d61a"
+  },
+  "C:\\25D\\CLS-examples\\prompt-to-use-cls.txt": {
+    "mtime": 1762670697.8645487,
+    "ast_hash": "154cc65379d719bd772a9895d7288a0d",
+    "semantic_hash": "154cc65379d719bd772a9895d7288a0d"
+  },
+  "C:\\25D\\CLS-examples\\propt-to-convert-text-to-heb-academic-book.txt": {
+    "mtime": 1762670359.9555867,
+    "ast_hash": "057e76712b757e9c9576fc2cfbbf69dc",
+    "semantic_hash": "057e76712b757e9c9576fc2cfbbf69dc"
+  },
+  "C:\\25D\\CLS-examples\\README.md": {
+    "mtime": 1785420541.4588823,
+    "ast_hash": "d0dffd3d9241e06db62e93dfebd19501",
+    "semantic_hash": "d0dffd3d9241e06db62e93dfebd19501"
+  },
+  "C:\\25D\\CLS-examples\\docs\\CHANGELOG.md": {
+    "mtime": 1785420562.9537454,
+    "ast_hash": "203aac72230a035f9603c93740a830b1",
+    "semantic_hash": "203aac72230a035f9603c93740a830b1"
+  },
+  "C:\\25D\\CLS-examples\\docs\\FEATURES.md": {
+    "mtime": 1785420595.240931,
+    "ast_hash": "33708fb230234e3b942e107256bc83f0",
+    "semantic_hash": "33708fb230234e3b942e107256bc83f0"
+  },
+  "C:\\25D\\CLS-examples\\docs\\MIGRATION_GUIDE.md": {
+    "mtime": 1765536532.5400531,
+    "ast_hash": "343e3704941be621174d316b06b927dc",
+    "semantic_hash": "343e3704941be621174d316b06b927dc"
+  },
+  "C:\\25D\\CLS-examples\\docs\\MIXED_CONTENT_GUIDE.md": {
+    "mtime": 1765536610.9822216,
+    "ast_hash": "80074ff4f056c0962e0b137fc6b10004",
+    "semantic_hash": "80074ff4f056c0962e0b137fc6b10004"
+  },
+  "C:\\25D\\CLS-examples\\docs\\README.md": {
+    "mtime": 1773646821.030634,
+    "ast_hash": "5a102d314375f4d48128236e4c7665a0",
+    "semantic_hash": "5a102d314375f4d48128236e4c7665a0"
+  },
+  "C:\\25D\\CLS-examples\\docs\\switch-case-QA-and-Update-Latex-Book-prompts.txt": {
+    "mtime": 1769185747.4001887,
+    "ast_hash": "5534d14dc418edad3916c61cb93b0d53",
+    "semantic_hash": "5534d14dc418edad3916c61cb93b0d53"
+  },
+  "C:\\25D\\CLS-examples\\docs\\USAGE_GUIDE.md": {
+    "mtime": 1773646776.4726756,
+    "ast_hash": "b6721deb300cd1659bb443fede744f72",
+    "semantic_hash": "b6721deb300cd1659bb443fede744f72"
+  },
+  "C:\\25D\\CLS-examples\\examples\\QA-REPORT-book_example.md": {
+    "mtime": 1766246036.6779861,
+    "ast_hash": "2a48d2012f961727d847bd06c30e8d15",
+    "semantic_hash": "2a48d2012f961727d847bd06c30e8d15"
+  },
+  "C:\\25D\\CLS-examples\\mixed_content_demo.pdf": {
+    "mtime": 1766138448.3985772,
+    "ast_hash": "0c385b222df4d8f8ab5fc13c74a82756",
+    "semantic_hash": "0c385b222df4d8f8ab5fc13c74a82756"
+  },
+  "C:\\25D\\CLS-examples\\examples\\advanced_example.pdf": {
+    "mtime": 1785420260.1461334,
+    "ast_hash": "804d39bf985ca127692f14b1525c4974",
+    "semantic_hash": "804d39bf985ca127692f14b1525c4974"
+  },
+  "C:\\25D\\CLS-examples\\examples\\beginner_example.pdf": {
+    "mtime": 1785420239.911836,
+    "ast_hash": "b2d1ca0caec523603e3f29132de5c166",
+    "semantic_hash": "b2d1ca0caec523603e3f29132de5c166"
+  },
+  "C:\\25D\\CLS-examples\\examples\\bibliography_example.pdf": {
+    "mtime": 1785420282.4092317,
+    "ast_hash": "dd7d4abe1d1692fd541b66d0b8e67ae5",
+    "semantic_hash": "dd7d4abe1d1692fd541b66d0b8e67ae5"
+  },
+  "C:\\25D\\CLS-examples\\examples\\book_example.pdf": {
+    "mtime": 1785418193.5572848,
+    "ast_hash": "3d4fc9646a1b3c7a26a97c103a0793d4",
+    "semantic_hash": "3d4fc9646a1b3c7a26a97c103a0793d4"
+  },
+  "C:\\25D\\CLS-examples\\examples\\coverpage_example.pdf": {
+    "mtime": 1784573783.326684,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\25D\\CLS-examples\\examples\\coverpage_test.pdf": {
+    "mtime": 1768453147.7709134,
+    "ast_hash": "6e8c0754ccd2e3ac01960f78c71d57d5",
+    "semantic_hash": "6e8c0754ccd2e3ac01960f78c71d57d5"
+  },
+  "C:\\25D\\CLS-examples\\examples\\expert_example.pdf": {
+    "mtime": 1785420363.5095117,
+    "ast_hash": "6343c8bf05645c72272852806c4f11ba",
+    "semantic_hash": "6343c8bf05645c72272852806c4f11ba"
+  },
+  "C:\\25D\\CLS-examples\\examples\\footnote_example.pdf": {
+    "mtime": 1785420290.8359337,
+    "ast_hash": "ddb70ee75cf9b869b31100a600cc325a",
+    "semantic_hash": "ddb70ee75cf9b869b31100a600cc325a"
+  },
+  "C:\\25D\\CLS-examples\\examples\\framedschemapage_example.pdf": {
+    "mtime": 1784569566.1991045,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\25D\\CLS-examples\\examples\\geometry_example.pdf": {
+    "mtime": 1784569572.0897267,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\25D\\CLS-examples\\examples\\image_example.pdf": {
+    "mtime": 1785420300.1661577,
+    "ast_hash": "165604d70b3b0c3545ea6ea10150dc99",
+    "semantic_hash": "165604d70b3b0c3545ea6ea10150dc99"
+  },
+  "C:\\25D\\CLS-examples\\examples\\intermediate_example.pdf": {
+    "mtime": 1785420249.245057,
+    "ast_hash": "63c5d026c9413d29d6d93dbbbd20b6fb",
+    "semantic_hash": "63c5d026c9413d29d6d93dbbbd20b6fb"
+  },
+  "C:\\25D\\CLS-examples\\examples\\table_example.pdf": {
+    "mtime": 1784569594.9936402,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_architecture.pdf": {
+    "mtime": 1767373960.858975,
+    "ast_hash": "8d22d07d46d77710777588b05d7aecab",
+    "semantic_hash": "8d22d07d46d77710777588b05d7aecab"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_basic.pdf": {
+    "mtime": 1767373959.6830027,
+    "ast_hash": "15395c5297858e4b2b877c4610a26be6",
+    "semantic_hash": "15395c5297858e4b2b877c4610a26be6"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_beginner.pdf": {
+    "mtime": 1767382793.6681132,
+    "ast_hash": "bef4b39a0fb711e0200844e72eb618a9",
+    "semantic_hash": "bef4b39a0fb711e0200844e72eb618a9"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_bottom.pdf": {
+    "mtime": 1767373970.7352996,
+    "ast_hash": "3bcbed08b74aa6200c7a1ddca06bdaa5",
+    "semantic_hash": "3bcbed08b74aa6200c7a1ddca06bdaa5"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_data.pdf": {
+    "mtime": 1767373962.1431818,
+    "ast_hash": "db5b022f92a77dbe4752d92c9230b268",
+    "semantic_hash": "db5b022f92a77dbe4752d92c9230b268"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_detailed.pdf": {
+    "mtime": 1767373975.1553116,
+    "ast_hash": "5a4b1b51709610f57934f6dac495c4dc",
+    "semantic_hash": "5a4b1b51709610f57934f6dac495c4dc"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_expert1.pdf": {
+    "mtime": 1767383941.359623,
+    "ast_hash": "8a6080803317a155bc02b37632132fab",
+    "semantic_hash": "8a6080803317a155bc02b37632132fab"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_expert2.pdf": {
+    "mtime": 1767383941.737793,
+    "ast_hash": "d11aee6758e7607f99a91d8f177e0964",
+    "semantic_hash": "d11aee6758e7607f99a91d8f177e0964"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_footnote_diagram.pdf": {
+    "mtime": 1767381283.4014227,
+    "ast_hash": "1cb5dfea68c4f0667d619c965ebcd5ae",
+    "semantic_hash": "1cb5dfea68c4f0667d619c965ebcd5ae"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_graph.pdf": {
+    "mtime": 1767373963.6196892,
+    "ast_hash": "f29191d9caa0cbd97bbd73fe8a42d48e",
+    "semantic_hash": "f29191d9caa0cbd97bbd73fe8a42d48e"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_grid.pdf": {
+    "mtime": 1767373966.65168,
+    "ast_hash": "1682c7c34e16c37e99d669e08346f173",
+    "semantic_hash": "1682c7c34e16c37e99d669e08346f173"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_hebrewfigure.pdf": {
+    "mtime": 1767373972.9790165,
+    "ast_hash": "fb85442b9f35446035e20098037315fb",
+    "semantic_hash": "fb85442b9f35446035e20098037315fb"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_page.pdf": {
+    "mtime": 1767373971.0728767,
+    "ast_hash": "7126c7b5852853ac47369138ded2a6f4",
+    "semantic_hash": "7126c7b5852853ac47369138ded2a6f4"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_sidebyside.pdf": {
+    "mtime": 1767373964.9027684,
+    "ast_hash": "8de2c6718aa975f0723df4c5e02e5d4b",
+    "semantic_hash": "8de2c6718aa975f0723df4c5e02e5d4b"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_subfigures.pdf": {
+    "mtime": 1767373968.7934651,
+    "ast_hash": "7fb5e3a6c88a0b1624db5cd7b89e276f",
+    "semantic_hash": "7fb5e3a6c88a0b1624db5cd7b89e276f"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_top.pdf": {
+    "mtime": 1767373970.3511548,
+    "ast_hash": "3bc79c2c08da953b00286193b32afbb1",
+    "semantic_hash": "3bc79c2c08da953b00286193b32afbb1"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\example-figure1.png": {
+    "mtime": 1762801589.4762046,
+    "ast_hash": "cfdfc284670841d2f0b5b6ede0686ade",
+    "semantic_hash": "cfdfc284670841d2f0b5b6ede0686ade"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\example-figure2.png": {
+    "mtime": 1762801589.4986522,
+    "ast_hash": "6aa146dc719ffca4b337fd7dc35d6054",
+    "semantic_hash": "6aa146dc719ffca4b337fd7dc35d6054"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_architecture.png": {
+    "mtime": 1767373961.1586561,
+    "ast_hash": "a6b3b84a7dd342ea86c930f1fafdb8b1",
+    "semantic_hash": "a6b3b84a7dd342ea86c930f1fafdb8b1"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_basic.png": {
+    "mtime": 1767373959.94072,
+    "ast_hash": "6dfa0f43058d2925935ee3cfc7bc1989",
+    "semantic_hash": "6dfa0f43058d2925935ee3cfc7bc1989"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_beginner.png": {
+    "mtime": 1767382793.9093585,
+    "ast_hash": "df4e206e4093d9c6de7d18aedcb8fc9e",
+    "semantic_hash": "df4e206e4093d9c6de7d18aedcb8fc9e"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_bottom.png": {
+    "mtime": 1767373970.9424906,
+    "ast_hash": "5a01f1699d79a860b7b80d3be08ba2e5",
+    "semantic_hash": "5a01f1699d79a860b7b80d3be08ba2e5"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_data.png": {
+    "mtime": 1767373962.6825058,
+    "ast_hash": "eceb46f0eb8cdf221e1808712c450e21",
+    "semantic_hash": "eceb46f0eb8cdf221e1808712c450e21"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_detailed.png": {
+    "mtime": 1767373975.419905,
+    "ast_hash": "3bca4b9dd66032765efee4b2eaba7299",
+    "semantic_hash": "3bca4b9dd66032765efee4b2eaba7299"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_expert1.png": {
+    "mtime": 1767383941.5819983,
+    "ast_hash": "04f4f1bcbca3b1ee200399ff946843bd",
+    "semantic_hash": "04f4f1bcbca3b1ee200399ff946843bd"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_expert2.png": {
+    "mtime": 1767383941.9213264,
+    "ast_hash": "3f4626cad3d80dd6e959111dc832c746",
+    "semantic_hash": "3f4626cad3d80dd6e959111dc832c746"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_footnote_diagram.png": {
+    "mtime": 1767381283.5898216,
+    "ast_hash": "6521482cbf054f0728b48fc40590acdf",
+    "semantic_hash": "6521482cbf054f0728b48fc40590acdf"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_graph.png": {
+    "mtime": 1767373963.9078503,
+    "ast_hash": "d6b54f9d45f8c5478844804a103e1735",
+    "semantic_hash": "d6b54f9d45f8c5478844804a103e1735"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_grid.png": {
+    "mtime": 1767373967.2754912,
+    "ast_hash": "6e90a6a6a11fbf9336ba4855dfc66eb6",
+    "semantic_hash": "6e90a6a6a11fbf9336ba4855dfc66eb6"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_hebrewfigure.png": {
+    "mtime": 1767373973.9178135,
+    "ast_hash": "d374132f4c2932f7af52290760395d4f",
+    "semantic_hash": "d374132f4c2932f7af52290760395d4f"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_page.png": {
+    "mtime": 1767373971.2726617,
+    "ast_hash": "71e2bdd7da315171993fbd863d547305",
+    "semantic_hash": "71e2bdd7da315171993fbd863d547305"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_sidebyside.png": {
+    "mtime": 1767373965.224792,
+    "ast_hash": "7630ccf3a204fc6bb3fc1d12b5f9b173",
+    "semantic_hash": "7630ccf3a204fc6bb3fc1d12b5f9b173"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_subfigures.png": {
+    "mtime": 1767373969.4657316,
+    "ast_hash": "abb21ee452388c36c65e1ffcc548eb45",
+    "semantic_hash": "abb21ee452388c36c65e1ffcc548eb45"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\fig_top.png": {
+    "mtime": 1767373970.606177,
+    "ast_hash": "d9d9d6b193b1e6a5f03f01b796cd2ee1",
+    "semantic_hash": "d9d9d6b193b1e6a5f03f01b796cd2ee1"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\signature_example.png": {
+    "mtime": 1768452644.299058,
+    "ast_hash": "f32360241e44a09a4b82e69644992ca5",
+    "semantic_hash": "f32360241e44a09a4b82e69644992ca5"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\compile_all_examples.sh": {
+    "mtime": 1762714981.5685303,
+    "ast_hash": "36216fbeb745d92f47a201f1f9f66456",
+    "semantic_hash": "36216fbeb745d92f47a201f1f9f66456"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\compile_remaining.sh": {
+    "mtime": 1762723418.2887712,
+    "ast_hash": "8bfc2259f8e40805b9de464fa5d79a27",
+    "semantic_hash": "8bfc2259f8e40805b9de464fa5d79a27"
+  },
+  "C:\\25D\\CLS-examples\\docs\\CLS-ALIGNMENT-REPORT.md": {
+    "mtime": 1783931248.9107065,
+    "ast_hash": "e096e4919a55fecfd89c68b5e22c4be0",
+    "semantic_hash": "e096e4919a55fecfd89c68b5e22c4be0"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\CLS_MERGE_PARALLEL_PLAN.md": {
+    "mtime": 1762707931.542112,
+    "ast_hash": "7d72416e9e1b96d8e7c5f2fa353f932d",
+    "semantic_hash": "7d72416e9e1b96d8e7c5f2fa353f932d"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\FINAL_SUMMARY.md": {
+    "mtime": 1762728987.8693192,
+    "ast_hash": "6617b0514a494ed6db479408420dc476",
+    "semantic_hash": "6617b0514a494ed6db479408420dc476"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\MANIFEST.md": {
+    "mtime": 1762729134.5459132,
+    "ast_hash": "f3fea1b54a8c2130f7d3e16ae37ed3b0",
+    "semantic_hash": "f3fea1b54a8c2130f7d3e16ae37ed3b0"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\MIGRATION-STATUS.md": {
+    "mtime": 1767380819.4430108,
+    "ast_hash": "8ca409cb1c19c61602c8b64ba60bbc18",
+    "semantic_hash": "8ca409cb1c19c61602c8b64ba60bbc18"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\PROJECT_COMPLETE.md": {
+    "mtime": 1762729761.113366,
+    "ast_hash": "a40f907cd0ec1b2ded169bea57fb5416",
+    "semantic_hash": "a40f907cd0ec1b2ded169bea57fb5416"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\PROJECT_OVERVIEW.md": {
+    "mtime": 1762708027.999536,
+    "ast_hash": "6b806a594d2f4f6deb17cfacb35e834b",
+    "semantic_hash": "6b806a594d2f4f6deb17cfacb35e834b"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\PROJECT_STATUS.md": {
+    "mtime": 1762724033.1556442,
+    "ast_hash": "fa2593f9b52ca054e3415662880cbf1e",
+    "semantic_hash": "fa2593f9b52ca054e3415662880cbf1e"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\PROJECT_SUMMARY.md": {
+    "mtime": 1761833800.4820173,
+    "ast_hash": "0680645b1b221a32eca0728a3c0ae7e4",
+    "semantic_hash": "0680645b1b221a32eca0728a3c0ae7e4"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\README.md": {
+    "mtime": 1780582419.9712725,
+    "ast_hash": "c5c387466e5a1819f1313e73cab71578",
+    "semantic_hash": "c5c387466e5a1819f1313e73cab71578"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\SESSION_STATUS.md": {
+    "mtime": 1762791533.8941445,
+    "ast_hash": "0260dcf529bf8d23b44314f3a712e2d4",
+    "semantic_hash": "0260dcf529bf8d23b44314f3a712e2d4"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\WAVE1_COMPLETE_SUMMARY.md": {
+    "mtime": 1762709396.8252575,
+    "ast_hash": "58d58fa97d09fe71d9056b80eb63ef91",
+    "semantic_hash": "58d58fa97d09fe71d9056b80eb63ef91"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\README.md": {
+    "mtime": 1762798863.8835936,
+    "ast_hash": "c81689eb29aee1d7b1512102bb8ed478",
+    "semantic_hash": "c81689eb29aee1d7b1512102bb8ed478"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\book-creator-agents\\academic-source-citation-agent-skill.md": {
+    "mtime": 1761466693.331369,
+    "ast_hash": "91697b8e521e97d8ff5636e9fae21a86",
+    "semantic_hash": "91697b8e521e97d8ff5636e9fae21a86"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\book-creator-agents\\chief-architect-reviewer-skill.md": {
+    "mtime": 1761466693.4689486,
+    "ast_hash": "77ee4557748b199e32fe6ff049864318",
+    "semantic_hash": "77ee4557748b199e32fe6ff049864318"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\book-creator-agents\\code-implementation-agent-skill.md": {
+    "mtime": 1761466693.592576,
+    "ast_hash": "6b5c5f629917f62918dea6be9388d55e",
+    "semantic_hash": "6b5c5f629917f62918dea6be9388d55e"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\book-creator-agents\\content-drafting-agent-skill.md": {
+    "mtime": 1761466693.7327607,
+    "ast_hash": "0cd783c24302a6d86ec970d7f8cf9f4e",
+    "semantic_hash": "0cd783c24302a6d86ec970d7f8cf9f4e"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\book-creator-agents\\hebrew-language-editor-skill.md": {
+    "mtime": 1761466703.608775,
+    "ast_hash": "5baf00ef441808aae6e9a497e5f2b541",
+    "semantic_hash": "5baf00ef441808aae6e9a497e5f2b541"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\book-creator-agents\\lead-technologist-math-reviewer-skill.md": {
+    "mtime": 1761466703.7394168,
+    "ast_hash": "2d5d6a3cd496c04f074a0c019df11112",
+    "semantic_hash": "2d5d6a3cd496c04f074a0c019df11112"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\book-creator-agents\\source-research-agent-skill.md": {
+    "mtime": 1761466703.8801188,
+    "ast_hash": "3b676d7cee6c3f41d806975d0026c63b",
+    "semantic_hash": "3b676d7cee6c3f41d806975d0026c63b"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\qa-agents\\claude-cli-structure-agent-skill.md": {
+    "mtime": 1762793698.770647,
+    "ast_hash": "f5094b539d1ea8b47fe7d1a0919fd001",
+    "semantic_hash": "f5094b539d1ea8b47fe7d1a0919fd001"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\qa-agents\\code-block-qa-agent-skill.md": {
+    "mtime": 1762802809.3346653,
+    "ast_hash": "cff3499cf6b53c166e8e137246737451",
+    "semantic_hash": "cff3499cf6b53c166e8e137246737451"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\qa-agents\\drawing-agent-skill.md": {
+    "mtime": 1762792541.2464113,
+    "ast_hash": "7bbb29d3e6ef475942887685fa3d25bd",
+    "semantic_hash": "7bbb29d3e6ef475942887685fa3d25bd"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\qa-agents\\qa-infrastructure-agent.md": {
+    "mtime": 1762794407.961352,
+    "ast_hash": "1c5e4a841805daa99215485fff402fd7",
+    "semantic_hash": "1c5e4a841805daa99215485fff402fd7"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\qa-agents\\qa-orchestrator-agent.md": {
+    "mtime": 1762799135.9682784,
+    "ast_hash": "470f3c3f4af7deb8e5b6041aed179aac",
+    "semantic_hash": "470f3c3f4af7deb8e5b6041aed179aac"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\qa-agents\\README.md": {
+    "mtime": 1764938169.3738089,
+    "ast_hash": "4f2235c4fc0bf0e849c115ee0775dc79",
+    "semantic_hash": "4f2235c4fc0bf0e849c115ee0775dc79"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\qa-agents\\rtl-ltr-qa-agent-skill.md": {
+    "mtime": 1762797960.8872192,
+    "ast_hash": "7209d6a618d4be3c755d4f0a1512fd54",
+    "semantic_hash": "7209d6a618d4be3c755d4f0a1512fd54"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agents\\qa-agents\\table-layout-qa-agent-skill.md": {
+    "mtime": 1762790076.574728,
+    "ast_hash": "bab988cbab57477f1fbc5a671cb9a5c3",
+    "semantic_hash": "bab988cbab57477f1fbc5a671cb9a5c3"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_a\\AGENT_A_COMMAND_LIST.md": {
+    "mtime": 1762708393.3942442,
+    "ast_hash": "cf73147ed2517c38c85409db7ed13857",
+    "semantic_hash": "cf73147ed2517c38c85409db7ed13857"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_a\\AGENT_A_ENVIRONMENT_LIST.md": {
+    "mtime": 1762708465.7815683,
+    "ast_hash": "9a0f3ca487437adbe52b72f9f568d4f8",
+    "semantic_hash": "9a0f3ca487437adbe52b72f9f568d4f8"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_a\\AGENT_A_FEATURE_MATRIX.md": {
+    "mtime": 1762708614.694581,
+    "ast_hash": "5d4996ff8e4f49a207d0c2a6849fe157",
+    "semantic_hash": "5d4996ff8e4f49a207d0c2a6849fe157"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_a\\AGENT_A_PACKAGE_LIST.md": {
+    "mtime": 1762708530.3239326,
+    "ast_hash": "f3574cae8fd5fddc1da34a22f65c016c",
+    "semantic_hash": "f3574cae8fd5fddc1da34a22f65c016c"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_a\\AGENT_A_SUMMARY.md": {
+    "mtime": 1762708328.4452722,
+    "ast_hash": "8e28186436276c8b2c763a763791d669",
+    "semantic_hash": "8e28186436276c8b2c763a763791d669"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_a\\README.md": {
+    "mtime": 1762708680.0475624,
+    "ast_hash": "bc2e9260ade7b21e6fdbcbd781715930",
+    "semantic_hash": "bc2e9260ade7b21e6fdbcbd781715930"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_b\\AGENT_B_CONFLICTS.md": {
+    "mtime": 1762709135.8869386,
+    "ast_hash": "10d8ba042c50a1f159eeaae353966d9e",
+    "semantic_hash": "10d8ba042c50a1f159eeaae353966d9e"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_b\\AGENT_B_DIFF_L12_L18.txt": {
+    "mtime": 1762708990.1574268,
+    "ast_hash": "17e108ad25f03170c777ae0df55693d1",
+    "semantic_hash": "17e108ad25f03170c777ae0df55693d1"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_b\\AGENT_B_DIFF_V1_V3.txt": {
+    "mtime": 1762708963.8689559,
+    "ast_hash": "e08cebccc09fc8b841f83f64582a90d8",
+    "semantic_hash": "e08cebccc09fc8b841f83f64582a90d8"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_b\\AGENT_B_RECOMMENDATIONS.md": {
+    "mtime": 1762709237.4804592,
+    "ast_hash": "06ea487101832531e56c2bfcbb75556b",
+    "semantic_hash": "06ea487101832531e56c2bfcbb75556b"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_b\\AGENT_B_SUMMARY.md": {
+    "mtime": 1762709313.0797133,
+    "ast_hash": "3fff7ff3a1b6c0b4b6f2be4ea888f09c",
+    "semantic_hash": "3fff7ff3a1b6c0b4b6f2be4ea888f09c"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_b\\AGENT_B_UNIQUE_FEATURES.md": {
+    "mtime": 1762709052.2754683,
+    "ast_hash": "0e2f185f15c05fd476a8e9466c9eb470",
+    "semantic_hash": "0e2f185f15c05fd476a8e9466c9eb470"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_c\\AGENT_C_BEST_PRACTICES.md": {
+    "mtime": 1762708462.5122955,
+    "ast_hash": "01bc8fb7c46ae33f0bd24e4c6858616d",
+    "semantic_hash": "01bc8fb7c46ae33f0bd24e4c6858616d"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_c\\AGENT_C_COMMAND_EXAMPLES.md": {
+    "mtime": 1762708749.882663,
+    "ast_hash": "7e32e4bf19421f657bdac0ab66164d20",
+    "semantic_hash": "7e32e4bf19421f657bdac0ab66164d20"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_c\\AGENT_C_COMMON_MISTAKES.md": {
+    "mtime": 1762708588.265733,
+    "ast_hash": "a42620cd4050476996ea783ff55d211f",
+    "semantic_hash": "a42620cd4050476996ea783ff55d211f"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_c\\AGENT_C_SUMMARY.md": {
+    "mtime": 1762708869.1097467,
+    "ast_hash": "c6bc091d8cf63a3ef713594a1e87216c",
+    "semantic_hash": "c6bc091d8cf63a3ef713594a1e87216c"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_c\\AGENT_C_USAGE_PATTERNS.md": {
+    "mtime": 1762708346.5122578,
+    "ast_hash": "51a25fc67ec6721416856f6b8473f7d4",
+    "semantic_hash": "51a25fc67ec6721416856f6b8473f7d4"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_d\\AGENT_D_CHANGES_LOG.md": {
+    "mtime": 1762709875.8405406,
+    "ast_hash": "19a1415d285ff734ac649cbffa91b2bf",
+    "semantic_hash": "19a1415d285ff734ac649cbffa91b2bf"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_d\\AGENT_D_MERGE_STRATEGY.md": {
+    "mtime": 1762709825.1209223,
+    "ast_hash": "8dd39368d0d525a31bf615274816f649",
+    "semantic_hash": "8dd39368d0d525a31bf615274816f649"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_d\\AGENT_D_SUMMARY.md": {
+    "mtime": 1762709993.9202204,
+    "ast_hash": "a2444785a5c8c42738c2cca5d0c8b01b",
+    "semantic_hash": "a2444785a5c8c42738c2cca5d0c8b01b"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_d\\AGENT_D_TESTING_NOTES.md": {
+    "mtime": 1762709945.3843632,
+    "ast_hash": "79dad642a203cdc9903ac5397c7cc10a",
+    "semantic_hash": "79dad642a203cdc9903ac5397c7cc10a"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_e\\AGENT_E_EXAMPLES_GUIDE.md": {
+    "mtime": 1762711603.2609553,
+    "ast_hash": "76f81e9a212e4f12af61ec2842cc2c4a",
+    "semantic_hash": "76f81e9a212e4f12af61ec2842cc2c4a"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_e\\AGENT_E_SUMMARY.md": {
+    "mtime": 1762711674.20077,
+    "ast_hash": "a52b45d39b757c485987d258a58c1590",
+    "semantic_hash": "a52b45d39b757c485987d258a58c1590"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_f\\AGENT_F_DOCUMENTATION_INDEX.md": {
+    "mtime": 1762711749.5543716,
+    "ast_hash": "b0fd709bd2bbbfe95400aa803636be78",
+    "semantic_hash": "b0fd709bd2bbbfe95400aa803636be78"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_f\\AGENT_F_SUMMARY.md": {
+    "mtime": 1762711803.004176,
+    "ast_hash": "51a5747c0460ee5b9652d723db851312",
+    "semantic_hash": "51a5747c0460ee5b9652d723db851312"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_f\\CHANGELOG.md": {
+    "mtime": 1762711367.6234014,
+    "ast_hash": "becb3e95cf0aaec0b1fb7f98d7e6d5f2",
+    "semantic_hash": "becb3e95cf0aaec0b1fb7f98d7e6d5f2"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_f\\FEATURES.md": {
+    "mtime": 1762711511.2568517,
+    "ast_hash": "dd573ed56e93c22458913558834c3e7c",
+    "semantic_hash": "dd573ed56e93c22458913558834c3e7c"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_f\\MIGRATION_GUIDE.md": {
+    "mtime": 1762711429.1089418,
+    "ast_hash": "d97fdc20eef1ae2969446a5d28d44423",
+    "semantic_hash": "d97fdc20eef1ae2969446a5d28d44423"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_f\\MIXED_CONTENT_GUIDE.md": {
+    "mtime": 1762711290.645191,
+    "ast_hash": "78a1fd07b4e3dccc5d83a7dafc2d2702",
+    "semantic_hash": "78a1fd07b4e3dccc5d83a7dafc2d2702"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_f\\README.md": {
+    "mtime": 1762710708.1263506,
+    "ast_hash": "1d65db449b081ae7bd430ebc42b857b8",
+    "semantic_hash": "1d65db449b081ae7bd430ebc42b857b8"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_f\\USAGE_GUIDE.md": {
+    "mtime": 1762711102.314803,
+    "ast_hash": "c63f02b037a9964c5bdd5507dfd02d7f",
+    "semantic_hash": "c63f02b037a9964c5bdd5507dfd02d7f"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\AGENT_G_BUGS_FOUND.md": {
+    "mtime": 1762724969.33973,
+    "ast_hash": "61a1d49a6a19023a3a6cfcd9b093ba6d",
+    "semantic_hash": "61a1d49a6a19023a3a6cfcd9b093ba6d"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\AGENT_G_COMPILATION_LOG.txt": {
+    "mtime": 1762725007.181983,
+    "ast_hash": "e5e44fbe59592bbb243ebe739c90cb5d",
+    "semantic_hash": "e5e44fbe59592bbb243ebe739c90cb5d"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\AGENT_G_STATUS.md": {
+    "mtime": 1762723988.3216283,
+    "ast_hash": "de4551c961f37cbc8cbf3fcd75c5ef9a",
+    "semantic_hash": "de4551c961f37cbc8cbf3fcd75c5ef9a"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\AGENT_G_SUMMARY.md": {
+    "mtime": 1762725028.1732843,
+    "ast_hash": "a0eb8427942df21aaa69a90ca15e1700",
+    "semantic_hash": "a0eb8427942df21aaa69a90ca15e1700"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\AGENT_G_TEST_REPORT.md": {
+    "mtime": 1762724943.337328,
+    "ast_hash": "bf47be9df85eb2ae20cd69810d334b4d",
+    "semantic_hash": "bf47be9df85eb2ae20cd69810d334b4d"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\bibliography_example_warnings.txt": {
+    "mtime": 1762715216.0034547,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\footnote_example_warnings.txt": {
+    "mtime": 1762715164.5201457,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\image_example_warnings.txt": {
+    "mtime": 1762715189.5644257,
+    "ast_hash": "fc61154a6aafd807602dbb305973b592",
+    "semantic_hash": "fc61154a6aafd807602dbb305973b592"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_h\\AGENT_H_FINAL_STRUCTURE.md": {
+    "mtime": 1762729499.007918,
+    "ast_hash": "dfd6a45303dd39502bb5e66b4c892bfd",
+    "semantic_hash": "dfd6a45303dd39502bb5e66b4c892bfd"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_h\\AGENT_H_ORGANIZATION_LOG.txt": {
+    "mtime": 1762729420.737113,
+    "ast_hash": "e699a0e82079b6a002d2a2ebbdf03509",
+    "semantic_hash": "e699a0e82079b6a002d2a2ebbdf03509"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_h\\AGENT_H_STATUS.md": {
+    "mtime": 1762729350.2915132,
+    "ast_hash": "44e166b7d852197f957a0ff5ab766870",
+    "semantic_hash": "44e166b7d852197f957a0ff5ab766870"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_h\\AGENT_H_SUMMARY.md": {
+    "mtime": 1762729568.3438258,
+    "ast_hash": "069df7bc53b5d5137eb0e37957e97985",
+    "semantic_hash": "069df7bc53b5d5137eb0e37957e97985"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_h\\directory_tree.txt": {
+    "mtime": 1762729282.8328779,
+    "ast_hash": "2f387401e706d675d0a8c34947e34669",
+    "semantic_hash": "2f387401e706d675d0a8c34947e34669"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\qa-orchestration\\QA-FULL-REPORT.md": {
+    "mtime": 1764937552.8173583,
+    "ast_hash": "49458d2e78dd42dca972347a2b6abd29",
+    "semantic_hash": "49458d2e78dd42dca972347a2b6abd29"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\qa-orchestration\\QA-REPORT.md": {
+    "mtime": 1766139978.7778409,
+    "ast_hash": "c8fb9793c667b34ca3e9a441047abe66",
+    "semantic_hash": "c8fb9793c667b34ca3e9a441047abe66"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\qa-orchestration\\QA-TASKS.md": {
+    "mtime": 1765571105.851892,
+    "ast_hash": "cddd0de13d9ba2075fed974666c4040a",
+    "semantic_hash": "cddd0de13d9ba2075fed974666c4040a"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_e\\ae_advanced.pdf": {
+    "mtime": 1765441571.1917987,
+    "ast_hash": "b699817836376a574ab31e32fa01d0d9",
+    "semantic_hash": "b699817836376a574ab31e32fa01d0d9"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_e\\ae_beginner.pdf": {
+    "mtime": 1765441543.5923285,
+    "ast_hash": "46918bb6c89ff6334fb1b0670a2e5831",
+    "semantic_hash": "46918bb6c89ff6334fb1b0670a2e5831"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_e\\ae_bibliography.pdf": {
+    "mtime": 1765441642.9954784,
+    "ast_hash": "bf68edf62b27db375c3232f2ce4463f8",
+    "semantic_hash": "bf68edf62b27db375c3232f2ce4463f8"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_e\\ae_expert.pdf": {
+    "mtime": 1765441589.1609254,
+    "ast_hash": "76a6695abe8602434607daa845827964",
+    "semantic_hash": "76a6695abe8602434607daa845827964"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_e\\ae_footnote.pdf": {
+    "mtime": 1765441621.6466434,
+    "ast_hash": "9549dd52efeda725e1693a63366fad68",
+    "semantic_hash": "9549dd52efeda725e1693a63366fad68"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_e\\ae_image.pdf": {
+    "mtime": 1765441632.461265,
+    "ast_hash": "f788ecaa82372e3f1f3e24f518c21273",
+    "semantic_hash": "f788ecaa82372e3f1f3e24f518c21273"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_e\\ae_intermediate.pdf": {
+    "mtime": 1765441556.3481812,
+    "ast_hash": "5d933a6881a34257e0ce26f502d11c78",
+    "semantic_hash": "5d933a6881a34257e0ce26f502d11c78"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_f\\af_template.pdf": {
+    "mtime": 1765441653.930943,
+    "ast_hash": "8a3b22939cb5bc384323ba9b3c7eca24",
+    "semantic_hash": "8a3b22939cb5bc384323ba9b3c7eca24"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\advanced_example.pdf": {
+    "mtime": 1762724896.8107755,
+    "ast_hash": "f7b44995098e0f331d0fa0cb986522ab",
+    "semantic_hash": "f7b44995098e0f331d0fa0cb986522ab"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\beginner_example.pdf": {
+    "mtime": 1762724896.814809,
+    "ast_hash": "8264d3325439cb45f6969ce10fe3bfda",
+    "semantic_hash": "8264d3325439cb45f6969ce10fe3bfda"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\bibliography_example.pdf": {
+    "mtime": 1762724896.8178103,
+    "ast_hash": "7280979b4a6883e868e02c4555b7d972",
+    "semantic_hash": "7280979b4a6883e868e02c4555b7d972"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\footnote_example.pdf": {
+    "mtime": 1762724896.8221128,
+    "ast_hash": "70299c172b196dea28fd7707166d1b41",
+    "semantic_hash": "70299c172b196dea28fd7707166d1b41"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\image_example.pdf": {
+    "mtime": 1762724896.8271618,
+    "ast_hash": "d60d4a35e4a255ec9d72990a14e5ef70",
+    "semantic_hash": "d60d4a35e4a255ec9d72990a14e5ef70"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\agent_outputs\\agent_g\\intermediate_example.pdf": {
+    "mtime": 1762724896.832199,
+    "ast_hash": "e2d8ae501f4d2eab0ac6b201d3d47d84",
+    "semantic_hash": "e2d8ae501f4d2eab0ac6b201d3d47d84"
+  },
+  "C:\\25D\\CLS-examples\\examples\\table_minimal.pdf": {
+    "mtime": 1784569601.7456832,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\25D\\CLS-examples\\examples\\table_test_steps.pdf": {
+    "mtime": 1784569605.224934,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\25D\\CLS-examples\\examples\\test_rtl.pdf": {
+    "mtime": 1784569611.7810555,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\25D\\CLS-examples\\examples\\toc_article_pagenum_example.pdf": {
+    "mtime": 1784569617.596024,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\25D\\CLS-examples\\docs\\D-RECOMPILE-SUMMARY.md": {
+    "mtime": 1783961063.5387578,
+    "ast_hash": "f95ee1f8e846d6900270b73b79d0a6a6",
+    "semantic_hash": "f95ee1f8e846d6900270b73b79d0a6a6"
+  },
+  "C:\\25D\\CLS-examples\\examples\\cartoon_example.pdf": {
+    "mtime": 1784573764.3921661,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\cartoons\\cart_books.png": {
+    "mtime": 1784567879.464673,
+    "ast_hash": "07f086c93cca86cf6770b5a24711d703",
+    "semantic_hash": "07f086c93cca86cf6770b5a24711d703"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\cartoons\\cart_clock.png": {
+    "mtime": 1784567879.4371645,
+    "ast_hash": "0c5c2b659861f6097b9810dc462873cd",
+    "semantic_hash": "0c5c2b659861f6097b9810dc462873cd"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\cartoons\\cart_person.png": {
+    "mtime": 1784567879.4000642,
+    "ast_hash": "51a2a9cfbec39d03bb69a918e8138396",
+    "semantic_hash": "51a2a9cfbec39d03bb69a918e8138396"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\cartoons\\cart_supplied.png": {
+    "mtime": 1784568069.34596,
+    "ast_hash": "2169da1957612630d2d9e875836d8221",
+    "semantic_hash": "2169da1957612630d2d9e875836d8221"
+  },
+  "C:\\25D\\CLS-examples\\examples\\images\\cartoons\\cart_supplied_cropped.png": {
+    "mtime": 1784568116.942436,
+    "ast_hash": "bf8dea33feeb2a6f0e0bffa144898e69",
+    "semantic_hash": "bf8dea33feeb2a6f0e0bffa144898e69"
+  },
+  "C:\\25D\\CLS-examples\\docs\\dev-history\\cls-versions\\README.md": {
+    "mtime": 1785419577.051313,
+    "ast_hash": "cdbc0da255f0a58327e4f0e9d8cf667c",
+    "semantic_hash": "cdbc0da255f0a58327e4f0e9d8cf667c"
+  }
+}

@@ -31,8 +31,11 @@ nul
 # Temp placeholders
 _nul_to_delete_*.tmp
 
-# Generated knowledge graph (regenerable via graphify)
-graphify-out/
+# Knowledge graph: NOT blanket-ignored.
+# graphify-out/graph.json is tracked, stored gzipped in git via the gzip_graph
+# clean/smudge filter (see .gitattributes + scripts/setup-git.sh). The working
+# tree keeps flat JSON; only the git blob is compressed. Per-directory rules
+# live in graphify-out/.gitignore, which declares what is tracked vs regenerable.
 
 # OS files
 .DS_Store

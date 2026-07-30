@@ -1,0 +1,29 @@
+#!/bin/sh
+# graph-size-guard -- reject staged blobs over the GitHub-safe limit.
+#
+# The seatbelt for a clone where the gzip_graph filter is not active: without it
+# a raw graph.json would be committed at full size and bloat history permanently.
+# GitHub warns at 50 MiB and hard-rejects at 100 MiB; 45 MB leaves headroom.
+LIMIT_MB=45
+limit=$((LIMIT_MB * 1024 * 1024))
+status=0
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+
+while IFS= read -r path; do
+    [ -n "$path" ] || continue
+    size=$(git cat-file -s ":$path" 2>/dev/null) || continue
+    if [ "$size" -gt "$limit" ]; then
+        echo "pre-commit: '$path' is staged at $((size / 1024 / 1024))MB (limit ${LIMIT_MB}MB)." >&2
+        if [ "$path" = "graphify-out/graph.json" ]; then
+            echo "  The gzip_graph filter is not active in this clone. Fix:" >&2
+            echo "    bash scripts/setup-git.sh" >&2
+            echo "    git add --renormalize graphify-out/graph.json" >&2
+        fi
+        status=1
+    fi
+done <<EOF
+$staged
+EOF
+
+exit $status
