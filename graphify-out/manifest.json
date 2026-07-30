@@ -5,9 +5,9 @@
     "semantic_hash": "6f5242ed3d6ba7c2a8ccf65b0117a3bb"
   },
   "C:\\25D\\CLS-examples\\cls_info_config.json": {
-    "mtime": 1785420636.6561747,
-    "ast_hash": "3c45d4895e8a0bc008d8f7123fa4ce3d",
-    "semantic_hash": "3c45d4895e8a0bc008d8f7123fa4ce3d"
+    "mtime": 1785422063.191472,
+    "ast_hash": "b6edcd780dff2d67309554cf8a729e30",
+    "semantic_hash": "b6edcd780dff2d67309554cf8a729e30"
   },
   "C:\\25D\\CLS-examples\\.claude\\settings.local.json": {
     "mtime": 1762801545.8157887,
@@ -135,9 +135,9 @@
     "semantic_hash": "057e76712b757e9c9576fc2cfbbf69dc"
   },
   "C:\\25D\\CLS-examples\\README.md": {
-    "mtime": 1785420541.4588823,
-    "ast_hash": "d0dffd3d9241e06db62e93dfebd19501",
-    "semantic_hash": "d0dffd3d9241e06db62e93dfebd19501"
+    "mtime": 1785421168.4604273,
+    "ast_hash": "bc54fb32b24edf36b4a74d3f04f55d9a",
+    "semantic_hash": "bc54fb32b24edf36b4a74d3f04f55d9a"
   },
   "C:\\25D\\CLS-examples\\docs\\CHANGELOG.md": {
     "mtime": 1785420562.9537454,
@@ -938,5 +938,20 @@
     "mtime": 1785419577.051313,
     "ast_hash": "cdbc0da255f0a58327e4f0e9d8cf667c",
     "semantic_hash": "cdbc0da255f0a58327e4f0e9d8cf667c"
+  },
+  "C:\\25D\\CLS-examples\\scripts\\setup-git.sh": {
+    "mtime": 1785421104.1792412,
+    "ast_hash": "797137a61e94512516a6253d3199c700",
+    "semantic_hash": "797137a61e94512516a6253d3199c700"
+  },
+  "C:\\25D\\CLS-examples\\scripts\\git-hooks\\pre-commit": {
+    "mtime": 1785421113.6143725,
+    "ast_hash": "7858b31d83c06853f963e57786adfc7a",
+    "semantic_hash": "7858b31d83c06853f963e57786adfc7a"
+  },
+  "C:\\25D\\CLS-examples\\graphify-out\\converted\\cls_files_analysis_26b48332.md": {
+    "mtime": 1785422650.6736119,
+    "ast_hash": "c431952cd40ab7ef432550ffc32d8224",
+    "semantic_hash": "c431952cd40ab7ef432550ffc32d8224"
   }
 }
