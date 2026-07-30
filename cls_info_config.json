@@ -236,12 +236,7 @@
     },
     {
       "command": "\\hebrewfigure",
-      "description": "Command form"
-    },
-    {
-      "command": "hebrewfigure",
-      "description": "Figure environment",
-      "type": "environment"
+      "description": "Floating figure with Hebrew caption: \\hebrewfigure[placement]{content}{caption}. There is no hebrewfigure environment - for a figure that needs a \\label, use the standard figure environment with \\caption + \\label."
     },
     {
       "command": "\\hebrewsection{}",
@@ -403,7 +398,7 @@
     },
     {
       "command": "\\toprule",
-      "description": "### Code Packages"
+      "description": "Top rule in a booktabs table. Provided by the booktabs package, which the class requires - not defined by the class itself (see also \\midrule, \\bottomrule)."
     },
     {
       "command": "\\warningsymbol",
