@@ -2,15 +2,15 @@
 
 ## Feature Overview
 
-The Hebrew Academic Template provides 80 commands, 8 environments, and 24+ packages for professional Hebrew academic documents with full bidirectional text support.
+The Hebrew Academic Template provides 83 commands, 9 environments, and 25+ packages for professional Hebrew academic documents with full bidirectional text support.
 
 ## Feature Summary
 
 | Category | Count | Description |
 |----------|-------|-------------|
-| **Total Commands** | 80+ | Complete command set for all use cases |
-| **Environments** | 8 | Structured content environments |
-| **Packages** | 24+ | Professionally integrated packages |
+| **Total Commands** | 83+ | Complete command set for all use cases |
+| **Environments** | 9 | Structured content environments |
+| **Packages** | 25+ | Professionally integrated packages |
 | **Text Direction** | 17 | Complete BiDi support |
 | **Section Types** | 6 | Full chapter and section hierarchy |
 | **Table Commands** | 8 | Advanced table formatting |
@@ -18,7 +18,7 @@ The Hebrew Academic Template provides 80 commands, 8 environments, and 24+ packa
 | **Code Features** | 7 | Professional code blocks with Hebrew titles |
 | **Bibliography** | Enhanced | Biber backend with language separation |
 
-## Command Reference Table (All 80 Commands)
+## Command Reference Table (All 83 Commands)
 
 ### Text Direction Commands (17)
 
@@ -47,9 +47,11 @@ The Hebrew Academic Template provides 80 commands, 8 environments, and 24+ packa
 | Command | Purpose |
 |---------|---------|
 | `\hebrewchapter{}` | Book chapters |
+| `\hebrewchapternonum{}` | **v7.4.1** — chapter-level heading that does NOT consume a chapter number (front matter; keeps `\chapterref` correct) |
 | `\hebrewsection{}` | Main sections |
 | `\englishsection{}` | English sections |
-| `\hebrewsubsection{}` | Subsections |
+| `\hebrewsubsection{}` | Subsections — TOC entry numbered `chapter.section.subsection` (**v7.4.2**) |
+| `\hebsubsectionnumber` | **v7.4.2** — expandable compound subsection number used by `\hebrewsubsection`'s TOC entry; internal, rarely called directly |
 | `\HebrewTitle{}` | Format Hebrew title |
 | `\HebrewSubtitle{}` | Format subtitle |
 
@@ -66,12 +68,22 @@ The Hebrew Academic Template provides 80 commands, 8 environments, and 24+ packa
 | `\enheader{}` | English header |
 | `\rtlrow{}` | Auto-reverse columns |
 
-### Figure Commands (2)
+### Figure Commands (5)
 
 | Command | Purpose |
 |---------|---------|
 | `\hebrewfigure` | Command form |
 | `hebrewfigure` env | Environment form |
+| `\cartoon[w]{file}{caption}{label}` | **v7.4.0** — side illustration in an RTL wrap column (right edge); text flows beside it and resumes full width below |
+| `\setcartoonpath{}` | **v7.4.0** — image directory prefix for `\cartoon` (default `images/cartoons/`) |
+| `\setcartoonwidth{}` | **v7.4.0** — default wrap column width (default `0.32\textwidth`) |
+
+**`\cartoon` vs `\hebrewfigure`:** `\hebrewfigure` is a full-width float that interrupts
+the text; `\cartoon` is a narrow wrap column the text flows around. Use `\cartoon` for
+small portrait illustrations, `\hebrewfigure` for diagrams, graphs, tables and any wide
+image. `\cartoon` auto-breaks the page rather than overflow the bottom margin, and must
+be called between paragraphs — never inside one, and never adjacent to a heading.
+See `examples/cartoon_example.tex`.
 
 ### Code Commands (7)
 
@@ -169,7 +181,8 @@ The Hebrew Academic Template provides 80 commands, 8 environments, and 24+ packa
 | graphicx | Images | `\includegraphics` |
 | float | Float control | `[H]` placement |
 | caption | Captions | Caption formatting |
-| tikz-cd | Diagrams | Commutative diagrams |
+| tikz-cd | Diagrams | Commutative diagrams (loads full TikZ) |
+| wrapfig2 | Wrap column | `\cartoon` side illustrations (v7.4.0; BiDi-aware, unlike wrapfig) |
 
 ### Table Packages
 | Package | Purpose | Features |

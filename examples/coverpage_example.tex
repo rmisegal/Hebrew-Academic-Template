@@ -1,0 +1,145 @@
+% coverpage_example.tex - Test for Cover Page Enhancements (v7.1.0)
+% This example demonstrates all v7.1.0 cover page features
+% Compiler: LuaLaTeX
+%
+% Features demonstrated:
+%   - Decorative double frame on title page
+%   - Cover image with faded edges
+%   - Hebrew signature in handwriting font (Guttman Yad)
+%   - Signature image below handwriting name
+%   - \makesignature command for signature block
+
+\documentclass[book]{hebrew-academic-template}
+
+% Graphics path for images
+\graphicspath{{images/}}
+
+%% ============================================
+%% Book Metadata (v7.1.0 commands)
+%% ============================================
+\hebrewtitle{דוגמה לעמוד שער משופר}
+\englishtitle{Enhanced Cover Page Example}
+\hebrewsubtitle{הדגמת תכונות גרסה \en{7.1.0}}
+\hebrewauthor{ד"ר יורם סגל}
+\hebrewversion{גרסה \textenglish{1.0}}
+\date{\textenglish{January 2026}}
+
+% v7.1.0: Cover image with faded edges (path relative to graphicspath)
+\coverimage{fig_architecture.png}
+
+% v7.1.0: Hebrew signature (uses Guttman Yad font if available)
+\hebrewsignature{יורם}
+
+% v7.1.0: Signature image
+\signatureimage{signature_example.png}
+
+\begin{document}
+
+%% ============================================
+%% Front Matter
+%% ============================================
+\frontmatter
+
+% Title Page - automatically includes:
+%   - Decorative double frame (outer 3pt + inner 1pt)
+%   - Cover image with faded edges (if \coverimage set)
+\maketitle
+
+%% ============================================
+%% Personal Word with Signature
+%% ============================================
+\newpage
+\thispagestyle{empty}
+
+{\LARGE\bfseries מילה אישית}
+\addcontentsline{toc}{chapter}{מילה אישית}
+
+\bigskip
+
+אני שמח להציג בפניכם את גרסה \en{7.1.0} של התבנית האקדמית העברית. גרסה זו כוללת שיפורים משמעותיים בעמוד השער:
+
+\begin{itemize}
+    \item \textbf{מסגרת כפולה מעוטרת} -- מסגרת חיצונית עבה (\en{3pt}) ופנימית דקה (\en{1pt})
+    \item \textbf{תמונת שער עם גבולות דהויים} -- אפקט \en{fading} על ארבעת הצדדים
+    \item \textbf{חתימה בכתב יד} -- שימוש בגופן \en{Guttman Yad} לשם בעברית
+    \item \textbf{תמונת חתימה} -- אפשרות להוסיף תמונת חתימה סרוקה
+\end{itemize}
+
+\vspace{1cm}
+
+% v7.1.0: Signature block - renders Hebrew name in handwriting font
+% Aligned left with 5em offset from margin
+\makesignature
+
+%% ============================================
+%% Table of Contents
+%% ============================================
+\tableofcontents
+
+%% ============================================
+%% Main Matter
+%% ============================================
+\mainmatter
+
+\hebrewchapter{מבוא לתכונות החדשות}
+
+פרק זה מתאר את השימוש בתכונות עמוד השער החדשות בגרסה \en{7.1.0}.
+
+\hebrewsection{פקודות מטא-דאטה}
+
+הפקודות הבאות זמינות בפריאמבל:
+
+\begin{itemize}
+    \item \en{\textbackslash hebrewtitle\{...\}} -- כותרת עברית (חובה)
+    \item \en{\textbackslash englishtitle\{...\}} -- כותרת אנגלית (חובה)
+    \item \en{\textbackslash hebrewsubtitle\{...\}} -- כותרת משנה (אופציונלי)
+    \item \en{\textbackslash hebrewauthor\{...\}} -- שם המחבר (אופציונלי)
+    \item \en{\textbackslash hebrewversion\{...\}} -- גרסה (אופציונלי)
+    \item \en{\textbackslash coverimage\{path\}} -- תמונת שער (אופציונלי, \en{v7.1.0})
+    \item \en{\textbackslash hebrewsignature\{name\}} -- שם בכתב יד (אופציונלי, \en{v7.1.0})
+    \item \en{\textbackslash signatureimage\{path\}} -- תמונת חתימה (אופציונלי, \en{v7.1.0})
+\end{itemize}
+
+\hebrewsection{פקודות רינדור}
+
+\begin{itemize}
+    \item \en{\textbackslash maketitle} -- מרנדר את עמוד השער עם המסגרת
+    \item \en{\textbackslash makesignature} -- מרנדר את בלוק החתימה
+\end{itemize}
+
+\hebrewsection{דוגמת קוד}
+
+\begin{english}
+\begin{verbatim}
+% In preamble:
+\hebrewtitle{כותרת בעברית}
+\englishtitle{English Title}
+\coverimage{images/cover.png}
+\hebrewsignature{יורם}
+\signatureimage{images/signature.png}
+
+% In document:
+\maketitle              % Renders title page with frame
+...
+\makesignature          % Renders signature block
+\end{verbatim}
+\end{english}
+
+\hebrewchapter{גופן כתב יד}
+
+\hebrewsection{גופן \en{Guttman Yad}}
+
+הפקודה \en{\textbackslash hebrewsignature} משתמשת בגופן \en{Guttman Yad} אם הוא מותקן במערכת.
+
+אם הגופן לא מותקן, הטקסט יוצג בגופן \textit{\textbf{נטוי מודגש}} כחלופה.
+
+\hebrewsection{התקנת הגופן}
+
+גופן \en{Guttman Yad} הוא גופן עברי חינמי שניתן להוריד מהאינטרנט. לאחר ההתקנה, הוא יזוהה אוטומטית.
+
+%% ============================================
+%% Back Matter
+%% ============================================
+\backmatter
+
+\end{document}

@@ -1,0 +1,108 @@
+% framedschemapage_example.tex
+% Demonstrates the \framedschemapage command for full-page rotated diagrams
+% Version: 7.2.0
+
+\documentclass[book]{hebrew-academic-template}
+
+% Bibliography
+\addbibresource{example_references.bib}
+
+% Document metadata
+\hebrewtitle{דוגמה לפקודת framedschemapage}
+\englishtitle{Framed Schema Page Example}
+\hebrewauthor{ד"ר סגל יורם}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+% =============================================================================
+\hebrewchapter{מבוא}
+% =============================================================================
+
+פרק זה מדגים את השימוש בפקודה \en{\texttt{\textbackslash framedschemapage}} שנוספה בגרסה \en{7.2.0} של התבנית.
+
+\hebrewsection{מטרת הפקודה}
+
+הפקודה \en{\texttt{\textbackslash framedschemapage}} מיועדת להצגת דיאגרמות גדולות בעמוד מלא:
+\begin{itemize}
+    \item דיאגרמות סכמה של בסיס נתונים
+    \item דיאגרמות ארכיטקטורה
+    \item תרשימי זרימה
+    \item כל תמונה רחבה שיש להציג בכיוון לאורך
+\end{itemize}
+
+\hebrewsection{תחביר הפקודה}
+
+\begin{english}
+\begin{verbatim}
+% Basic usage (default size 0.75\textwidth):
+\framedschemapage{path/to/image.png}
+
+% Custom size:
+\framedschemapage[0.8\textwidth]{path/to/image.png}
+
+% Smaller size:
+\framedschemapage[0.6\textwidth]{path/to/image.png}
+\end{verbatim}
+\end{english}
+
+\hebrewsection{תכונות הפקודה}
+
+\begin{enumerate}
+    \item \textbf{סיבוב אוטומטי} --- הפקודה מסובבת את התמונה ב-\en{90°} נגד כיוון השעון
+    \item \textbf{מיקום מרכזי} --- התמונה ממוקמת במרכז העמוד
+    \item \textbf{מסגרת דקורטיבית} --- מסגרת פשוטה ואלגנטית סביב העמוד
+    \item \textbf{תמיכה ב-\en{RTL}} --- עובדת נכון במסמכים בעברית
+    \item \textbf{עמוד ריק} --- ללא כותרות עליונות ותחתונות
+\end{enumerate}
+
+% =============================================================================
+\hebrewchapter{דוגמה לשימוש}
+% =============================================================================
+
+בעמוד הבא מוצגת דיאגרמת ארכיטקטורה באמצעות הפקודה \en{\texttt{\textbackslash framedschemapage}}.
+
+% Insert the framed schema page
+\framedschemapage{images/fig_architecture.png}
+
+% =============================================================================
+\hebrewchapter{פרטים טכניים}
+% =============================================================================
+
+\hebrewsection{איך זה עובד}
+
+הפקודה משתמשת בטכניקות הבאות:
+\begin{itemize}
+    \item \en{\texttt{\textbackslash clearpage}} --- להבטחת עמוד חדש
+    \item \en{\texttt{\textbackslash thispagestyle\{empty\}}} --- להסרת כותרות
+    \item \en{\texttt{english} environment} --- לטיפול נכון בכיווניות
+    \item \en{\texttt{\textbackslash rotatebox\{-90\}}} --- לסיבוב התמונה
+    \item \en{TikZ overlay} --- לציור המסגרת
+\end{itemize}
+
+\hebrewsection{דוגמה עם גודל מותאם}
+
+ניתן לשנות את גודל התמונה באמצעות הפרמטר האופציונלי:
+
+\begin{english}
+\begin{verbatim}
+% Larger image (80% of text width):
+\framedschemapage[0.8\textwidth]{images/schema.png}
+
+% Smaller image (60% of text width):
+\framedschemapage[0.6\textwidth]{images/schema.png}
+\end{verbatim}
+\end{english}
+
+% Another example with different size
+\framedschemapage[0.65\textwidth]{images/fig_data.png}
+
+% =============================================================================
+\hebrewchapter{סיכום}
+% =============================================================================
+
+הפקודה \en{\texttt{\textbackslash framedschemapage}} מספקת פתרון פשוט ואלגנטי להצגת דיאגרמות גדולות בעמוד מלא, עם תמיכה מלאה במסמכים בעברית.
+
+\end{document}

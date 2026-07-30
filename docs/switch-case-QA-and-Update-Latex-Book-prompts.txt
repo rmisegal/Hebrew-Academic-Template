@@ -1,0 +1,268 @@
+Switch case prompts
+
+
+=========== Common ==========================
+This is a common instraction to all cases that will open the instractions
+You are an expert assistant tasked with providing the highest-quality response possible. Before generating the final answer, conduct an internal reasoning process with utmost analytical rigor:
+
+- Take a deep breath and approach the task calmly and methodically.
+- Identify the core objectives, user's intent, key constraints, context, and any edge cases or potential pitfalls.
+- Break the problem into clear, logical substeps. Think step by step, exploring multiple perspectives or approaches if relevant.
+- Verify assumptions, evaluate logical consistency, and ensure factual accuracy throughout.
+- If essential information is missing, note it internally; make reasonable assumptions only when non-essential, and state them briefly in the response if needed.
+- Consider the most effective format for clarity and usability (e.g., steps, table, examples).
+
+After thorough private reasoning and self-verification for completeness, consistency,
+and precision, produce the final response: accurate, specific, actionable, 
+and well-structured, directly addressing the request without fluff or unnecessary 
+disclaimers.
+
+============== Switch Case Prompt ========================
+
+=====================================
+1. Case you want to learn latex book before starting update relevant chapter
+Your mission is to learn the Hebrew LaTeX book project at the given path before making updates.
+
+STEPS:
+1. First, scan the project structure to identify:
+   - Master/main .tex file(s)
+   - Chapter files (standalone or subfiles)
+   - CLS template file(s)
+   - Images, bibliography, and other resources
+2. Read and understand the existing structure:
+   - How chapters are organized (standalone books vs subfiles)
+   - Which CLS commands and functions are used
+   - Formatting patterns, table styles, code blocks, etc.
+3. Report back what you learned:
+   - Project structure summary
+   - Number of chapters found
+   - Key CLS functions in use
+   - Any issues or inconsistencies noticed
+4. Wait for user instructions on what to update
+
+IMPORTANT RULES:
+- Do NOT compile until user explicitly asks
+- Use ONLY the same CLS functions already in the project
+- Match existing formatting patterns and styles
+- Learn before changing anything
+
+
+
+=====================================
+2. Case you want to create full markdown report on Latex Project content
+Your mission is to analyze the Hebrew LaTeX book project and create a comprehensive markdown report.
+
+STEPS:
+1. Scan the entire project structure at the given path
+2. For each chapter/file, extract and document:
+   - Chapter title (Hebrew and English)
+   - Main sections and subsections
+   - Key topics covered
+   - Tables (count and descriptions)
+   - Figures/images (count and descriptions)
+   - Code blocks (count and languages)
+   - Mathematical formulas (key equations)
+   - Bibliography/citations used
+3. Create a structured markdown report containing:
+   - Project overview (structure, CLS version, total pages estimate)
+   - Chapter-by-chapter summary
+   - Content inventory (tables, figures, code, formulas)
+   - Cross-references map
+   - Identified gaps or areas needing attention
+
+OUTPUT FORMAT:
+Create a markdown file with clear sections, tables for inventories,
+and actionable insights about the project content.
+
+
+=====================================
+3. Case you want to learn the hebrew latex project for verification
+Your mission is to deeply learn the Hebrew LaTeX book project to prepare for verifying updates.
+
+STEPS:
+1. Read and internalize the ENTIRE project:
+   - All chapters from first to last
+   - All appendixes
+   - All tables, figures, and diagrams
+   - All formulas and proofs
+   - All code examples
+   - Bibliography and references
+2. Build a mental map of:
+   - How topics connect across chapters
+   - Key concepts and their explanations
+   - Terminology used consistently
+   - Cross-references between sections
+3. Be prepared to verify updates by checking:
+   - Are all new topics fully explained?
+   - Are there gaps or missing information?
+   - Are there contradictions with existing content?
+   - Is anything now outdated or irrelevant?
+   - Do cross-chapter references still make sense?
+
+VERIFICATION APPROACH:
+When given markdown updates later, compare chapter-by-chapter to ensure
+the book fully reflects all updates without gaps or contradictions.
+
+
+=====================================
+4. Case you want to rerun the qa-table
+Your mission is to run qa-table QA on the Hebrew LaTeX book project.
+
+STEPS:
+1. First, scan the project to identify all chapter files (.tex files)
+2. Count the number of chapters found (N chapters)
+3. Create a todo list with tasks for each qa-table-* skill per chapter:
+   - Skills: qa-table-detect, qa-table-fancy-detect, qa-table-fancy-fix,
+     qa-table-fix-align-to-right, qa-table-fix-alignment, qa-table-fix-captions,
+     qa-table-fix-columns, qa-table-overflow-detect, qa-table-overflow-fix (9 skills)
+   - Total tasks = 9 skills × N chapters
+4. Run each skill on each chapter one by one
+5. Mark each task as done when complete
+6. Report summary of issues found and fixed
+
+DYNAMIC CALCULATION:
+- If book has 5 chapters → 45 tasks (9 × 5)
+- If book has 10 chapters → 90 tasks (9 × 10)
+- Adjust task count based on actual chapters found
+
+
+=====================================
+5. Case you want to rerun the qa-BiDi
+Your mission is to run qa-BiDi QA on the Hebrew LaTeX book project.
+
+STEPS:
+1. First, scan the project to identify all chapter files (.tex files)
+2. Count the number of chapters found (N chapters)
+3. Create a todo list with tasks for each qa-BiDi-* skill per chapter:
+   - Skills: qa-BiDi-detect, qa-BiDi-fix-text, qa-BiDi-fix-numbers,
+     qa-BiDi-fix-tcolorbox, qa-BiDi-fix-sections, qa-BiDi-fix-tikz (6 skills)
+   - Total tasks = 6 skills × N chapters
+4. Run each skill on each chapter one by one
+5. Mark each task as done when complete
+6. Report summary of BiDi issues found and fixed
+
+DYNAMIC CALCULATION:
+- If book has 5 chapters → 30 tasks (6 × 5)
+- If book has 10 chapters → 60 tasks (6 × 10)
+- Adjust task count based on actual chapters found
+  
+=====================================
+6. Case you want to rerun the qa-heb-math-detect on the book
+Your mission is to run qa-heb-math-detect QA on the Hebrew LaTeX book project.
+
+STEPS:
+1. First, scan the project to identify all chapter files (.tex files)
+2. Count the number of chapters found (N chapters)
+3. Create a todo list with 1 task per chapter:
+   - Skill: qa-heb-math-detect (detects Hebrew text in math mode)
+   - Total tasks = N chapters
+4. Run qa-heb-math-detect on each chapter one by one
+5. Mark each task as done when complete
+6. Report summary of Hebrew-in-math issues found
+
+DYNAMIC CALCULATION:
+- If book has 5 chapters → 5 tasks
+- If book has 10 chapters → 10 tasks
+- Adjust task count based on actual chapters found
+
+=====================================
+7. Case you want to rerun the qa-bib (Bibliography QA)
+Your mission is to run qa-bib QA on the Hebrew LaTeX book project.
+
+STEPS:
+1. First, scan the project to identify all chapter files (.tex files)
+2. Count the number of chapters found (N chapters)
+3. Create a todo list with tasks for each qa-bib-* skill per chapter:
+   - Skills: qa-bib-detect, qa-bib-fix-missing (2 skills)
+   - Total tasks = 2 skills × N chapters
+4. Run each skill on each chapter one by one
+5. Mark each task as done when complete
+6. Report summary of bibliography issues found and fixed
+
+DYNAMIC CALCULATION:
+- If book has 5 chapters → 10 tasks (2 × 5)
+- If book has 10 chapters → 20 tasks (2 × 10)
+- Adjust task count based on actual chapters found
+
+=====================================
+8. Case you want to rerun the qa-code (Code Block QA)
+Your mission is to run qa-code QA on the Hebrew LaTeX book project.
+
+STEPS:
+1. First, scan the project to identify all chapter files (.tex files)
+2. Count the number of chapters found (N chapters)
+3. Create a todo list with tasks for each qa-code-* skill per chapter:
+   - Skills: qa-code-detect, qa-code-background-detect, qa-code-fix-background,
+     qa-code-fix-direction, qa-code-fix-emoji, qa-code-fix-encoding (6 skills)
+   - Total tasks = 6 skills × N chapters
+4. Run each skill on each chapter one by one
+5. Mark each task as done when complete
+6. Report summary of code block issues found and fixed
+
+DYNAMIC CALCULATION:
+- If book has 5 chapters → 30 tasks (6 × 5)
+- If book has 10 chapters → 60 tasks (6 × 10)
+- Adjust task count based on actual chapters found
+
+=====================================
+9. Case you want to rerun the qa-img (Image QA)
+Your mission is to run qa-img QA on the Hebrew LaTeX book project.
+
+STEPS:
+1. First, scan the project to identify all chapter files (.tex files)
+2. Count the number of chapters found (N chapters)
+3. Create a todo list with tasks for each qa-img-* skill per chapter:
+   - Skills: qa-img-detect, qa-img-fix-missing, qa-img-fix-paths,
+     qa-img-validate, qa-img-caption-detect, qa-img-caption-fix (6 skills)
+   - Total tasks = 6 skills × N chapters
+4. Run each skill on each chapter one by one
+5. Mark each task as done when complete
+6. Report summary of image issues found and fixed
+
+DYNAMIC CALCULATION:
+- If book has 5 chapters → 30 tasks (6 × 5)
+- If book has 10 chapters → 60 tasks (6 × 10)
+- Adjust task count based on actual chapters found
+
+=====================================
+10. Case you want to rerun the qa-infra (Infrastructure QA)
+Your mission is to run qa-infra QA on the Hebrew LaTeX book project.
+
+NOTE: qa-infra runs at PROJECT LEVEL, not per chapter.
+
+STEPS:
+1. Scan the project structure at the given path
+2. Create a todo list with 6 tasks (one per qa-infra-* skill):
+   - Skills: qa-infra-scan, qa-infra-backup, qa-infra-reorganize,
+     qa-infra-validate, qa-infra-subfiles-detect, qa-infra-subfiles-fix
+   - Total tasks = 6 (fixed, project-level)
+3. Run each skill on the entire project one by one
+4. Mark each task as done when complete
+5. Report summary of infrastructure issues found and fixed
+
+FIXED CALCULATION:
+- Always 6 tasks regardless of chapter count
+- qa-infra checks project structure, not individual chapters
+
+=====================================
+11. Case you want to rerun the qa-typeset (Typesetting/Compilation QA)
+Your mission is to run qa-typeset QA on the Hebrew LaTeX book project.
+
+STEPS:
+1. First, scan the project to identify all chapter files (.tex files)
+2. Count the number of chapters found (N chapters)
+3. Create a todo list with tasks for each qa-typeset-* skill per chapter:
+   - Skills: qa-typeset-detect, qa-typeset-fix-bib-standalone, qa-typeset-fix-float,
+     qa-typeset-fix-hbox, qa-typeset-fix-tikz, qa-typeset-fix-vbox (6 skills)
+   - Total tasks = 6 skills × N chapters
+4. Run each skill on each chapter one by one
+5. Mark each task as done when complete
+6. Report summary of typeset issues found and fixed
+
+DYNAMIC CALCULATION:
+- If book has 5 chapters → 30 tasks (6 × 5)
+- If book has 10 chapters → 60 tasks (6 × 10)
+- Adjust task count based on actual chapters found
+
+=====================================
+	

@@ -1,6 +1,6 @@
 # Hebrew Academic Template
 
-**Version 7.3.6** | July 2026
+**Version 7.4.2** | July 2026
 
 A comprehensive LaTeX class for Hebrew academic documents with seamless English integration, designed for LuaLaTeX with polyglossia and luabidi.
 
@@ -171,6 +171,23 @@ lualatex document.tex
 ```
 
 ## Changelog
+
+### v7.4.2 (2026-07-30)
+- **FIXED**: `\hebrewsubsection` wrote the wrong number to the `.toc` — the chapter component was missing, so a subsection of section 3.4 was listed as `4.1` instead of `3.4.1`, colliding with chapter 4's real section 4.1. The printed body heading was always correct, so the defect stayed invisible until the table of contents was read.
+- Root cause: a regression in the v7.3.1 BiDi fix. To keep the compound number inside one `\textenglish` island, v7.3.1 replaced `\thehebrewsection` (which expands to `chapter.section`) with a bare `\arabic{hebrewsection}`, silently dropping the chapter component.
+- **NEW**: `\hebsubsectionnumber` - expandable helper yielding `chapter.section.subsection` (or `section.subsection` in a chapterless document). Emitted inside a single `\textenglish` island, so the v7.3.1 BiDi fix is preserved.
+- Test coverage added to `examples/expert_example.tex` (renders `2.10.1` / `2.10.2` / `2.10.3`)
+
+### v7.4.1 (2026-07-20)
+- **NEW**: `\hebrewchapternonum{}` - chapter-level heading that does NOT consume a chapter number. Needed for front matter: `\hebrewchapter` uses its own counter, independent of the book class, so `\frontmatter` does not suppress its numbering. A preface set with `\hebrewchapter` took number 1 and pushed the real chapter 1 to 2, silently breaking every `\chapterref`. Additive; no existing behaviour changed.
+
+### v7.4.0 (2026-07-20)
+- **NEW**: `\cartoon[width]{file}{caption}{label}` - places a small illustration in a wrap column at the RTL reading-start (right) edge of the text block. Hebrew text flows alongside it, then resumes the full measure below.
+- **NEW**: `\RequirePackage{wrapfig2}` - used deliberately instead of plain `wrapfig`, which is not BiDi-aware and misplaces the wrap column under luabidi.
+- **NEW**: `\cartoonpath` / `\setcartoonpath{}` - image directory prefix (default `images/cartoons/`)
+- **NEW**: `\cartoonwidth` / `\setcartoonwidth{}` - wrap column width (default `0.32\textwidth`)
+- Measured finding (do not "fix"): the `wrapfigure` placement letter is inverted under RTL, so `\cartoon` hard-codes `{l}` to land on the reading-start (right) edge
+- Version strings brought into lock-step: `\ProvidesClass` and `\clsversion` had disagreed in v7.3.5/v7.3.6
 
 ### v7.3.6 (2026-07-13)
 - **NEW**: `\englishauthor{}` - English author name cover metadata (companion to `\hebrewauthor`)

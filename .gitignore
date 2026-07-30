@@ -17,9 +17,27 @@ nul
 *.bbl
 *.listing
 
+# Additional LaTeX intermediates
+*.acn
+*.glo
+*.ist
+*.nav
+*.snm
+*.vrb
+
 # Backup files
 *.bak
+
+# Temp placeholders
+_nul_to_delete_*.tmp
+
+# Generated knowledge graph (regenerable via graphify)
+graphify-out/
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# Python bytecode
+__pycache__/
+*.py[cod]

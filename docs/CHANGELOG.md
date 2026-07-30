@@ -2,6 +2,122 @@
 
 This document chronicles the development of the Hebrew Academic Template.
 
+## [7.4.2] - 2026-07-30 - TOC Subsection Chapter-Prefix Fix
+
+### Overview
+Fixes a numbering regression in the table of contents. `\hebrewsubsection` wrote the wrong
+number to the `.toc`: the chapter component was missing, so a subsection of section 3.4 was
+listed as `4.1` instead of `3.4.1` — which then collides with chapter 4's real section 4.1.
+The printed body heading was always correct, so the defect stays invisible until somebody
+actually reads the table of contents.
+
+### Root Cause
+A regression introduced by the v7.3.1 BiDi fix. To keep the compound number inside a single
+`\textenglish` island (a bare dot between two LTR runs gets reordered in an RTL line),
+v7.3.1 replaced `\thehebrewsection` — which expands to `chapter.section` — with a bare
+`\arabic{hebrewsection}`. That silently dropped the chapter component. The two requirements,
+a single LTR island and the full compound number, were treated as if they conflicted. They
+do not.
+
+### Added
+- **NEW: `\hebsubsectionnumber`** - expandable helper producing
+  `chapter.section.subsection`, or `section.subsection` in a chapterless document (mirroring
+  `\thehebrewsection`'s own conditional). Emitted inside ONE `\textenglish` island, so the
+  v7.3.1 BiDi fix is preserved.
+
+### Why Expandability Matters
+`\addcontentsline` expands its argument at write time, so `\number\value{...}` freezes the
+correct digits into the `.toc`. A non-expandable or `\protect`ed form would instead be
+re-evaluated when the `.toc` is read back, giving **every** entry the final chapter's
+number. This is why the helper uses `\number\value{...}` rather than `\the...` counters.
+
+### Unchanged
+The body heading (`\subsubsection*{\HebrewSubtitle{...}}`) is untouched — it was already
+correct. Documents that use no `\hebrewsubsection` are unaffected.
+
+### Testing
+New test section in `examples/expert_example.tex` with three subsections and explicit
+PDF-verification notes; they render as `2.10.1` / `2.10.2` / `2.10.3`. All seven examples
+compile with zero errors.
+
+### Detection
+Found by reading the generated TOC of a 49-page Hebrew business plan, where 13 subsections
+across 3 chapters were mis-numbered.
+
+---
+
+## [7.4.1] - 2026-07-20 - Unnumbered Chapter Command
+
+### Overview
+Adds a chapter-level heading that does not consume a chapter number, for front matter.
+Strictly additive — no existing behaviour changed.
+
+### Added
+- **NEW: `\hebrewchapternonum{}`** - chapter-level heading that does NOT step the chapter
+  counter.
+
+### Why It Was Needed
+`\hebrewchapter` uses its own counter, independent of the book class, so `\frontmatter` does
+not suppress its numbering. A preface set with `\hebrewchapter` therefore took number 1 and
+pushed the real chapter 1 to 2, silently breaking every `\chapterref`.
+
+---
+
+## [7.4.0] - 2026-07-20 - Cartoon Wrap Column
+
+### Overview
+Adds a side-illustration wrap column for Hebrew books: a small image anchored to the RTL
+reading-start (right) edge, with text flowing beside it and resuming the full measure
+below. Complements `\hebrewfigure` (full-width float). Strictly additive — no existing
+command, environment or default behaviour changed.
+
+### Added
+- **NEW: `\cartoon[width]{file}{caption}{label}`** - places an illustration in a wrap
+  column at the RTL reading-start edge. Emits `\caption` and `\label`, so figure numbering,
+  `\ref` and the List of Figures all work normally.
+- **NEW: `\setcartoonpath{}` / `\cartoonpath`** - image directory prefix
+  (default `images/cartoons/`), so call sites pass a bare filename.
+- **NEW: `\setcartoonwidth{}` / `\cartoonwidth`** - default column width
+  (default `0.32\textwidth`), retunable book-wide from one place.
+- **NEW: `\RequirePackage{wrapfig2}`** - wrapfig2, not wrapfig: plain wrapfig is not
+  BiDi-aware and misplaces the column under luabidi.
+
+### Measured Finding (do not "correct" this)
+The wrapfigure placement letter is **inverted in RTL**. A two-page probe compiled with
+this class rendered `{r}` on the **LEFT** and `{l}` on the **RIGHT**. `\cartoon` therefore
+hard-codes `{l}` to land on the reading-start (right) edge. This follows the v7.3.5 rule
+that L/R must be measured in the rendered PDF, never assumed from the letter. Changing
+`{l}` to `{r}` would silently move every cartoon in every Hebrew book to the wrong side.
+
+### Page-Bottom Guard
+`\cartoon` measures the scaled image (`\sbox` + `\ht`/`\dp`), adds a caption allowance,
+and issues `\needspace` before opening the column — so a cartoon near the foot of a page
+moves to the next page instead of overprinting the footer. This mirrors the existing
+RULE 6/7 orphan prevention, which already uses needspace for sections. The overflow was
+reproducible in testing before the guard was added.
+
+### Known Limitation (document-level, not fixable in the class)
+The guard prevents bottom-of-page overflow but **cannot** prevent a section heading from
+landing inside a still-active wrap column, which causes the caption and heading to
+collide. Leave enough body text after a `\cartoon` call to close the column before the
+next heading. Observed and documented in `examples/cartoon_example.tex` §3.
+
+### Fixed
+- **Version-string mismatch**: `\ProvidesClass` declared v7.3.5 (2026/07/12) while
+  `\clsversion` returned V7.3.6-2026-07-13. Both now report v7.4.0 / 2026-07-20.
+
+### Added Documentation
+- **NEW: `examples/cartoon_example.tex`** - full worked example: basic usage, placement
+  rules, configuration, width override, the page-break guard, and image preparation
+  requirements (portrait orientation, no baked-in text) with a live counter-example.
+
+### Verification
+- All 12 existing examples compile against v7.4.0.
+- `book_example.pdf` is **23 pages before and after** the change — no layout regression.
+- All three tracked copies of the class (root, `examples/`, `docs/`) synced to v7.4.0.
+
+---
+
 ## [7.3.6] - 2026-07-13 - Capability Superset Merge
 
 ### Overview
