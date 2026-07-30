@@ -620,6 +620,31 @@ This text is inside the \texttt{latin} environment (English alias).
 
 זכויות יוצרים בכותרת התחתונה: \hebfoot{כל הזכויות שמורות - \en{\textcopyright\ Segal}}.
 
+% ==================== v7.4.2 TEST: TOC SUBSECTION CHAPTER PREFIX ====================
+% The TOC entry for a \hebrewsubsection must carry the FULL compound number
+% "chapter.section.subsection", not "section.subsection".
+% Before v7.4.2 the chapter component was dropped in the .toc only (the printed
+% body heading was already correct), so a subsection of section 2.N was listed as
+% "N.1" and collided with a real section of chapter N.
+%
+% VERIFY IN THE PDF (table of contents, not just this page):
+%   - the three entries below appear as 2.X.1 / 2.X.2 / 2.X.3 where X is this
+%     section's number within chapter 2 -- three components, chapter first
+%   - each renders left-to-right (NOT reversed, e.g. never "1.X.2")
+%   - the body headings on this page show the SAME numbers as the TOC entries
+\hebrewsection{בדיקת מספור תת-סעיפים בתוכן העניינים \entoc{v7.4.2 TOC subsection prefix}}
+
+הבדיקה מוודאת שמספר תת-הסעיף בתוכן העניינים כולל את רכיב הפרק.
+
+\hebrewsubsection{תת-סעיף ראשון: \entoc{First Subsection}}
+המספר של תת-סעיף זה חייב להופיע בתוכן העניינים בשלושה רכיבים: פרק, סעיף ותת-סעיף.
+
+\hebrewsubsection{תת-סעיף שני: \entoc{Second Subsection}}
+גם כאן, המספר בתוכן העניינים חייב להיות זהה למספר שמודפס בגוף המסמך.
+
+\hebrewsubsection{תת-סעיף שלישי: \entoc{Third Subsection}}
+תת-סעיף שלישי, לאימות שהמונה מתקדם כראוי ואינו מתאפס.
+
 % ==================== BIBLIOGRAPHY ====================
 
 \newpage

@@ -1,11 +1,127 @@
 % hebrew-academic-template.cls
-% Version 7.3.2 - Article-Mode TOC Page-Number BiDi Fix
-% Date: 2026-06-16
+% Version 7.4.2 - TOC subsection number restored its chapter prefix
+% Date: 2026-07-30
 %
 % A comprehensive LaTeX class for Hebrew academic documents with English integration
 % Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
 %
 % CHANGELOG:
+% v7.4.2 (2026-07-30) - TOC subsection chapter-prefix regression fix
+%   - FIXED: \hebrewsubsection wrote the WRONG number to the .toc: the chapter
+%     component was missing. A subsection of section 3.4 was listed as "4.1"
+%     instead of "3.4.1" - which then COLLIDES with chapter 4's real section 4.1.
+%     The printed body heading was always correct, so the defect is invisible
+%     until someone reads the table of contents.
+%   - Root cause: a regression introduced by the v7.3.1 BiDi fix. To keep the
+%     compound number inside ONE \textenglish island, v7.3.1 replaced
+%     \thehebrewsection (which expands to "chapter.section") with a bare
+%     \arabic{hebrewsection} - silently dropping the chapter component. The two
+%     requirements (single LTR island, full compound number) were treated as if
+%     they conflicted; they do not.
+%   - Solution: NEW \hebsubsectionnumber - an expandable helper producing
+%     "chapter.section.subsection" (or "section.subsection" in a chapterless
+%     document, matching \thehebrewsection's own conditional). It is emitted
+%     inside a SINGLE \textenglish island, so the v7.3.1 fix is preserved.
+%     \number\value{...} is fully expandable, so the digits are frozen into the
+%     .toc at \addcontentsline time rather than re-evaluated at read time
+%     (which would give every entry the LAST chapter's number).
+%   - Body heading (\subsubsection*) is untouched - it was already correct.
+%   - Detected by: reading the generated TOC of a 49-page Hebrew business plan;
+%     13 subsections across 3 chapters were mis-numbered.
+%
+% v7.4.1 (2026-07-20) - Unnumbered chapter command
+%   - NEW: \hebrewchapternonum{} - chapter-level heading that does NOT consume a
+%     chapter number. Needed for front matter: \hebrewchapter uses its own counter,
+%     independent of the book class, so rontmatter does not suppress its numbering.
+%     A preface set with \hebrewchapter took number 1 and pushed the real chapter 1 to
+%     3, silently breaking every \chapterref. Additive; no existing behaviour changed.
+%
+% v7.4.0 (2026-07-20) - Cartoon Wrap Column + version-string alignment
+%   - NEW: \cartoon[width]{file}{caption}{label} - places a small illustration in a wrap
+%     column at the RTL reading-start (RIGHT) edge of the text block. Hebrew text flows
+%     alongside it and then resumes the full measure below it. Intended for side
+%     illustrations/cartoons in Hebrew books; complements \hebrewfigure (full-width float).
+%   - NEW: \RequirePackage{wrapfig2}. wrapfig2 (not wrapfig) is used deliberately: plain
+%     wrapfig is not BiDi-aware and misplaces the wrap column under luabidi.
+%   - NEW: \cartoonpath / \setcartoonpath{} - image directory prefix (default
+%     "images/cartoons/"), so document files pass a bare filename.
+%   - NEW: \cartoonwidth / \setcartoonwidth{} - wrap column width (default 0.32\textwidth),
+%     retunable book-wide from one place instead of per call site.
+%
+%   - MEASURED FINDING (do not "fix" this, it is correct):
+%     The wrapfigure placement letter is INVERTED in RTL. A two-page probe compiled with
+%     this class rendered {r} on the LEFT and {l} on the RIGHT. \cartoon therefore hard-codes
+%     {l} to land on the reading-start (right) edge. This matches the v7.3.5 lesson: BiDi
+%     inverts L/R, so the side was determined by rendering and inspecting the PDF, never by
+%     reading the letter and assuming. Anyone "correcting" {l} to {r} will silently move
+%     every cartoon in every Hebrew book to the wrong side.
+%
+%   - PAGE-BOTTOM GUARD: \cartoon measures the scaled image (\sbox + \ht/\dp) and issues
+%     \needspace for image height + caption allowance before opening the wrap column, so a
+%     cartoon near the foot of a page moves to the next page instead of spilling over the
+%     footer. This mirrors the class's existing RULE 6/7 orphan prevention, which already
+%     uses needspace for sections. Without the guard the overflow is reproducible: it was
+%     observed in the v7.4.0 acceptance test before the guard was added.
+%
+%   - PLACEMENT CAVEAT (document-level, the class cannot enforce it):
+%     the \cartoon call must sit BETWEEN paragraphs, on its own line, immediately before
+%     the paragraph that should wrap around it - this is wrapfig's documented requirement.
+%     Do not issue it inside a paragraph, directly after a heading, or adjacent to a list
+%     or another float.
+%
+%   - FIXED: version-string mismatch. \ProvidesClass declared v7.3.5 (2026/07/12) while
+%     \clsversion returned V7.3.6-2026-07-13. Both now report v7.4.0 / 2026-07-20, so
+%     qa-cls-version has a single consistent source of truth.
+%
+%   - Backward compatibility: strictly additive. No existing command, environment or
+%     default behaviour was altered.
+%
+% v7.3.6 (2026-07-13) - Capability Superset Merge (cross-C:\25D CLS alignment)
+%   - NEW: \englishauthor{} - English author name cover metadata (companion to \hebrewauthor).
+%   - NEW: \coverdisclaimer{} - optional disclaimer line rendered (centered, italic) under the
+%     title on the cover page. Empty by default; 100% backward compatible.
+%   - NEW: ltrblock environment - centered block wrapper (companion to inline \ltr{}).
+%   - RESTORED: \hebtextmath{} - Hebrew text inside math mode (\text{\texthebrew{#1}}); this
+%     command shipped in v1.0 but was dropped in later versions. Distinct from \hebmath (which
+%     forces \textdir TRT); \hebtextmath is the lightweight amsmath \text wrapper.
+%   - These four were discovered in older/variant CLS copies elsewhere under C:\25D and merged
+%     so the canonical class is a strict superset. See docs/CLS-ALIGNMENT-REPORT.md.
+%
+% v7.3.5 (2026-07-12) - Colored-Box List-Label Frame Overflow Fix (QA-detected via qa-typeset, PDF-geometry-measured)
+%   - FIXED: enumerate NUMBERS / itemize BULLETS inside colored boxes overflowed the
+%     RTL reading-start (right) frame edge by ~2-4pt — the label hangs outward toward
+%     the start margin, and the v7.3.3 in-box \setlist set only leftmargin, leaving the
+%     start (right) side with no clearance for the hanging label. Visible in the book on
+%     pages 80/95/96 (README exercisebox numbers, notebox bullets).
+%   - Diagnosis was done by MEASURING the label glyph bbox vs. the tcolorbox fill rect in
+%     the rendered PDF (not by eyeballing L/R, which BiDi inverts): labels reached x1=473.6
+%     while the frame ended at x1=470.5.
+%   - Solution: the public box wrapper environments now add rightmargin=1.6em to the in-box
+%     \setlist{leftmargin=1.4em,rightmargin=1.6em}, pulling the hanging label off the start
+%     frame edge. Re-measured: labels now sit 17.4pt inside the frame. Numbers/bullets are
+%     unchanged in side (correct RTL start side) — only the overflow is removed.
+%
+% v7.3.4 (2026-07-12) - \enpath Inline RTL Justification Fix (QA-detected via qa-BiDi, rendered-verified)
+%   - FIXED: an inline \enpath{...} token (README.md, config/, PLAN, ...) inside a
+%     running Hebrew paragraph was thrown to the LEFT with a large inter-word gap,
+%     so the line read as left-aligned/broken instead of justified. Visible e.g. in
+%     section 9.4.1 of the police-thief guidelines book.
+%   - Root cause: \enpath used \LTR{#1} = a hard \textdir TLT directional isolate,
+%     which cannot stretch, so RTL justification pushed the token to the frame edge.
+%   - Solution: \enpath now uses \textenglish{#1} (polyglossia LTR language switch) +
+%     \courierfont. Still LTR + monospace + hyphen-safe (verified with paths like
+%     config/game-rules.toml), but the line justifies normally.
+%
+% v7.3.3 (2026-07-12) - Colored-Box Inner Padding + In-Box List Margins (QA-detected via qa-typeset/qa-BiDi)
+%   - FIXED: text in colored boxes (notebox/warningbox/examplebox/exercisebox/formulabox/
+%     codebox/definition) touched or overflowed the frame, especially itemize/enumerate
+%     content — the boxes set no inner padding (inherited tcolorbox defaults) and the global
+%     \setlist leftmargin=2em pushed list content against the frame.
+%   - Solution: the seven NAME@inner \newtcolorbox defs now set explicit inner padding
+%     (left=3mm,right=3mm,top=2mm,bottom=2mm,boxsep=1mm); the public wrapper environments
+%     add a reduced in-box \setlist{leftmargin=1.4em} so lists clear the frame.
+%   - No color/geometry changes otherwise; body text and titles are unaffected.
+%
 % v7.3.2 (2026-06-16) - Article-Mode TOC Page-Number BiDi Fix (QA-detected via qa-cls-toc-detect)
 %   - FIXED: In article mode, two-digit TOC page numbers rendered reversed in the
 %     RTL table of contents (page 10 displayed as "01", 12 as "21", 13 as "31", ...).
@@ -475,11 +591,12 @@
 % - PDF bookmark support with proper hyperref integration
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hebrew-academic-template}[2026/06/16 v7.3.2 Hebrew Academic Template - Article-Mode TOC Page-Number BiDi Fix]
+\ProvidesClass{hebrew-academic-template}[2026/07/30 v7.4.2 Hebrew Academic Template - TOC Subsection Chapter-Prefix Fix]
 
 % ==================== VERSION INFORMATION ====================
 % Version command - defined early for programmatic access
-\newcommand{\clsversion}{V7.3.2-2026-06-16}
+% v7.4.0: kept in lock-step with \ProvidesClass above (they disagreed in v7.3.5/v7.3.6)
+\newcommand{\clsversion}{V7.4.2-2026-07-30}
 
 % ==================== CLASS OPTIONS ====================
 % 'book' option - enables full book class with chapters, frontmatter, etc.
@@ -568,6 +685,11 @@
 % TikZ packages for diagrams
 \RequirePackage{tikz-cd}
 \usetikzlibrary{fadings}  % v7.1.0: Required for cover image faded edges
+
+% v7.4.0: Wrap column for side illustrations (see \cartoon).
+% wrapfig2, NOT wrapfig: plain wrapfig is not BiDi-aware and misplaces the column
+% under luabidi. Placement letter is inverted in RTL - see the v7.4.0 changelog note.
+\RequirePackage{wrapfig2}
 
 % Hyperref for PDF bookmarks and links
 \RequirePackage[unicode, pdfencoding=auto, bookmarks=true, colorlinks=true, linkcolor=blue, citecolor=red, urlcolor=blue]{hyperref}
@@ -864,6 +986,24 @@
   \edef\@currentlabel{\hcchapternum}%
   \label{#1}%
 }
+
+% v7.4.1: UNNUMBERED chapter, for front matter (preface, executive summary,
+% summary) and any chapter-level unit that must not consume a chapter number.
+%
+% WHY THIS EXISTS: \hebrewchapter uses its own {hebrewchapter} counter, which is
+% independent of the book class's \chapter. Consequently \frontmatter does NOT
+% suppress its numbering, and a preface typeset with \hebrewchapter takes number
+% 1 - pushing the book's real first chapter to 3 and silently breaking every
+% \chapterref{n} written against the intended numbering. Observed in a real
+% build before this command was added.
+%
+% USAGE: \hebrewchapternonum{פתח דבר: \entoc{Preface}}
+\newcommand{\hebrewchapternonum}[1]{%
+  \clearpage%
+  \section*{\texthebrew{#1}}%
+  \phantomsection% CRITICAL - PDF bookmarks
+  \addcontentsline{toc}{section}{\texthebrew{#1}}%
+}
 \makeatother
 
 % English text in TOC - forces LTR direction for English text in mixed Hebrew/English titles
@@ -951,6 +1091,19 @@
 \newcounter{hebrewsubsection}[hebrewsection]
 % v5.13.0: Explicit definition with \textenglish{} for BiDi
 \renewcommand{\thehebrewsubsection}{\textenglish{\arabic{hebrewsubsection}}}
+% v7.4.2: Compound subsection number for the TOC entry.
+% Produces "chapter.section.subsection", or "section.subsection" when the
+% document uses no chapters - mirroring \thehebrewsection's own conditional.
+% MUST stay fully expandable: \addcontentsline expands its argument at write
+% time, so \number\value{...} freezes the correct digits into the .toc. A
+% non-expandable (or \protect'ed) form would be re-evaluated when the .toc is
+% read back, giving EVERY entry the final chapter's number.
+% Emitted inside ONE \textenglish island by the caller, preserving the v7.3.1
+% BiDi fix (a bare dot between two LTR runs gets reordered in an RTL line).
+\newcommand{\hebsubsectionnumber}{%
+  \ifnum\value{hebrewchapter}>0 \number\value{hebrewchapter}.\fi
+  \number\value{hebrewsection}.\number\value{hebrewsubsection}%
+}
 \newcommand{\hebrewsubsection}[1]{%
   \par\needspace{4\baselineskip}% v5.9.0: Orphan prevention - 4 lines minimum
   \vspace{0.8em}% v5.9.0: EXACT space before subsection (~10pt)
@@ -959,7 +1112,9 @@
   \phantomsection% CRITICAL - Added for PDF bookmarks
   % v7.3.1: Wrap compound number in a SINGLE \textenglish island so the dot
   % does not flip between two LTR runs in the RTL TOC line (was rendering "1.2" as "2.1")
-  \addcontentsline{toc}{subsubsection}{\protect\numberline{\protect\textenglish{\arabic{hebrewsection}.\arabic{hebrewsubsection}}}\texthebrew{#1}}%
+  % v7.4.2: use \hebsubsectionnumber so the chapter component is not dropped
+  % (was "4.1" for a subsection of section 3.4; now "3.4.1")
+  \addcontentsline{toc}{subsubsection}{\protect\numberline{\protect\textenglish{\hebsubsectionnumber}}\texthebrew{#1}}%
   % v5.13.0: Sync BOTH subsection AND subsubsection counters for standard commands
   \setcounter{subsection}{\value{hebrewsubsection}}% Sync subsection counter
   \setcounter{subsubsection}{0}% Reset subsubsection for new subsection
@@ -1743,6 +1898,11 @@
   \text{\begingroup\selectlanguage{hebrew}\textdir TRT #1\endgroup}%
 }
 
+% v7.3.6: Lightweight Hebrew text inside math mode (amsmath \text wrapper).
+% Shipped in v1.0, dropped in later versions, restored during C:\25D CLS alignment.
+% Usage: $x = \hebtextmath{ערך}$  (no explicit \textdir; relies on polyglossia + \text)
+\newcommand{\hebtextmath}[1]{\text{\texthebrew{#1}}}
+
 % Alternative: Hebrew subscript in math (e.g., x_{\hebsub{עברי}})
 \newcommand{\hebsub}[1]{%
   \text{\scriptsize\begingroup\selectlanguage{hebrew}\textdir TRT #1\endgroup}%
@@ -1768,6 +1928,15 @@
   R\textsuperscript{2}%
 }
 
+% v7.3.6: Centered block wrapper (companion to the inline \ltr{} command).
+% Restored from older C:\25D CLS copies during alignment. Usage:
+%   \begin{ltrblock} ... \end{ltrblock}
+\newenvironment{ltrblock}{%
+  \par\begin{center}%
+}{%
+  \end{center}\par%
+}
+
 %% ==================== TITLE PAGE COMMANDS ====================
 % v7.1.0: Enhanced cover page with decorative frame, cover image, and signature support
 %
@@ -1789,10 +1958,14 @@
 \newcommand{\englishtitle}[1]{\def\@englishtitle{#1}}
 \newcommand{\hebrewsubtitle}[1]{\def\@hebrewsubtitle{#1}}
 \newcommand{\hebrewauthor}[1]{\def\@hebrewauthor{#1}}
+\newcommand{\englishauthor}[1]{\def\@englishauthor{#1}}% v7.3.6: English author cover metadata
 \newcommand{\hebrewversion}[1]{\def\@hebrewversion{#1}}
 \newcommand{\coverimage}[1]{\def\@coverimage{#1}}
 \newcommand{\hebrewsignature}[1]{\def\@hebrewsignature{#1}}
 \newcommand{\signatureimage}[1]{\def\@signatureimage{#1}}
+% v7.3.6: optional cover-page disclaimer (empty by default, rendered under the title)
+\newcommand{\@coverdisclaimer}{}
+\newcommand{\coverdisclaimer}[1]{\def\@coverdisclaimer{#1}}
 
 % Signature block command - renders Hebrew name in handwriting font + signature image
 % Aligned to left margin, Hebrew name centered above image
@@ -1840,6 +2013,10 @@
       \ifdefined\@hebrewsubtitle%
         \vskip 0.5em%
         {\large \texthebrew{\@hebrewsubtitle} \par}%
+      \fi%
+      \ifx\@coverdisclaimer\@empty\else% v7.3.6: optional disclaimer line
+        \vskip 0.5em%
+        {\small\itshape \texthebrew{\@coverdisclaimer} \par}%
       \fi%
       \vskip 3em%
       \ifdefined\@hebrewauthor%
@@ -1920,6 +2097,72 @@
     #2%
     \caption{#3}%
   \end{figure}%
+}
+
+%% ==================== CARTOON WRAP COLUMN (v7.4.0) ====================
+% Places a small illustration in a wrap column at the RTL reading-start (RIGHT) edge.
+% Hebrew text flows beside it, then resumes the full measure below it.
+%
+% USAGE:
+%   \cartoon{filename}{כותרת בעברית}{fig:label}
+%   \cartoon[0.4\textwidth]{filename}{כותרת בעברית}{fig:label}   % width override
+%
+% Configuration (preamble or main.tex):
+%   \setcartoonpath{images/cartoons/}   - image directory prefix (note trailing slash)
+%   \setcartoonwidth{0.32\textwidth}    - default wrap column width, book-wide
+%
+% CRITICAL - the {l} below is CORRECT and deliberate.
+% wrapfigure's placement letter is INVERTED under luabidi: a probe compiled with this
+% class rendered {r} on the LEFT and {l} on the RIGHT. {l} is what puts the cartoon on
+% the reading-start (right) edge of a Hebrew document. Determined by rendering the PDF
+% and inspecting it, per the v7.3.5 rule that L/R must be measured and never assumed.
+% Changing {l} to {r} moves every cartoon in every Hebrew book to the wrong side.
+%
+% PLACEMENT - the call must sit BETWEEN paragraphs, on its own line, immediately
+% before the paragraph it should wrap into:
+%
+%     ...end of the previous paragraph.
+%
+%     \cartoon{file}{caption}{fig:label}
+%     The paragraph that wraps around the cartoon starts here...
+%
+% This is wrapfig's documented requirement. A wrapfigure issued INSIDE a paragraph
+% may render acceptably by luck but is not supported and breaks unpredictably.
+% Also avoid placing it directly after a heading or adjacent to a list or float.
+%
+% PAGE-BOTTOM PROTECTION (v7.4.0): the command measures the scaled image and calls
+% \needspace for image height + caption allowance, so a cartoon that would not fit in
+% the remaining page moves to the next page instead of spilling over the footer.
+% Without this guard the image overflows the bottom margin - observed in testing.
+
+\newcommand{\cartoonpath}{images/cartoons/}
+\newcommand{\setcartoonpath}[1]{\renewcommand{\cartoonpath}{#1}}
+
+\newcommand{\cartoonwidth}{0.32\textwidth}
+\newcommand{\setcartoonwidth}[1]{\renewcommand{\cartoonwidth}{#1}}
+
+% Inner padding between the wrap column edge and the image itself
+\newcommand{\cartoonpad}{1em}
+
+% Vertical allowance reserved for the caption when testing for remaining page space
+\newcommand{\cartooncaptionallowance}{4\baselineskip}
+
+% Scratch box/length used to measure the scaled image before placing it
+\newsavebox{\cartoonbox}
+\newlength{\cartoonneeded}
+
+\newcommand{\cartoon}[4][\cartoonwidth]{%
+  % Measure the image at its final scaled size
+  \sbox{\cartoonbox}{\includegraphics[width=\dimexpr#1-\cartoonpad\relax]{\cartoonpath#2}}%
+  \setlength{\cartoonneeded}{\dimexpr\ht\cartoonbox+\dp\cartoonbox+\cartooncaptionallowance\relax}%
+  % Break the page rather than let the wrap column overflow the bottom margin
+  \par\needspace{\cartoonneeded}%
+  \begin{wrapfigure}{l}{#1}%
+    \centering%
+    \usebox{\cartoonbox}%
+    \caption{#3}%
+    \label{#4}%
+  \end{wrapfigure}%
 }
 
 % Command for inline code with proper font
@@ -2039,6 +2282,7 @@
 \newtcolorbox{notebox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=yellow!10,
   colframe=yellow!50!black,
   fonttitle=\bfseries,
@@ -2051,6 +2295,7 @@
 \newtcolorbox{warningbox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=red!5,
   colframe=red!70!black,
   fonttitle=\bfseries,
@@ -2063,6 +2308,7 @@
 \newtcolorbox{examplebox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=blue!5,
   colframe=blue!50!black,
   fonttitle=\bfseries,
@@ -2075,6 +2321,7 @@
 \newtcolorbox{exercisebox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=orange!5,
   colframe=orange!70!black,
   fonttitle=\bfseries,
@@ -2087,6 +2334,7 @@
 \newtcolorbox{formulabox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=green!5,
   colframe=green!50!black,
   fonttitle=\bfseries,
@@ -2099,6 +2347,7 @@
 \newtcolorbox{codebox@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=codegray,
   colframe=gray!50,
   fonttitle=\bfseries\ttfamily,
@@ -2111,27 +2360,27 @@
 % BiDi-safe wrapper environments
 % Force LTR for box drawing, RTL for content inside
 \newenvironment{notebox}[1][]
-  {\begin{english}\begin{notebox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{notebox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{notebox@inner}\end{english}}
 
 \newenvironment{warningbox}[1][]
-  {\begin{english}\begin{warningbox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{warningbox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{warningbox@inner}\end{english}}
 
 \newenvironment{examplebox}[1][]
-  {\begin{english}\begin{examplebox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{examplebox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{examplebox@inner}\end{english}}
 
 \newenvironment{exercisebox}[1][]
-  {\begin{english}\begin{exercisebox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{exercisebox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{exercisebox@inner}\end{english}}
 
 \newenvironment{formulabox}[1][]
-  {\begin{english}\begin{formulabox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{formulabox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{formulabox@inner}\end{english}}
 
 \newenvironment{codebox}[1][]
-  {\begin{english}\begin{codebox@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{codebox@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{codebox@inner}\end{english}}
 
 %% ==================== CODE LISTING FONT SUPPORT ====================
@@ -2143,8 +2392,13 @@
 % Command for paths/filenames with hyphens in captions and text
 % Usage: caption={\enpath{/mnt/user-data}} or caption={\enpath{Fork-Join}}
 % Made robust to work in moving arguments like lstlisting captions
+% v7.3.4: use \textenglish (polyglossia LTR language switch) instead of the hard
+% \LTR (\textdir TLT) directional isolate. The isolate broke RTL justification —
+% an inline \enpath token in a running Hebrew paragraph was thrown to the left
+% with a large gap (line looked left-aligned). \textenglish is still LTR and
+% keeps \courierfont + hyphen handling, but lets the line justify normally.
 \DeclareRobustCommand{\enpath}[1]{%
-  {\courierfont\LTR{#1}}%
+  {\courierfont\textenglish{#1}}%
 }
 
 %% ==================== COMPATIBILITY ENVIRONMENTS ====================
@@ -2159,6 +2413,7 @@
 \newtcolorbox{definition@inner}[1][]{%
   enhanced,
   breakable,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, boxsep=1mm,
   colback=blue!5,
   colframe=blue!40!black,
   fonttitle=\bfseries,
@@ -2168,7 +2423,7 @@
   boxrule=1pt
 }
 \newenvironment{definition}[1][]
-  {\begin{english}\begin{definition@inner}[#1]\selectlanguage{hebrew}}
+  {\begin{english}\begin{definition@inner}[#1]\selectlanguage{hebrew}\setlist{leftmargin=1.4em,rightmargin=1.6em}}
   {\end{definition@inner}\end{english}}
 
 % abstract environment for book mode (title-page style abstract)

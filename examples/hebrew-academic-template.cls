@@ -1,11 +1,81 @@
 % hebrew-academic-template.cls
-% Version 7.3.6 - Capability Superset Merge (englishauthor, coverdisclaimer, ltrblock, hebtextmath)
-% Date: 2026-07-13
+% Version 7.4.2 - TOC subsection number restored its chapter prefix
+% Date: 2026-07-30
 %
 % A comprehensive LaTeX class for Hebrew academic documents with English integration
 % Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
 %
 % CHANGELOG:
+% v7.4.2 (2026-07-30) - TOC subsection chapter-prefix regression fix
+%   - FIXED: \hebrewsubsection wrote the WRONG number to the .toc: the chapter
+%     component was missing. A subsection of section 3.4 was listed as "4.1"
+%     instead of "3.4.1" - which then COLLIDES with chapter 4's real section 4.1.
+%     The printed body heading was always correct, so the defect is invisible
+%     until someone reads the table of contents.
+%   - Root cause: a regression introduced by the v7.3.1 BiDi fix. To keep the
+%     compound number inside ONE \textenglish island, v7.3.1 replaced
+%     \thehebrewsection (which expands to "chapter.section") with a bare
+%     \arabic{hebrewsection} - silently dropping the chapter component. The two
+%     requirements (single LTR island, full compound number) were treated as if
+%     they conflicted; they do not.
+%   - Solution: NEW \hebsubsectionnumber - an expandable helper producing
+%     "chapter.section.subsection" (or "section.subsection" in a chapterless
+%     document, matching \thehebrewsection's own conditional). It is emitted
+%     inside a SINGLE \textenglish island, so the v7.3.1 fix is preserved.
+%     \number\value{...} is fully expandable, so the digits are frozen into the
+%     .toc at \addcontentsline time rather than re-evaluated at read time
+%     (which would give every entry the LAST chapter's number).
+%   - Body heading (\subsubsection*) is untouched - it was already correct.
+%   - Detected by: reading the generated TOC of a 49-page Hebrew business plan;
+%     13 subsections across 3 chapters were mis-numbered.
+%
+% v7.4.1 (2026-07-20) - Unnumbered chapter command
+%   - NEW: \hebrewchapternonum{} - chapter-level heading that does NOT consume a
+%     chapter number. Needed for front matter: \hebrewchapter uses its own counter,
+%     independent of the book class, so rontmatter does not suppress its numbering.
+%     A preface set with \hebrewchapter took number 1 and pushed the real chapter 1 to
+%     3, silently breaking every \chapterref. Additive; no existing behaviour changed.
+%
+% v7.4.0 (2026-07-20) - Cartoon Wrap Column + version-string alignment
+%   - NEW: \cartoon[width]{file}{caption}{label} - places a small illustration in a wrap
+%     column at the RTL reading-start (RIGHT) edge of the text block. Hebrew text flows
+%     alongside it and then resumes the full measure below it. Intended for side
+%     illustrations/cartoons in Hebrew books; complements \hebrewfigure (full-width float).
+%   - NEW: \RequirePackage{wrapfig2}. wrapfig2 (not wrapfig) is used deliberately: plain
+%     wrapfig is not BiDi-aware and misplaces the wrap column under luabidi.
+%   - NEW: \cartoonpath / \setcartoonpath{} - image directory prefix (default
+%     "images/cartoons/"), so document files pass a bare filename.
+%   - NEW: \cartoonwidth / \setcartoonwidth{} - wrap column width (default 0.32\textwidth),
+%     retunable book-wide from one place instead of per call site.
+%
+%   - MEASURED FINDING (do not "fix" this, it is correct):
+%     The wrapfigure placement letter is INVERTED in RTL. A two-page probe compiled with
+%     this class rendered {r} on the LEFT and {l} on the RIGHT. \cartoon therefore hard-codes
+%     {l} to land on the reading-start (right) edge. This matches the v7.3.5 lesson: BiDi
+%     inverts L/R, so the side was determined by rendering and inspecting the PDF, never by
+%     reading the letter and assuming. Anyone "correcting" {l} to {r} will silently move
+%     every cartoon in every Hebrew book to the wrong side.
+%
+%   - PAGE-BOTTOM GUARD: \cartoon measures the scaled image (\sbox + \ht/\dp) and issues
+%     \needspace for image height + caption allowance before opening the wrap column, so a
+%     cartoon near the foot of a page moves to the next page instead of spilling over the
+%     footer. This mirrors the class's existing RULE 6/7 orphan prevention, which already
+%     uses needspace for sections. Without the guard the overflow is reproducible: it was
+%     observed in the v7.4.0 acceptance test before the guard was added.
+%
+%   - PLACEMENT CAVEAT (document-level, the class cannot enforce it):
+%     the \cartoon call must sit BETWEEN paragraphs, on its own line, immediately before
+%     the paragraph that should wrap around it - this is wrapfig's documented requirement.
+%     Do not issue it inside a paragraph, directly after a heading, or adjacent to a list
+%     or another float.
+%
+%   - FIXED: version-string mismatch. \ProvidesClass declared v7.3.5 (2026/07/12) while
+%     \clsversion returned V7.3.6-2026-07-13. Both now report v7.4.0 / 2026-07-20, so
+%     qa-cls-version has a single consistent source of truth.
+%
+%   - Backward compatibility: strictly additive. No existing command, environment or
+%     default behaviour was altered.
+%
 % v7.3.6 (2026-07-13) - Capability Superset Merge (cross-C:\25D CLS alignment)
 %   - NEW: \englishauthor{} - English author name cover metadata (companion to \hebrewauthor).
 %   - NEW: \coverdisclaimer{} - optional disclaimer line rendered (centered, italic) under the
@@ -521,11 +591,12 @@
 % - PDF bookmark support with proper hyperref integration
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hebrew-academic-template}[2026/07/12 v7.3.5 Hebrew Academic Template - Colored-Box List-Label Frame Overflow Fix]
+\ProvidesClass{hebrew-academic-template}[2026/07/30 v7.4.2 Hebrew Academic Template - TOC Subsection Chapter-Prefix Fix]
 
 % ==================== VERSION INFORMATION ====================
 % Version command - defined early for programmatic access
-\newcommand{\clsversion}{V7.3.6-2026-07-13}
+% v7.4.0: kept in lock-step with \ProvidesClass above (they disagreed in v7.3.5/v7.3.6)
+\newcommand{\clsversion}{V7.4.2-2026-07-30}
 
 % ==================== CLASS OPTIONS ====================
 % 'book' option - enables full book class with chapters, frontmatter, etc.
@@ -614,6 +685,11 @@
 % TikZ packages for diagrams
 \RequirePackage{tikz-cd}
 \usetikzlibrary{fadings}  % v7.1.0: Required for cover image faded edges
+
+% v7.4.0: Wrap column for side illustrations (see \cartoon).
+% wrapfig2, NOT wrapfig: plain wrapfig is not BiDi-aware and misplaces the column
+% under luabidi. Placement letter is inverted in RTL - see the v7.4.0 changelog note.
+\RequirePackage{wrapfig2}
 
 % Hyperref for PDF bookmarks and links
 \RequirePackage[unicode, pdfencoding=auto, bookmarks=true, colorlinks=true, linkcolor=blue, citecolor=red, urlcolor=blue]{hyperref}
@@ -910,6 +986,24 @@
   \edef\@currentlabel{\hcchapternum}%
   \label{#1}%
 }
+
+% v7.4.1: UNNUMBERED chapter, for front matter (preface, executive summary,
+% summary) and any chapter-level unit that must not consume a chapter number.
+%
+% WHY THIS EXISTS: \hebrewchapter uses its own {hebrewchapter} counter, which is
+% independent of the book class's \chapter. Consequently \frontmatter does NOT
+% suppress its numbering, and a preface typeset with \hebrewchapter takes number
+% 1 - pushing the book's real first chapter to 3 and silently breaking every
+% \chapterref{n} written against the intended numbering. Observed in a real
+% build before this command was added.
+%
+% USAGE: \hebrewchapternonum{פתח דבר: \entoc{Preface}}
+\newcommand{\hebrewchapternonum}[1]{%
+  \clearpage%
+  \section*{\texthebrew{#1}}%
+  \phantomsection% CRITICAL - PDF bookmarks
+  \addcontentsline{toc}{section}{\texthebrew{#1}}%
+}
 \makeatother
 
 % English text in TOC - forces LTR direction for English text in mixed Hebrew/English titles
@@ -997,6 +1091,19 @@
 \newcounter{hebrewsubsection}[hebrewsection]
 % v5.13.0: Explicit definition with \textenglish{} for BiDi
 \renewcommand{\thehebrewsubsection}{\textenglish{\arabic{hebrewsubsection}}}
+% v7.4.2: Compound subsection number for the TOC entry.
+% Produces "chapter.section.subsection", or "section.subsection" when the
+% document uses no chapters - mirroring \thehebrewsection's own conditional.
+% MUST stay fully expandable: \addcontentsline expands its argument at write
+% time, so \number\value{...} freezes the correct digits into the .toc. A
+% non-expandable (or \protect'ed) form would be re-evaluated when the .toc is
+% read back, giving EVERY entry the final chapter's number.
+% Emitted inside ONE \textenglish island by the caller, preserving the v7.3.1
+% BiDi fix (a bare dot between two LTR runs gets reordered in an RTL line).
+\newcommand{\hebsubsectionnumber}{%
+  \ifnum\value{hebrewchapter}>0 \number\value{hebrewchapter}.\fi
+  \number\value{hebrewsection}.\number\value{hebrewsubsection}%
+}
 \newcommand{\hebrewsubsection}[1]{%
   \par\needspace{4\baselineskip}% v5.9.0: Orphan prevention - 4 lines minimum
   \vspace{0.8em}% v5.9.0: EXACT space before subsection (~10pt)
@@ -1005,7 +1112,9 @@
   \phantomsection% CRITICAL - Added for PDF bookmarks
   % v7.3.1: Wrap compound number in a SINGLE \textenglish island so the dot
   % does not flip between two LTR runs in the RTL TOC line (was rendering "1.2" as "2.1")
-  \addcontentsline{toc}{subsubsection}{\protect\numberline{\protect\textenglish{\arabic{hebrewsection}.\arabic{hebrewsubsection}}}\texthebrew{#1}}%
+  % v7.4.2: use \hebsubsectionnumber so the chapter component is not dropped
+  % (was "4.1" for a subsection of section 3.4; now "3.4.1")
+  \addcontentsline{toc}{subsubsection}{\protect\numberline{\protect\textenglish{\hebsubsectionnumber}}\texthebrew{#1}}%
   % v5.13.0: Sync BOTH subsection AND subsubsection counters for standard commands
   \setcounter{subsection}{\value{hebrewsubsection}}% Sync subsection counter
   \setcounter{subsubsection}{0}% Reset subsubsection for new subsection
@@ -1988,6 +2097,72 @@
     #2%
     \caption{#3}%
   \end{figure}%
+}
+
+%% ==================== CARTOON WRAP COLUMN (v7.4.0) ====================
+% Places a small illustration in a wrap column at the RTL reading-start (RIGHT) edge.
+% Hebrew text flows beside it, then resumes the full measure below it.
+%
+% USAGE:
+%   \cartoon{filename}{כותרת בעברית}{fig:label}
+%   \cartoon[0.4\textwidth]{filename}{כותרת בעברית}{fig:label}   % width override
+%
+% Configuration (preamble or main.tex):
+%   \setcartoonpath{images/cartoons/}   - image directory prefix (note trailing slash)
+%   \setcartoonwidth{0.32\textwidth}    - default wrap column width, book-wide
+%
+% CRITICAL - the {l} below is CORRECT and deliberate.
+% wrapfigure's placement letter is INVERTED under luabidi: a probe compiled with this
+% class rendered {r} on the LEFT and {l} on the RIGHT. {l} is what puts the cartoon on
+% the reading-start (right) edge of a Hebrew document. Determined by rendering the PDF
+% and inspecting it, per the v7.3.5 rule that L/R must be measured and never assumed.
+% Changing {l} to {r} moves every cartoon in every Hebrew book to the wrong side.
+%
+% PLACEMENT - the call must sit BETWEEN paragraphs, on its own line, immediately
+% before the paragraph it should wrap into:
+%
+%     ...end of the previous paragraph.
+%
+%     \cartoon{file}{caption}{fig:label}
+%     The paragraph that wraps around the cartoon starts here...
+%
+% This is wrapfig's documented requirement. A wrapfigure issued INSIDE a paragraph
+% may render acceptably by luck but is not supported and breaks unpredictably.
+% Also avoid placing it directly after a heading or adjacent to a list or float.
+%
+% PAGE-BOTTOM PROTECTION (v7.4.0): the command measures the scaled image and calls
+% \needspace for image height + caption allowance, so a cartoon that would not fit in
+% the remaining page moves to the next page instead of spilling over the footer.
+% Without this guard the image overflows the bottom margin - observed in testing.
+
+\newcommand{\cartoonpath}{images/cartoons/}
+\newcommand{\setcartoonpath}[1]{\renewcommand{\cartoonpath}{#1}}
+
+\newcommand{\cartoonwidth}{0.32\textwidth}
+\newcommand{\setcartoonwidth}[1]{\renewcommand{\cartoonwidth}{#1}}
+
+% Inner padding between the wrap column edge and the image itself
+\newcommand{\cartoonpad}{1em}
+
+% Vertical allowance reserved for the caption when testing for remaining page space
+\newcommand{\cartooncaptionallowance}{4\baselineskip}
+
+% Scratch box/length used to measure the scaled image before placing it
+\newsavebox{\cartoonbox}
+\newlength{\cartoonneeded}
+
+\newcommand{\cartoon}[4][\cartoonwidth]{%
+  % Measure the image at its final scaled size
+  \sbox{\cartoonbox}{\includegraphics[width=\dimexpr#1-\cartoonpad\relax]{\cartoonpath#2}}%
+  \setlength{\cartoonneeded}{\dimexpr\ht\cartoonbox+\dp\cartoonbox+\cartooncaptionallowance\relax}%
+  % Break the page rather than let the wrap column overflow the bottom margin
+  \par\needspace{\cartoonneeded}%
+  \begin{wrapfigure}{l}{#1}%
+    \centering%
+    \usebox{\cartoonbox}%
+    \caption{#3}%
+    \label{#4}%
+  \end{wrapfigure}%
 }
 
 % Command for inline code with proper font
