@@ -2,6 +2,52 @@
 
 This document chronicles the development of the Hebrew Academic Template.
 
+## [7.4.3] - 2026-07-30 - API Symmetry: \starthebrew + \englishsubsection
+
+### Overview
+Closes two asymmetries in the public API that a capability audit exposed. Both additions
+are strictly additive — no existing command, environment or default behaviour changed.
+
+### Added
+- **NEW: `\starthebrew`** — starts a Hebrew RTL block (`\selectlanguage{hebrew}` +
+  `\textdir TRT\pardir TRT` + `\raggedleft`). The direction-switching set shipped
+  `\startenglish`, `\stopenglish` and `\stophebrew`, but never `\starthebrew`. The
+  command has been listed as entry #10 in the documentation's command table since the
+  v1.0 era while never existing in any `.cls`, so any document that followed the docs
+  failed with *Undefined control sequence*. Its body is identical to `\stophebrew`
+  (both enter Hebrew RTL); the two names exist so start/stop pairs read symmetrically:
+  `\startenglish … \stopenglish` alongside `\starthebrew … \stophebrew`.
+- **NEW: `\englishsubsection{}`** — the subsection-level counterpart of
+  `\englishsection{}`. The class provided `\hebrewsection` / `\hebrewsubsection` and
+  `\englishsection`, but no English subsection, so a purely English subsection had to be
+  hand-faked. It mirrors `\englishsection` one level down: steps the `hebrewsubsection`
+  counter so English and Hebrew subsections share one sequence, numbers via
+  `\hebsubsectionnumber` so the TOC entry carries the chapter prefix introduced in
+  v7.4.2, emits a subsubsection-level TOC entry to match `\hebrewsubsection`, and syncs
+  the standard `subsection` counter exactly as `\englishsection` syncs `section`.
+
+### Namespace note (do not "fix" this)
+The TOC *level* named `englishsubsection` — handler `\l@englishsubsection`, used by
+`\englishsectionunnumbered` — is a **separate namespace** from the new
+`\englishsubsection` command and is untouched. `\l@englishsubsection` is a TOC-entry
+formatter; `\englishsubsection` is a sectioning command. They do not collide.
+
+### How it was found
+A capability audit comparing v7.4.2 against 20 historical sources: 12 git revisions of
+the class, 5 archived agent-merge copies, the v7.3.6 `.bak`, and the recovered v1.0
+Foundation Release. `\englishsubsection` surfaced from the `gtai-template` sibling fork,
+which defines it; `\starthebrew` surfaced from the documentation, which listed it without
+any implementation ever existing.
+
+### Testing
+`examples/expert_example.tex` gained a v7.4.3 section exercising both. Verified in the
+rendered PDF: `\starthebrew` produces zero undefined control sequences, and
+`\englishsubsection` renders as **2.11.2** — three components — sitting between Hebrew
+subsections 2.11.1 and 2.11.3, proving the shared counter runs through it without
+resetting. All seven examples compile with zero errors and no new overfull boxes.
+
+---
+
 ## [7.4.2] - 2026-07-30 - TOC Subsection Chapter-Prefix Fix
 
 ### Overview

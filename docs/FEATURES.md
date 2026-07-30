@@ -35,6 +35,7 @@ The Hebrew Academic Template provides 83 commands, 9 environments, and 25+ packa
 | `\RTL{}` | Force RTL direction |
 | `\startenglish` | Begin English section |
 | `\stopenglish` | End English section |
+| `\starthebrew` | **v7.4.3** — Begin Hebrew RTL section (counterpart of `\startenglish`) |
 | `\stophebrew` | Return to Hebrew |
 | `\textenglish{}` | Polyglossia English |
 | `\texthebrew{}` | Polyglossia Hebrew |
@@ -50,6 +51,7 @@ The Hebrew Academic Template provides 83 commands, 9 environments, and 25+ packa
 | `\hebrewchapternonum{}` | **v7.4.1** — chapter-level heading that does NOT consume a chapter number (front matter; keeps `\chapterref` correct) |
 | `\hebrewsection{}` | Main sections |
 | `\englishsection{}` | English sections |
+| `\englishsubsection{}` | **v7.4.3** — English subsection; shares the `hebrewsubsection` counter and numbers as `chapter.section.subsection` |
 | `\hebrewsubsection{}` | Subsections — TOC entry numbered `chapter.section.subsection` (**v7.4.2**) |
 | `\hebsubsectionnumber` | **v7.4.2** — expandable compound subsection number used by `\hebrewsubsection`'s TOC entry; internal, rarely called directly |
 | `\HebrewTitle{}` | Format Hebrew title |

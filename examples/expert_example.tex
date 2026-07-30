@@ -645,6 +645,42 @@ This text is inside the \texttt{latin} environment (English alias).
 \hebrewsubsection{תת-סעיף שלישי: \entoc{Third Subsection}}
 תת-סעיף שלישי, לאימות שהמונה מתקדם כראוי ואינו מתאפס.
 
+% ==================== v7.4.3 TEST: API SYMMETRY ====================
+% Two commands added in v7.4.3 to close asymmetries in the public API.
+%
+% VERIFY IN THE PDF:
+%   1. \starthebrew  - the Hebrew paragraph below it is RTL and ragged-left, exactly
+%      like the paragraph after \stophebrew. Before v7.4.3 this line raised
+%      "Undefined control sequence" even though the docs listed the command.
+%   2. \englishsubsection - renders an LTR English subsection heading whose number has
+%      THREE components (chapter.section.subsection), and whose TOC entry matches the
+%      heading. It must sit in the same number sequence as the \hebrewsubsection
+%      entries above it -- i.e. it continues the count, it does not restart it.
+\hebrewsection{בדיקת סימטריית הפקודות \entoc{v7.4.3 API symmetry}}
+
+הפקודה \en{\texttt{\textbackslash startenglish}} מתחילה גוש אנגלי, והפקודה החדשה
+\en{\texttt{\textbackslash starthebrew}} מתחילה גוש עברי -- כך ששני הצדדים סימטריים.
+
+\startenglish
+This paragraph was opened with \texttt{startenglish}: it is left-to-right and
+ragged-right, and it ends where the Hebrew block begins.
+\stopenglish
+
+\starthebrew
+פסקה זו נפתחה בפקודה החדשה \en{\texttt{\textbackslash starthebrew}}. עליה להופיע מימין
+לשמאל ומיושרת לשמאל, בדיוק כמו פסקה שנפתחה ב-\en{\texttt{\textbackslash stophebrew}}.
+\stophebrew
+
+\hebrewsubsection{תת-סעיף עברי לפני האנגלי: \entoc{Hebrew Subsection Before}}
+תת-סעיף עברי רגיל, כדי שניתן יהיה לוודא שתת-הסעיף האנגלי שאחריו ממשיך את אותו מספור.
+
+\englishsubsection{English Subsection (v7.4.3)}
+This subsection heading was produced by \texttt{englishsubsection}. Its number must have
+three components and must continue the sequence started by the Hebrew subsection above.
+
+\hebrewsubsection{תת-סעיף עברי אחרי האנגלי: \entoc{Hebrew Subsection After}}
+תת-סעיף עברי נוסף, לאימות שהמונה המשיך לרוץ דרך תת-הסעיף האנגלי ולא אופס.
+
 % ==================== BIBLIOGRAPHY ====================
 
 \newpage

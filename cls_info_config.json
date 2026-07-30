@@ -1,6 +1,6 @@
 {
-  "cls_version": "7.3.6",
-  "version_date": "2026-07-13",
+  "cls_version": "7.4.3",
+  "version_date": "2026-07-30",
   "versions": {
     "7.3.6": {
       "date": "2026-07-13 - Capability Superset Merge",
@@ -180,6 +180,10 @@
     {
       "command": "\\englishsection{}",
       "description": "English sections"
+    },
+    {
+      "command": "\\englishsubsection{}",
+      "description": "English subsection, shares hebrewsubsection counter (v7.4.3)"
     },
     {
       "command": "\\englishterm{}",
@@ -376,6 +380,10 @@
     {
       "command": "\\startenglish",
       "description": "Begin English section"
+    },
+    {
+      "command": "\\starthebrew",
+      "description": "Begin Hebrew RTL section (v7.4.3)"
     },
     {
       "command": "\\stopenglish",

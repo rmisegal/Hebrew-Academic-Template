@@ -1,6 +1,6 @@
 # Hebrew Academic Template
 
-**Version 7.4.2** | July 2026
+**Version 7.4.3** | July 2026
 
 A comprehensive LaTeX class for Hebrew academic documents with seamless English integration, designed for LuaLaTeX with polyglossia and luabidi.
 
@@ -171,6 +171,12 @@ lualatex document.tex
 ```
 
 ## Changelog
+
+### v7.4.3 (2026-07-30)
+- **NEW**: `\starthebrew` — starts a Hebrew RTL block, completing the direction-switching quartet. The class had `\startenglish`, `\stopenglish` and `\stophebrew` but no `\starthebrew`, even though the documentation has listed it since the v1.0 era — documents that used it failed with *Undefined control sequence*. Same body as `\stophebrew`; both names exist so start/stop pairs read symmetrically.
+- **NEW**: `\englishsubsection{}` — English subsection heading, the subsection-level counterpart to `\englishsection{}`. Numbers via `\hebsubsectionnumber`, so the TOC entry carries the chapter prefix, and shares the `hebrewsubsection` counter so English and Hebrew subsections stay in one sequence.
+- Both are additive; no existing command, environment or default behaviour changed.
+- Found by a capability audit of 20 historical CLS sources plus the `gtai-template` sibling fork.
 
 ### v7.4.2 (2026-07-30)
 - **FIXED**: `\hebrewsubsection` wrote the wrong number to the `.toc` — the chapter component was missing, so a subsection of section 3.4 was listed as `4.1` instead of `3.4.1`, colliding with chapter 4's real section 4.1. The printed body heading was always correct, so the defect stayed invisible until the table of contents was read.

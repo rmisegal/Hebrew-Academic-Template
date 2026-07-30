@@ -1,11 +1,32 @@
 % hebrew-academic-template.cls
-% Version 7.4.2 - TOC subsection number restored its chapter prefix
+% Version 7.4.3 - API symmetry: \starthebrew and \englishsubsection
 % Date: 2026-07-30
 %
 % A comprehensive LaTeX class for Hebrew academic documents with English integration
 % Copyright (c) 2025 Dr. Segal Yoram. All rights reserved.
 %
 % CHANGELOG:
+% v7.4.3 (2026-07-30) - API symmetry: \starthebrew + \englishsubsection
+%   - NEW: \starthebrew - starts a Hebrew RTL block (selectlanguage + TRT + raggedleft).
+%     Completes the direction-switching quartet, which was asymmetric: the class had
+%     \startenglish, \stopenglish and \stophebrew, but no \starthebrew. The command has
+%     been listed as #10 in the documentation's command table since the v1.0 era while
+%     never actually existing in any .cls - documents that used it failed with
+%     "Undefined control sequence". Same body as \stophebrew (both enter Hebrew RTL);
+%     the two names exist so start/stop pairs read symmetrically at call sites.
+%   - NEW: \englishsubsection{} - English subsection heading, the subsection-level
+%     counterpart to \englishsection{}. The class had \hebrewsection/\hebrewsubsection
+%     and \englishsection, but no English subsection, so a purely English subsection
+%     had to be faked. Steps the hebrewsubsection counter, numbers via
+%     \hebsubsectionnumber (so the TOC entry carries the chapter prefix, per v7.4.2),
+%     and syncs the standard subsection counter exactly as \englishsection does.
+%   - Both are ADDITIVE - no existing command, environment or default behaviour changed.
+%   - Discovered by a capability audit of 20 historical CLS sources (12 git revisions,
+%     5 archived agent copies, the v7.3.6 .bak, and the recovered v1.0 Foundation
+%     Release) plus the gtai-template sibling fork, which defines \englishsubsection.
+%   - NOTE: the TOC *level* name "englishsubsection" (handler \l@englishsubsection,
+%     used by \englishsectionunnumbered) is a separate namespace and is unaffected.
+%
 % v7.4.2 (2026-07-30) - TOC subsection chapter-prefix regression fix
 %   - FIXED: \hebrewsubsection wrote the WRONG number to the .toc: the chapter
 %     component was missing. A subsection of section 3.4 was listed as "4.1"
@@ -591,12 +612,12 @@
 % - PDF bookmark support with proper hyperref integration
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hebrew-academic-template}[2026/07/30 v7.4.2 Hebrew Academic Template - TOC Subsection Chapter-Prefix Fix]
+\ProvidesClass{hebrew-academic-template}[2026/07/30 v7.4.3 Hebrew Academic Template - API Symmetry: starthebrew + englishsubsection]
 
 % ==================== VERSION INFORMATION ====================
 % Version command - defined early for programmatic access
 % v7.4.0: kept in lock-step with \ProvidesClass above (they disagreed in v7.3.5/v7.3.6)
-\newcommand{\clsversion}{V7.4.2-2026-07-30}
+\newcommand{\clsversion}{V7.4.3-2026-07-30}
 
 % ==================== CLASS OPTIONS ====================
 % 'book' option - enables full book class with chapters, frontmatter, etc.
@@ -938,6 +959,18 @@
   \raggedleft%
 }
 
+% v7.4.3: Command to START a Hebrew RTL block - the counterpart of \startenglish.
+% The direction-switching set was asymmetric: \startenglish / \stopenglish / \stophebrew
+% existed, but \starthebrew did not, even though the documentation has listed it since
+% the v1.0 era. Body is identical to \stophebrew (both enter Hebrew RTL); the two names
+% exist so that start/stop pairs read symmetrically at the call site:
+%     \startenglish ... \stopenglish        \starthebrew ... \stophebrew
+\newcommand{\starthebrew}{%
+  \selectlanguage{hebrew}%
+  \textdir TRT\pardir TRT%
+  \raggedleft%
+}
+
 % Command to end English sections and return to Hebrew RTL alignment
 \newcommand{\stopenglish}{%
   \selectlanguage{hebrew}%
@@ -1067,6 +1100,33 @@
   % v6.0.0: Sync section counter (like \hebrewsection does)
   \setcounter{section}{\value{hebrewsection}}%
   \setcounter{subsection}{0}% Reset subsection for new section
+}
+
+% v7.4.3: English SUBSECTION - the subsection-level counterpart of \englishsection.
+% The class provided \hebrewsection / \hebrewsubsection and \englishsection, but no
+% English subsection, so a purely English subsection had to be faked by hand.
+% Mirrors \englishsection exactly, one level down:
+%   - steps the hebrewsubsection counter (so numbering shares the Hebrew sequence)
+%   - numbers via \hebsubsectionnumber, so the TOC entry carries the chapter prefix
+%     (chapter.section.subsection) introduced in v7.4.2
+%   - emits a subsubsection-level TOC entry, matching \hebrewsubsection
+%   - syncs the standard subsection counter, exactly as \englishsection syncs section
+% NOTE: the TOC *level* named "englishsubsection" (handler \l@englishsubsection, used by
+% \englishsectionunnumbered) is a different namespace and is untouched by this command.
+\newcommand{\englishsubsection}[1]{%
+  \par\needspace{4\baselineskip}% match \hebrewsubsection orphan prevention
+  \vspace{0.8em}%
+  \stepcounter{hebrewsubsection}%
+  \begin{english}%
+  \selectlanguage{english}%
+  \textdir TLT\pardir TLT%
+  \subsubsection*{\raggedright\textenglish{\hebsubsectionnumber\quad #1}}%
+  \phantomsection% CRITICAL - Added for PDF bookmarks
+  \addcontentsline{toc}{subsubsection}{\protect\numberline{\protect\textenglish{\hebsubsectionnumber}}\textenglish{#1}}%
+  \end{english}%
+  \setcounter{subsection}{\value{hebrewsubsection}}%
+  \setcounter{subsubsection}{0}%
+  \vspace{0.3em}%
 }
 
 % v6.0.0: Unnumbered English section (for bibliography, appendix headers, etc.)
